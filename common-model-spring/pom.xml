@@ -13,21 +13,8 @@
 
   <properties>
     <spring-boot.version>2.1.0.RELEASE</spring-boot.version>
-    <spring-cloud.version>Greenwich.M1</spring-cloud.version>
-
-    <swagger-base-package>org.bremersee.exception</swagger-base-package>
+    <exception-base-package>org.bremersee.exception</exception-base-package>
   </properties>
-
-  <repositories>
-    <repository>
-      <id>spring-milestones</id>
-      <name>Spring Milestones</name>
-      <url>https://repo.spring.io/milestone</url>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
 
   <dependencyManagement>
     <dependencies>
@@ -35,13 +22,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
         <version>${spring-boot.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-dependencies</artifactId>
-        <version>${spring-cloud.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -126,11 +106,11 @@
                 ${project.basedir}/../src/swagger/templates
               </templateDirectory>
               <!-- the package to use for generated model objects/classes -->
-              <modelPackage>${swagger-base-package}.model</modelPackage>
+              <modelPackage>${exception-base-package}.model</modelPackage>
               <!-- the package to use for generated api objects/classes -->
-              <apiPackage>${swagger-base-package}.api</apiPackage>
+              <apiPackage>${exception-base-package}.api</apiPackage>
               <!-- the package to use for the generated invoker objects -->
-              <invokerPackage>${swagger-base-package}.invoker</invokerPackage>
+              <invokerPackage>${exception-base-package}.invoker</invokerPackage>
               <!-- enable XML annotations inside the generated models and API (only works with
                    Java language and libraries that provide support for JSON and XML) -->
               <withXml>true</withXml>
