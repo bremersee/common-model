@@ -65,7 +65,7 @@
     <resources>
       <resource>
         <directory>${project.basedir}/../src/swagger</directory>
-        <targetPath>META-INF</targetPath>
+        <targetPath>META-INF/swagger</targetPath>
         <filtering>false</filtering>
         <includes>
           <include>**</include>
