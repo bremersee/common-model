@@ -1,0 +1,80 @@
+swagger: "2.0"
+info:
+  title: "common Model"
+  version: "1.0.0"
+  description: "The common model."
+  contact:
+    name: "Christian Bremer"
+    email: "bremersee@googlemail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+definitions:
+  LongAndShort:
+    description: "A long and short name."
+    type: "object"
+    properties:
+      longName:
+        type: "string"
+        description: "The long name."
+      shortName:
+        type: "string"
+        description: "The short name."
+  Address:
+    description: "Address data."
+    type: "object"
+    properties:
+      floor:
+        type: "string"
+        description: "The floor."
+      streetNumber:
+        type: "string"
+        description: "The street number."
+      route:
+        type: "string"
+        description: "The route name."
+      locality:
+        $ref: "#/definitions/LongAndShort"
+      administrativeAreaLevel2:
+        $ref: "#/definitions/LongAndShort"
+      administrativeAreaLevel1:
+        $ref: "#/definitions/LongAndShort"
+      country:
+        $ref: "#/definitions/LongAndShort"
+      postalCode:
+        type: "string"
+        description: "The street number."
+      formattedAddress:
+        type: "string"
+        description: "The street number."
+  Link:
+    description: "A link description."
+    type: "object"
+    properties:
+      href:
+        type: "string"
+        description: "The URI."
+        minLength: 1
+      type:
+        type: "string"
+        description: "The type."
+      text:
+        type: "string"
+        description: "The link text."
+      description:
+        type: "string"
+        description: "A short description."
+    required:
+    - "href"
+  PhoneNumber:
+    description: "A phone number."
+    type: "object"
+    properties:
+      value:
+        type: "string"
+        description: "The phone number"
+      category:
+        type: "string"
+        description: "The category."
+    required:
+    - "value"
