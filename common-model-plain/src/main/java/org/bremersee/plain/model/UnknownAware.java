@@ -129,7 +129,7 @@ public abstract class UnknownAware {
    * Find a list from the unknown map.
    *
    * @param <E> the list element type
-   * @param jsonPath the json path
+   * @param jsonPath the json path, e. g. {@code $.firstKey.secondKey.thirdKey}
    * @param clazz he list element type
    * @return an empty optional if the list was not found or can not be casted, otherwise the list
    */
@@ -150,7 +150,7 @@ public abstract class UnknownAware {
   /**
    * Find a map / json object from the unknown map.
    *
-   * @param jsonPath the json path
+   * @param jsonPath the json path, e. g. {@code $.firstKey.secondKey.thirdKey}
    * @return an empty optional if the map / json object was not found or can not be casted,
    * otherwise the map / json object
    */
