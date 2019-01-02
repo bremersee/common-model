@@ -10,40 +10,34 @@ info:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 definitions:
-  LongAndShort:
-    description: "A long and short name."
-    type: "object"
-    properties:
-      longName:
-        type: "string"
-        description: "The long name."
-      shortName:
-        type: "string"
-        description: "The short name."
   Address:
     description: "Address data."
     type: "object"
     properties:
-      floor:
-        type: "string"
-        description: "The floor."
       streetNumber:
         type: "string"
         description: "The street number."
-      route:
+      street:
         type: "string"
-        description: "The route name."
-      locality:
-        $ref: "#/definitions/LongAndShort"
-      administrativeAreaLevel2:
-        $ref: "#/definitions/LongAndShort"
-      administrativeAreaLevel1:
-        $ref: "#/definitions/LongAndShort"
-      country:
-        $ref: "#/definitions/LongAndShort"
+        description: "The street name."
       postalCode:
         type: "string"
         description: "The street number."
+      city:
+        type: "string"
+        description: "The city name."
+      suburb:
+        type: "string"
+        description: "The suburb name."
+      state:
+        type: "string"
+        description: "The state name."
+      country:
+        type: "string"
+        description: "The country name."
+      countryCode:
+        type: "string"
+        description: "The country code."
       formattedAddress:
         type: "string"
         description: "The street number."
