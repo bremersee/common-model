@@ -91,7 +91,7 @@
     <site>
       <id>bremersee-sites</id>
       <url>
-        dav:https://nexus.bremersee.org/repository/maven-sites/common-model
+        dav:https://nexus.bremersee.org/repository/maven-sites/common-model/${project.version}
       </url>
     </site>
   </distributionManagement>

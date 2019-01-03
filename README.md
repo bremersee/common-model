@@ -2,7 +2,7 @@
 
 Library of the common model.
 
-- [Documentation](https://nexus.bremersee.org/repository/maven-sites/common-model/index.html)
+- [Documentation](https://nexus.bremersee.org/repository/maven-sites/common-model/1.0.0-SNAPSHOT/index.html)
 
 ### Maven
 
