@@ -17,7 +17,7 @@
     <product.vendor>bremersee.org</product.vendor>
     <inceptionYear>2019</inceptionYear>
 
-    <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
+    <spring-boot.version>2.1.2.RELEASE</spring-boot.version>
     <swagger-annotations.version>1.5.18</swagger-annotations.version>
     <swagger-codegen-maven-plugin.version>2.3.1</swagger-codegen-maven-plugin.version>
 
