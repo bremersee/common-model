@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  title: "common Model"
+  title: "Common Model"
   version: "1.0.0"
   description: "The common model."
   contact:
@@ -9,7 +9,51 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+paths:
 definitions:
+  AccessControlEntry:
+    description: "Specifies a permission and who is granted."
+    type: "object"
+    properties:
+      permission:
+        type: "string"
+        pattern: "^[a-z_]+$"
+        description: "Specifies the permission."
+      guest:
+        type: "boolean"
+        default: "false"
+        description: "Specifies whether anybody is granted."
+      users:
+        type: "array"
+        items:
+          type: "string"
+          pattern: "^[a-zA-Z0-9_-]+$"
+        description: "Specifies the granted users."
+      roles:
+        type: "array"
+        items:
+          type: "string"
+          pattern: "^[a-zA-Z0-9_-]+$"
+        description: "Specifies the granted roles."
+      groups:
+        type: "array"
+        items:
+          type: "string"
+          pattern: "^[a-zA-Z0-9_-]+$"
+        description: "Specifies the granted groups."
+    required:
+      - "permission"
+  AccessControlList:
+    description: "Specifies permissions and who is granted."
+    type: "object"
+    properties:
+      owner:
+        type: "string"
+        description: "The owner is always granted and can only be changed by the owner."
+      entries:
+        type: "array"
+        items:
+          $ref: "#/definitions/AccessControlEntry"
   Address:
     description: "Address data."
     type: "object"
@@ -59,7 +103,7 @@ definitions:
         type: "string"
         description: "A short description."
     required:
-    - "href"
+      - "href"
   PhoneNumber:
     description: "A phone number."
     type: "object"
@@ -71,4 +115,4 @@ definitions:
         type: "string"
         description: "The category."
     required:
-    - "value"
+      - "value"

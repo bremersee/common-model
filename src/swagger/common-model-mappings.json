@@ -1,0 +1,9 @@
+{
+  "importMappings": {
+    "AccessControlEntry": "org.bremersee.common.model.AccessControlEntry",
+    "AccessControlList": "org.bremersee.common.model.AccessControlList",
+    "Address": "org.bremersee.common.model.Address",
+    "Link": "org.bremersee.common.model.Link",
+    "PhoneNumber": "org.bremersee.common.model.PhoneNumber"
+  }
+}
