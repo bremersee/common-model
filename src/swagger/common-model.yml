@@ -54,6 +54,67 @@ definitions:
         type: "array"
         items:
           $ref: "#/definitions/AccessControlEntry"
+  AccessControlEntryModifications:
+    description: "Specifies modifications of an access control entry."
+    type: "object"
+    properties:
+      permission:
+        type: "string"
+        pattern: "^[a-z_]+$"
+        description: "Specifies the permission."
+      guest:
+        type: "boolean"
+        default: "false"
+        description: "Specifies whether anybody is granted."
+      addUsers:
+        type: "array"
+        items:
+          type: "string"
+          pattern: "^[a-zA-Z0-9_-]+$"
+        description: "Users to be added."
+      removeUsers:
+        type: "array"
+        items:
+          type: "string"
+          pattern: "^[a-zA-Z0-9_-]+$"
+        description: "Users to be removed."
+      addRoles:
+        type: "array"
+        items:
+          type: "string"
+          pattern: "^[a-zA-Z0-9_-]+$"
+        description: "Roles to be added."
+      removeRoles:
+        type: "array"
+        items:
+          type: "string"
+          pattern: "^[a-zA-Z0-9_-]+$"
+        description: "Roles to be removed."
+      addGroups:
+        type: "array"
+        items:
+          type: "string"
+          pattern: "^[a-zA-Z0-9_-]+$"
+        description: "Groups to be added."
+      removeGroups:
+        type: "array"
+        items:
+          type: "string"
+          pattern: "^[a-zA-Z0-9_-]+$"
+        description: "Groups to be removed."
+    required:
+      - "permission"
+  AccessControlListModifications:
+    description: "Specifies modifications of an access control list."
+    type: "object"
+    properties:
+      newOwner:
+        type: "string"
+        description: "The owner is always granted and can only be changed by the owner."
+      entries:
+        type: "array"
+        items:
+          $ref: "#/definitions/AccessControlEntryModifications"
   Address:
     description: "Address data."
     type: "object"
@@ -66,7 +127,7 @@ definitions:
         description: "The street name."
       postalCode:
         type: "string"
-        description: "The street number."
+        description: "The postal code."
       city:
         type: "string"
         description: "The city name."
