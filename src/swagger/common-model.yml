@@ -128,6 +128,9 @@ definitions:
       postalCode:
         type: "string"
         description: "The postal code."
+      postbox:
+        type: "string"
+        description: "The postbox."
       city:
         type: "string"
         description: "The city name."
