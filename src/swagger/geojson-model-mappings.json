@@ -1,0 +1,16 @@
+{
+  "importMappings": {
+    "BoundingBox": "org.bremersee.geojson.model.BoundingBox",
+    "Geometry": "org.bremersee.geojson.model.Geometry",
+    "Position": "org.bremersee.geojson.model.Position",
+    "Point": "org.bremersee.geojson.model.Point",
+    "MultiPoint": "org.bremersee.geojson.model.MultiPoint",
+    "LineString": "org.bremersee.geojson.model.LineString",
+    "MultiLineString": "org.bremersee.geojson.model.MultiLineString",
+    "Polygon": "org.bremersee.geojson.model.Polygon",
+    "MultiPolygon": "org.bremersee.geojson.model.MultiPolygon",
+    "GeometryCollection": "org.bremersee.geojson.model.GeometryCollection",
+    "Feature": "org.bremersee.geojson.model.Feature",
+    "FeatureCollection": "org.bremersee.geojson.model.FeatureCollection"
+  }
+}
