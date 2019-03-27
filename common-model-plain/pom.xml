@@ -12,6 +12,10 @@
 
   <artifactId>common-model-plain</artifactId>
 
+  <name>common-model-plain</name>
+  <description>Bremersee's common plain java model</description>
+  <url>https://github.com/bremersee/common-model</url>
+
   <dependencies>
     <dependency>
       <groupId>io.swagger</groupId>

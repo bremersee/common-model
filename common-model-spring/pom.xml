@@ -12,6 +12,10 @@
 
   <artifactId>common-model-spring</artifactId>
 
+  <name>common-model-spring</name>
+  <description>Bremersee's common spring model</description>
+  <url>https://github.com/bremersee/common-model</url>
+
   <properties>
     <common-base-package>org.bremersee.common</common-base-package>
     <exception-base-package>org.bremersee.exception</exception-base-package>
