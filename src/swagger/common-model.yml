@@ -344,9 +344,6 @@ definitions:
         type: "string"
         enum:
           - "FeatureCollection"
-      id:
-        description: "The identifier of this feature."
-        type: "string"
       bbox:
         $ref: "#/definitions/BoundingBox"
       features:
