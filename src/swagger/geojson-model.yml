@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  title: "Common Model"
+  title: "GeoJSON Model"
   version: "1.0.0"
   description: "The GeoJSON model."
   contact:
