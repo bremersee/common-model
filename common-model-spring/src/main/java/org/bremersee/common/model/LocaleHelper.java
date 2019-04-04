@@ -213,4 +213,119 @@ public abstract class LocaleHelper {
     }
   }
 
+  /**
+   * Convert country.
+   *
+   * @param locale the locale
+   * @return the two letter country code
+   */
+  public static TwoLetterCountryCode toTwoLetterCountryCode(final Locale locale) {
+    if (locale == null || !StringUtils.hasText(locale.getCountry())) {
+      return null;
+    }
+    return TwoLetterCountryCode.fromValue(locale.getCountry());
+  }
+
+  /**
+   * Convert country.
+   *
+   * @param twoLetterCountryCode the two letter country code
+   * @return the locale
+   */
+  public static Locale toLocale(final TwoLetterCountryCode twoLetterCountryCode) {
+    if (twoLetterCountryCode == null) {
+      return null;
+    }
+    return new Locale("", twoLetterCountryCode.toString());
+  }
+
+  /**
+   * Convert country.
+   *
+   * @param locale the locale
+   * @return the three letter country code
+   */
+  public static ThreeLetterCountryCode toThreeLetterCountryCode(final Locale locale) {
+    if (locale == null || !StringUtils.hasText(locale.getCountry())) {
+      return null;
+    }
+    return ThreeLetterCountryCode.fromValue(locale.getISO3Country());
+  }
+
+  /**
+   * Convert country.
+   *
+   * @param twoLetterCountryCode the two letter country code
+   * @return the locale
+   */
+  public static Locale toLocale(final ThreeLetterCountryCode twoLetterCountryCode) {
+    if (twoLetterCountryCode == null) {
+      return null;
+    }
+    final String code = Arrays.stream(Locale.getAvailableLocales())
+        .filter(locale -> twoLetterCountryCode.toString().equals(locale.getISO3Country()))
+        .findAny()
+        .map(Locale::getCountry)
+        .orElse(null);
+    return code != null ? new Locale("", code) : null;
+  }
+
+
+  /**
+   * Convert language.
+   *
+   * @param locale the locale
+   * @return the two letter language code
+   */
+  public static TwoLetterLanguageCode toTwoLetterLanguageCode(final Locale locale) {
+    if (locale == null || !StringUtils.hasText(locale.getLanguage())) {
+      return null;
+    }
+    return TwoLetterLanguageCode.fromValue(locale.getLanguage());
+  }
+
+  /**
+   * Convert language.
+   *
+   * @param threeLetterLanguageCode the three letter language code
+   * @return the locale
+   */
+  public static Locale toLocale(final TwoLetterLanguageCode threeLetterLanguageCode) {
+    if (threeLetterLanguageCode == null) {
+      return null;
+    }
+    return new Locale(threeLetterLanguageCode.toString());
+  }
+
+  /**
+   * Convert language.
+   *
+   * @param locale the locale
+   * @return the three letter language code
+   */
+  public static ThreeLetterLanguageCode toThreeLetterLanguageCode(final Locale locale) {
+    if (locale == null || !StringUtils.hasText(locale.getLanguage())) {
+      return null;
+    }
+    return ThreeLetterLanguageCode.fromValue(locale.getISO3Language());
+  }
+
+  /**
+   * Convert language.
+   *
+   * @param threeLetterLanguageCode the three letter language code
+   * @return the locale
+   */
+  public static Locale toLocale(final ThreeLetterLanguageCode threeLetterLanguageCode) {
+    if (threeLetterLanguageCode == null) {
+      return null;
+    }
+    final String code = Arrays.stream(Locale.getAvailableLocales())
+        .filter(locale -> threeLetterLanguageCode.toString().equals(locale.getISO3Language()))
+        .findAny()
+        .map(Locale::getLanguage)
+        .orElse(null);
+    return code != null ? new Locale(code) : null;
+  }
+
 }

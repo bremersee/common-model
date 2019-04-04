@@ -106,6 +106,38 @@ public class LocaleHelperTest {
     Assert.assertEquals(expected, actual);
   }
 
+  @Test
+  public void toTwoLetterCountryCode() {
+    TwoLetterCountryCode expected = TwoLetterCountryCode.ZA;
+    TwoLetterCountryCode actual = LocaleHelper.toTwoLetterCountryCode(new Locale("", "ZA"));
+    Assert.assertNotNull(actual);
+    Assert.assertEquals(expected, actual);
+  }
+
+  @Test
+  public void toThreeLetterCountryCode() {
+    ThreeLetterCountryCode expected = ThreeLetterCountryCode.ZAF;
+    ThreeLetterCountryCode actual = LocaleHelper.toThreeLetterCountryCode(new Locale("", "ZA"));
+    Assert.assertNotNull(actual);
+    Assert.assertEquals(expected, actual);
+  }
+
+  @Test
+  public void toTwoLetterLanguageCode() {
+    TwoLetterLanguageCode expected = TwoLetterLanguageCode.ZH;
+    TwoLetterLanguageCode actual = LocaleHelper.toTwoLetterLanguageCode(new Locale("zh"));
+    Assert.assertNotNull(actual);
+    Assert.assertEquals(expected, actual);
+  }
+
+  @Test
+  public void toThreeLetterLanguageCode() {
+    ThreeLetterLanguageCode expected = ThreeLetterLanguageCode.ZHO;
+    ThreeLetterLanguageCode actual = LocaleHelper.toThreeLetterLanguageCode(new Locale("zh"));
+    Assert.assertNotNull(actual);
+    Assert.assertEquals(expected, actual);
+  }
+
   /**
    * To locale.
    */
@@ -115,9 +147,29 @@ public class LocaleHelperTest {
     Locale actual = LocaleHelper.toLocale(JavaLocale.FR_FR);
     Assert.assertNotNull(actual);
     Assert.assertEquals(expected, actual);
+
     actual = LocaleHelper.toLocale(HttpLanguageTag.FR_FR);
     Assert.assertNotNull(actual);
     Assert.assertEquals(expected, actual);
+
+    expected = new Locale("", "TW");
+    actual = LocaleHelper.toLocale(TwoLetterCountryCode.TW);
+    Assert.assertNotNull(actual);
+    Assert.assertEquals(expected, actual);
+
+    actual = LocaleHelper.toLocale(ThreeLetterCountryCode.TWN);
+    Assert.assertNotNull(actual);
+    Assert.assertEquals(expected, actual);
+
+    expected = new Locale("zh");
+    actual = LocaleHelper.toLocale(TwoLetterLanguageCode.ZH);
+    Assert.assertNotNull(actual);
+    Assert.assertEquals(expected, actual);
+
+    actual = LocaleHelper.toLocale(ThreeLetterLanguageCode.ZHO);
+    Assert.assertNotNull(actual);
+    Assert.assertEquals(expected, actual);
+
   }
 
 }
