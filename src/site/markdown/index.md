@@ -1,3 +1,3 @@
 # common-model
 
-Parent module with Swagger definitions.
+Library of the common model.
