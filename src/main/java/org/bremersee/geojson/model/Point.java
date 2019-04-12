@@ -53,7 +53,7 @@ public class Point extends Geometry implements Serializable {
   }
 
   /**
-   * Get coordinates
+   * Get coordinates.
    *
    * @return coordinates coordinates
    */

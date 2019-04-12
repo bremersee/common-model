@@ -90,6 +90,21 @@ public class RestApiException implements Serializable {
   @JacksonXmlProperty(localName = "cause")
   private RestApiException cause = null;
 
+  /**
+   * Instantiates a new rest api exception.
+   *
+   * @param id                 the id
+   * @param timestamp          the timestamp
+   * @param message            the message
+   * @param errorCode          the error code
+   * @param errorCodeInherited the error code inherited
+   * @param className          the class name
+   * @param application        the application
+   * @param path               the path
+   * @param handler            the handler
+   * @param stackTrace         the stack trace
+   * @param cause              the cause
+   */
   @Builder
   public RestApiException(
       String id,

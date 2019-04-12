@@ -54,7 +54,7 @@ public class GeometryCollection extends Geometry implements Serializable {
   }
 
   /**
-   * Get geometries
+   * Get geometries.
    *
    * @return geometries geometries
    */

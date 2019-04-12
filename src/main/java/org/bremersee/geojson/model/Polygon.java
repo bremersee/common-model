@@ -54,7 +54,7 @@ public class Polygon extends Geometry implements Serializable {
   }
 
   /**
-   * Get coordinates
+   * Get coordinates.
    *
    * @return coordinates coordinates
    */

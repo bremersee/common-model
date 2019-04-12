@@ -73,7 +73,7 @@ public class FeatureCollection implements Serializable {
   }
 
   /**
-   * Get bbox
+   * Get bounding box.
    *
    * @return bbox bbox
    */
@@ -83,7 +83,7 @@ public class FeatureCollection implements Serializable {
   }
 
   /**
-   * Sets bbox.
+   * Sets bounding box.
    *
    * @param bbox the bbox
    */
@@ -92,7 +92,7 @@ public class FeatureCollection implements Serializable {
   }
 
   /**
-   * Get features
+   * Get features.
    *
    * @return features features
    */

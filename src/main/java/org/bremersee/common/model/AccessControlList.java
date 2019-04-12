@@ -72,7 +72,7 @@ public class AccessControlList implements Serializable {
   }
 
   /**
-   * Get entries
+   * Get entries.
    *
    * @return entries entries
    */

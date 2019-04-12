@@ -52,6 +52,13 @@ public class Handler implements Serializable {
   @JacksonXmlProperty(localName = "methodParameterTypes")
   private List<String> methodParameterTypes = null;
 
+  /**
+   * Instantiates a new handler.
+   *
+   * @param className            the class name
+   * @param methodName           the method name
+   * @param methodParameterTypes the method parameter types
+   */
   @Builder
   public Handler(
       String className,

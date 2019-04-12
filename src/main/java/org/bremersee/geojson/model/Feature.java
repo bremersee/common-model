@@ -109,7 +109,7 @@ public class Feature implements Serializable {
   }
 
   /**
-   * Get bbox
+   * Get bounding box.
    *
    * @return bbox bbox
    */
@@ -119,7 +119,7 @@ public class Feature implements Serializable {
   }
 
   /**
-   * Sets bbox.
+   * Sets bounding box.
    *
    * @param bbox the bbox
    */
@@ -128,7 +128,7 @@ public class Feature implements Serializable {
   }
 
   /**
-   * Get geometry
+   * Get geometry.
    *
    * @return geometry geometry
    */

@@ -72,7 +72,7 @@ public class AccessControlListModifications implements Serializable {
   }
 
   /**
-   * Get entries
+   * Get entries.
    *
    * @return entries entries
    */

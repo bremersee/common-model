@@ -55,6 +55,14 @@ public class StackTraceItem implements Serializable {
   @JacksonXmlProperty(localName = "lineNumber")
   private Integer lineNumber = null;
 
+  /**
+   * Instantiates a new stack trace item.
+   *
+   * @param declaringClass the declaring class
+   * @param methodName     the method name
+   * @param fileName       the file name
+   * @param lineNumber     the line number
+   */
   @Builder
   public StackTraceItem(
       String declaringClass,
