@@ -19,9 +19,6 @@
   <description>Bremersee's common model</description>
   <url>https://github.com/bremersee/common-model</url>
 
-  <properties>
-  </properties>
-
   <scm>
     <url>https://github.com/bremersee/common-model</url>
     <connection>scm:git:git://github.com/bremersee/common-model.git</connection>
@@ -101,24 +98,5 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
-  <!--
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </build>
-  -->
 
 </project>
