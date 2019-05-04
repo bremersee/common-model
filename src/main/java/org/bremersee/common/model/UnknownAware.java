@@ -28,13 +28,17 @@ import java.util.Optional;
 import java.util.StringTokenizer;
 import java.util.function.Function;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * This base class allows to keep unknown json properties.
  *
  * @author Christian Bremer
  */
+@ToString
+@EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
 @SuppressWarnings({"unused", "WeakerAccess"})
