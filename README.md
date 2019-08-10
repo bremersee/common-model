@@ -2,5 +2,5 @@
 
 Library of the common model.
 
-- [Documentation](https://nexus.bremersee.org/repository/maven-sites/common-model/1.1.1/index.html)
+- [Documentation](https://nexus.bremersee.org/repository/maven-sites/common-model/1.1.2/index.html)
 
