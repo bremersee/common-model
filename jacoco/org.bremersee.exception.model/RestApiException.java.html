@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RestApiException.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">common-model</a> &gt; <a href="index.source.html" class="el_package">org.bremersee.exception.model</a> &gt; <span class="el_source">RestApiException.java</span></div><h1>RestApiException.java</h1><pre class="source lang-java linenums">/*
+ * The template was taken from
+ * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
+ * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ */
+
+package org.bremersee.exception.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.Serializable;
+import java.time.OffsetDateTime;
+import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.springframework.validation.annotation.Validated;
+
+/**
+ * The serialized exception.
+ */
+@ApiModel(description = &quot;The serialized exception.&quot;)
+@Validated
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = &quot;_type&quot;, visible = true)
+@JsonSubTypes({
+})
+@JacksonXmlRootElement(localName = &quot;RestApiException&quot;)
+@XmlRootElement(name = &quot;RestApiException&quot;)
+@XmlAccessorType(XmlAccessType.FIELD)
+@JsonIgnoreProperties(ignoreUnknown = true)
+<span class="nc bnc" id="L41" title="All 94 branches missed.">@EqualsAndHashCode</span>
+<span class="nc" id="L42">@ToString</span>
+<span class="nc" id="L43">@NoArgsConstructor</span>
+@SuppressWarnings(&quot;unused&quot;)
+public class RestApiException implements Serializable {
+
+  private static final long serialVersionUID = 1L;
+
+<span class="nc" id="L49">  @JsonProperty(&quot;id&quot;)</span>
+  @JacksonXmlProperty(localName = &quot;id&quot;)
+  private String id = null;
+
+  @JsonProperty(&quot;timestamp&quot;)
+  @JacksonXmlProperty(localName = &quot;timestamp&quot;)
+  private OffsetDateTime timestamp;
+
+<span class="nc" id="L57">  @JsonProperty(&quot;message&quot;)</span>
+  @JacksonXmlProperty(localName = &quot;message&quot;)
+  private String message = &quot;No message present.&quot;;
+
+<span class="nc" id="L61">  @JsonProperty(&quot;errorCode&quot;)</span>
+  @JacksonXmlProperty(localName = &quot;errorCode&quot;)
+  private String errorCode = null;
+
+<span class="nc" id="L65">  @JsonProperty(&quot;errorCodeInherited&quot;)</span>
+  @JacksonXmlProperty(localName = &quot;errorCodeInherited&quot;)
+  private Boolean errorCodeInherited = Boolean.FALSE;
+
+<span class="nc" id="L69">  @JsonProperty(&quot;className&quot;)</span>
+  @JacksonXmlProperty(localName = &quot;className&quot;)
+  private String className = null;
+
+<span class="nc" id="L73">  @JsonProperty(&quot;application&quot;)</span>
+  @JacksonXmlProperty(localName = &quot;application&quot;)
+  private String application = null;
+
+<span class="nc" id="L77">  @JsonProperty(&quot;path&quot;)</span>
+  @JacksonXmlProperty(localName = &quot;path&quot;)
+  private String path = null;
+
+<span class="nc" id="L81">  @JsonProperty(&quot;handler&quot;)</span>
+  @JacksonXmlProperty(localName = &quot;handler&quot;)
+  private Handler handler = null;
+
+<span class="nc" id="L85">  @JsonProperty(&quot;stackTrace&quot;)</span>
+  @JacksonXmlProperty(localName = &quot;stackTrace&quot;)
+  private List&lt;StackTraceItem&gt; stackTrace = null;
+
+<span class="nc" id="L89">  @JsonProperty(&quot;cause&quot;)</span>
+  @JacksonXmlProperty(localName = &quot;cause&quot;)
+  private RestApiException cause = null;
+
+  /**
+   * Instantiates a new rest api exception.
+   *
+   * @param id                 the id
+   * @param timestamp          the timestamp
+   * @param message            the message
+   * @param errorCode          the error code
+   * @param errorCodeInherited the error code inherited
+   * @param className          the class name
+   * @param application        the application
+   * @param path               the path
+   * @param handler            the handler
+   * @param stackTrace         the stack trace
+   * @param cause              the cause
+   */
+<span class="nc" id="L108">  @Builder</span>
+  public RestApiException(
+      String id,
+      OffsetDateTime timestamp,
+      String message,
+      String errorCode,
+      Boolean errorCodeInherited,
+      String className,
+      String application,
+      String path,
+      Handler handler,
+      List&lt;StackTraceItem&gt; stackTrace,
+<span class="nc" id="L120">      RestApiException cause) {</span>
+<span class="nc" id="L121">    this.id = id;</span>
+<span class="nc" id="L122">    this.timestamp = timestamp;</span>
+<span class="nc" id="L123">    this.message = message;</span>
+<span class="nc" id="L124">    this.errorCode = errorCode;</span>
+<span class="nc" id="L125">    this.errorCodeInherited = Boolean.TRUE.equals(errorCodeInherited);</span>
+<span class="nc" id="L126">    this.className = className;</span>
+<span class="nc" id="L127">    this.application = application;</span>
+<span class="nc" id="L128">    this.path = path;</span>
+<span class="nc" id="L129">    this.handler = handler;</span>
+<span class="nc" id="L130">    this.stackTrace = stackTrace;</span>
+<span class="nc" id="L131">    this.cause = cause;</span>
+<span class="nc" id="L132">  }</span>
+
+  /**
+   * The id of the exception.
+   *
+   * @return id id
+   */
+  @ApiModelProperty(value = &quot;The id of the exception.&quot;)
+  public String getId() {
+<span class="nc" id="L141">    return id;</span>
+  }
+
+  /**
+   * Sets id.
+   *
+   * @param id the id
+   */
+  public void setId(String id) {
+<span class="nc" id="L150">    this.id = id;</span>
+<span class="nc" id="L151">  }</span>
+
+  /**
+   * The timestamp.
+   *
+   * @return timestamp timestamp
+   */
+  @ApiModelProperty(value = &quot;The timestamp.&quot;)
+  public OffsetDateTime getTimestamp() {
+<span class="nc" id="L160">    return timestamp;</span>
+  }
+
+  /**
+   * Sets timestamp.
+   *
+   * @param timestamp the timestamp
+   */
+  public void setTimestamp(OffsetDateTime timestamp) {
+<span class="nc" id="L169">    this.timestamp = timestamp;</span>
+<span class="nc" id="L170">  }</span>
+
+  /**
+   * A human readable exception message.
+   *
+   * @return message message
+   */
+  @ApiModelProperty(value = &quot;A human readable exception message.&quot;)
+  public String getMessage() {
+<span class="nc" id="L179">    return message;</span>
+  }
+
+  /**
+   * Sets message.
+   *
+   * @param message the message
+   */
+  public void setMessage(String message) {
+<span class="nc" id="L188">    this.message = message;</span>
+<span class="nc" id="L189">  }</span>
+
+  /**
+   * A service specific error code.
+   *
+   * @return errorCode error code
+   */
+  @ApiModelProperty(value = &quot;A service specific error code.&quot;)
+  public String getErrorCode() {
+<span class="nc" id="L198">    return errorCode;</span>
+  }
+
+  /**
+   * Sets error code.
+   *
+   * @param errorCode the error code
+   */
+  public void setErrorCode(String errorCode) {
+<span class="nc" id="L207">    this.errorCode = errorCode;</span>
+<span class="nc" id="L208">  }</span>
+
+  /**
+   * Is the error code inherited from the cause.
+   *
+   * @return errorCodeInherited error code inherited
+   */
+  @ApiModelProperty(value = &quot;Is the error code inherited from the cause?&quot;)
+  public Boolean getErrorCodeInherited() {
+<span class="nc bnc" id="L217" title="All 2 branches missed.">    if (errorCodeInherited == null) {</span>
+<span class="nc" id="L218">      errorCodeInherited = Boolean.FALSE;</span>
+    }
+<span class="nc" id="L220">    return errorCodeInherited;</span>
+  }
+
+  /**
+   * Sets error code inherited.
+   *
+   * @param errorCodeInherited the error code inherited
+   */
+  public void setErrorCodeInherited(Boolean errorCodeInherited) {
+<span class="nc" id="L229">    this.errorCodeInherited = Boolean.TRUE.equals(errorCodeInherited);</span>
+<span class="nc" id="L230">  }</span>
+
+  /**
+   * The class name of the exception.
+   *
+   * @return className class name
+   */
+  @ApiModelProperty(value = &quot;The class name of the exception.&quot;)
+  public String getClassName() {
+<span class="nc" id="L239">    return className;</span>
+  }
+
+  /**
+   * Sets class name.
+   *
+   * @param className the class name
+   */
+  public void setClassName(String className) {
+<span class="nc" id="L248">    this.className = className;</span>
+<span class="nc" id="L249">  }</span>
+
+  /**
+   * The name of the application.
+   *
+   * @return application application
+   */
+  @ApiModelProperty(value = &quot;The name of the application.&quot;)
+  public String getApplication() {
+<span class="nc" id="L258">    return application;</span>
+  }
+
+  /**
+   * Sets application.
+   *
+   * @param application the application
+   */
+  public void setApplication(String application) {
+<span class="nc" id="L267">    this.application = application;</span>
+<span class="nc" id="L268">  }</span>
+
+  /**
+   * The request path.
+   *
+   * @return path path
+   */
+  @ApiModelProperty(value = &quot;The request path.&quot;)
+  public String getPath() {
+<span class="nc" id="L277">    return path;</span>
+  }
+
+  /**
+   * Sets path.
+   *
+   * @param path the path
+   */
+  public void setPath(String path) {
+<span class="nc" id="L286">    this.path = path;</span>
+<span class="nc" id="L287">  }</span>
+
+  /**
+   * Get handler.
+   *
+   * @return handler handler
+   */
+  @ApiModelProperty(value = &quot;The handler.&quot;)
+  public Handler getHandler() {
+<span class="nc" id="L296">    return handler;</span>
+  }
+
+  /**
+   * Sets handler.
+   *
+   * @param handler the handler
+   */
+  public void setHandler(Handler handler) {
+<span class="nc" id="L305">    this.handler = handler;</span>
+<span class="nc" id="L306">  }</span>
+
+  /**
+   * The stack trace.
+   *
+   * @return stackTrace stack trace
+   */
+  @ApiModelProperty(value = &quot;The stack trace.&quot;)
+  public List&lt;StackTraceItem&gt; getStackTrace() {
+<span class="nc" id="L315">    return stackTrace;</span>
+  }
+
+  /**
+   * Sets stack trace.
+   *
+   * @param stackTrace the stack trace
+   */
+  public void setStackTrace(List&lt;StackTraceItem&gt; stackTrace) {
+<span class="nc" id="L324">    this.stackTrace = stackTrace;</span>
+<span class="nc" id="L325">  }</span>
+
+  /**
+   * Get cause.
+   *
+   * @return cause cause
+   */
+  @ApiModelProperty(value = &quot;The cause.&quot;)
+  public RestApiException getCause() {
+<span class="nc" id="L334">    return cause;</span>
+  }
+
+  /**
+   * Sets cause.
+   *
+   * @param cause the cause
+   */
+  public void setCause(RestApiException cause) {
+<span class="nc" id="L343">    this.cause = cause;</span>
+<span class="nc" id="L344">  }</span>
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
