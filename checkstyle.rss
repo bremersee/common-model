@@ -1,0 +1,1048 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<rss version="0.91">
+  <channel>
+    <title>common-model - Checkstyle report</title>
+    <link>https://github.com/bremersee/common-model</link>
+    <description>common-model - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2019 bremersee.org</copyright>
+    <item>
+      <title>File: 71,
+             Errors: 0,
+             Warnings: 3,
+             Infos: 0
+      </title>
+            <link>https://github.com/bremersee/common-model/checkstyle.html</link>
+      <description>
+        <p>Click <a href="https://github.com/bremersee/common-model/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.TimeZoneIds.java">org/bremersee/common/model/TimeZoneIds.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.ConverterUtils.java">org/bremersee/xml/ConverterUtils.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.AccessControlEntry.java">org/bremersee/common/model/AccessControlEntry.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.geojson.model.GeometryCollection.java">org/bremersee/geojson/model/GeometryCollection.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.Link.java">org/bremersee/common/model/Link.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.XmlRuntimeException.java">org/bremersee/xml/XmlRuntimeException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.UnknownAwareTest.java">org/bremersee/common/model/UnknownAwareTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.model3.package-info.java">org/bremersee/xml/model3/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.JaxbContextDataProvider.java">org/bremersee/xml/JaxbContextDataProvider.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.ConverterUtilsTest.java">org/bremersee/xml/ConverterUtilsTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.model4.ObjectFactory.java">org/bremersee/xml/model4/ObjectFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.AccessControlList.java">org/bremersee/common/model/AccessControlList.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.JavaLocales.java">org/bremersee/common/model/JavaLocales.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.model2.ObjectFactory.java">org/bremersee/xml/model2/ObjectFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.ThreeLetterLanguageCode.java">org/bremersee/common/model/ThreeLetterLanguageCode.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.HttpLanguageTags.java">org/bremersee/common/model/HttpLanguageTags.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.MongoSearchLanguage.java">org/bremersee/common/model/MongoSearchLanguage.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.model1.package-info.java">org/bremersee/xml/model1/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.JaxbRuntimeException.java">org/bremersee/xml/JaxbRuntimeException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.PhoneNumber.java">org/bremersee/common/model/PhoneNumber.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.exception.model.Handler.java">org/bremersee/exception/model/Handler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.geojson.model.BoundingBox.java">org/bremersee/geojson/model/BoundingBox.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.HttpLanguageTagDescriptions.java">org/bremersee/common/model/HttpLanguageTagDescriptions.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.model1.Person.java">org/bremersee/xml/model1/Person.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.geojson.model.MultiPolygon.java">org/bremersee/geojson/model/MultiPolygon.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.model2.Vehicle.java">org/bremersee/xml/model2/Vehicle.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.ThreeLetterCountryCodes.java">org/bremersee/common/model/ThreeLetterCountryCodes.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.Address.java">org/bremersee/common/model/Address.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.model2.package-info.java">org/bremersee/xml/model2/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.model3.Company.java">org/bremersee/xml/model3/Company.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.ThreeLetterCountryCode.java">org/bremersee/common/model/ThreeLetterCountryCode.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.geojson.model.MultiPoint.java">org/bremersee/geojson/model/MultiPoint.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.JaxbContextBuilder.java">org/bremersee/xml/JaxbContextBuilder.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.JavaLocale.java">org/bremersee/common/model/JavaLocale.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.JavaLocaleDescription.java">org/bremersee/common/model/JavaLocaleDescription.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.TimeZoneId.java">org/bremersee/common/model/TimeZoneId.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.JaxbContextDetailsAware.java">org/bremersee/xml/JaxbContextDetailsAware.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.model1.ObjectFactory.java">org/bremersee/xml/model1/ObjectFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.LocaleHelperTest.java">org/bremersee/common/model/LocaleHelperTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.exception.model.RestApiException.java">org/bremersee/exception/model/RestApiException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.JaxbContextBuilderTest.java">org/bremersee/xml/JaxbContextBuilderTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.XmlDocumentBuilder.java">org/bremersee/xml/XmlDocumentBuilder.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.geojson.model.LineString.java">org/bremersee/geojson/model/LineString.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.HttpLanguageTag.java">org/bremersee/common/model/HttpLanguageTag.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.AccessControlListModifications.java">org/bremersee/common/model/AccessControlListModifications.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.TwoLetterLanguageCode.java">org/bremersee/common/model/TwoLetterLanguageCode.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.model3.ObjectFactory.java">org/bremersee/xml/model3/ObjectFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.geojson.model.MultiLineString.java">org/bremersee/geojson/model/MultiLineString.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.UnknownAware.java">org/bremersee/common/model/UnknownAware.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.geojson.model.Feature.java">org/bremersee/geojson/model/Feature.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.exception.model.StackTraceItem.java">org/bremersee/exception/model/StackTraceItem.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.model4.Address.java">org/bremersee/xml/model4/Address.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.AccessControlEntryModifications.java">org/bremersee/common/model/AccessControlEntryModifications.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.provider.ExampleJaxbContextDataProvider.java">org/bremersee/xml/provider/ExampleJaxbContextDataProvider.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.geojson.model.FeatureCollection.java">org/bremersee/geojson/model/FeatureCollection.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.SchemaLocationAwareJaxbContext.java">org/bremersee/xml/SchemaLocationAwareJaxbContext.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.JavaLocaleDescriptions.java">org/bremersee/common/model/JavaLocaleDescriptions.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.geojson.model.Geometry.java">org/bremersee/geojson/model/Geometry.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.geojson.model.Point.java">org/bremersee/geojson/model/Point.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.JaxbContextData.java">org/bremersee/xml/JaxbContextData.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.XmlDocumentBuilderTest.java">org/bremersee/xml/XmlDocumentBuilderTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.geojson.model.Polygon.java">org/bremersee/geojson/model/Polygon.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.LocaleHelper.java">org/bremersee/common/model/LocaleHelper.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.geojson.model.Position.java">org/bremersee/geojson/model/Position.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.TwoLetterCountryCode.java">org/bremersee/common/model/TwoLetterCountryCode.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.TwoLetterLanguageCodes.java">org/bremersee/common/model/TwoLetterLanguageCodes.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.BufferSchemaOutputResolver.java">org/bremersee/xml/BufferSchemaOutputResolver.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.ThreeLetterLanguageCodes.java">org/bremersee/common/model/ThreeLetterLanguageCodes.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.TwoLetterCountryCodes.java">org/bremersee/common/model/TwoLetterCountryCodes.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.HttpLanguageTagDescription.java">org/bremersee/common/model/HttpLanguageTagDescription.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.xml.XmlDocumentBuilderFactoryConfigurator.java">org/bremersee/xml/XmlDocumentBuilderFactoryConfigurator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

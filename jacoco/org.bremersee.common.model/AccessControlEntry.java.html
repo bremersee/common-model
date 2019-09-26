@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AccessControlEntry.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">common-model</a> &gt; <a href="index.source.html" class="el_package">org.bremersee.common.model</a> &gt; <span class="el_source">AccessControlEntry.java</span></div><h1>AccessControlEntry.java</h1><pre class="source lang-java linenums">/*
+ * The template was taken from
+ * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
+ * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ */
+
+package org.bremersee.common.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.Serializable;
+import java.util.List;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.springframework.validation.annotation.Validated;
+
+/**
+ * Specifies a permission and who is granted.
+ */
+@ApiModel(description = &quot;Specifies a permission and who is granted.&quot;)
+@Validated
+@JsonIgnoreProperties(ignoreUnknown = true)
+<span class="nc bnc" id="L29" title="All 46 branches missed.">@EqualsAndHashCode</span>
+<span class="nc" id="L30">@ToString</span>
+<span class="nc" id="L31">@NoArgsConstructor</span>
+@SuppressWarnings({&quot;unused&quot;, &quot;WeakerAccess&quot;})
+public class AccessControlEntry implements Serializable {
+
+  private static final long serialVersionUID = 1L;
+
+  @JsonProperty(value = &quot;permission&quot;, required = true)
+  private String permission;
+
+<span class="nc" id="L40">  @JsonProperty(&quot;guest&quot;)</span>
+  private Boolean guest = Boolean.FALSE;
+
+  @JsonProperty(&quot;users&quot;)
+  private List&lt;String&gt; users;
+
+  @JsonProperty(&quot;roles&quot;)
+  private List&lt;String&gt; roles;
+
+  @JsonProperty(&quot;groups&quot;)
+  private List&lt;String&gt; groups;
+
+  /**
+   * Instantiates a new access control entry.
+   *
+   * @param permission the permission
+   * @param guest      the guest
+   * @param users      the users
+   * @param roles      the roles
+   * @param groups     the groups
+   */
+<span class="nc" id="L61">  @Builder</span>
+  public AccessControlEntry(
+      String permission,
+      Boolean guest,
+      List&lt;String&gt; users,
+      List&lt;String&gt; roles,
+<span class="nc" id="L67">      List&lt;String&gt; groups) {</span>
+<span class="nc" id="L68">    setPermission(permission);</span>
+<span class="nc" id="L69">    setGuest(guest);</span>
+<span class="nc" id="L70">    setUsers(users);</span>
+<span class="nc" id="L71">    setRoles(roles);</span>
+<span class="nc" id="L72">    setGroups(groups);</span>
+<span class="nc" id="L73">  }</span>
+
+  /**
+   * Specifies the permission.
+   *
+   * @return permission permission
+   */
+  @ApiModelProperty(required = true, value = &quot;Specifies the permission.&quot;)
+  @NotNull
+  @Pattern(regexp = &quot;^[a-z_]+$&quot;)
+  public String getPermission() {
+<span class="nc" id="L84">    return permission;</span>
+  }
+
+  /**
+   * Sets permission.
+   *
+   * @param permission the permission
+   */
+  public void setPermission(String permission) {
+<span class="nc" id="L93">    this.permission = permission;</span>
+<span class="nc" id="L94">  }</span>
+
+  /**
+   * Specifies whether anybody is granted.
+   *
+   * @return guest boolean
+   */
+  @ApiModelProperty(value = &quot;Specifies whether anybody is granted.&quot;)
+  public Boolean getGuest() {
+<span class="nc bnc" id="L103" title="All 2 branches missed.">    if (guest == null) {</span>
+<span class="nc" id="L104">      guest = Boolean.FALSE;</span>
+    }
+<span class="nc" id="L106">    return guest;</span>
+  }
+
+  /**
+   * Sets guest.
+   *
+   * @param guest the guest
+   */
+  public void setGuest(Boolean guest) {
+<span class="nc" id="L115">    this.guest = Boolean.TRUE.equals(guest);</span>
+<span class="nc" id="L116">  }</span>
+
+  /**
+   * Specifies the granted users.
+   *
+   * @return users users
+   */
+  @ApiModelProperty(value = &quot;Specifies the granted users.&quot;)
+  public List&lt;String&gt; getUsers() {
+<span class="nc" id="L125">    return users;</span>
+  }
+
+  /**
+   * Sets users.
+   *
+   * @param users the users
+   */
+  public void setUsers(List&lt;String&gt; users) {
+<span class="nc" id="L134">    this.users = users;</span>
+<span class="nc" id="L135">  }</span>
+
+  /**
+   * Specifies the granted roles.
+   *
+   * @return roles roles
+   */
+  @ApiModelProperty(value = &quot;Specifies the granted roles.&quot;)
+  public List&lt;String&gt; getRoles() {
+<span class="nc" id="L144">    return roles;</span>
+  }
+
+  /**
+   * Sets roles.
+   *
+   * @param roles the roles
+   */
+  public void setRoles(List&lt;String&gt; roles) {
+<span class="nc" id="L153">    this.roles = roles;</span>
+<span class="nc" id="L154">  }</span>
+
+  /**
+   * Specifies the granted groups.
+   *
+   * @return groups groups
+   */
+  @ApiModelProperty(value = &quot;Specifies the granted groups.&quot;)
+  public List&lt;String&gt; getGroups() {
+<span class="nc" id="L163">    return groups;</span>
+  }
+
+  /**
+   * Sets groups.
+   *
+   * @param groups the groups
+   */
+  public void setGroups(List&lt;String&gt; groups) {
+<span class="nc" id="L172">    this.groups = groups;</span>
+<span class="nc" id="L173">  }</span>
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

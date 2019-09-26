@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Feature.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">common-model</a> &gt; <a href="index.source.html" class="el_package">org.bremersee.geojson.model</a> &gt; <span class="el_source">Feature.java</span></div><h1>Feature.java</h1><pre class="source lang-java linenums">/*
+ * The template was taken from
+ * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
+ * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ */
+
+package org.bremersee.geojson.model;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.Serializable;
+import javax.validation.constraints.NotNull;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.springframework.validation.annotation.Validated;
+
+/**
+ * A Feature object represents a spatially bounded thing.
+ */
+@ApiModel(description = &quot;A Feature object represents a spatially bounded thing.&quot;)
+@Validated
+@JsonIgnoreProperties(ignoreUnknown = true)
+<span class="nc bnc" id="L29" title="All 46 branches missed.">@EqualsAndHashCode</span>
+<span class="nc" id="L30">@ToString</span>
+<span class="nc" id="L31">@NoArgsConstructor</span>
+@SuppressWarnings(&quot;unused&quot;)
+public class Feature implements Serializable {
+
+  private static final long serialVersionUID = 1L;
+
+<span class="nc" id="L37">  @JsonProperty(&quot;type&quot;)</span>
+  private TypeEnum type = TypeEnum.FEATURE;
+
+<span class="nc" id="L40">  @JsonProperty(&quot;id&quot;)</span>
+  private String id = null;
+
+<span class="nc" id="L43">  @JsonProperty(&quot;bbox&quot;)</span>
+  private BoundingBox bbox = null;
+
+<span class="nc" id="L46">  @JsonProperty(&quot;geometry&quot;)</span>
+  private Geometry geometry = null;
+
+<span class="nc" id="L49">  @JsonProperty(&quot;properties&quot;)</span>
+  private Object properties = null;
+
+  /**
+   * Instantiates a new feature.
+   *
+   * @param id         the id
+   * @param bbox       the bbox
+   * @param geometry   the geometry
+   * @param properties the properties
+   */
+<span class="nc" id="L60">  @Builder</span>
+  public Feature(
+      String id,
+      BoundingBox bbox,
+      Geometry geometry,
+<span class="nc" id="L65">      Object properties) {</span>
+<span class="nc" id="L66">    this.id = id;</span>
+<span class="nc" id="L67">    this.bbox = bbox;</span>
+<span class="nc" id="L68">    this.geometry = geometry;</span>
+<span class="nc" id="L69">    this.properties = properties;</span>
+<span class="nc" id="L70">  }</span>
+
+  /**
+   * The feature type.
+   *
+   * @return type type
+   */
+  @ApiModelProperty(required = true, value = &quot;The feature type.&quot;)
+  @NotNull
+  public TypeEnum getType() {
+<span class="nc" id="L80">    return type;</span>
+  }
+
+  /**
+   * Sets type.
+   *
+   * @param type the type
+   */
+  public void setType(TypeEnum type) {
+<span class="nc" id="L89">    this.type = type;</span>
+<span class="nc" id="L90">  }</span>
+
+  /**
+   * The identifier of this feature.
+   *
+   * @return id id
+   */
+  @ApiModelProperty(value = &quot;The identifier of this feature.&quot;)
+  public String getId() {
+<span class="nc" id="L99">    return id;</span>
+  }
+
+  /**
+   * Sets id.
+   *
+   * @param id the id
+   */
+  public void setId(String id) {
+<span class="nc" id="L108">    this.id = id;</span>
+<span class="nc" id="L109">  }</span>
+
+  /**
+   * Get bounding box.
+   *
+   * @return bbox bbox
+   */
+  @ApiModelProperty(value = &quot;The bounding box.&quot;)
+  public BoundingBox getBbox() {
+<span class="nc" id="L118">    return bbox;</span>
+  }
+
+  /**
+   * Sets bounding box.
+   *
+   * @param bbox the bbox
+   */
+  public void setBbox(BoundingBox bbox) {
+<span class="nc" id="L127">    this.bbox = bbox;</span>
+<span class="nc" id="L128">  }</span>
+
+  /**
+   * Get geometry.
+   *
+   * @return geometry geometry
+   */
+  @ApiModelProperty(value = &quot;The geometry.&quot;)
+  public Geometry getGeometry() {
+<span class="nc" id="L137">    return geometry;</span>
+  }
+
+  /**
+   * Sets geometry.
+   *
+   * @param geometry the geometry
+   */
+  public void setGeometry(Geometry geometry) {
+<span class="nc" id="L146">    this.geometry = geometry;</span>
+<span class="nc" id="L147">  }</span>
+
+  /**
+   * The feature properties.
+   *
+   * @return properties properties
+   */
+  @ApiModelProperty(value = &quot;The feature properties.&quot;)
+  public Object getProperties() {
+<span class="nc" id="L156">    return properties;</span>
+  }
+
+  /**
+   * Sets properties.
+   *
+   * @param properties the properties
+   */
+  public void setProperties(Object properties) {
+<span class="nc" id="L165">    this.properties = properties;</span>
+<span class="nc" id="L166">  }</span>
+
+  /**
+   * The feature type.
+   */
+<span class="nc" id="L171">  public enum TypeEnum {</span>
+
+    /**
+     * Feature type enum.
+     */
+<span class="nc" id="L176">    FEATURE(&quot;Feature&quot;);</span>
+
+    private String value;
+
+<span class="nc" id="L180">    TypeEnum(String value) {</span>
+<span class="nc" id="L181">      this.value = value;</span>
+<span class="nc" id="L182">    }</span>
+
+    @Override
+    @JsonValue
+    public String toString() {
+<span class="nc" id="L187">      return String.valueOf(value);</span>
+    }
+
+    /**
+     * From value type enum.
+     *
+     * @param text the text
+     * @return the type enum
+     */
+    @JsonCreator
+    public static TypeEnum fromValue(String text) {
+<span class="nc bnc" id="L198" title="All 2 branches missed.">      for (TypeEnum b : TypeEnum.values()) {</span>
+<span class="nc bnc" id="L199" title="All 2 branches missed.">        if (String.valueOf(b.value).equals(text)) {</span>
+<span class="nc" id="L200">          return b;</span>
+        }
+      }
+<span class="nc" id="L203">      return null;</span>
+    }
+  }
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

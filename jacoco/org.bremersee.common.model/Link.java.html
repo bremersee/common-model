@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Link.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">common-model</a> &gt; <a href="index.source.html" class="el_package">org.bremersee.common.model</a> &gt; <span class="el_source">Link.java</span></div><h1>Link.java</h1><pre class="source lang-java linenums">/*
+ * The template was taken from
+ * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
+ * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ */
+
+package org.bremersee.common.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.Serializable;
+import javax.validation.constraints.NotNull;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.springframework.validation.annotation.Validated;
+
+/**
+ * A link description.
+ */
+@ApiModel(description = &quot;A link description.&quot;)
+@Validated
+@JsonIgnoreProperties(ignoreUnknown = true)
+<span class="nc bnc" id="L27" title="All 38 branches missed.">@EqualsAndHashCode</span>
+<span class="nc" id="L28">@ToString</span>
+<span class="nc" id="L29">@NoArgsConstructor</span>
+@SuppressWarnings(&quot;unused&quot;)
+public class Link implements Serializable {
+
+  private static final long serialVersionUID = 1L;
+
+  @JsonProperty(value = &quot;href&quot;, required = true)
+  private String href;
+
+  @JsonProperty(&quot;type&quot;)
+  private String type;
+
+  @JsonProperty(&quot;text&quot;)
+  private String text;
+
+  @JsonProperty(&quot;description&quot;)
+  private String description;
+
+  /**
+   * Instantiates a new link.
+   *
+   * @param href        the href
+   * @param type        the type
+   * @param text        the text
+   * @param description the description
+   */
+<span class="nc" id="L55">  @Builder</span>
+<span class="nc" id="L56">  public Link(String href, String type, String text, String description) {</span>
+<span class="nc" id="L57">    this.href = href;</span>
+<span class="nc" id="L58">    this.type = type;</span>
+<span class="nc" id="L59">    this.text = text;</span>
+<span class="nc" id="L60">    this.description = description;</span>
+<span class="nc" id="L61">  }</span>
+
+  /**
+   * The URI.
+   *
+   * @return href href
+   */
+  @ApiModelProperty(required = true, value = &quot;The URI.&quot;)
+  @NotNull
+  public String getHref() {
+<span class="nc" id="L71">    return href;</span>
+  }
+
+  /**
+   * Sets href.
+   *
+   * @param href the href
+   */
+  public void setHref(String href) {
+<span class="nc" id="L80">    this.href = href;</span>
+<span class="nc" id="L81">  }</span>
+
+  /**
+   * The type.
+   *
+   * @return type type
+   */
+  @ApiModelProperty(value = &quot;The type.&quot;)
+  public String getType() {
+<span class="nc" id="L90">    return type;</span>
+  }
+
+  /**
+   * Sets type.
+   *
+   * @param type the type
+   */
+  public void setType(String type) {
+<span class="nc" id="L99">    this.type = type;</span>
+<span class="nc" id="L100">  }</span>
+
+  /**
+   * The link text.
+   *
+   * @return text text
+   */
+  @ApiModelProperty(value = &quot;The link text.&quot;)
+  public String getText() {
+<span class="nc" id="L109">    return text;</span>
+  }
+
+  /**
+   * Sets text.
+   *
+   * @param text the text
+   */
+  public void setText(String text) {
+<span class="nc" id="L118">    this.text = text;</span>
+<span class="nc" id="L119">  }</span>
+
+  /**
+   * A short description.
+   *
+   * @return description description
+   */
+  @ApiModelProperty(value = &quot;A short description.&quot;)
+  public String getDescription() {
+<span class="nc" id="L128">    return description;</span>
+  }
+
+  /**
+   * Sets description.
+   *
+   * @param description the description
+   */
+  public void setDescription(String description) {
+<span class="nc" id="L137">    this.description = description;</span>
+<span class="nc" id="L138">  }</span>
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

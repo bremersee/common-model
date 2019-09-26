@@ -1,0 +1,849 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HttpLanguageTag.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">common-model</a> &gt; <a href="index.source.html" class="el_package">org.bremersee.common.model</a> &gt; <span class="el_source">HttpLanguageTag.java</span></div><h1>HttpLanguageTag.java</h1><pre class="source lang-java linenums">/*
+ * The template was taken from
+ * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
+ * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ */
+
+package org.bremersee.common.model;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import java.util.Arrays;
+import java.util.Locale;
+import org.springframework.util.StringUtils;
+
+/**
+ * RFC 5646 language tags from Java Locale.
+ */
+<span class="fc" id="L18">public enum HttpLanguageTag {</span>
+
+  /**
+   * Ar http language tag.
+   */
+<span class="fc" id="L23">  AR(&quot;ar&quot;),</span>
+
+  /**
+   * Ar ae http language tag.
+   */
+<span class="fc" id="L28">  AR_AE(&quot;ar-AE&quot;),</span>
+
+  /**
+   * Ar bh http language tag.
+   */
+<span class="fc" id="L33">  AR_BH(&quot;ar-BH&quot;),</span>
+
+  /**
+   * Ar dz http language tag.
+   */
+<span class="fc" id="L38">  AR_DZ(&quot;ar-DZ&quot;),</span>
+
+  /**
+   * Ar eg http language tag.
+   */
+<span class="fc" id="L43">  AR_EG(&quot;ar-EG&quot;),</span>
+
+  /**
+   * Ar iq http language tag.
+   */
+<span class="fc" id="L48">  AR_IQ(&quot;ar-IQ&quot;),</span>
+
+  /**
+   * Ar jo http language tag.
+   */
+<span class="fc" id="L53">  AR_JO(&quot;ar-JO&quot;),</span>
+
+  /**
+   * Ar kw http language tag.
+   */
+<span class="fc" id="L58">  AR_KW(&quot;ar-KW&quot;),</span>
+
+  /**
+   * Ar lb http language tag.
+   */
+<span class="fc" id="L63">  AR_LB(&quot;ar-LB&quot;),</span>
+
+  /**
+   * Ar ly http language tag.
+   */
+<span class="fc" id="L68">  AR_LY(&quot;ar-LY&quot;),</span>
+
+  /**
+   * Ar ma http language tag.
+   */
+<span class="fc" id="L73">  AR_MA(&quot;ar-MA&quot;),</span>
+
+  /**
+   * Ar om http language tag.
+   */
+<span class="fc" id="L78">  AR_OM(&quot;ar-OM&quot;),</span>
+
+  /**
+   * Ar qa http language tag.
+   */
+<span class="fc" id="L83">  AR_QA(&quot;ar-QA&quot;),</span>
+
+  /**
+   * Ar sa http language tag.
+   */
+<span class="fc" id="L88">  AR_SA(&quot;ar-SA&quot;),</span>
+
+  /**
+   * Ar sd http language tag.
+   */
+<span class="fc" id="L93">  AR_SD(&quot;ar-SD&quot;),</span>
+
+  /**
+   * Ar sy http language tag.
+   */
+<span class="fc" id="L98">  AR_SY(&quot;ar-SY&quot;),</span>
+
+  /**
+   * Ar tn http language tag.
+   */
+<span class="fc" id="L103">  AR_TN(&quot;ar-TN&quot;),</span>
+
+  /**
+   * Ar ye http language tag.
+   */
+<span class="fc" id="L108">  AR_YE(&quot;ar-YE&quot;),</span>
+
+  /**
+   * Be http language tag.
+   */
+<span class="fc" id="L113">  BE(&quot;be&quot;),</span>
+
+  /**
+   * Be by http language tag.
+   */
+<span class="fc" id="L118">  BE_BY(&quot;be-BY&quot;),</span>
+
+  /**
+   * Bg http language tag.
+   */
+<span class="fc" id="L123">  BG(&quot;bg&quot;),</span>
+
+  /**
+   * Bg bg http language tag.
+   */
+<span class="fc" id="L128">  BG_BG(&quot;bg-BG&quot;),</span>
+
+  /**
+   * Ca http language tag.
+   */
+<span class="fc" id="L133">  CA(&quot;ca&quot;),</span>
+
+  /**
+   * Ca es http language tag.
+   */
+<span class="fc" id="L138">  CA_ES(&quot;ca-ES&quot;),</span>
+
+  /**
+   * Cs http language tag.
+   */
+<span class="fc" id="L143">  CS(&quot;cs&quot;),</span>
+
+  /**
+   * Cs cz http language tag.
+   */
+<span class="fc" id="L148">  CS_CZ(&quot;cs-CZ&quot;),</span>
+
+  /**
+   * Da http language tag.
+   */
+<span class="fc" id="L153">  DA(&quot;da&quot;),</span>
+
+  /**
+   * Da dk http language tag.
+   */
+<span class="fc" id="L158">  DA_DK(&quot;da-DK&quot;),</span>
+
+  /**
+   * De http language tag.
+   */
+<span class="fc" id="L163">  DE(&quot;de&quot;),</span>
+
+  /**
+   * De at http language tag.
+   */
+<span class="fc" id="L168">  DE_AT(&quot;de-AT&quot;),</span>
+
+  /**
+   * De ch http language tag.
+   */
+<span class="fc" id="L173">  DE_CH(&quot;de-CH&quot;),</span>
+
+  /**
+   * De de http language tag.
+   */
+<span class="fc" id="L178">  DE_DE(&quot;de-DE&quot;),</span>
+
+  /**
+   * De gr http language tag.
+   */
+<span class="fc" id="L183">  DE_GR(&quot;de-GR&quot;),</span>
+
+  /**
+   * De lu http language tag.
+   */
+<span class="fc" id="L188">  DE_LU(&quot;de-LU&quot;),</span>
+
+  /**
+   * El http language tag.
+   */
+<span class="fc" id="L193">  EL(&quot;el&quot;),</span>
+
+  /**
+   * El cy http language tag.
+   */
+<span class="fc" id="L198">  EL_CY(&quot;el-CY&quot;),</span>
+
+  /**
+   * El gr http language tag.
+   */
+<span class="fc" id="L203">  EL_GR(&quot;el-GR&quot;),</span>
+
+  /**
+   * En http language tag.
+   */
+<span class="fc" id="L208">  EN(&quot;en&quot;),</span>
+
+  /**
+   * En au http language tag.
+   */
+<span class="fc" id="L213">  EN_AU(&quot;en-AU&quot;),</span>
+
+  /**
+   * En ca http language tag.
+   */
+<span class="fc" id="L218">  EN_CA(&quot;en-CA&quot;),</span>
+
+  /**
+   * En gb http language tag.
+   */
+<span class="fc" id="L223">  EN_GB(&quot;en-GB&quot;),</span>
+
+  /**
+   * En ie http language tag.
+   */
+<span class="fc" id="L228">  EN_IE(&quot;en-IE&quot;),</span>
+
+  /**
+   * En in http language tag.
+   */
+<span class="fc" id="L233">  EN_IN(&quot;en-IN&quot;),</span>
+
+  /**
+   * En mt http language tag.
+   */
+<span class="fc" id="L238">  EN_MT(&quot;en-MT&quot;),</span>
+
+  /**
+   * En nz http language tag.
+   */
+<span class="fc" id="L243">  EN_NZ(&quot;en-NZ&quot;),</span>
+
+  /**
+   * En ph http language tag.
+   */
+<span class="fc" id="L248">  EN_PH(&quot;en-PH&quot;),</span>
+
+  /**
+   * En sg http language tag.
+   */
+<span class="fc" id="L253">  EN_SG(&quot;en-SG&quot;),</span>
+
+  /**
+   * En us http language tag.
+   */
+<span class="fc" id="L258">  EN_US(&quot;en-US&quot;),</span>
+
+  /**
+   * En za http language tag.
+   */
+<span class="fc" id="L263">  EN_ZA(&quot;en-ZA&quot;),</span>
+
+  /**
+   * Es http language tag.
+   */
+<span class="fc" id="L268">  ES(&quot;es&quot;),</span>
+
+  /**
+   * Es ar http language tag.
+   */
+<span class="fc" id="L273">  ES_AR(&quot;es-AR&quot;),</span>
+
+  /**
+   * Es bo http language tag.
+   */
+<span class="fc" id="L278">  ES_BO(&quot;es-BO&quot;),</span>
+
+  /**
+   * Es cl http language tag.
+   */
+<span class="fc" id="L283">  ES_CL(&quot;es-CL&quot;),</span>
+
+  /**
+   * Es co http language tag.
+   */
+<span class="fc" id="L288">  ES_CO(&quot;es-CO&quot;),</span>
+
+  /**
+   * Es cr http language tag.
+   */
+<span class="fc" id="L293">  ES_CR(&quot;es-CR&quot;),</span>
+
+  /**
+   * Es cu http language tag.
+   */
+<span class="fc" id="L298">  ES_CU(&quot;es-CU&quot;),</span>
+
+  /**
+   * Es do http language tag.
+   */
+<span class="fc" id="L303">  ES_DO(&quot;es-DO&quot;),</span>
+
+  /**
+   * Es ec http language tag.
+   */
+<span class="fc" id="L308">  ES_EC(&quot;es-EC&quot;),</span>
+
+  /**
+   * Es es http language tag.
+   */
+<span class="fc" id="L313">  ES_ES(&quot;es-ES&quot;),</span>
+
+  /**
+   * Es gt http language tag.
+   */
+<span class="fc" id="L318">  ES_GT(&quot;es-GT&quot;),</span>
+
+  /**
+   * Es hn http language tag.
+   */
+<span class="fc" id="L323">  ES_HN(&quot;es-HN&quot;),</span>
+
+  /**
+   * Es mx http language tag.
+   */
+<span class="fc" id="L328">  ES_MX(&quot;es-MX&quot;),</span>
+
+  /**
+   * Es ni http language tag.
+   */
+<span class="fc" id="L333">  ES_NI(&quot;es-NI&quot;),</span>
+
+  /**
+   * Es pa http language tag.
+   */
+<span class="fc" id="L338">  ES_PA(&quot;es-PA&quot;),</span>
+
+  /**
+   * Es pe http language tag.
+   */
+<span class="fc" id="L343">  ES_PE(&quot;es-PE&quot;),</span>
+
+  /**
+   * Es pr http language tag.
+   */
+<span class="fc" id="L348">  ES_PR(&quot;es-PR&quot;),</span>
+
+  /**
+   * Es py http language tag.
+   */
+<span class="fc" id="L353">  ES_PY(&quot;es-PY&quot;),</span>
+
+  /**
+   * Es sv http language tag.
+   */
+<span class="fc" id="L358">  ES_SV(&quot;es-SV&quot;),</span>
+
+  /**
+   * Es us http language tag.
+   */
+<span class="fc" id="L363">  ES_US(&quot;es-US&quot;),</span>
+
+  /**
+   * Es uy http language tag.
+   */
+<span class="fc" id="L368">  ES_UY(&quot;es-UY&quot;),</span>
+
+  /**
+   * Es ve http language tag.
+   */
+<span class="fc" id="L373">  ES_VE(&quot;es-VE&quot;),</span>
+
+  /**
+   * Et http language tag.
+   */
+<span class="fc" id="L378">  ET(&quot;et&quot;),</span>
+
+  /**
+   * Et ee http language tag.
+   */
+<span class="fc" id="L383">  ET_EE(&quot;et-EE&quot;),</span>
+
+  /**
+   * Fi http language tag.
+   */
+<span class="fc" id="L388">  FI(&quot;fi&quot;),</span>
+
+  /**
+   * Fi fi http language tag.
+   */
+<span class="fc" id="L393">  FI_FI(&quot;fi-FI&quot;),</span>
+
+  /**
+   * Fr http language tag.
+   */
+<span class="fc" id="L398">  FR(&quot;fr&quot;),</span>
+
+  /**
+   * Fr be http language tag.
+   */
+<span class="fc" id="L403">  FR_BE(&quot;fr-BE&quot;),</span>
+
+  /**
+   * Fr ca http language tag.
+   */
+<span class="fc" id="L408">  FR_CA(&quot;fr-CA&quot;),</span>
+
+  /**
+   * Fr ch http language tag.
+   */
+<span class="fc" id="L413">  FR_CH(&quot;fr-CH&quot;),</span>
+
+  /**
+   * Fr fr http language tag.
+   */
+<span class="fc" id="L418">  FR_FR(&quot;fr-FR&quot;),</span>
+
+  /**
+   * Fr lu http language tag.
+   */
+<span class="fc" id="L423">  FR_LU(&quot;fr-LU&quot;),</span>
+
+  /**
+   * Ga http language tag.
+   */
+<span class="fc" id="L428">  GA(&quot;ga&quot;),</span>
+
+  /**
+   * Ga ie http language tag.
+   */
+<span class="fc" id="L433">  GA_IE(&quot;ga-IE&quot;),</span>
+
+  /**
+   * He http language tag.
+   */
+<span class="fc" id="L438">  HE(&quot;he&quot;),</span>
+
+  /**
+   * He il http language tag.
+   */
+<span class="fc" id="L443">  HE_IL(&quot;he-IL&quot;),</span>
+
+  /**
+   * Hi http language tag.
+   */
+<span class="fc" id="L448">  HI(&quot;hi&quot;),</span>
+
+  /**
+   * Hi in http language tag.
+   */
+<span class="fc" id="L453">  HI_IN(&quot;hi-IN&quot;),</span>
+
+  /**
+   * Hr http language tag.
+   */
+<span class="fc" id="L458">  HR(&quot;hr&quot;),</span>
+
+  /**
+   * Hr hr http language tag.
+   */
+<span class="fc" id="L463">  HR_HR(&quot;hr-HR&quot;),</span>
+
+  /**
+   * Hu http language tag.
+   */
+<span class="fc" id="L468">  HU(&quot;hu&quot;),</span>
+
+  /**
+   * Hu hu http language tag.
+   */
+<span class="fc" id="L473">  HU_HU(&quot;hu-HU&quot;),</span>
+
+  /**
+   * Id http language tag.
+   */
+<span class="fc" id="L478">  ID(&quot;id&quot;),</span>
+
+  /**
+   * Id id http language tag.
+   */
+<span class="fc" id="L483">  ID_ID(&quot;id-ID&quot;),</span>
+
+  /**
+   * Is http language tag.
+   */
+<span class="fc" id="L488">  IS(&quot;is&quot;),</span>
+
+  /**
+   * Is is http language tag.
+   */
+<span class="fc" id="L493">  IS_IS(&quot;is-IS&quot;),</span>
+
+  /**
+   * It http language tag.
+   */
+<span class="fc" id="L498">  IT(&quot;it&quot;),</span>
+
+  /**
+   * It ch http language tag.
+   */
+<span class="fc" id="L503">  IT_CH(&quot;it-CH&quot;),</span>
+
+  /**
+   * It it http language tag.
+   */
+<span class="fc" id="L508">  IT_IT(&quot;it-IT&quot;),</span>
+
+  /**
+   * Ja http language tag.
+   */
+<span class="fc" id="L513">  JA(&quot;ja&quot;),</span>
+
+  /**
+   * Ja jp http language tag.
+   */
+<span class="fc" id="L518">  JA_JP(&quot;ja-JP&quot;),</span>
+
+  /**
+   * Ko http language tag.
+   */
+<span class="fc" id="L523">  KO(&quot;ko&quot;),</span>
+
+  /**
+   * Ko kr http language tag.
+   */
+<span class="fc" id="L528">  KO_KR(&quot;ko-KR&quot;),</span>
+
+  /**
+   * Lt http language tag.
+   */
+<span class="fc" id="L533">  LT(&quot;lt&quot;),</span>
+
+  /**
+   * Lt lt http language tag.
+   */
+<span class="fc" id="L538">  LT_LT(&quot;lt-LT&quot;),</span>
+
+  /**
+   * Lv http language tag.
+   */
+<span class="fc" id="L543">  LV(&quot;lv&quot;),</span>
+
+  /**
+   * Lv lv http language tag.
+   */
+<span class="fc" id="L548">  LV_LV(&quot;lv-LV&quot;),</span>
+
+  /**
+   * Mk http language tag.
+   */
+<span class="fc" id="L553">  MK(&quot;mk&quot;),</span>
+
+  /**
+   * Mk mk http language tag.
+   */
+<span class="fc" id="L558">  MK_MK(&quot;mk-MK&quot;),</span>
+
+  /**
+   * Ms http language tag.
+   */
+<span class="fc" id="L563">  MS(&quot;ms&quot;),</span>
+
+  /**
+   * Ms my http language tag.
+   */
+<span class="fc" id="L568">  MS_MY(&quot;ms-MY&quot;),</span>
+
+  /**
+   * Mt http language tag.
+   */
+<span class="fc" id="L573">  MT(&quot;mt&quot;),</span>
+
+  /**
+   * Mt mt http language tag.
+   */
+<span class="fc" id="L578">  MT_MT(&quot;mt-MT&quot;),</span>
+
+  /**
+   * Nl http language tag.
+   */
+<span class="fc" id="L583">  NL(&quot;nl&quot;),</span>
+
+  /**
+   * Nl be http language tag.
+   */
+<span class="fc" id="L588">  NL_BE(&quot;nl-BE&quot;),</span>
+
+  /**
+   * Nl nl http language tag.
+   */
+<span class="fc" id="L593">  NL_NL(&quot;nl-NL&quot;),</span>
+
+  /**
+   * Nn no http language tag.
+   */
+<span class="fc" id="L598">  NN_NO(&quot;nn-NO&quot;),</span>
+
+  /**
+   * No http language tag.
+   */
+<span class="fc" id="L603">  NO(&quot;no&quot;),</span>
+
+  /**
+   * No no http language tag.
+   */
+<span class="fc" id="L608">  NO_NO(&quot;no-NO&quot;),</span>
+
+  /**
+   * Pl http language tag.
+   */
+<span class="fc" id="L613">  PL(&quot;pl&quot;),</span>
+
+  /**
+   * Pl pl http language tag.
+   */
+<span class="fc" id="L618">  PL_PL(&quot;pl-PL&quot;),</span>
+
+  /**
+   * Pt http language tag.
+   */
+<span class="fc" id="L623">  PT(&quot;pt&quot;),</span>
+
+  /**
+   * Pt br http language tag.
+   */
+<span class="fc" id="L628">  PT_BR(&quot;pt-BR&quot;),</span>
+
+  /**
+   * Pt pt http language tag.
+   */
+<span class="fc" id="L633">  PT_PT(&quot;pt-PT&quot;),</span>
+
+  /**
+   * Ro http language tag.
+   */
+<span class="fc" id="L638">  RO(&quot;ro&quot;),</span>
+
+  /**
+   * Ro ro http language tag.
+   */
+<span class="fc" id="L643">  RO_RO(&quot;ro-RO&quot;),</span>
+
+  /**
+   * Ru http language tag.
+   */
+<span class="fc" id="L648">  RU(&quot;ru&quot;),</span>
+
+  /**
+   * Ru ru http language tag.
+   */
+<span class="fc" id="L653">  RU_RU(&quot;ru-RU&quot;),</span>
+
+  /**
+   * Sk http language tag.
+   */
+<span class="fc" id="L658">  SK(&quot;sk&quot;),</span>
+
+  /**
+   * Sk sk http language tag.
+   */
+<span class="fc" id="L663">  SK_SK(&quot;sk-SK&quot;),</span>
+
+  /**
+   * Sl http language tag.
+   */
+<span class="fc" id="L668">  SL(&quot;sl&quot;),</span>
+
+  /**
+   * Sl si http language tag.
+   */
+<span class="fc" id="L673">  SL_SI(&quot;sl-SI&quot;),</span>
+
+  /**
+   * Sq http language tag.
+   */
+<span class="fc" id="L678">  SQ(&quot;sq&quot;),</span>
+
+  /**
+   * Sq al http language tag.
+   */
+<span class="fc" id="L683">  SQ_AL(&quot;sq-AL&quot;),</span>
+
+  /**
+   * Sr http language tag.
+   */
+<span class="fc" id="L688">  SR(&quot;sr&quot;),</span>
+
+  /**
+   * Sr ba http language tag.
+   */
+<span class="fc" id="L693">  SR_BA(&quot;sr-BA&quot;),</span>
+
+  /**
+   * Sr cs http language tag.
+   */
+<span class="fc" id="L698">  SR_CS(&quot;sr-CS&quot;),</span>
+
+  /**
+   * Sr me http language tag.
+   */
+<span class="fc" id="L703">  SR_ME(&quot;sr-ME&quot;),</span>
+
+  /**
+   * Sr rs http language tag.
+   */
+<span class="fc" id="L708">  SR_RS(&quot;sr-RS&quot;),</span>
+
+  /**
+   * Sv http language tag.
+   */
+<span class="fc" id="L713">  SV(&quot;sv&quot;),</span>
+
+  /**
+   * Sv se http language tag.
+   */
+<span class="fc" id="L718">  SV_SE(&quot;sv-SE&quot;),</span>
+
+  /**
+   * Th http language tag.
+   */
+<span class="fc" id="L723">  TH(&quot;th&quot;),</span>
+
+  /**
+   * Th th http language tag.
+   */
+<span class="fc" id="L728">  TH_TH(&quot;th-TH&quot;),</span>
+
+  /**
+   * Tr http language tag.
+   */
+<span class="fc" id="L733">  TR(&quot;tr&quot;),</span>
+
+  /**
+   * Tr tr http language tag.
+   */
+<span class="fc" id="L738">  TR_TR(&quot;tr-TR&quot;),</span>
+
+  /**
+   * Uk http language tag.
+   */
+<span class="fc" id="L743">  UK(&quot;uk&quot;),</span>
+
+  /**
+   * Uk ua http language tag.
+   */
+<span class="fc" id="L748">  UK_UA(&quot;uk-UA&quot;),</span>
+
+  /**
+   * Vi http language tag.
+   */
+<span class="fc" id="L753">  VI(&quot;vi&quot;),</span>
+
+  /**
+   * Vi vn http language tag.
+   */
+<span class="fc" id="L758">  VI_VN(&quot;vi-VN&quot;),</span>
+
+  /**
+   * Zh http language tag.
+   */
+<span class="fc" id="L763">  ZH(&quot;zh&quot;),</span>
+
+  /**
+   * Zh cn http language tag.
+   */
+<span class="fc" id="L768">  ZH_CN(&quot;zh-CN&quot;),</span>
+
+  /**
+   * Zh hk http language tag.
+   */
+<span class="fc" id="L773">  ZH_HK(&quot;zh-HK&quot;),</span>
+
+  /**
+   * Zh sg http language tag.
+   */
+<span class="fc" id="L778">  ZH_SG(&quot;zh-SG&quot;),</span>
+
+  /**
+   * Zh tw http language tag.
+   */
+<span class="fc" id="L783">  ZH_TW(&quot;zh-TW&quot;);</span>
+
+  private String value;
+
+<span class="fc" id="L787">  HttpLanguageTag(String value) {</span>
+<span class="fc" id="L788">    this.value = value;</span>
+<span class="fc" id="L789">  }</span>
+
+  @Override
+  @JsonValue
+  public String toString() {
+<span class="nc" id="L794">    return String.valueOf(value);</span>
+  }
+
+  /**
+   * To locale.
+   *
+   * @return the locale
+   */
+  public Locale toLocale() {
+<span class="fc" id="L803">    return Arrays</span>
+<span class="fc" id="L804">        .stream(Locale.getAvailableLocales())</span>
+<span class="fc" id="L805">        .filter(locale -&gt; value.equalsIgnoreCase(locale.toLanguageTag()))</span>
+<span class="fc" id="L806">        .findAny().orElse(null);</span>
+  }
+
+  /**
+   * From http language tag.
+   *
+   * @param text the text
+   * @return the http language tag
+   */
+  @JsonCreator
+  public static HttpLanguageTag fromValue(String text) {
+<span class="pc bpc" id="L817" title="1 of 2 branches missed.">    for (HttpLanguageTag b : HttpLanguageTag.values()) {</span>
+<span class="fc bfc" id="L818" title="All 2 branches covered.">      if (String.valueOf(b.value).equals(text)) {</span>
+<span class="fc" id="L819">        return b;</span>
+      }
+    }
+<span class="nc" id="L822">    return null;</span>
+  }
+
+  /**
+   * From locale.
+   *
+   * @param locale the locale
+   * @return the http language tag
+   */
+  public static HttpLanguageTag fromLocale(Locale locale) {
+<span class="pc bpc" id="L832" title="1 of 2 branches missed.">    if (locale == null) {</span>
+<span class="nc" id="L833">      return null;</span>
+    }
+<span class="fc" id="L835">    HttpLanguageTag tag = fromValue(locale.toLanguageTag());</span>
+<span class="pc bpc" id="L836" title="1 of 2 branches missed.">    if (tag != null) {</span>
+<span class="fc" id="L837">      return tag;</span>
+    }
+<span class="nc bnc" id="L839" title="All 4 branches missed.">    if (StringUtils.hasText(locale.getLanguage()) &amp;&amp; StringUtils.hasText(locale.getCountry())) {</span>
+<span class="nc" id="L840">      tag = fromValue(locale.getLanguage() + &quot;-&quot; + locale.getCountry());</span>
+<span class="nc bnc" id="L841" title="All 2 branches missed.">      if (tag != null) {</span>
+<span class="nc" id="L842">        return tag;</span>
+      }
+    }
+<span class="nc" id="L845">    return fromValue(locale.getLanguage());</span>
+  }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
