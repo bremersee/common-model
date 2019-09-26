@@ -6,4 +6,4 @@ Library of the common model.
 
 - [Release](https://bremersee.github.io/common-model/index.html)
 
-- [Snapshot](https://nexus.bremersee.org/repository/maven-sites/common-model/1.1.4-SNAPSHOT/index.html)
+- [Snapshot](https://nexus.bremersee.org/repository/maven-sites/common-model/1.1.5-SNAPSHOT/index.html)
