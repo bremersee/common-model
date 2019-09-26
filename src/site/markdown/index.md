@@ -1,3 +1,3 @@
-# common-model
+# Common Model
 
 Library of the common model.

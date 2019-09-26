@@ -1,6 +1,9 @@
-# common-model
+# Common Model
 
 Library of the common model.
 
-- [Documentation](https://nexus.bremersee.org/repository/maven-sites/common-model/1.1.2/index.html)
+#### Maven Site
 
+- [Release](https://bremersee.github.io/common-model/index.html)
+
+- [Snapshot](https://nexus.bremersee.org/repository/maven-sites/common-model/1.1.4-SNAPSHOT/index.html)
