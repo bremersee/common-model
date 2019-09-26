@@ -7,12 +7,12 @@
   <parent>
     <groupId>org.bremersee</groupId>
     <artifactId>common-parent</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
     <relativePath/>
   </parent>
 
   <artifactId>common-model</artifactId>
-  <version>1.1.4</version>
+  <version>1.1.5</version>
   <packaging>jar</packaging>
 
   <name>common-model</name>
@@ -21,16 +21,17 @@
 
   <properties>
     <github.repo>common-model</github.repo>
+    <gh-pages-staging-dir>${project.build.directory}/staging</gh-pages-staging-dir>
   </properties>
 
   <scm>
-    <url>https://github.com/bremersee/${github.repo}</url>
-    <connection>scm:git:git://github.com/bremersee/${github.repo}.git</connection>
-    <developerConnection>scm:git:git@github.com:bremersee/${github.repo}.git</developerConnection>
+    <url>https://github.com/bremersee/common-model</url>
+    <connection>scm:git:git://github.com/bremersee/common-model.git</connection>
+    <developerConnection>scm:git:git@github.com:bremersee/common-model.git</developerConnection>
   </scm>
 
   <issueManagement>
-    <url>https://github.com/bremersee/${github.repo}/issues</url>
+    <url>https://github.com/bremersee/common-model/issues</url>
     <system>GitHub Issues</system>
   </issueManagement>
 
@@ -42,7 +43,7 @@
     <site>
       <id>bremersee-sites</id>
       <url>
-        dav:https://nexus.bremersee.org/repository/maven-sites/${github.repo}/${project.version}
+        dav:https://nexus.bremersee.org/repository/maven-sites/common-model/${project.version}
       </url>
     </site>
   </distributionManagement>
@@ -103,27 +104,4 @@
     </dependency>
   </dependencies>
 
-  <profiles>
-    <profile>
-      <id>gh-pages-site</id>
-      <distributionManagement>
-        <site>
-          <id>bremersee-sites</id>
-          <url>scm:git:ssh://git@github.com/bremersee/${github.repo}.git</url>
-        </site>
-      </distributionManagement>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-scm-publish-plugin</artifactId>
-            <extensions>true</extensions>
-            <configuration>
-              <scmBranch>gh-pages</scmBranch>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
 </project>
