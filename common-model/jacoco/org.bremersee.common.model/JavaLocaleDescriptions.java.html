@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JavaLocaleDescriptions.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">common-model</a> &gt; <a href="index.source.html" class="el_package">org.bremersee.common.model</a> &gt; <span class="el_source">JavaLocaleDescriptions.java</span></div><h1>JavaLocaleDescriptions.java</h1><pre class="source lang-java linenums">/*
+ * The template was taken from
+ * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
+ * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ */
+
+package org.bremersee.common.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+/**
+ * Java locales and their descriptions.
+ */
+@ApiModel(description = &quot;Java locales and their descriptions.&quot;)
+@JsonIgnoreProperties(ignoreUnknown = true)
+<span class="pc bpc" id="L26" title="9 of 14 branches missed.">@EqualsAndHashCode</span>
+<span class="nc" id="L27">@ToString</span>
+<span class="nc" id="L28">@NoArgsConstructor</span>
+@SuppressWarnings({&quot;WeakerAccess&quot;, &quot;unused&quot;})
+public class JavaLocaleDescriptions implements Serializable {
+
+  private static final long serialVersionUID = 1L;
+
+<span class="pc" id="L34">  @JsonProperty(&quot;entries&quot;)</span>
+  private List&lt;JavaLocaleDescription&gt; entries = null;
+
+  /**
+   * Instantiates a new Java locale descriptions.
+   *
+   * @param entries the entries
+   */
+<span class="fc" id="L42">  public JavaLocaleDescriptions(Collection&lt;? extends JavaLocaleDescription&gt; entries) {</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">    if (entries != null) {</span>
+<span class="fc" id="L44">      this.entries = new ArrayList&lt;&gt;(entries);</span>
+    }
+<span class="fc" id="L46">  }</span>
+
+  /**
+   * Get descriptions.
+   *
+   * @return entries the descriptions
+   */
+  @ApiModelProperty(value = &quot;The descriptions.&quot;)
+  public List&lt;JavaLocaleDescription&gt; getEntries() {
+<span class="fc" id="L55">    return entries;</span>
+  }
+
+  /**
+   * Sets descriptions.
+   *
+   * @param entries the descriptions
+   */
+  public void setEntries(List&lt;JavaLocaleDescription&gt; entries) {
+<span class="nc" id="L64">    this.entries = entries;</span>
+<span class="nc" id="L65">  }</span>
+
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

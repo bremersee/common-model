@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>XmlDocumentBuilder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">common-model</a> &gt; <a href="index.source.html" class="el_package">org.bremersee.xml</a> &gt; <span class="el_source">XmlDocumentBuilder.java</span></div><h1>XmlDocumentBuilder.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2019 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.bremersee.xml;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.validation.Schema;
+import org.w3c.dom.Document;
+import org.xml.sax.EntityResolver;
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
+/**
+ * The xml document builder.
+ *
+ * @author Christian Bremer
+ */
+@SuppressWarnings(&quot;unused&quot;)
+public interface XmlDocumentBuilder {
+
+  /**
+   * Configure factory xml document builder.
+   *
+   * @param configurator the configurator
+   * @return the xml document builder
+   */
+  XmlDocumentBuilder configureFactory(
+      XmlDocumentBuilderFactoryConfigurator configurator);
+
+  /**
+   * Configure factory xml document builder.
+   *
+   * @param coalescing                       the coalescing
+   * @param expandEntityReferences           the expand entity references
+   * @param ignoringComments                 the ignoring comments
+   * @param ignoringElementContentWhitespace the ignoring element content whitespace
+   * @param namespaceAware                   the namespace aware
+   * @param validating                       the validating
+   * @param xIncludeAware                    the x include aware
+   * @return the xml document builder
+   */
+  XmlDocumentBuilder configureFactory(
+      Boolean coalescing,
+      Boolean expandEntityReferences,
+      Boolean ignoringComments,
+      Boolean ignoringElementContentWhitespace,
+      Boolean namespaceAware,
+      Boolean validating,
+      Boolean xIncludeAware);
+
+  /**
+   * Configure factory attribute xml document builder.
+   *
+   * @param name  the name
+   * @param value the value
+   * @return the xml document builder
+   */
+  XmlDocumentBuilder configureFactoryAttribute(String name, Object value);
+
+  /**
+   * Configure factory feature xml document builder.
+   *
+   * @param name  the name
+   * @param value the value
+   * @return the xml document builder
+   */
+  XmlDocumentBuilder configureFactoryFeature(String name, boolean value);
+
+  /**
+   * Configure factory schema xml document builder.
+   *
+   * @param schema the schema
+   * @return the xml document builder
+   */
+  XmlDocumentBuilder configureFactorySchema(Schema schema);
+
+  /**
+   * Configure entity resolver xml document builder.
+   *
+   * @param entityResolver the entity resolver
+   * @return the xml document builder
+   */
+  XmlDocumentBuilder configureEntityResolver(EntityResolver entityResolver);
+
+  /**
+   * Configure error handler xml document builder.
+   *
+   * @param errorHandler the error handler
+   * @return the xml document builder
+   */
+  XmlDocumentBuilder configureErrorHandler(ErrorHandler errorHandler);
+
+  /**
+   * Build document builder document builder.
+   *
+   * @return the document builder
+   */
+  DocumentBuilder buildDocumentBuilder();
+
+  /**
+   * Build document document.
+   *
+   * @return the document
+   */
+  Document buildDocument();
+
+  /**
+   * Build document from file.
+   *
+   * @param file the file
+   * @return the document
+   */
+  Document buildDocument(File file);
+
+  /**
+   * Build document from uri.
+   *
+   * @param uri the uri
+   * @return the document
+   */
+  Document buildDocument(String uri);
+
+  /**
+   * Build document from input source.
+   *
+   * @param is the input source
+   * @return the document
+   */
+  Document buildDocument(InputSource is);
+
+  /**
+   * Build document from input stream.
+   *
+   * @param is the input stream
+   * @return the document
+   */
+  Document buildDocument(InputStream is);
+
+  /**
+   * Build document from input stream and system ID.
+   *
+   * @param is       the input stream
+   * @param systemId the system id
+   * @return the document
+   */
+  Document buildDocument(InputStream is, String systemId);
+
+  /**
+   * Build document from an object that can be processed with {@link JAXBContext}.
+   *
+   * @param jaxbElement the jaxb element
+   * @param jaxbContext the jaxb context
+   * @return the document
+   */
+  Document buildDocument(Object jaxbElement, JAXBContext jaxbContext);
+
+  /**
+   * Build document from an object that can be processed with {@link Marshaller}.
+   *
+   * @param jaxbElement the jaxb element
+   * @param marshaller  the marshaller
+   * @return the document
+   */
+  Document buildDocument(Object jaxbElement, Marshaller marshaller);
+
+  /**
+   * Creates default builder instance.
+   *
+   * @return the default builder instance
+   */
+  static XmlDocumentBuilder builder() {
+<span class="fc" id="L194">    return new DefaultBuilder();</span>
+  }
+
+  /**
+   * The default builder.
+   */
+  class DefaultBuilder implements XmlDocumentBuilder {
+
+    private final DocumentBuilderFactory factory;
+
+    private EntityResolver entityResolver;
+
+    private ErrorHandler errorHandler;
+
+    /**
+     * Instantiates a new default builder.
+     */
+<span class="fc" id="L211">    DefaultBuilder() {</span>
+<span class="fc" id="L212">      factory = DocumentBuilderFactory.newInstance();</span>
+<span class="fc" id="L213">      factory.setNamespaceAware(true);</span>
+<span class="fc" id="L214">    }</span>
+
+    @Override
+    public XmlDocumentBuilder configureFactory(
+        final XmlDocumentBuilderFactoryConfigurator configurator) {
+<span class="nc bnc" id="L219" title="All 2 branches missed.">      if (configurator != null) {</span>
+<span class="nc" id="L220">        configurator.configure(factory);</span>
+      }
+<span class="nc" id="L222">      return this;</span>
+    }
+
+    @Override
+    public XmlDocumentBuilder configureFactory(
+        final Boolean coalescing,
+        final Boolean expandEntityReferences,
+        final Boolean ignoringComments,
+        final Boolean ignoringElementContentWhitespace,
+        final Boolean namespaceAware,
+        final Boolean validating,
+        final Boolean xIncludeAware) {
+
+<span class="pc bpc" id="L235" title="1 of 2 branches missed.">      if (coalescing != null) {</span>
+<span class="nc" id="L236">        factory.setCoalescing(coalescing);</span>
+      }
+<span class="pc bpc" id="L238" title="1 of 2 branches missed.">      if (expandEntityReferences != null) {</span>
+<span class="nc" id="L239">        factory.setExpandEntityReferences(expandEntityReferences);</span>
+      }
+<span class="pc bpc" id="L241" title="1 of 2 branches missed.">      if (ignoringComments != null) {</span>
+<span class="fc" id="L242">        factory.setIgnoringComments(ignoringComments);</span>
+      }
+<span class="pc bpc" id="L244" title="1 of 2 branches missed.">      if (ignoringElementContentWhitespace != null) {</span>
+<span class="fc" id="L245">        factory.setIgnoringElementContentWhitespace(ignoringElementContentWhitespace);</span>
+      }
+<span class="pc bpc" id="L247" title="1 of 2 branches missed.">      if (namespaceAware != null) {</span>
+<span class="fc" id="L248">        factory.setNamespaceAware(namespaceAware);</span>
+      }
+<span class="pc bpc" id="L250" title="1 of 2 branches missed.">      if (validating != null) {</span>
+<span class="fc" id="L251">        factory.setValidating(validating);</span>
+      }
+<span class="pc bpc" id="L253" title="1 of 2 branches missed.">      if (xIncludeAware != null) {</span>
+<span class="nc" id="L254">        factory.setXIncludeAware(xIncludeAware);</span>
+      }
+<span class="fc" id="L256">      return this;</span>
+    }
+
+    @Override
+    public XmlDocumentBuilder configureFactoryAttribute(final String name, final Object value) {
+<span class="nc" id="L261">      factory.setAttribute(name, value);</span>
+<span class="nc" id="L262">      return this;</span>
+    }
+
+    @Override
+    public XmlDocumentBuilder configureFactoryFeature(final String name, final boolean value) {
+      try {
+<span class="nc" id="L268">        factory.setFeature(name, value);</span>
+<span class="nc" id="L269">      } catch (ParserConfigurationException e) {</span>
+<span class="nc" id="L270">        throw new XmlRuntimeException(e);</span>
+<span class="nc" id="L271">      }</span>
+<span class="nc" id="L272">      return this;</span>
+    }
+
+    @Override
+    public XmlDocumentBuilder configureFactorySchema(final Schema schema) {
+<span class="nc" id="L277">      factory.setSchema(schema);</span>
+<span class="nc" id="L278">      return this;</span>
+    }
+
+    @Override
+    public XmlDocumentBuilder configureEntityResolver(EntityResolver entityResolver) {
+<span class="nc" id="L283">      this.entityResolver = entityResolver;</span>
+<span class="nc" id="L284">      return this;</span>
+    }
+
+    @Override
+    public XmlDocumentBuilder configureErrorHandler(ErrorHandler errorHandler) {
+<span class="nc" id="L289">      this.errorHandler = errorHandler;</span>
+<span class="nc" id="L290">      return this;</span>
+    }
+
+    @Override
+    public DocumentBuilder buildDocumentBuilder() {
+      final DocumentBuilder documentBuilder;
+      try {
+<span class="fc" id="L297">        documentBuilder = factory.newDocumentBuilder();</span>
+<span class="nc" id="L298">      } catch (ParserConfigurationException e) {</span>
+<span class="nc" id="L299">        throw new XmlRuntimeException(e);</span>
+<span class="fc" id="L300">      }</span>
+<span class="pc bpc" id="L301" title="1 of 2 branches missed.">      if (entityResolver != null) {</span>
+<span class="nc" id="L302">        documentBuilder.setEntityResolver(entityResolver);</span>
+      }
+<span class="pc bpc" id="L304" title="1 of 2 branches missed.">      if (errorHandler != null) {</span>
+<span class="nc" id="L305">        documentBuilder.setErrorHandler(errorHandler);</span>
+      }
+<span class="fc" id="L307">      return documentBuilder;</span>
+    }
+
+    @Override
+    public Document buildDocument() {
+<span class="fc" id="L312">      return buildDocumentBuilder().newDocument();</span>
+    }
+
+    @Override
+    public Document buildDocument(File file) {
+      try {
+<span class="nc" id="L318">        return buildDocumentBuilder().parse(file);</span>
+
+<span class="nc" id="L320">      } catch (SAXException | IOException e) {</span>
+<span class="nc" id="L321">        throw new XmlRuntimeException(e);</span>
+      }
+    }
+
+    @Override
+    public Document buildDocument(String uri) {
+      try {
+<span class="nc" id="L328">        return buildDocumentBuilder().parse(uri);</span>
+
+<span class="nc" id="L330">      } catch (SAXException | IOException e) {</span>
+<span class="nc" id="L331">        throw new XmlRuntimeException(e);</span>
+      }
+    }
+
+    @Override
+    public Document buildDocument(InputSource is) {
+      try {
+<span class="nc" id="L338">        return buildDocumentBuilder().parse(is);</span>
+
+<span class="nc" id="L340">      } catch (SAXException | IOException e) {</span>
+<span class="nc" id="L341">        throw new XmlRuntimeException(e);</span>
+      }
+    }
+
+    @Override
+    public Document buildDocument(InputStream is) {
+      try {
+<span class="fc" id="L348">        return buildDocumentBuilder().parse(is);</span>
+
+<span class="nc" id="L350">      } catch (SAXException | IOException e) {</span>
+<span class="nc" id="L351">        throw new XmlRuntimeException(e);</span>
+      }
+    }
+
+    @Override
+    public Document buildDocument(InputStream is, String systemId) {
+      try {
+<span class="nc" id="L358">        return buildDocumentBuilder().parse(is, systemId);</span>
+
+<span class="nc" id="L360">      } catch (SAXException | IOException e) {</span>
+<span class="nc" id="L361">        throw new XmlRuntimeException(e);</span>
+      }
+    }
+
+    @Override
+    public Document buildDocument(Object jaxbElement, JAXBContext jaxbContext) {
+<span class="pc bpc" id="L367" title="1 of 2 branches missed.">      if (jaxbElement == null) {</span>
+<span class="nc" id="L368">        return null;</span>
+      }
+      try {
+<span class="fc" id="L371">        return buildDocument(jaxbElement, jaxbContext.createMarshaller());</span>
+<span class="nc" id="L372">      } catch (JAXBException e) {</span>
+<span class="nc" id="L373">        throw new JaxbRuntimeException(e);</span>
+      }
+    }
+
+    @Override
+    public Document buildDocument(Object jaxbElement, Marshaller marshaller) {
+<span class="pc bpc" id="L379" title="1 of 2 branches missed.">      if (jaxbElement == null) {</span>
+<span class="nc" id="L380">        return null;</span>
+      }
+<span class="fc" id="L382">      final Document document = buildDocument();</span>
+      try {
+<span class="fc" id="L384">        marshaller.marshal(jaxbElement, document);</span>
+<span class="nc" id="L385">      } catch (JAXBException e) {</span>
+<span class="nc" id="L386">        throw new JaxbRuntimeException(e);</span>
+<span class="fc" id="L387">      }</span>
+<span class="fc" id="L388">      return document;</span>
+    }
+
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>

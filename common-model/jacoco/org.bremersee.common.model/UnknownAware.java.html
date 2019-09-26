@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UnknownAware.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">common-model</a> &gt; <a href="index.source.html" class="el_package">org.bremersee.common.model</a> &gt; <span class="el_source">UnknownAware.java</span></div><h1>UnknownAware.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2018 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.bremersee.common.model;
+
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.StringTokenizer;
+import java.util.function.Function;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+/**
+ * This base class allows to keep unknown json properties.
+ *
+ * @author Christian Bremer
+ */
+<span class="nc" id="L40">@ToString</span>
+<span class="nc bnc" id="L41" title="All 14 branches missed.">@EqualsAndHashCode</span>
+<span class="fc" id="L42">@NoArgsConstructor</span>
+<span class="nc" id="L43">@AllArgsConstructor</span>
+@SuppressWarnings({&quot;unused&quot;, &quot;WeakerAccess&quot;})
+public abstract class UnknownAware {
+
+  @ApiModelProperty(value = &quot;Unknown properties.&quot;, dataType = &quot;java.lang.Object&quot;, hidden = true)
+  @JsonIgnore
+  private Map&lt;String, Object&gt; unknown;
+
+  /**
+   * Gets the unknown json properties (can be {@code null}).
+   *
+   * @return the unknown
+   */
+  @JsonAnyGetter
+  public Map&lt;String, Object&gt; unknown() {
+<span class="nc" id="L58">    return unknown;</span>
+  }
+
+  /**
+   * Sets the unknown json properties.
+   *
+   * @param unknown the unknown json properties
+   */
+  public void unknown(Map&lt;String, Object&gt; unknown) {
+<span class="nc bnc" id="L67" title="All 4 branches missed.">    if (unknown != null &amp;&amp; !unknown.isEmpty()) {</span>
+<span class="nc" id="L68">      this.unknown = unknown;</span>
+    }
+<span class="nc" id="L70">  }</span>
+
+  /**
+   * Any json setter.
+   *
+   * @param name  the name
+   * @param value the value
+   */
+  @JsonAnySetter
+  public void unknown(String name, Object value) {
+<span class="pc bpc" id="L80" title="2 of 4 branches missed.">    if (name == null || name.trim().length() == 0) {</span>
+<span class="nc" id="L81">      return;</span>
+    }
+<span class="pc bpc" id="L83" title="1 of 2 branches missed.">    if (unknown == null) {</span>
+<span class="fc" id="L84">      unknown = new LinkedHashMap&lt;&gt;();</span>
+    }
+<span class="fc" id="L86">    unknown.put(name, value);</span>
+<span class="fc" id="L87">  }</span>
+
+  /**
+   * Returns {@code true} if there are unknown properties, otherwise {@code false}.
+   *
+   * @return {@code true} if there are unknown properties, otherwise {@code false}
+   */
+  public boolean hasUnknown() {
+<span class="pc bpc" id="L95" title="2 of 4 branches missed.">    return unknown != null &amp;&amp; !unknown.isEmpty();</span>
+  }
+
+  /**
+   * Find a value from the unknown map.
+   *
+   * @param &lt;T&gt;      the class type
+   * @param jsonPath the json path, e. g. {@code $.firstKey.secondKey.thirdKey}
+   * @param clazz    the expected result class
+   * @return an empty optional if the value was not found or can not be casted, otherwise the value
+   */
+  public &lt;T&gt; Optional&lt;T&gt; findUnknown(final String jsonPath, final Class&lt;T&gt; clazz) {
+<span class="pc bpc" id="L107" title="3 of 6 branches missed.">    if (!hasUnknown() || !isJsonPath(jsonPath) || clazz == null) {</span>
+<span class="nc" id="L108">      return Optional.empty();</span>
+    }
+<span class="fc" id="L110">    Object value = null;</span>
+<span class="fc" id="L111">    Map&lt;String, Object&gt; tmpUnknown = unknown;</span>
+<span class="fc" id="L112">    final StringTokenizer tokenizer = new StringTokenizer(jsonPath.substring(2), &quot;.&quot;);</span>
+<span class="fc bfc" id="L113" title="All 2 branches covered.">    while (tokenizer.hasMoreTokens()) {</span>
+<span class="fc" id="L114">      final String token = tokenizer.nextToken();</span>
+<span class="fc" id="L115">      value = tmpUnknown.get(token);</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">      if (value == null) {</span>
+<span class="fc" id="L117">        break;</span>
+      }
+<span class="fc bfc" id="L119" title="All 4 branches covered.">      if ((value instanceof Map) &amp;&amp; tokenizer.hasMoreTokens()) {</span>
+        try {
+          //noinspection unchecked
+<span class="fc" id="L122">          tmpUnknown = (Map) value;</span>
+<span class="nc" id="L123">        } catch (Exception e) {</span>
+<span class="nc" id="L124">          return Optional.empty();</span>
+<span class="fc" id="L125">        }</span>
+      }
+<span class="fc" id="L127">    }</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">    if (value == null) {</span>
+<span class="fc" id="L129">      return Optional.empty();</span>
+    }
+    try {
+<span class="fc" id="L132">      return Optional.of(clazz.cast(value));</span>
+<span class="fc" id="L133">    } catch (Exception e) {</span>
+<span class="fc" id="L134">      return Optional.empty();</span>
+    }
+  }
+
+  /**
+   * Find a list from the unknown map.
+   *
+   * @param &lt;E&gt;      the list element type
+   * @param jsonPath the json path, e. g. {@code $.firstKey.secondKey.thirdKey}
+   * @param clazz    he list element type
+   * @return an empty optional if the list was not found or can not be casted, otherwise the list
+   */
+  public &lt;E&gt; Optional&lt;List&lt;E&gt;&gt; findUnknownList(final String jsonPath, final Class&lt;E&gt; clazz) {
+<span class="pc bpc" id="L147" title="1 of 2 branches missed.">    if (clazz == null) {</span>
+<span class="nc" id="L148">      return Optional.empty();</span>
+    }
+    try {
+      //noinspection Convert2MethodRef,unchecked
+<span class="fc" id="L152">      return findUnknown(jsonPath, List.class).map(</span>
+<span class="fc" id="L153">          (Function&lt;List, List&lt;E&gt;&gt;) list -&gt; Collections.unmodifiableList(list));</span>
+
+<span class="nc" id="L155">    } catch (RuntimeException ignored) {</span>
+<span class="nc" id="L156">      return Optional.empty();</span>
+    }
+  }
+
+  /**
+   * Find a map / json object from the unknown map.
+   *
+   * @param jsonPath the json path, e. g. {@code $.firstKey.secondKey.thirdKey}
+   * @return an empty optional if the map / json object was not found or can not be casted,
+   * otherwise the map / json object
+   */
+  public Optional&lt;Map&lt;String, Object&gt;&gt; findUnknownMap(final String jsonPath) {
+    try {
+      //noinspection Convert2MethodRef,unchecked
+<span class="fc" id="L170">      return findUnknown(jsonPath, Map.class)</span>
+<span class="fc" id="L171">          .map((Function&lt;Map, Map&lt;String, Object&gt;&gt;) map -&gt; Collections.unmodifiableMap(map));</span>
+
+<span class="nc" id="L173">    } catch (RuntimeException ignored) {</span>
+<span class="nc" id="L174">      return Optional.empty();</span>
+    }
+  }
+
+  private boolean isJsonPath(final String jsonPath) {
+<span class="pc bpc" id="L179" title="3 of 6 branches missed.">    return jsonPath != null &amp;&amp; jsonPath.startsWith(&quot;$.&quot;) &amp;&amp; jsonPath.length() &gt; 2;</span>
+  }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
