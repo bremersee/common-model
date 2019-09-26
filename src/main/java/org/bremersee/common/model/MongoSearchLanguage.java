@@ -157,7 +157,7 @@ public enum MongoSearchLanguage {
   /**
    * From locale.
    *
-   * @param locale the locale
+   * @param locale   the locale
    * @param fallback the fallback language
    * @return the two letter language code
    */
