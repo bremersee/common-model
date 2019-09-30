@@ -13,17 +13,6 @@ pipeline {
         sh 'mvn test'
       }
     }
-    stage('Deploy') {
-      when {
-        anyOf {
-          branch 'develop'
-          branch 'master'
-        }
-      }
-      steps {
-        sh 'mvn -P deploy deploy'
-      }
-    }
     stage('Snapshot Site') {
       when {
         branch 'develop'
@@ -38,6 +27,17 @@ pipeline {
       }
       steps {
         sh 'mvn -P gh-pages-site site site:stage scm-publish:publish-scm'
+      }
+    }
+    stage('Deploy') {
+      when {
+        anyOf {
+          branch 'develop'
+          branch 'master'
+        }
+      }
+      steps {
+        sh 'mvn -P deploy deploy'
       }
     }
   }
