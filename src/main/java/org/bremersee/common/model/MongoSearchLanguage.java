@@ -146,6 +146,9 @@ public enum MongoSearchLanguage {
    * @return the two letter language code
    */
   public static MongoSearchLanguage fromValue(String text, MongoSearchLanguage fallback) {
+    if (!StringUtils.hasText(text)) {
+      return fallback;
+    }
     for (MongoSearchLanguage b : MongoSearchLanguage.values()) {
       if (b.value.equalsIgnoreCase(text) || b.name().equalsIgnoreCase(text)) {
         return b;

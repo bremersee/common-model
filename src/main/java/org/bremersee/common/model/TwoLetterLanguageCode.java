@@ -271,8 +271,11 @@ public enum TwoLetterLanguageCode {
    */
   @JsonCreator
   public static TwoLetterLanguageCode fromValue(String text) {
+    if (!StringUtils.hasText(text)) {
+      return null;
+    }
     for (TwoLetterLanguageCode b : TwoLetterLanguageCode.values()) {
-      if (String.valueOf(b.value).equals(text)) {
+      if (String.valueOf(b.value).equalsIgnoreCase(text)) {
         return b;
       }
     }

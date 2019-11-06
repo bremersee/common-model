@@ -814,8 +814,14 @@ public enum HttpLanguageTag {
    */
   @JsonCreator
   public static HttpLanguageTag fromValue(String text) {
+    if (!StringUtils.hasText(text)) {
+      return null;
+    }
+    final String source = text
+        .substring(0, Math.min(text.length(), 5))
+        .replace("_", "-");
     for (HttpLanguageTag b : HttpLanguageTag.values()) {
-      if (String.valueOf(b.value).equals(text)) {
+      if (String.valueOf(b.value).equalsIgnoreCase(source)) {
         return b;
       }
     }

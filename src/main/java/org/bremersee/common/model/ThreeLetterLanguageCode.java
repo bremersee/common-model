@@ -271,8 +271,11 @@ public enum ThreeLetterLanguageCode {
    */
   @JsonCreator
   public static ThreeLetterLanguageCode fromValue(String text) {
+    if (!StringUtils.hasText(text)) {
+      return null;
+    }
     for (ThreeLetterLanguageCode b : ThreeLetterLanguageCode.values()) {
-      if (String.valueOf(b.value).equals(text)) {
+      if (String.valueOf(b.value).equalsIgnoreCase(text)) {
         return b;
       }
     }

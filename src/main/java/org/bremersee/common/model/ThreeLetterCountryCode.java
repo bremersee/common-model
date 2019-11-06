@@ -526,8 +526,11 @@ public enum ThreeLetterCountryCode {
    */
   @JsonCreator
   public static ThreeLetterCountryCode fromValue(String text) {
+    if (!StringUtils.hasText(text)) {
+      return null;
+    }
     for (ThreeLetterCountryCode b : ThreeLetterCountryCode.values()) {
-      if (String.valueOf(b.value).equals(text)) {
+      if (String.valueOf(b.value).equalsIgnoreCase(text)) {
         return b;
       }
     }

@@ -810,8 +810,14 @@ public enum JavaLocale {
    */
   @JsonCreator
   public static JavaLocale fromValue(String text) {
+    if (!StringUtils.hasText(text)) {
+      return null;
+    }
+    final String source = text
+        .substring(0, Math.min(text.length(), 5))
+        .replace("-", "_");
     for (JavaLocale b : JavaLocale.values()) {
-      if (String.valueOf(b.value).equals(text)) {
+      if (String.valueOf(b.value).equals(source)) {
         return b;
       }
     }
