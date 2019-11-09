@@ -8,8 +8,8 @@ package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.Arrays;
 import java.util.Locale;
+import java.util.regex.Pattern;
 import org.springframework.util.StringUtils;
 
 /**
@@ -18,224 +18,944 @@ import org.springframework.util.StringUtils;
 public enum TwoLetterLanguageCode {
 
   /**
-   * Ar two letter language code.
+   * Afar (aa)
+   */
+  AA("aa"),
+
+  /**
+   * Abkhazian (ab)
+   */
+  AB("ab"),
+
+  /**
+   * Avestan (ae)
+   */
+  AE("ae"),
+
+  /**
+   * Afrikaans (af)
+   */
+  AF("af"),
+
+  /**
+   * Akan (ak)
+   */
+  AK("ak"),
+
+  /**
+   * Amharic (am)
+   */
+  AM("am"),
+
+  /**
+   * Aragonese (an)
+   */
+  AN("an"),
+
+  /**
+   * Arabic (ar)
    */
   AR("ar"),
 
   /**
-   * Be two letter language code.
+   * Assamese (as)
+   */
+  AS("as"),
+
+  /**
+   * Avaric (av)
+   */
+  AV("av"),
+
+  /**
+   * Aymara (ay)
+   */
+  AY("ay"),
+
+  /**
+   * Azerbaijani (az)
+   */
+  AZ("az"),
+
+  /**
+   * Bashkir (ba)
+   */
+  BA("ba"),
+
+  /**
+   * Belarusian (be)
    */
   BE("be"),
 
   /**
-   * Bg two letter language code.
+   * Bulgarian (bg)
    */
   BG("bg"),
 
   /**
-   * Ca two letter language code.
+   * Bihari (bh)
+   */
+  BH("bh"),
+
+  /**
+   * Bislama (bi)
+   */
+  BI("bi"),
+
+  /**
+   * Bambara (bm)
+   */
+  BM("bm"),
+
+  /**
+   * Bengali (bn)
+   */
+  BN("bn"),
+
+  /**
+   * Tibetan (bo)
+   */
+  BO("bo"),
+
+  /**
+   * Breton (br)
+   */
+  BR("br"),
+
+  /**
+   * Bosnian (bs)
+   */
+  BS("bs"),
+
+  /**
+   * Catalan (ca)
    */
   CA("ca"),
 
   /**
-   * Cs two letter language code.
+   * Chechen (ce)
+   */
+  CE("ce"),
+
+  /**
+   * Chamorro (ch)
+   */
+  CH("ch"),
+
+  /**
+   * Corsican (co)
+   */
+  CO("co"),
+
+  /**
+   * Cree (cr)
+   */
+  CR("cr"),
+
+  /**
+   * Czech (cs)
    */
   CS("cs"),
 
   /**
-   * Da two letter language code.
+   * Church Slavic (cu)
+   */
+  CU("cu"),
+
+  /**
+   * Chuvash (cv)
+   */
+  CV("cv"),
+
+  /**
+   * Welsh (cy)
+   */
+  CY("cy"),
+
+  /**
+   * Danish (da)
    */
   DA("da"),
 
   /**
-   * De two letter language code.
+   * German (de)
    */
   DE("de"),
 
   /**
-   * El two letter language code.
+   * Divehi (dv)
+   */
+  DV("dv"),
+
+  /**
+   * Dzongkha (dz)
+   */
+  DZ("dz"),
+
+  /**
+   * Ewe (ee)
+   */
+  EE("ee"),
+
+  /**
+   * Greek (el)
    */
   EL("el"),
 
   /**
-   * En two letter language code.
+   * English (en)
    */
   EN("en"),
 
   /**
-   * Es two letter language code.
+   * Esperanto (eo)
+   */
+  EO("eo"),
+
+  /**
+   * Spanish (es)
    */
   ES("es"),
 
   /**
-   * Et two letter language code.
+   * Estonian (et)
    */
   ET("et"),
 
   /**
-   * Fi two letter language code.
+   * Basque (eu)
+   */
+  EU("eu"),
+
+  /**
+   * Persian (fa)
+   */
+  FA("fa"),
+
+  /**
+   * Fulah (ff)
+   */
+  FF("ff"),
+
+  /**
+   * Finnish (fi)
    */
   FI("fi"),
 
   /**
-   * Fr two letter language code.
+   * Fijian (fj)
+   */
+  FJ("fj"),
+
+  /**
+   * Faroese (fo)
+   */
+  FO("fo"),
+
+  /**
+   * French (fr)
    */
   FR("fr"),
 
   /**
-   * Ga two letter language code.
+   * Frisian (fy)
+   */
+  FY("fy"),
+
+  /**
+   * Irish (ga)
    */
   GA("ga"),
 
   /**
-   * Hi two letter language code.
+   * Scottish Gaelic (gd)
+   */
+  GD("gd"),
+
+  /**
+   * Gallegan (gl)
+   */
+  GL("gl"),
+
+  /**
+   * Guarani (gn)
+   */
+  GN("gn"),
+
+  /**
+   * Gujarati (gu)
+   */
+  GU("gu"),
+
+  /**
+   * Manx (gv)
+   */
+  GV("gv"),
+
+  /**
+   * Hausa (ha)
+   */
+  HA("ha"),
+
+  /**
+   * Hebrew (he)
+   */
+  HE("he"),
+
+  /**
+   * Hindi (hi)
    */
   HI("hi"),
 
   /**
-   * Hr two letter language code.
+   * Hiri Motu (ho)
+   */
+  HO("ho"),
+
+  /**
+   * Croatian (hr)
    */
   HR("hr"),
 
   /**
-   * Hu two letter language code.
+   * Haitian (ht)
+   */
+  HT("ht"),
+
+  /**
+   * Hungarian (hu)
    */
   HU("hu"),
 
   /**
-   * In two letter language code.
+   * Armenian (hy)
+   */
+  HY("hy"),
+
+  /**
+   * Herero (hz)
+   */
+  HZ("hz"),
+
+  /**
+   * Interlingua (ia)
+   */
+  IA("ia"),
+
+  /**
+   * Indonesian (id)
+   */
+  ID("id"),
+
+  /**
+   * Interlingue (ie)
+   */
+  IE("ie"),
+
+  /**
+   * Igbo (ig)
+   */
+  IG("ig"),
+
+  /**
+   * Sichuan Yi (ii)
+   */
+  II("ii"),
+
+  /**
+   * Inupiaq (ik)
+   */
+  IK("ik"),
+
+  /**
+   * Indonesian (in)
    */
   IN("in"),
 
   /**
-   * Is two letter language code.
+   * Ido (io)
+   */
+  IO("io"),
+
+  /**
+   * Icelandic (is)
    */
   IS("is"),
 
   /**
-   * It two letter language code.
+   * Italian (it)
    */
   IT("it"),
 
   /**
-   * Iw two letter language code.
+   * Inuktitut (iu)
+   */
+  IU("iu"),
+
+  /**
+   * Hebrew (iw)
    */
   IW("iw"),
 
   /**
-   * Ja two letter language code.
+   * Japanese (ja)
    */
   JA("ja"),
 
   /**
-   * Ko two letter language code.
+   * Yiddish (ji)
+   */
+  JI("ji"),
+
+  /**
+   * Javanese (jv)
+   */
+  JV("jv"),
+
+  /**
+   * Georgian (ka)
+   */
+  KA("ka"),
+
+  /**
+   * Kongo (kg)
+   */
+  KG("kg"),
+
+  /**
+   * Kikuyu (ki)
+   */
+  KI("ki"),
+
+  /**
+   * Kwanyama (kj)
+   */
+  KJ("kj"),
+
+  /**
+   * Kazakh (kk)
+   */
+  KK("kk"),
+
+  /**
+   * Greenlandic (kl)
+   */
+  KL("kl"),
+
+  /**
+   * Khmer (km)
+   */
+  KM("km"),
+
+  /**
+   * Kannada (kn)
+   */
+  KN("kn"),
+
+  /**
+   * Korean (ko)
    */
   KO("ko"),
 
   /**
-   * Lt two letter language code.
+   * Kanuri (kr)
+   */
+  KR("kr"),
+
+  /**
+   * Kashmiri (ks)
+   */
+  KS("ks"),
+
+  /**
+   * Kurdish (ku)
+   */
+  KU("ku"),
+
+  /**
+   * Komi (kv)
+   */
+  KV("kv"),
+
+  /**
+   * Cornish (kw)
+   */
+  KW("kw"),
+
+  /**
+   * Kirghiz (ky)
+   */
+  KY("ky"),
+
+  /**
+   * Latin (la)
+   */
+  LA("la"),
+
+  /**
+   * Luxembourgish (lb)
+   */
+  LB("lb"),
+
+  /**
+   * Ganda (lg)
+   */
+  LG("lg"),
+
+  /**
+   * Limburgish (li)
+   */
+  LI("li"),
+
+  /**
+   * Lingala (ln)
+   */
+  LN("ln"),
+
+  /**
+   * Lao (lo)
+   */
+  LO("lo"),
+
+  /**
+   * Lithuanian (lt)
    */
   LT("lt"),
 
   /**
-   * Lv two letter language code.
+   * Luba-Katanga (lu)
+   */
+  LU("lu"),
+
+  /**
+   * Latvian (lv)
    */
   LV("lv"),
 
   /**
-   * Mk two letter language code.
+   * Malagasy (mg)
+   */
+  MG("mg"),
+
+  /**
+   * Marshallese (mh)
+   */
+  MH("mh"),
+
+  /**
+   * Maori (mi)
+   */
+  MI("mi"),
+
+  /**
+   * Macedonian (mk)
    */
   MK("mk"),
 
   /**
-   * Ms two letter language code.
+   * Malayalam (ml)
+   */
+  ML("ml"),
+
+  /**
+   * Mongolian (mn)
+   */
+  MN("mn"),
+
+  /**
+   * Moldavian (mo)
+   */
+  MO("mo"),
+
+  /**
+   * Marathi (mr)
+   */
+  MR("mr"),
+
+  /**
+   * Malay (ms)
    */
   MS("ms"),
 
   /**
-   * Mt two letter language code.
+   * Maltese (mt)
    */
   MT("mt"),
 
   /**
-   * Nl two letter language code.
+   * Burmese (my)
+   */
+  MY("my"),
+
+  /**
+   * Nauru (na)
+   */
+  NA("na"),
+
+  /**
+   * Norwegian Bokmål (nb)
+   */
+  NB("nb"),
+
+  /**
+   * North Ndebele (nd)
+   */
+  ND("nd"),
+
+  /**
+   * Nepali (ne)
+   */
+  NE("ne"),
+
+  /**
+   * Ndonga (ng)
+   */
+  NG("ng"),
+
+  /**
+   * Dutch (nl)
    */
   NL("nl"),
 
   /**
-   * No two letter language code.
+   * Norwegian Nynorsk (nn)
+   */
+  NN("nn"),
+
+  /**
+   * Norwegian (no)
    */
   NO("no"),
 
   /**
-   * Pl two letter language code.
+   * South Ndebele (nr)
+   */
+  NR("nr"),
+
+  /**
+   * Navajo (nv)
+   */
+  NV("nv"),
+
+  /**
+   * Nyanja (ny)
+   */
+  NY("ny"),
+
+  /**
+   * Occitan (oc)
+   */
+  OC("oc"),
+
+  /**
+   * Ojibwa (oj)
+   */
+  OJ("oj"),
+
+  /**
+   * Oromo (om)
+   */
+  OM("om"),
+
+  /**
+   * Oriya (or)
+   */
+  OR("or"),
+
+  /**
+   * Ossetian (os)
+   */
+  OS("os"),
+
+  /**
+   * Panjabi (pa)
+   */
+  PA("pa"),
+
+  /**
+   * Pali (pi)
+   */
+  PI("pi"),
+
+  /**
+   * Polish (pl)
    */
   PL("pl"),
 
   /**
-   * Pt two letter language code.
+   * Pushto (ps)
+   */
+  PS("ps"),
+
+  /**
+   * Portuguese (pt)
    */
   PT("pt"),
 
   /**
-   * Ro two letter language code.
+   * Quechua (qu)
+   */
+  QU("qu"),
+
+  /**
+   * Raeto-Romance (rm)
+   */
+  RM("rm"),
+
+  /**
+   * Rundi (rn)
+   */
+  RN("rn"),
+
+  /**
+   * Romanian (ro)
    */
   RO("ro"),
 
   /**
-   * Ru two letter language code.
+   * Russian (ru)
    */
   RU("ru"),
 
   /**
-   * Sk two letter language code.
+   * Kinyarwanda (rw)
+   */
+  RW("rw"),
+
+  /**
+   * Sanskrit (sa)
+   */
+  SA("sa"),
+
+  /**
+   * Sardinian (sc)
+   */
+  SC("sc"),
+
+  /**
+   * Sindhi (sd)
+   */
+  SD("sd"),
+
+  /**
+   * Northern Sami (se)
+   */
+  SE("se"),
+
+  /**
+   * Sango (sg)
+   */
+  SG("sg"),
+
+  /**
+   * Sinhalese (si)
+   */
+  SI("si"),
+
+  /**
+   * Slovak (sk)
    */
   SK("sk"),
 
   /**
-   * Sl two letter language code.
+   * Slovenian (sl)
    */
   SL("sl"),
 
   /**
-   * Sq two letter language code.
+   * Samoan (sm)
+   */
+  SM("sm"),
+
+  /**
+   * Shona (sn)
+   */
+  SN("sn"),
+
+  /**
+   * Somali (so)
+   */
+  SO("so"),
+
+  /**
+   * Albanian (sq)
    */
   SQ("sq"),
 
   /**
-   * Sr two letter language code.
+   * Serbian (sr)
    */
   SR("sr"),
 
   /**
-   * Sv two letter language code.
+   * Swati (ss)
+   */
+  SS("ss"),
+
+  /**
+   * Southern Sotho (st)
+   */
+  ST("st"),
+
+  /**
+   * Sundanese (su)
+   */
+  SU("su"),
+
+  /**
+   * Swedish (sv)
    */
   SV("sv"),
 
   /**
-   * Th two letter language code.
+   * Swahili (sw)
+   */
+  SW("sw"),
+
+  /**
+   * Tamil (ta)
+   */
+  TA("ta"),
+
+  /**
+   * Telugu (te)
+   */
+  TE("te"),
+
+  /**
+   * Tajik (tg)
+   */
+  TG("tg"),
+
+  /**
+   * Thai (th)
    */
   TH("th"),
 
   /**
-   * Tr two letter language code.
+   * Tigrinya (ti)
+   */
+  TI("ti"),
+
+  /**
+   * Turkmen (tk)
+   */
+  TK("tk"),
+
+  /**
+   * Tagalog (tl)
+   */
+  TL("tl"),
+
+  /**
+   * Tswana (tn)
+   */
+  TN("tn"),
+
+  /**
+   * Tonga (to)
+   */
+  TO("to"),
+
+  /**
+   * Turkish (tr)
    */
   TR("tr"),
 
   /**
-   * Uk two letter language code.
+   * Tsonga (ts)
+   */
+  TS("ts"),
+
+  /**
+   * Tatar (tt)
+   */
+  TT("tt"),
+
+  /**
+   * Twi (tw)
+   */
+  TW("tw"),
+
+  /**
+   * Tahitian (ty)
+   */
+  TY("ty"),
+
+  /**
+   * Uighur (ug)
+   */
+  UG("ug"),
+
+  /**
+   * Ukrainian (uk)
    */
   UK("uk"),
 
   /**
-   * Vi two letter language code.
+   * Urdu (ur)
+   */
+  UR("ur"),
+
+  /**
+   * Uzbek (uz)
+   */
+  UZ("uz"),
+
+  /**
+   * Venda (ve)
+   */
+  VE("ve"),
+
+  /**
+   * Vietnamese (vi)
    */
   VI("vi"),
 
   /**
-   * Zh two letter language code.
+   * Volapük (vo)
    */
-  ZH("zh");
+  VO("vo"),
+
+  /**
+   * Walloon (wa)
+   */
+  WA("wa"),
+
+  /**
+   * Wolof (wo)
+   */
+  WO("wo"),
+
+  /**
+   * Xhosa (xh)
+   */
+  XH("xh"),
+
+  /**
+   * Yiddish (yi)
+   */
+  YI("yi"),
+
+  /**
+   * Yoruba (yo)
+   */
+  YO("yo"),
+
+  /**
+   * Zhuang (za)
+   */
+  ZA("za"),
+
+  /**
+   * Chinese (zh)
+   */
+  ZH("zh"),
+
+  /**
+   * Zulu (zu)
+   */
+  ZU("zu");
 
   private String value;
 
@@ -246,7 +966,7 @@ public enum TwoLetterLanguageCode {
   @Override
   @JsonValue
   public String toString() {
-    return String.valueOf(value);
+    return value;
   }
 
   /**
@@ -255,12 +975,7 @@ public enum TwoLetterLanguageCode {
    * @return the locale
    */
   public Locale toLocale() {
-    return Arrays
-        .stream(Locale.getAvailableLocales())
-        .filter(locale -> value.equalsIgnoreCase(locale.getLanguage()))
-        .findAny()
-        .map(locale -> new Locale(locale.getLanguage()))
-        .orElse(null);
+    return new Locale(value);
   }
 
   /**
@@ -271,15 +986,42 @@ public enum TwoLetterLanguageCode {
    */
   @JsonCreator
   public static TwoLetterLanguageCode fromValue(String text) {
-    if (!StringUtils.hasText(text)) {
-      return null;
+    return fromValue(text, null);
+  }
+
+  /**
+   * From value two letter language code.
+   *
+   * @param text        the text
+   * @param defaultCode the default code
+   * @return the two letter language code
+   */
+  public static TwoLetterLanguageCode fromValue(String text, TwoLetterLanguageCode defaultCode) {
+    String source = text != null ? text.trim() : null;
+    if (source == null || source.length() < 2) {
+      return defaultCode;
     }
+    source = source.replace("-", "_");
+    int index = source.indexOf('_');
+    if (source.length() == 3 && index < 0) {
+      ThreeLetterLanguageCode threeLetter = ThreeLetterLanguageCode.fromValue(text);
+      if (threeLetter != null) {
+        return fromLocale(threeLetter.toLocale(), defaultCode);
+      }
+    }
+    if (index >= 0) {
+      String[] parts = source.split(Pattern.quote("_"));
+      if (parts.length > 0) {
+        return fromValue(parts[0], defaultCode);
+      }
+    }
+    source = source.substring(0, 2).toLowerCase();
     for (TwoLetterLanguageCode b : TwoLetterLanguageCode.values()) {
-      if (String.valueOf(b.value).equalsIgnoreCase(text)) {
+      if (b.value.equals(source)) {
         return b;
       }
     }
-    return null;
+    return defaultCode;
   }
 
   /**
@@ -289,10 +1031,21 @@ public enum TwoLetterLanguageCode {
    * @return the two letter language code
    */
   public static TwoLetterLanguageCode fromLocale(Locale locale) {
+    return fromLocale(locale, null);
+  }
+
+  /**
+   * From locale.
+   *
+   * @param locale      the locale
+   * @param defaultCode the default code
+   * @return the two letter language code
+   */
+  public static TwoLetterLanguageCode fromLocale(Locale locale, TwoLetterLanguageCode defaultCode) {
     if (locale == null || !StringUtils.hasText(locale.getLanguage())) {
-      return null;
+      return defaultCode;
     }
-    return fromValue(locale.getLanguage());
+    return fromValue(locale.getLanguage(), defaultCode);
   }
 
 }

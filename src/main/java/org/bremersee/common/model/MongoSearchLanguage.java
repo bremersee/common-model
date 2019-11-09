@@ -8,7 +8,6 @@ package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.Arrays;
 import java.util.Locale;
 import org.springframework.util.StringUtils;
 
@@ -119,12 +118,10 @@ public enum MongoSearchLanguage {
    * @return the locale
    */
   public Locale toLocale() {
-    return Arrays
-        .stream(Locale.getAvailableLocales())
-        .filter(locale -> name().equalsIgnoreCase(locale.getLanguage()))
-        .findAny()
-        .map(locale -> new Locale(locale.getLanguage()))
-        .orElse(null);
+    if (NONE == this) {
+      return null;
+    }
+    return new Locale(name().toLowerCase());
   }
 
   /**
@@ -149,8 +146,12 @@ public enum MongoSearchLanguage {
     if (!StringUtils.hasText(text)) {
       return fallback;
     }
+    if (NONE.value.equalsIgnoreCase(text)) {
+      return NONE;
+    }
+    String source = text.substring(0, Math.min(text.length(), 2));
     for (MongoSearchLanguage b : MongoSearchLanguage.values()) {
-      if (b.value.equalsIgnoreCase(text) || b.name().equalsIgnoreCase(text)) {
+      if (b.value.equalsIgnoreCase(source) || b.name().equalsIgnoreCase(source)) {
         return b;
       }
     }

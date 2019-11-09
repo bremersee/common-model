@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * A list of Java locales.
+ * A list of java locales.
  */
 @ApiModel(description = "A list of Java locales.")
 @EqualsAndHashCode(callSuper = true)
