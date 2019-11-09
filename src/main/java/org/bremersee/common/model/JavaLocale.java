@@ -193,6 +193,16 @@ public class JavaLocale implements Serializable {
   }
 
   /**
+   * From locale.
+   *
+   * @param locale the locale
+   * @return the java locale
+   */
+  public static JavaLocale fromLocale(Locale locale) {
+    return locale == null ? null : fromValue(locale.toString());
+  }
+
+  /**
    * The enum Separator.
    */
   public enum Separator {

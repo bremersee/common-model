@@ -2,18 +2,25 @@ package org.bremersee.common.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import org.bremersee.common.model.JavaLocale.Separator;
 import org.junit.Test;
+import org.springframework.util.StringUtils;
 
 /**
+ * The type Java locale test.
+ *
  * @author Christian Bremer
  */
 public class JavaLocaleTest {
 
+  /**
+   * Test possibilities.
+   */
   @Test
   public void testPossibilities() {
     Map<String, String> exceptions = new HashMap<>();
@@ -41,6 +48,22 @@ public class JavaLocaleTest {
         assertEquals(
             languageCode.toString() + "_" + countryCode.toString(),
             javaLocale0.toString(Separator.UNDERSCORE));
+      }
+    }
+  }
+
+  /**
+   * From locale.
+   */
+  @Test
+  public void fromLocale() {
+    for (Locale locale : Locale.getAvailableLocales()) {
+      JavaLocale javaLocale = JavaLocale.fromLocale(locale);
+      if (StringUtils.hasText(locale.toString())) {
+        assertNotNull(javaLocale);
+        assertEquals(locale.getLanguage(), javaLocale.getLanguage());
+      } else {
+        assertNull(javaLocale);
       }
     }
   }
