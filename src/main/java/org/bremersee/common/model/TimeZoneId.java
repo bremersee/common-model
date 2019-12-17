@@ -9,6 +9,7 @@ package org.bremersee.common.model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.TimeZone;
+import org.springframework.util.StringUtils;
 
 /**
  * Time zone ID.
@@ -3180,8 +3181,11 @@ public enum TimeZoneId {
    */
   @JsonCreator
   public static TimeZoneId fromValue(String text) {
+    if (!StringUtils.hasText(text)) {
+      return null;
+    }
     for (TimeZoneId b : TimeZoneId.values()) {
-      if (String.valueOf(b.value).equals(text)) {
+      if (String.valueOf(b.value).equalsIgnoreCase(text) || b.name().equalsIgnoreCase(text)) {
         return b;
       }
     }

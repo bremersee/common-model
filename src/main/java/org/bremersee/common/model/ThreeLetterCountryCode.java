@@ -18,479 +18,1254 @@ import org.springframework.util.StringUtils;
 public enum ThreeLetterCountryCode {
 
   /**
-   * Alb three letter country code.
+   * Andorra (AND)
    */
-  ALB("ALB"),
+  AND("AND"),
 
   /**
-   * Are three letter country code.
+   * United Arab Emirates (ARE)
    */
   ARE("ARE"),
 
   /**
-   * Arg three letter country code.
+   * Afghanistan (AFG)
+   */
+  AFG("AFG"),
+
+  /**
+   * Antigua and Barbuda (ATG)
+   */
+  ATG("ATG"),
+
+  /**
+   * Anguilla (AIA)
+   */
+  AIA("AIA"),
+
+  /**
+   * Albania (ALB)
+   */
+  ALB("ALB"),
+
+  /**
+   * Armenia (ARM)
+   */
+  ARM("ARM"),
+
+  /**
+   * Netherlands Antilles (ANT)
+   */
+  ANT("ANT"),
+
+  /**
+   * Angola (AGO)
+   */
+  AGO("AGO"),
+
+  /**
+   * Antarctica (ATA)
+   */
+  ATA("ATA"),
+
+  /**
+   * Argentina (ARG)
    */
   ARG("ARG"),
 
   /**
-   * Aus three letter country code.
+   * American Samoa (ASM)
    */
-  AUS("AUS"),
+  ASM("ASM"),
 
   /**
-   * Aut three letter country code.
+   * Austria (AUT)
    */
   AUT("AUT"),
 
   /**
-   * Bel three letter country code.
+   * Australia (AUS)
    */
-  BEL("BEL"),
+  AUS("AUS"),
 
   /**
-   * Bgr three letter country code.
+   * Aruba (ABW)
    */
-  BGR("BGR"),
+  ABW("ABW"),
 
   /**
-   * Bhr three letter country code.
+   * Åland Islands (ALA)
    */
-  BHR("BHR"),
+  ALA("ALA"),
 
   /**
-   * Bih three letter country code.
+   * Azerbaijan (AZE)
+   */
+  AZE("AZE"),
+
+  /**
+   * Bosnia and Herzegovina (BIH)
    */
   BIH("BIH"),
 
   /**
-   * Blr three letter country code.
+   * Barbados (BRB)
    */
-  BLR("BLR"),
+  BRB("BRB"),
 
   /**
-   * Bol three letter country code.
+   * Bangladesh (BGD)
+   */
+  BGD("BGD"),
+
+  /**
+   * Belgium (BEL)
+   */
+  BEL("BEL"),
+
+  /**
+   * Burkina Faso (BFA)
+   */
+  BFA("BFA"),
+
+  /**
+   * Bulgaria (BGR)
+   */
+  BGR("BGR"),
+
+  /**
+   * Bahrain (BHR)
+   */
+  BHR("BHR"),
+
+  /**
+   * Burundi (BDI)
+   */
+  BDI("BDI"),
+
+  /**
+   * Benin (BEN)
+   */
+  BEN("BEN"),
+
+  /**
+   * Saint Barthélemy (BLM)
+   */
+  BLM("BLM"),
+
+  /**
+   * Bermuda (BMU)
+   */
+  BMU("BMU"),
+
+  /**
+   * Brunei (BRN)
+   */
+  BRN("BRN"),
+
+  /**
+   * Bolivia (BOL)
    */
   BOL("BOL"),
 
   /**
-   * Bra three letter country code.
+   * Bonaire, Sint Eustatius and Saba (BES)
+   */
+  BES("BES"),
+
+  /**
+   * Brazil (BRA)
    */
   BRA("BRA"),
 
   /**
-   * Can three letter country code.
+   * Bahamas (BHS)
+   */
+  BHS("BHS"),
+
+  /**
+   * Bhutan (BTN)
+   */
+  BTN("BTN"),
+
+  /**
+   * Bouvet Island (BVT)
+   */
+  BVT("BVT"),
+
+  /**
+   * Botswana (BWA)
+   */
+  BWA("BWA"),
+
+  /**
+   * Belarus (BLR)
+   */
+  BLR("BLR"),
+
+  /**
+   * Belize (BLZ)
+   */
+  BLZ("BLZ"),
+
+  /**
+   * Canada (CAN)
    */
   CAN("CAN"),
 
   /**
-   * Che three letter country code.
+   * Cocos Islands (CCK)
+   */
+  CCK("CCK"),
+
+  /**
+   * The Democratic Republic Of Congo (COD)
+   */
+  COD("COD"),
+
+  /**
+   * Central African Republic (CAF)
+   */
+  CAF("CAF"),
+
+  /**
+   * Congo (COG)
+   */
+  COG("COG"),
+
+  /**
+   * Switzerland (CHE)
    */
   CHE("CHE"),
 
   /**
-   * Chl three letter country code.
+   * Côte d'Ivoire (CIV)
+   */
+  CIV("CIV"),
+
+  /**
+   * Cook Islands (COK)
+   */
+  COK("COK"),
+
+  /**
+   * Chile (CHL)
    */
   CHL("CHL"),
 
   /**
-   * Chn three letter country code.
+   * Cameroon (CMR)
+   */
+  CMR("CMR"),
+
+  /**
+   * China (CHN)
    */
   CHN("CHN"),
 
   /**
-   * Col three letter country code.
+   * Colombia (COL)
    */
   COL("COL"),
 
   /**
-   * Cri three letter country code.
+   * Costa Rica (CRI)
    */
   CRI("CRI"),
 
   /**
-   * Cub three letter country code.
+   * Cuba (CUB)
    */
   CUB("CUB"),
 
   /**
-   * Cyp three letter country code.
+   * Cape Verde (CPV)
+   */
+  CPV("CPV"),
+
+  /**
+   * Curaçao (CUW)
+   */
+  CUW("CUW"),
+
+  /**
+   * Christmas Island (CXR)
+   */
+  CXR("CXR"),
+
+  /**
+   * Cyprus (CYP)
    */
   CYP("CYP"),
 
   /**
-   * Cze three letter country code.
+   * Czech Republic (CZE)
    */
   CZE("CZE"),
 
   /**
-   * Deu three letter country code.
+   * Germany (DEU)
    */
   DEU("DEU"),
 
   /**
-   * Dnk three letter country code.
+   * Djibouti (DJI)
+   */
+  DJI("DJI"),
+
+  /**
+   * Denmark (DNK)
    */
   DNK("DNK"),
 
   /**
-   * Dom three letter country code.
+   * Dominica (DMA)
+   */
+  DMA("DMA"),
+
+  /**
+   * Dominican Republic (DOM)
    */
   DOM("DOM"),
 
   /**
-   * Dza three letter country code.
+   * Algeria (DZA)
    */
   DZA("DZA"),
 
   /**
-   * Ecu three letter country code.
+   * Ecuador (ECU)
    */
   ECU("ECU"),
 
   /**
-   * Egy three letter country code.
-   */
-  EGY("EGY"),
-
-  /**
-   * Esp three letter country code.
-   */
-  ESP("ESP"),
-
-  /**
-   * Est three letter country code.
+   * Estonia (EST)
    */
   EST("EST"),
 
   /**
-   * Fin three letter country code.
+   * Egypt (EGY)
+   */
+  EGY("EGY"),
+
+  /**
+   * Western Sahara (ESH)
+   */
+  ESH("ESH"),
+
+  /**
+   * Eritrea (ERI)
+   */
+  ERI("ERI"),
+
+  /**
+   * Spain (ESP)
+   */
+  ESP("ESP"),
+
+  /**
+   * Ethiopia (ETH)
+   */
+  ETH("ETH"),
+
+  /**
+   * Finland (FIN)
    */
   FIN("FIN"),
 
   /**
-   * Fra three letter country code.
+   * Fiji (FJI)
+   */
+  FJI("FJI"),
+
+  /**
+   * Falkland Islands (FLK)
+   */
+  FLK("FLK"),
+
+  /**
+   * Micronesia (FSM)
+   */
+  FSM("FSM"),
+
+  /**
+   * Faroe Islands (FRO)
+   */
+  FRO("FRO"),
+
+  /**
+   * France (FRA)
    */
   FRA("FRA"),
 
   /**
-   * Gbr three letter country code.
+   * Gabon (GAB)
+   */
+  GAB("GAB"),
+
+  /**
+   * United Kingdom (GBR)
    */
   GBR("GBR"),
 
   /**
-   * Grc three letter country code.
+   * Grenada (GRD)
+   */
+  GRD("GRD"),
+
+  /**
+   * Georgia (GEO)
+   */
+  GEO("GEO"),
+
+  /**
+   * French Guiana (GUF)
+   */
+  GUF("GUF"),
+
+  /**
+   * Guernsey (GGY)
+   */
+  GGY("GGY"),
+
+  /**
+   * Ghana (GHA)
+   */
+  GHA("GHA"),
+
+  /**
+   * Gibraltar (GIB)
+   */
+  GIB("GIB"),
+
+  /**
+   * Greenland (GRL)
+   */
+  GRL("GRL"),
+
+  /**
+   * Gambia (GMB)
+   */
+  GMB("GMB"),
+
+  /**
+   * Guinea (GIN)
+   */
+  GIN("GIN"),
+
+  /**
+   * Guadeloupe (GLP)
+   */
+  GLP("GLP"),
+
+  /**
+   * Equatorial Guinea (GNQ)
+   */
+  GNQ("GNQ"),
+
+  /**
+   * Greece (GRC)
    */
   GRC("GRC"),
 
   /**
-   * Gtm three letter country code.
+   * South Georgia And The South Sandwich Islands (SGS)
+   */
+  SGS("SGS"),
+
+  /**
+   * Guatemala (GTM)
    */
   GTM("GTM"),
 
   /**
-   * Hkg three letter country code.
+   * Guam (GUM)
+   */
+  GUM("GUM"),
+
+  /**
+   * Guinea-Bissau (GNB)
+   */
+  GNB("GNB"),
+
+  /**
+   * Guyana (GUY)
+   */
+  GUY("GUY"),
+
+  /**
+   * Hong Kong (HKG)
    */
   HKG("HKG"),
 
   /**
-   * Hnd three letter country code.
+   * Heard Island And McDonald Islands (HMD)
+   */
+  HMD("HMD"),
+
+  /**
+   * Honduras (HND)
    */
   HND("HND"),
 
   /**
-   * Hrv three letter country code.
+   * Croatia (HRV)
    */
   HRV("HRV"),
 
   /**
-   * Hun three letter country code.
+   * Haiti (HTI)
+   */
+  HTI("HTI"),
+
+  /**
+   * Hungary (HUN)
    */
   HUN("HUN"),
 
   /**
-   * Idn three letter country code.
+   * Indonesia (IDN)
    */
   IDN("IDN"),
 
   /**
-   * Ind three letter country code.
-   */
-  IND("IND"),
-
-  /**
-   * Irl three letter country code.
+   * Ireland (IRL)
    */
   IRL("IRL"),
 
   /**
-   * Irq three letter country code.
-   */
-  IRQ("IRQ"),
-
-  /**
-   * Isl three letter country code.
-   */
-  ISL("ISL"),
-
-  /**
-   * Isr three letter country code.
+   * Israel (ISR)
    */
   ISR("ISR"),
 
   /**
-   * Ita three letter country code.
+   * Isle Of Man (IMN)
+   */
+  IMN("IMN"),
+
+  /**
+   * India (IND)
+   */
+  IND("IND"),
+
+  /**
+   * British Indian Ocean Territory (IOT)
+   */
+  IOT("IOT"),
+
+  /**
+   * Iraq (IRQ)
+   */
+  IRQ("IRQ"),
+
+  /**
+   * Iran (IRN)
+   */
+  IRN("IRN"),
+
+  /**
+   * Iceland (ISL)
+   */
+  ISL("ISL"),
+
+  /**
+   * Italy (ITA)
    */
   ITA("ITA"),
 
   /**
-   * Jor three letter country code.
+   * Jersey (JEY)
+   */
+  JEY("JEY"),
+
+  /**
+   * Jamaica (JAM)
+   */
+  JAM("JAM"),
+
+  /**
+   * Jordan (JOR)
    */
   JOR("JOR"),
 
   /**
-   * Jpn three letter country code.
+   * Japan (JPN)
    */
   JPN("JPN"),
 
   /**
-   * Kor three letter country code.
+   * Kenya (KEN)
+   */
+  KEN("KEN"),
+
+  /**
+   * Kyrgyzstan (KGZ)
+   */
+  KGZ("KGZ"),
+
+  /**
+   * Cambodia (KHM)
+   */
+  KHM("KHM"),
+
+  /**
+   * Kiribati (KIR)
+   */
+  KIR("KIR"),
+
+  /**
+   * Comoros (COM)
+   */
+  COM("COM"),
+
+  /**
+   * Saint Kitts And Nevis (KNA)
+   */
+  KNA("KNA"),
+
+  /**
+   * North Korea (PRK)
+   */
+  PRK("PRK"),
+
+  /**
+   * South Korea (KOR)
    */
   KOR("KOR"),
 
   /**
-   * Kwt three letter country code.
+   * Kuwait (KWT)
    */
   KWT("KWT"),
 
   /**
-   * Lbn three letter country code.
+   * Cayman Islands (CYM)
+   */
+  CYM("CYM"),
+
+  /**
+   * Kazakhstan (KAZ)
+   */
+  KAZ("KAZ"),
+
+  /**
+   * Laos (LAO)
+   */
+  LAO("LAO"),
+
+  /**
+   * Lebanon (LBN)
    */
   LBN("LBN"),
 
   /**
-   * Lby three letter country code.
+   * Saint Lucia (LCA)
    */
-  LBY("LBY"),
+  LCA("LCA"),
 
   /**
-   * Ltu three letter country code.
+   * Liechtenstein (LIE)
+   */
+  LIE("LIE"),
+
+  /**
+   * Sri Lanka (LKA)
+   */
+  LKA("LKA"),
+
+  /**
+   * Liberia (LBR)
+   */
+  LBR("LBR"),
+
+  /**
+   * Lesotho (LSO)
+   */
+  LSO("LSO"),
+
+  /**
+   * Lithuania (LTU)
    */
   LTU("LTU"),
 
   /**
-   * Lux three letter country code.
+   * Luxembourg (LUX)
    */
   LUX("LUX"),
 
   /**
-   * Lva three letter country code.
+   * Latvia (LVA)
    */
   LVA("LVA"),
 
   /**
-   * Mar three letter country code.
+   * Libya (LBY)
+   */
+  LBY("LBY"),
+
+  /**
+   * Morocco (MAR)
    */
   MAR("MAR"),
 
   /**
-   * Mex three letter country code.
+   * Monaco (MCO)
    */
-  MEX("MEX"),
+  MCO("MCO"),
 
   /**
-   * Mkd three letter country code.
+   * Moldova (MDA)
    */
-  MKD("MKD"),
+  MDA("MDA"),
 
   /**
-   * Mlt three letter country code.
-   */
-  MLT("MLT"),
-
-  /**
-   * Mne three letter country code.
+   * Montenegro (MNE)
    */
   MNE("MNE"),
 
   /**
-   * Mys three letter country code.
+   * Saint Martin (MAF)
+   */
+  MAF("MAF"),
+
+  /**
+   * Madagascar (MDG)
+   */
+  MDG("MDG"),
+
+  /**
+   * Marshall Islands (MHL)
+   */
+  MHL("MHL"),
+
+  /**
+   * Macedonia (MKD)
+   */
+  MKD("MKD"),
+
+  /**
+   * Mali (MLI)
+   */
+  MLI("MLI"),
+
+  /**
+   * Myanmar (MMR)
+   */
+  MMR("MMR"),
+
+  /**
+   * Mongolia (MNG)
+   */
+  MNG("MNG"),
+
+  /**
+   * Macao (MAC)
+   */
+  MAC("MAC"),
+
+  /**
+   * Northern Mariana Islands (MNP)
+   */
+  MNP("MNP"),
+
+  /**
+   * Martinique (MTQ)
+   */
+  MTQ("MTQ"),
+
+  /**
+   * Mauritania (MRT)
+   */
+  MRT("MRT"),
+
+  /**
+   * Montserrat (MSR)
+   */
+  MSR("MSR"),
+
+  /**
+   * Malta (MLT)
+   */
+  MLT("MLT"),
+
+  /**
+   * Mauritius (MUS)
+   */
+  MUS("MUS"),
+
+  /**
+   * Maldives (MDV)
+   */
+  MDV("MDV"),
+
+  /**
+   * Malawi (MWI)
+   */
+  MWI("MWI"),
+
+  /**
+   * Mexico (MEX)
+   */
+  MEX("MEX"),
+
+  /**
+   * Malaysia (MYS)
    */
   MYS("MYS"),
 
   /**
-   * Nic three letter country code.
+   * Mozambique (MOZ)
+   */
+  MOZ("MOZ"),
+
+  /**
+   * Namibia (NAM)
+   */
+  NAM("NAM"),
+
+  /**
+   * New Caledonia (NCL)
+   */
+  NCL("NCL"),
+
+  /**
+   * Niger (NER)
+   */
+  NER("NER"),
+
+  /**
+   * Norfolk Island (NFK)
+   */
+  NFK("NFK"),
+
+  /**
+   * Nigeria (NGA)
+   */
+  NGA("NGA"),
+
+  /**
+   * Nicaragua (NIC)
    */
   NIC("NIC"),
 
   /**
-   * Nld three letter country code.
+   * Netherlands (NLD)
    */
   NLD("NLD"),
 
   /**
-   * Nor three letter country code.
+   * Norway (NOR)
    */
   NOR("NOR"),
 
   /**
-   * Nzl three letter country code.
+   * Nepal (NPL)
+   */
+  NPL("NPL"),
+
+  /**
+   * Nauru (NRU)
+   */
+  NRU("NRU"),
+
+  /**
+   * Niue (NIU)
+   */
+  NIU("NIU"),
+
+  /**
+   * New Zealand (NZL)
    */
   NZL("NZL"),
 
   /**
-   * Omn three letter country code.
+   * Oman (OMN)
    */
   OMN("OMN"),
 
   /**
-   * Pan three letter country code.
+   * Panama (PAN)
    */
   PAN("PAN"),
 
   /**
-   * Per three letter country code.
+   * Peru (PER)
    */
   PER("PER"),
 
   /**
-   * Phl three letter country code.
+   * French Polynesia (PYF)
+   */
+  PYF("PYF"),
+
+  /**
+   * Papua New Guinea (PNG)
+   */
+  PNG("PNG"),
+
+  /**
+   * Philippines (PHL)
    */
   PHL("PHL"),
 
   /**
-   * Pol three letter country code.
+   * Pakistan (PAK)
+   */
+  PAK("PAK"),
+
+  /**
+   * Poland (POL)
    */
   POL("POL"),
 
   /**
-   * Pri three letter country code.
+   * Saint Pierre And Miquelon (SPM)
+   */
+  SPM("SPM"),
+
+  /**
+   * Pitcairn (PCN)
+   */
+  PCN("PCN"),
+
+  /**
+   * Puerto Rico (PRI)
    */
   PRI("PRI"),
 
   /**
-   * Prt three letter country code.
+   * Palestine (PSE)
+   */
+  PSE("PSE"),
+
+  /**
+   * Portugal (PRT)
    */
   PRT("PRT"),
 
   /**
-   * Pry three letter country code.
+   * Palau (PLW)
+   */
+  PLW("PLW"),
+
+  /**
+   * Paraguay (PRY)
    */
   PRY("PRY"),
 
   /**
-   * Qat three letter country code.
+   * Qatar (QAT)
    */
   QAT("QAT"),
 
   /**
-   * Rou three letter country code.
+   * Reunion (REU)
+   */
+  REU("REU"),
+
+  /**
+   * Romania (ROU)
    */
   ROU("ROU"),
 
   /**
-   * Rus three letter country code.
-   */
-  RUS("RUS"),
-
-  /**
-   * Sau three letter country code.
-   */
-  SAU("SAU"),
-
-  /**
-   * Sdn three letter country code.
-   */
-  SDN("SDN"),
-
-  /**
-   * Sgp three letter country code.
-   */
-  SGP("SGP"),
-
-  /**
-   * Slv three letter country code.
-   */
-  SLV("SLV"),
-
-  /**
-   * Srb three letter country code.
+   * Serbia (SRB)
    */
   SRB("SRB"),
 
   /**
-   * Svk three letter country code.
+   * Russia (RUS)
    */
-  SVK("SVK"),
+  RUS("RUS"),
 
   /**
-   * Svn three letter country code.
+   * Rwanda (RWA)
    */
-  SVN("SVN"),
+  RWA("RWA"),
 
   /**
-   * Swe three letter country code.
+   * Saudi Arabia (SAU)
+   */
+  SAU("SAU"),
+
+  /**
+   * Solomon Islands (SLB)
+   */
+  SLB("SLB"),
+
+  /**
+   * Seychelles (SYC)
+   */
+  SYC("SYC"),
+
+  /**
+   * Sudan (SDN)
+   */
+  SDN("SDN"),
+
+  /**
+   * Sweden (SWE)
    */
   SWE("SWE"),
 
   /**
-   * Syr three letter country code.
+   * Singapore (SGP)
+   */
+  SGP("SGP"),
+
+  /**
+   * Saint Helena (SHN)
+   */
+  SHN("SHN"),
+
+  /**
+   * Slovenia (SVN)
+   */
+  SVN("SVN"),
+
+  /**
+   * Svalbard And Jan Mayen (SJM)
+   */
+  SJM("SJM"),
+
+  /**
+   * Slovakia (SVK)
+   */
+  SVK("SVK"),
+
+  /**
+   * Sierra Leone (SLE)
+   */
+  SLE("SLE"),
+
+  /**
+   * San Marino (SMR)
+   */
+  SMR("SMR"),
+
+  /**
+   * Senegal (SEN)
+   */
+  SEN("SEN"),
+
+  /**
+   * Somalia (SOM)
+   */
+  SOM("SOM"),
+
+  /**
+   * Suriname (SUR)
+   */
+  SUR("SUR"),
+
+  /**
+   * South Sudan (SSD)
+   */
+  SSD("SSD"),
+
+  /**
+   * Sao Tome And Principe (STP)
+   */
+  STP("STP"),
+
+  /**
+   * El Salvador (SLV)
+   */
+  SLV("SLV"),
+
+  /**
+   * Sint Maarten (Dutch part) (SXM)
+   */
+  SXM("SXM"),
+
+  /**
+   * Syria (SYR)
    */
   SYR("SYR"),
 
   /**
-   * Tha three letter country code.
+   * Swaziland (SWZ)
+   */
+  SWZ("SWZ"),
+
+  /**
+   * Turks And Caicos Islands (TCA)
+   */
+  TCA("TCA"),
+
+  /**
+   * Chad (TCD)
+   */
+  TCD("TCD"),
+
+  /**
+   * French Southern Territories (ATF)
+   */
+  ATF("ATF"),
+
+  /**
+   * Togo (TGO)
+   */
+  TGO("TGO"),
+
+  /**
+   * Thailand (THA)
    */
   THA("THA"),
 
   /**
-   * Tun three letter country code.
+   * Tajikistan (TJK)
+   */
+  TJK("TJK"),
+
+  /**
+   * Tokelau (TKL)
+   */
+  TKL("TKL"),
+
+  /**
+   * Timor-Leste (TLS)
+   */
+  TLS("TLS"),
+
+  /**
+   * Turkmenistan (TKM)
+   */
+  TKM("TKM"),
+
+  /**
+   * Tunisia (TUN)
    */
   TUN("TUN"),
 
   /**
-   * Tur three letter country code.
+   * Tonga (TON)
+   */
+  TON("TON"),
+
+  /**
+   * Turkey (TUR)
    */
   TUR("TUR"),
 
   /**
-   * Twn three letter country code.
+   * Trinidad and Tobago (TTO)
+   */
+  TTO("TTO"),
+
+  /**
+   * Tuvalu (TUV)
+   */
+  TUV("TUV"),
+
+  /**
+   * Taiwan (TWN)
    */
   TWN("TWN"),
 
   /**
-   * Ukr three letter country code.
+   * Tanzania (TZA)
+   */
+  TZA("TZA"),
+
+  /**
+   * Ukraine (UKR)
    */
   UKR("UKR"),
 
   /**
-   * Ury three letter country code.
+   * Uganda (UGA)
    */
-  URY("URY"),
+  UGA("UGA"),
 
   /**
-   * Usa three letter country code.
+   * United States Minor Outlying Islands (UMI)
+   */
+  UMI("UMI"),
+
+  /**
+   * United States (USA)
    */
   USA("USA"),
 
   /**
-   * Ven three letter country code.
+   * Uruguay (URY)
+   */
+  URY("URY"),
+
+  /**
+   * Uzbekistan (UZB)
+   */
+  UZB("UZB"),
+
+  /**
+   * Vatican (VAT)
+   */
+  VAT("VAT"),
+
+  /**
+   * Saint Vincent And The Grenadines (VCT)
+   */
+  VCT("VCT"),
+
+  /**
+   * Venezuela (VEN)
    */
   VEN("VEN"),
 
   /**
-   * Vnm three letter country code.
+   * British Virgin Islands (VGB)
+   */
+  VGB("VGB"),
+
+  /**
+   * U.S. Virgin Islands (VIR)
+   */
+  VIR("VIR"),
+
+  /**
+   * Vietnam (VNM)
    */
   VNM("VNM"),
 
   /**
-   * Yem three letter country code.
+   * Vanuatu (VUT)
+   */
+  VUT("VUT"),
+
+  /**
+   * Wallis And Futuna (WLF)
+   */
+  WLF("WLF"),
+
+  /**
+   * Samoa (WSM)
+   */
+  WSM("WSM"),
+
+  /**
+   * Yemen (YEM)
    */
   YEM("YEM"),
 
   /**
-   * Zaf three letter country code.
+   * Mayotte (MYT)
    */
-  ZAF("ZAF");
+  MYT("MYT"),
+
+  /**
+   * South Africa (ZAF)
+   */
+  ZAF("ZAF"),
+
+  /**
+   * Zambia (ZMB)
+   */
+  ZMB("ZMB"),
+
+  /**
+   * Zimbabwe (ZWE)
+   */
+  ZWE("ZWE");
 
   private String value;
 
@@ -501,7 +1276,7 @@ public enum ThreeLetterCountryCode {
   @Override
   @JsonValue
   public String toString() {
-    return String.valueOf(value);
+    return value;
   }
 
   /**
@@ -511,10 +1286,10 @@ public enum ThreeLetterCountryCode {
    */
   public Locale toLocale() {
     return Arrays
-        .stream(Locale.getAvailableLocales())
-        .filter(locale -> value.equalsIgnoreCase(locale.getISO3Country()))
+        .stream(Locale.getISOCountries())
+        .filter(iso -> value.equalsIgnoreCase(new Locale("", iso).getISO3Country()))
         .findAny()
-        .map(locale -> new Locale("", locale.getCountry()))
+        .map(iso -> new Locale("", iso))
         .orElse(null);
   }
 
@@ -526,8 +1301,17 @@ public enum ThreeLetterCountryCode {
    */
   @JsonCreator
   public static ThreeLetterCountryCode fromValue(String text) {
+    String source = text != null ? text.trim() : null;
+    if (source == null || source.length() < 2) {
+      return null;
+    }
+    if (source.length() != 3) {
+      TwoLetterCountryCode code = TwoLetterCountryCode.fromValue(source);
+      return code != null ? fromLocale(code.toLocale()) : null;
+    }
+    source = text.substring(0, 3).toUpperCase();
     for (ThreeLetterCountryCode b : ThreeLetterCountryCode.values()) {
-      if (String.valueOf(b.value).equals(text)) {
+      if (b.value.equals(source)) {
         return b;
       }
     }

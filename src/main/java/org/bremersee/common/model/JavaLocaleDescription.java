@@ -34,7 +34,7 @@ public class JavaLocaleDescription implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty(value = "locale", required = true)
-  private JavaLocale locale;
+  private String locale;
 
   @JsonProperty(value = "description", required = true)
   @JacksonXmlProperty(localName = "description")
@@ -47,7 +47,7 @@ public class JavaLocaleDescription implements Serializable {
    * @param description the description
    */
   @Builder
-  public JavaLocaleDescription(JavaLocale locale, String description) {
+  public JavaLocaleDescription(String locale, String description) {
     this.locale = locale;
     this.description = description;
   }
@@ -59,7 +59,7 @@ public class JavaLocaleDescription implements Serializable {
    */
   @ApiModelProperty(required = true, value = "The locale.")
   @NotNull
-  public JavaLocale getLocale() {
+  public String getLocale() {
     return locale;
   }
 
@@ -68,7 +68,7 @@ public class JavaLocaleDescription implements Serializable {
    *
    * @param locale the locale
    */
-  public void setLocale(JavaLocale locale) {
+  public void setLocale(String locale) {
     this.locale = locale;
   }
 

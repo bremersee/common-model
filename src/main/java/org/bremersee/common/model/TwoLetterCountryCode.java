@@ -8,8 +8,8 @@ package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.Arrays;
 import java.util.Locale;
+import java.util.regex.Pattern;
 import org.springframework.util.StringUtils;
 
 /**
@@ -18,479 +18,1259 @@ import org.springframework.util.StringUtils;
 public enum TwoLetterCountryCode {
 
   /**
-   * Ae two letter country code.
+   * Andorra (AD)
+   */
+  AD("AD"),
+
+  /**
+   * United Arab Emirates (AE)
    */
   AE("AE"),
 
   /**
-   * Al two letter country code.
+   * Afghanistan (AF)
+   */
+  AF("AF"),
+
+  /**
+   * Antigua and Barbuda (AG)
+   */
+  AG("AG"),
+
+  /**
+   * Anguilla (AI)
+   */
+  AI("AI"),
+
+  /**
+   * Albania (AL)
    */
   AL("AL"),
 
   /**
-   * Ar two letter country code.
+   * Armenia (AM)
+   */
+  AM("AM"),
+
+  /**
+   * Netherlands Antilles (AN)
+   */
+  AN("AN"),
+
+  /**
+   * Angola (AO)
+   */
+  AO("AO"),
+
+  /**
+   * Antarctica (AQ)
+   */
+  AQ("AQ"),
+
+  /**
+   * Argentina (AR)
    */
   AR("AR"),
 
   /**
-   * At two letter country code.
+   * American Samoa (AS)
+   */
+  AS("AS"),
+
+  /**
+   * Austria (AT)
    */
   AT("AT"),
 
   /**
-   * Au two letter country code.
+   * Australia (AU)
    */
   AU("AU"),
 
   /**
-   * Ba two letter country code.
+   * Aruba (AW)
+   */
+  AW("AW"),
+
+  /**
+   * Åland Islands (AX)
+   */
+  AX("AX"),
+
+  /**
+   * Azerbaijan (AZ)
+   */
+  AZ("AZ"),
+
+  /**
+   * Bosnia and Herzegovina (BA)
    */
   BA("BA"),
 
   /**
-   * Be two letter country code.
+   * Barbados (BB)
+   */
+  BB("BB"),
+
+  /**
+   * Bangladesh (BD)
+   */
+  BD("BD"),
+
+  /**
+   * Belgium (BE)
    */
   BE("BE"),
 
   /**
-   * Bg two letter country code.
+   * Burkina Faso (BF)
+   */
+  BF("BF"),
+
+  /**
+   * Bulgaria (BG)
    */
   BG("BG"),
 
   /**
-   * Bh two letter country code.
+   * Bahrain (BH)
    */
   BH("BH"),
 
   /**
-   * Bo two letter country code.
+   * Burundi (BI)
+   */
+  BI("BI"),
+
+  /**
+   * Benin (BJ)
+   */
+  BJ("BJ"),
+
+  /**
+   * Saint Barthélemy (BL)
+   */
+  BL("BL"),
+
+  /**
+   * Bermuda (BM)
+   */
+  BM("BM"),
+
+  /**
+   * Brunei (BN)
+   */
+  BN("BN"),
+
+  /**
+   * Bolivia (BO)
    */
   BO("BO"),
 
   /**
-   * Br two letter country code.
+   * Bonaire, Sint Eustatius and Saba (BQ)
+   */
+  BQ("BQ"),
+
+  /**
+   * Brazil (BR)
    */
   BR("BR"),
 
   /**
-   * By two letter country code.
+   * Bahamas (BS)
+   */
+  BS("BS"),
+
+  /**
+   * Bhutan (BT)
+   */
+  BT("BT"),
+
+  /**
+   * Bouvet Island (BV)
+   */
+  BV("BV"),
+
+  /**
+   * Botswana (BW)
+   */
+  BW("BW"),
+
+  /**
+   * Belarus (BY)
    */
   BY("BY"),
 
   /**
-   * Ca two letter country code.
+   * Belize (BZ)
+   */
+  BZ("BZ"),
+
+  /**
+   * Canada (CA)
    */
   CA("CA"),
 
   /**
-   * Ch two letter country code.
+   * Cocos Islands (CC)
+   */
+  CC("CC"),
+
+  /**
+   * The Democratic Republic Of Congo (CD)
+   */
+  CD("CD"),
+
+  /**
+   * Central African Republic (CF)
+   */
+  CF("CF"),
+
+  /**
+   * Congo (CG)
+   */
+  CG("CG"),
+
+  /**
+   * Switzerland (CH)
    */
   CH("CH"),
 
   /**
-   * Cl two letter country code.
+   * Côte d'Ivoire (CI)
+   */
+  CI("CI"),
+
+  /**
+   * Cook Islands (CK)
+   */
+  CK("CK"),
+
+  /**
+   * Chile (CL)
    */
   CL("CL"),
 
   /**
-   * Cn two letter country code.
+   * Cameroon (CM)
+   */
+  CM("CM"),
+
+  /**
+   * China (CN)
    */
   CN("CN"),
 
   /**
-   * Co two letter country code.
+   * Colombia (CO)
    */
   CO("CO"),
 
   /**
-   * Cr two letter country code.
+   * Costa Rica (CR)
    */
   CR("CR"),
 
   /**
-   * Cu two letter country code.
+   * Serbia and Montenegro (CS)
+   */
+  CS("CS"),
+
+  /**
+   * Cuba (CU)
    */
   CU("CU"),
 
   /**
-   * Cy two letter country code.
+   * Cape Verde (CV)
+   */
+  CV("CV"),
+
+  /**
+   * Curaçao (CW)
+   */
+  CW("CW"),
+
+  /**
+   * Christmas Island (CX)
+   */
+  CX("CX"),
+
+  /**
+   * Cyprus (CY)
    */
   CY("CY"),
 
   /**
-   * Cz two letter country code.
+   * Czech Republic (CZ)
    */
   CZ("CZ"),
 
   /**
-   * De two letter country code.
+   * Germany (DE)
    */
   DE("DE"),
 
   /**
-   * Dk two letter country code.
+   * Djibouti (DJ)
+   */
+  DJ("DJ"),
+
+  /**
+   * Denmark (DK)
    */
   DK("DK"),
 
   /**
-   * Do two letter country code.
+   * Dominica (DM)
+   */
+  DM("DM"),
+
+  /**
+   * Dominican Republic (DO)
    */
   DO("DO"),
 
   /**
-   * Dz two letter country code.
+   * Algeria (DZ)
    */
   DZ("DZ"),
 
   /**
-   * Ec two letter country code.
+   * Ecuador (EC)
    */
   EC("EC"),
 
   /**
-   * Ee two letter country code.
+   * Estonia (EE)
    */
   EE("EE"),
 
   /**
-   * Eg two letter country code.
+   * Egypt (EG)
    */
   EG("EG"),
 
   /**
-   * Es two letter country code.
+   * Western Sahara (EH)
+   */
+  EH("EH"),
+
+  /**
+   * Eritrea (ER)
+   */
+  ER("ER"),
+
+  /**
+   * Spain (ES)
    */
   ES("ES"),
 
   /**
-   * Fi two letter country code.
+   * Ethiopia (ET)
+   */
+  ET("ET"),
+
+  /**
+   * Finland (FI)
    */
   FI("FI"),
 
   /**
-   * Fr two letter country code.
+   * Fiji (FJ)
+   */
+  FJ("FJ"),
+
+  /**
+   * Falkland Islands (FK)
+   */
+  FK("FK"),
+
+  /**
+   * Micronesia (FM)
+   */
+  FM("FM"),
+
+  /**
+   * Faroe Islands (FO)
+   */
+  FO("FO"),
+
+  /**
+   * France (FR)
    */
   FR("FR"),
 
   /**
-   * Gb two letter country code.
+   * Gabon (GA)
+   */
+  GA("GA"),
+
+  /**
+   * United Kingdom (GB)
    */
   GB("GB"),
 
   /**
-   * Gr two letter country code.
+   * Grenada (GD)
+   */
+  GD("GD"),
+
+  /**
+   * Georgia (GE)
+   */
+  GE("GE"),
+
+  /**
+   * French Guiana (GF)
+   */
+  GF("GF"),
+
+  /**
+   * Guernsey (GG)
+   */
+  GG("GG"),
+
+  /**
+   * Ghana (GH)
+   */
+  GH("GH"),
+
+  /**
+   * Gibraltar (GI)
+   */
+  GI("GI"),
+
+  /**
+   * Greenland (GL)
+   */
+  GL("GL"),
+
+  /**
+   * Gambia (GM)
+   */
+  GM("GM"),
+
+  /**
+   * Guinea (GN)
+   */
+  GN("GN"),
+
+  /**
+   * Guadeloupe (GP)
+   */
+  GP("GP"),
+
+  /**
+   * Equatorial Guinea (GQ)
+   */
+  GQ("GQ"),
+
+  /**
+   * Greece (GR)
    */
   GR("GR"),
 
   /**
-   * Gt two letter country code.
+   * South Georgia And The South Sandwich Islands (GS)
+   */
+  GS("GS"),
+
+  /**
+   * Guatemala (GT)
    */
   GT("GT"),
 
   /**
-   * Hk two letter country code.
+   * Guam (GU)
+   */
+  GU("GU"),
+
+  /**
+   * Guinea-Bissau (GW)
+   */
+  GW("GW"),
+
+  /**
+   * Guyana (GY)
+   */
+  GY("GY"),
+
+  /**
+   * Hong Kong (HK)
    */
   HK("HK"),
 
   /**
-   * Hn two letter country code.
+   * Heard Island And McDonald Islands (HM)
+   */
+  HM("HM"),
+
+  /**
+   * Honduras (HN)
    */
   HN("HN"),
 
   /**
-   * Hr two letter country code.
+   * Croatia (HR)
    */
   HR("HR"),
 
   /**
-   * Hu two letter country code.
+   * Haiti (HT)
+   */
+  HT("HT"),
+
+  /**
+   * Hungary (HU)
    */
   HU("HU"),
 
   /**
-   * Id two letter country code.
+   * Indonesia (ID)
    */
   ID("ID"),
 
   /**
-   * Ie two letter country code.
+   * Ireland (IE)
    */
   IE("IE"),
 
   /**
-   * Il two letter country code.
+   * Israel (IL)
    */
   IL("IL"),
 
   /**
-   * In two letter country code.
+   * Isle Of Man (IM)
+   */
+  IM("IM"),
+
+  /**
+   * India (IN)
    */
   IN("IN"),
 
   /**
-   * Iq two letter country code.
+   * British Indian Ocean Territory (IO)
+   */
+  IO("IO"),
+
+  /**
+   * Iraq (IQ)
    */
   IQ("IQ"),
 
   /**
-   * Is two letter country code.
+   * Iran (IR)
+   */
+  IR("IR"),
+
+  /**
+   * Iceland (IS)
    */
   IS("IS"),
 
   /**
-   * It two letter country code.
+   * Italy (IT)
    */
   IT("IT"),
 
   /**
-   * Jo two letter country code.
+   * Jersey (JE)
+   */
+  JE("JE"),
+
+  /**
+   * Jamaica (JM)
+   */
+  JM("JM"),
+
+  /**
+   * Jordan (JO)
    */
   JO("JO"),
 
   /**
-   * Jp two letter country code.
+   * Japan (JP)
    */
   JP("JP"),
 
   /**
-   * Kr two letter country code.
+   * Kenya (KE)
+   */
+  KE("KE"),
+
+  /**
+   * Kyrgyzstan (KG)
+   */
+  KG("KG"),
+
+  /**
+   * Cambodia (KH)
+   */
+  KH("KH"),
+
+  /**
+   * Kiribati (KI)
+   */
+  KI("KI"),
+
+  /**
+   * Comoros (KM)
+   */
+  KM("KM"),
+
+  /**
+   * Saint Kitts And Nevis (KN)
+   */
+  KN("KN"),
+
+  /**
+   * North Korea (KP)
+   */
+  KP("KP"),
+
+  /**
+   * South Korea (KR)
    */
   KR("KR"),
 
   /**
-   * Kw two letter country code.
+   * Kuwait (KW)
    */
   KW("KW"),
 
   /**
-   * Lb two letter country code.
+   * Cayman Islands (KY)
+   */
+  KY("KY"),
+
+  /**
+   * Kazakhstan (KZ)
+   */
+  KZ("KZ"),
+
+  /**
+   * Laos (LA)
+   */
+  LA("LA"),
+
+  /**
+   * Lebanon (LB)
    */
   LB("LB"),
 
   /**
-   * Lt two letter country code.
+   * Saint Lucia (LC)
+   */
+  LC("LC"),
+
+  /**
+   * Liechtenstein (LI)
+   */
+  LI("LI"),
+
+  /**
+   * Sri Lanka (LK)
+   */
+  LK("LK"),
+
+  /**
+   * Liberia (LR)
+   */
+  LR("LR"),
+
+  /**
+   * Lesotho (LS)
+   */
+  LS("LS"),
+
+  /**
+   * Lithuania (LT)
    */
   LT("LT"),
 
   /**
-   * Lu two letter country code.
+   * Luxembourg (LU)
    */
   LU("LU"),
 
   /**
-   * Lv two letter country code.
+   * Latvia (LV)
    */
   LV("LV"),
 
   /**
-   * Ly two letter country code.
+   * Libya (LY)
    */
   LY("LY"),
 
   /**
-   * Ma two letter country code.
+   * Morocco (MA)
    */
   MA("MA"),
 
   /**
-   * Me two letter country code.
+   * Monaco (MC)
+   */
+  MC("MC"),
+
+  /**
+   * Moldova (MD)
+   */
+  MD("MD"),
+
+  /**
+   * Montenegro (ME)
    */
   ME("ME"),
 
   /**
-   * Mk two letter country code.
+   * Saint Martin (MF)
+   */
+  MF("MF"),
+
+  /**
+   * Madagascar (MG)
+   */
+  MG("MG"),
+
+  /**
+   * Marshall Islands (MH)
+   */
+  MH("MH"),
+
+  /**
+   * Macedonia (MK)
    */
   MK("MK"),
 
   /**
-   * Mt two letter country code.
+   * Mali (ML)
+   */
+  ML("ML"),
+
+  /**
+   * Myanmar (MM)
+   */
+  MM("MM"),
+
+  /**
+   * Mongolia (MN)
+   */
+  MN("MN"),
+
+  /**
+   * Macao (MO)
+   */
+  MO("MO"),
+
+  /**
+   * Northern Mariana Islands (MP)
+   */
+  MP("MP"),
+
+  /**
+   * Martinique (MQ)
+   */
+  MQ("MQ"),
+
+  /**
+   * Mauritania (MR)
+   */
+  MR("MR"),
+
+  /**
+   * Montserrat (MS)
+   */
+  MS("MS"),
+
+  /**
+   * Malta (MT)
    */
   MT("MT"),
 
   /**
-   * Mx two letter country code.
+   * Mauritius (MU)
+   */
+  MU("MU"),
+
+  /**
+   * Maldives (MV)
+   */
+  MV("MV"),
+
+  /**
+   * Malawi (MW)
+   */
+  MW("MW"),
+
+  /**
+   * Mexico (MX)
    */
   MX("MX"),
 
   /**
-   * My two letter country code.
+   * Malaysia (MY)
    */
   MY("MY"),
 
   /**
-   * Ni two letter country code.
+   * Mozambique (MZ)
+   */
+  MZ("MZ"),
+
+  /**
+   * Namibia (NA)
+   */
+  NA("NA"),
+
+  /**
+   * New Caledonia (NC)
+   */
+  NC("NC"),
+
+  /**
+   * Niger (NE)
+   */
+  NE("NE"),
+
+  /**
+   * Norfolk Island (NF)
+   */
+  NF("NF"),
+
+  /**
+   * Nigeria (NG)
+   */
+  NG("NG"),
+
+  /**
+   * Nicaragua (NI)
    */
   NI("NI"),
 
   /**
-   * Nl two letter country code.
+   * Netherlands (NL)
    */
   NL("NL"),
 
   /**
-   * No two letter country code.
+   * Norway (NO)
    */
   NO("NO"),
 
   /**
-   * Nz two letter country code.
+   * Nepal (NP)
+   */
+  NP("NP"),
+
+  /**
+   * Nauru (NR)
+   */
+  NR("NR"),
+
+  /**
+   * Niue (NU)
+   */
+  NU("NU"),
+
+  /**
+   * New Zealand (NZ)
    */
   NZ("NZ"),
 
   /**
-   * Om two letter country code.
+   * Oman (OM)
    */
   OM("OM"),
 
   /**
-   * Pa two letter country code.
+   * Panama (PA)
    */
   PA("PA"),
 
   /**
-   * Pe two letter country code.
+   * Peru (PE)
    */
   PE("PE"),
 
   /**
-   * Ph two letter country code.
+   * French Polynesia (PF)
+   */
+  PF("PF"),
+
+  /**
+   * Papua New Guinea (PG)
+   */
+  PG("PG"),
+
+  /**
+   * Philippines (PH)
    */
   PH("PH"),
 
   /**
-   * Pl two letter country code.
+   * Pakistan (PK)
+   */
+  PK("PK"),
+
+  /**
+   * Poland (PL)
    */
   PL("PL"),
 
   /**
-   * Pr two letter country code.
+   * Saint Pierre And Miquelon (PM)
+   */
+  PM("PM"),
+
+  /**
+   * Pitcairn (PN)
+   */
+  PN("PN"),
+
+  /**
+   * Puerto Rico (PR)
    */
   PR("PR"),
 
   /**
-   * Pt two letter country code.
+   * Palestine (PS)
+   */
+  PS("PS"),
+
+  /**
+   * Portugal (PT)
    */
   PT("PT"),
 
   /**
-   * Py two letter country code.
+   * Palau (PW)
+   */
+  PW("PW"),
+
+  /**
+   * Paraguay (PY)
    */
   PY("PY"),
 
   /**
-   * Qa two letter country code.
+   * Qatar (QA)
    */
   QA("QA"),
 
   /**
-   * Ro two letter country code.
+   * Reunion (RE)
+   */
+  RE("RE"),
+
+  /**
+   * Romania (RO)
    */
   RO("RO"),
 
   /**
-   * Rs two letter country code.
+   * Serbia (RS)
    */
   RS("RS"),
 
   /**
-   * Ru two letter country code.
+   * Russia (RU)
    */
   RU("RU"),
 
   /**
-   * Sa two letter country code.
+   * Rwanda (RW)
+   */
+  RW("RW"),
+
+  /**
+   * Saudi Arabia (SA)
    */
   SA("SA"),
 
   /**
-   * Sd two letter country code.
+   * Solomon Islands (SB)
+   */
+  SB("SB"),
+
+  /**
+   * Seychelles (SC)
+   */
+  SC("SC"),
+
+  /**
+   * Sudan (SD)
    */
   SD("SD"),
 
   /**
-   * Se two letter country code.
+   * Sweden (SE)
    */
   SE("SE"),
 
   /**
-   * Sg two letter country code.
+   * Singapore (SG)
    */
   SG("SG"),
 
   /**
-   * Si two letter country code.
+   * Saint Helena (SH)
+   */
+  SH("SH"),
+
+  /**
+   * Slovenia (SI)
    */
   SI("SI"),
 
   /**
-   * Sk two letter country code.
+   * Svalbard And Jan Mayen (SJ)
+   */
+  SJ("SJ"),
+
+  /**
+   * Slovakia (SK)
    */
   SK("SK"),
 
   /**
-   * Sv two letter country code.
+   * Sierra Leone (SL)
+   */
+  SL("SL"),
+
+  /**
+   * San Marino (SM)
+   */
+  SM("SM"),
+
+  /**
+   * Senegal (SN)
+   */
+  SN("SN"),
+
+  /**
+   * Somalia (SO)
+   */
+  SO("SO"),
+
+  /**
+   * Suriname (SR)
+   */
+  SR("SR"),
+
+  /**
+   * South Sudan (SS)
+   */
+  SS("SS"),
+
+  /**
+   * Sao Tome And Principe (ST)
+   */
+  ST("ST"),
+
+  /**
+   * El Salvador (SV)
    */
   SV("SV"),
 
   /**
-   * Sy two letter country code.
+   * Sint Maarten (Dutch part) (SX)
+   */
+  SX("SX"),
+
+  /**
+   * Syria (SY)
    */
   SY("SY"),
 
   /**
-   * Th two letter country code.
+   * Swaziland (SZ)
+   */
+  SZ("SZ"),
+
+  /**
+   * Turks And Caicos Islands (TC)
+   */
+  TC("TC"),
+
+  /**
+   * Chad (TD)
+   */
+  TD("TD"),
+
+  /**
+   * French Southern Territories (TF)
+   */
+  TF("TF"),
+
+  /**
+   * Togo (TG)
+   */
+  TG("TG"),
+
+  /**
+   * Thailand (TH)
    */
   TH("TH"),
 
   /**
-   * Tn two letter country code.
+   * Tajikistan (TJ)
+   */
+  TJ("TJ"),
+
+  /**
+   * Tokelau (TK)
+   */
+  TK("TK"),
+
+  /**
+   * Timor-Leste (TL)
+   */
+  TL("TL"),
+
+  /**
+   * Turkmenistan (TM)
+   */
+  TM("TM"),
+
+  /**
+   * Tunisia (TN)
    */
   TN("TN"),
 
   /**
-   * Tr two letter country code.
+   * Tonga (TO)
+   */
+  TO("TO"),
+
+  /**
+   * Turkey (TR)
    */
   TR("TR"),
 
   /**
-   * Tw two letter country code.
+   * Trinidad and Tobago (TT)
+   */
+  TT("TT"),
+
+  /**
+   * Tuvalu (TV)
+   */
+  TV("TV"),
+
+  /**
+   * Taiwan (TW)
    */
   TW("TW"),
 
   /**
-   * Ua two letter country code.
+   * Tanzania (TZ)
+   */
+  TZ("TZ"),
+
+  /**
+   * Ukraine (UA)
    */
   UA("UA"),
 
   /**
-   * Us two letter country code.
+   * Uganda (UG)
+   */
+  UG("UG"),
+
+  /**
+   * United States Minor Outlying Islands (UM)
+   */
+  UM("UM"),
+
+  /**
+   * United States (US)
    */
   US("US"),
 
   /**
-   * Uy two letter country code.
+   * Uruguay (UY)
    */
   UY("UY"),
 
   /**
-   * Ve two letter country code.
+   * Uzbekistan (UZ)
+   */
+  UZ("UZ"),
+
+  /**
+   * Vatican (VA)
+   */
+  VA("VA"),
+
+  /**
+   * Saint Vincent And The Grenadines (VC)
+   */
+  VC("VC"),
+
+  /**
+   * Venezuela (VE)
    */
   VE("VE"),
 
   /**
-   * Vn two letter country code.
+   * British Virgin Islands (VG)
+   */
+  VG("VG"),
+
+  /**
+   * U.S. Virgin Islands (VI)
+   */
+  VI("VI"),
+
+  /**
+   * Vietnam (VN)
    */
   VN("VN"),
 
   /**
-   * Ye two letter country code.
+   * Vanuatu (VU)
+   */
+  VU("VU"),
+
+  /**
+   * Wallis And Futuna (WF)
+   */
+  WF("WF"),
+
+  /**
+   * Samoa (WS)
+   */
+  WS("WS"),
+
+  /**
+   * Yemen (YE)
    */
   YE("YE"),
 
   /**
-   * Za two letter country code.
+   * Mayotte (YT)
    */
-  ZA("ZA");
+  YT("YT"),
+
+  /**
+   * South Africa (ZA)
+   */
+  ZA("ZA"),
+
+  /**
+   * Zambia (ZM)
+   */
+  ZM("ZM"),
+
+  /**
+   * Zimbabwe (ZW)
+   */
+  ZW("ZW");
 
   private String value;
 
@@ -501,7 +1281,7 @@ public enum TwoLetterCountryCode {
   @Override
   @JsonValue
   public String toString() {
-    return String.valueOf(value);
+    return value;
   }
 
   /**
@@ -510,12 +1290,7 @@ public enum TwoLetterCountryCode {
    * @return the locale
    */
   public Locale toLocale() {
-    return Arrays
-        .stream(Locale.getAvailableLocales())
-        .filter(locale -> value.equalsIgnoreCase(locale.getCountry()))
-        .findAny()
-        .map(locale -> new Locale("", locale.getCountry()))
-        .orElse(null);
+    return new Locale("", value);
   }
 
   /**
@@ -526,12 +1301,42 @@ public enum TwoLetterCountryCode {
    */
   @JsonCreator
   public static TwoLetterCountryCode fromValue(String text) {
+    return fromValue(text, null);
+  }
+
+  /**
+   * From value two letter country code.
+   *
+   * @param text        the text
+   * @param defaultCode the default code
+   * @return the two letter country code
+   */
+  public static TwoLetterCountryCode fromValue(String text, TwoLetterCountryCode defaultCode) {
+    String source = text != null ? text.trim() : null;
+    if (source == null || source.length() < 2) {
+      return defaultCode;
+    }
+    source = source.replace("-", "_");
+    int index = source.indexOf('_');
+    if (source.length() == 3 && index < 0) {
+      ThreeLetterCountryCode threeLetter = ThreeLetterCountryCode.fromValue(text);
+      if (threeLetter != null) {
+        return fromLocale(threeLetter.toLocale(), defaultCode);
+      }
+    }
+    if (index >= 0) {
+      String[] parts = source.split(Pattern.quote("_"));
+      if (parts.length > 1) {
+        return fromValue(parts[1], defaultCode);
+      }
+    }
+    source = source.substring(0, 2).toUpperCase();
     for (TwoLetterCountryCode b : TwoLetterCountryCode.values()) {
-      if (String.valueOf(b.value).equals(text)) {
+      if (b.value.equals(source)) {
         return b;
       }
     }
-    return null;
+    return defaultCode;
   }
 
   /**
@@ -541,10 +1346,21 @@ public enum TwoLetterCountryCode {
    * @return the two letter country code
    */
   public static TwoLetterCountryCode fromLocale(Locale locale) {
+    return fromLocale(locale, null);
+  }
+
+  /**
+   * From locale.
+   *
+   * @param locale      the locale
+   * @param defaultCode the default code
+   * @return the two letter country code
+   */
+  public static TwoLetterCountryCode fromLocale(Locale locale, TwoLetterCountryCode defaultCode) {
     if (locale == null || !StringUtils.hasText(locale.getCountry())) {
-      return null;
+      return defaultCode;
     }
-    return fromValue(locale.getCountry());
+    return fromValue(locale.getCountry(), defaultCode);
   }
 
 }
