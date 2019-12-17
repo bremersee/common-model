@@ -8,8 +8,8 @@ package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.Arrays;
 import java.util.Locale;
+import java.util.regex.Pattern;
 import org.springframework.util.StringUtils;
 
 /**
@@ -18,235 +18,955 @@ import org.springframework.util.StringUtils;
 <span class="fc" id="L18">public enum TwoLetterLanguageCode {</span>
 
   /**
-   * Ar two letter language code.
+   * Afar (aa)
    */
-<span class="fc" id="L23">  AR(&quot;ar&quot;),</span>
+<span class="fc" id="L23">  AA(&quot;aa&quot;),</span>
 
   /**
-   * Be two letter language code.
+   * Abkhazian (ab)
    */
-<span class="fc" id="L28">  BE(&quot;be&quot;),</span>
+<span class="fc" id="L28">  AB(&quot;ab&quot;),</span>
 
   /**
-   * Bg two letter language code.
+   * Avestan (ae)
    */
-<span class="fc" id="L33">  BG(&quot;bg&quot;),</span>
+<span class="fc" id="L33">  AE(&quot;ae&quot;),</span>
 
   /**
-   * Ca two letter language code.
+   * Afrikaans (af)
    */
-<span class="fc" id="L38">  CA(&quot;ca&quot;),</span>
+<span class="fc" id="L38">  AF(&quot;af&quot;),</span>
 
   /**
-   * Cs two letter language code.
+   * Akan (ak)
    */
-<span class="fc" id="L43">  CS(&quot;cs&quot;),</span>
+<span class="fc" id="L43">  AK(&quot;ak&quot;),</span>
 
   /**
-   * Da two letter language code.
+   * Amharic (am)
    */
-<span class="fc" id="L48">  DA(&quot;da&quot;),</span>
+<span class="fc" id="L48">  AM(&quot;am&quot;),</span>
 
   /**
-   * De two letter language code.
+   * Aragonese (an)
    */
-<span class="fc" id="L53">  DE(&quot;de&quot;),</span>
+<span class="fc" id="L53">  AN(&quot;an&quot;),</span>
 
   /**
-   * El two letter language code.
+   * Arabic (ar)
    */
-<span class="fc" id="L58">  EL(&quot;el&quot;),</span>
+<span class="fc" id="L58">  AR(&quot;ar&quot;),</span>
 
   /**
-   * En two letter language code.
+   * Assamese (as)
    */
-<span class="fc" id="L63">  EN(&quot;en&quot;),</span>
+<span class="fc" id="L63">  AS(&quot;as&quot;),</span>
 
   /**
-   * Es two letter language code.
+   * Avaric (av)
    */
-<span class="fc" id="L68">  ES(&quot;es&quot;),</span>
+<span class="fc" id="L68">  AV(&quot;av&quot;),</span>
 
   /**
-   * Et two letter language code.
+   * Aymara (ay)
    */
-<span class="fc" id="L73">  ET(&quot;et&quot;),</span>
+<span class="fc" id="L73">  AY(&quot;ay&quot;),</span>
 
   /**
-   * Fi two letter language code.
+   * Azerbaijani (az)
    */
-<span class="fc" id="L78">  FI(&quot;fi&quot;),</span>
+<span class="fc" id="L78">  AZ(&quot;az&quot;),</span>
 
   /**
-   * Fr two letter language code.
+   * Bashkir (ba)
    */
-<span class="fc" id="L83">  FR(&quot;fr&quot;),</span>
+<span class="fc" id="L83">  BA(&quot;ba&quot;),</span>
 
   /**
-   * Ga two letter language code.
+   * Belarusian (be)
    */
-<span class="fc" id="L88">  GA(&quot;ga&quot;),</span>
+<span class="fc" id="L88">  BE(&quot;be&quot;),</span>
 
   /**
-   * Hi two letter language code.
+   * Bulgarian (bg)
    */
-<span class="fc" id="L93">  HI(&quot;hi&quot;),</span>
+<span class="fc" id="L93">  BG(&quot;bg&quot;),</span>
 
   /**
-   * Hr two letter language code.
+   * Bihari (bh)
    */
-<span class="fc" id="L98">  HR(&quot;hr&quot;),</span>
+<span class="fc" id="L98">  BH(&quot;bh&quot;),</span>
 
   /**
-   * Hu two letter language code.
+   * Bislama (bi)
    */
-<span class="fc" id="L103">  HU(&quot;hu&quot;),</span>
+<span class="fc" id="L103">  BI(&quot;bi&quot;),</span>
 
   /**
-   * In two letter language code.
+   * Bambara (bm)
    */
-<span class="fc" id="L108">  IN(&quot;in&quot;),</span>
+<span class="fc" id="L108">  BM(&quot;bm&quot;),</span>
 
   /**
-   * Is two letter language code.
+   * Bengali (bn)
    */
-<span class="fc" id="L113">  IS(&quot;is&quot;),</span>
+<span class="fc" id="L113">  BN(&quot;bn&quot;),</span>
 
   /**
-   * It two letter language code.
+   * Tibetan (bo)
    */
-<span class="fc" id="L118">  IT(&quot;it&quot;),</span>
+<span class="fc" id="L118">  BO(&quot;bo&quot;),</span>
 
   /**
-   * Iw two letter language code.
+   * Breton (br)
    */
-<span class="fc" id="L123">  IW(&quot;iw&quot;),</span>
+<span class="fc" id="L123">  BR(&quot;br&quot;),</span>
 
   /**
-   * Ja two letter language code.
+   * Bosnian (bs)
    */
-<span class="fc" id="L128">  JA(&quot;ja&quot;),</span>
+<span class="fc" id="L128">  BS(&quot;bs&quot;),</span>
 
   /**
-   * Ko two letter language code.
+   * Catalan (ca)
    */
-<span class="fc" id="L133">  KO(&quot;ko&quot;),</span>
+<span class="fc" id="L133">  CA(&quot;ca&quot;),</span>
 
   /**
-   * Lt two letter language code.
+   * Chechen (ce)
    */
-<span class="fc" id="L138">  LT(&quot;lt&quot;),</span>
+<span class="fc" id="L138">  CE(&quot;ce&quot;),</span>
 
   /**
-   * Lv two letter language code.
+   * Chamorro (ch)
    */
-<span class="fc" id="L143">  LV(&quot;lv&quot;),</span>
+<span class="fc" id="L143">  CH(&quot;ch&quot;),</span>
 
   /**
-   * Mk two letter language code.
+   * Corsican (co)
    */
-<span class="fc" id="L148">  MK(&quot;mk&quot;),</span>
+<span class="fc" id="L148">  CO(&quot;co&quot;),</span>
 
   /**
-   * Ms two letter language code.
+   * Cree (cr)
    */
-<span class="fc" id="L153">  MS(&quot;ms&quot;),</span>
+<span class="fc" id="L153">  CR(&quot;cr&quot;),</span>
 
   /**
-   * Mt two letter language code.
+   * Czech (cs)
    */
-<span class="fc" id="L158">  MT(&quot;mt&quot;),</span>
+<span class="fc" id="L158">  CS(&quot;cs&quot;),</span>
 
   /**
-   * Nl two letter language code.
+   * Church Slavic (cu)
    */
-<span class="fc" id="L163">  NL(&quot;nl&quot;),</span>
+<span class="fc" id="L163">  CU(&quot;cu&quot;),</span>
 
   /**
-   * No two letter language code.
+   * Chuvash (cv)
    */
-<span class="fc" id="L168">  NO(&quot;no&quot;),</span>
+<span class="fc" id="L168">  CV(&quot;cv&quot;),</span>
 
   /**
-   * Pl two letter language code.
+   * Welsh (cy)
    */
-<span class="fc" id="L173">  PL(&quot;pl&quot;),</span>
+<span class="fc" id="L173">  CY(&quot;cy&quot;),</span>
 
   /**
-   * Pt two letter language code.
+   * Danish (da)
    */
-<span class="fc" id="L178">  PT(&quot;pt&quot;),</span>
+<span class="fc" id="L178">  DA(&quot;da&quot;),</span>
 
   /**
-   * Ro two letter language code.
+   * German (de)
    */
-<span class="fc" id="L183">  RO(&quot;ro&quot;),</span>
+<span class="fc" id="L183">  DE(&quot;de&quot;),</span>
 
   /**
-   * Ru two letter language code.
+   * Divehi (dv)
    */
-<span class="fc" id="L188">  RU(&quot;ru&quot;),</span>
+<span class="fc" id="L188">  DV(&quot;dv&quot;),</span>
 
   /**
-   * Sk two letter language code.
+   * Dzongkha (dz)
    */
-<span class="fc" id="L193">  SK(&quot;sk&quot;),</span>
+<span class="fc" id="L193">  DZ(&quot;dz&quot;),</span>
 
   /**
-   * Sl two letter language code.
+   * Ewe (ee)
    */
-<span class="fc" id="L198">  SL(&quot;sl&quot;),</span>
+<span class="fc" id="L198">  EE(&quot;ee&quot;),</span>
 
   /**
-   * Sq two letter language code.
+   * Greek (el)
    */
-<span class="fc" id="L203">  SQ(&quot;sq&quot;),</span>
+<span class="fc" id="L203">  EL(&quot;el&quot;),</span>
 
   /**
-   * Sr two letter language code.
+   * English (en)
    */
-<span class="fc" id="L208">  SR(&quot;sr&quot;),</span>
+<span class="fc" id="L208">  EN(&quot;en&quot;),</span>
 
   /**
-   * Sv two letter language code.
+   * Esperanto (eo)
    */
-<span class="fc" id="L213">  SV(&quot;sv&quot;),</span>
+<span class="fc" id="L213">  EO(&quot;eo&quot;),</span>
 
   /**
-   * Th two letter language code.
+   * Spanish (es)
    */
-<span class="fc" id="L218">  TH(&quot;th&quot;),</span>
+<span class="fc" id="L218">  ES(&quot;es&quot;),</span>
 
   /**
-   * Tr two letter language code.
+   * Estonian (et)
    */
-<span class="fc" id="L223">  TR(&quot;tr&quot;),</span>
+<span class="fc" id="L223">  ET(&quot;et&quot;),</span>
 
   /**
-   * Uk two letter language code.
+   * Basque (eu)
    */
-<span class="fc" id="L228">  UK(&quot;uk&quot;),</span>
+<span class="fc" id="L228">  EU(&quot;eu&quot;),</span>
 
   /**
-   * Vi two letter language code.
+   * Persian (fa)
    */
-<span class="fc" id="L233">  VI(&quot;vi&quot;),</span>
+<span class="fc" id="L233">  FA(&quot;fa&quot;),</span>
 
   /**
-   * Zh two letter language code.
+   * Fulah (ff)
    */
-<span class="fc" id="L238">  ZH(&quot;zh&quot;);</span>
+<span class="fc" id="L238">  FF(&quot;ff&quot;),</span>
+
+  /**
+   * Finnish (fi)
+   */
+<span class="fc" id="L243">  FI(&quot;fi&quot;),</span>
+
+  /**
+   * Fijian (fj)
+   */
+<span class="fc" id="L248">  FJ(&quot;fj&quot;),</span>
+
+  /**
+   * Faroese (fo)
+   */
+<span class="fc" id="L253">  FO(&quot;fo&quot;),</span>
+
+  /**
+   * French (fr)
+   */
+<span class="fc" id="L258">  FR(&quot;fr&quot;),</span>
+
+  /**
+   * Frisian (fy)
+   */
+<span class="fc" id="L263">  FY(&quot;fy&quot;),</span>
+
+  /**
+   * Irish (ga)
+   */
+<span class="fc" id="L268">  GA(&quot;ga&quot;),</span>
+
+  /**
+   * Scottish Gaelic (gd)
+   */
+<span class="fc" id="L273">  GD(&quot;gd&quot;),</span>
+
+  /**
+   * Gallegan (gl)
+   */
+<span class="fc" id="L278">  GL(&quot;gl&quot;),</span>
+
+  /**
+   * Guarani (gn)
+   */
+<span class="fc" id="L283">  GN(&quot;gn&quot;),</span>
+
+  /**
+   * Gujarati (gu)
+   */
+<span class="fc" id="L288">  GU(&quot;gu&quot;),</span>
+
+  /**
+   * Manx (gv)
+   */
+<span class="fc" id="L293">  GV(&quot;gv&quot;),</span>
+
+  /**
+   * Hausa (ha)
+   */
+<span class="fc" id="L298">  HA(&quot;ha&quot;),</span>
+
+  /**
+   * Hebrew (he)
+   */
+<span class="fc" id="L303">  HE(&quot;he&quot;),</span>
+
+  /**
+   * Hindi (hi)
+   */
+<span class="fc" id="L308">  HI(&quot;hi&quot;),</span>
+
+  /**
+   * Hiri Motu (ho)
+   */
+<span class="fc" id="L313">  HO(&quot;ho&quot;),</span>
+
+  /**
+   * Croatian (hr)
+   */
+<span class="fc" id="L318">  HR(&quot;hr&quot;),</span>
+
+  /**
+   * Haitian (ht)
+   */
+<span class="fc" id="L323">  HT(&quot;ht&quot;),</span>
+
+  /**
+   * Hungarian (hu)
+   */
+<span class="fc" id="L328">  HU(&quot;hu&quot;),</span>
+
+  /**
+   * Armenian (hy)
+   */
+<span class="fc" id="L333">  HY(&quot;hy&quot;),</span>
+
+  /**
+   * Herero (hz)
+   */
+<span class="fc" id="L338">  HZ(&quot;hz&quot;),</span>
+
+  /**
+   * Interlingua (ia)
+   */
+<span class="fc" id="L343">  IA(&quot;ia&quot;),</span>
+
+  /**
+   * Indonesian (id)
+   */
+<span class="fc" id="L348">  ID(&quot;id&quot;),</span>
+
+  /**
+   * Interlingue (ie)
+   */
+<span class="fc" id="L353">  IE(&quot;ie&quot;),</span>
+
+  /**
+   * Igbo (ig)
+   */
+<span class="fc" id="L358">  IG(&quot;ig&quot;),</span>
+
+  /**
+   * Sichuan Yi (ii)
+   */
+<span class="fc" id="L363">  II(&quot;ii&quot;),</span>
+
+  /**
+   * Inupiaq (ik)
+   */
+<span class="fc" id="L368">  IK(&quot;ik&quot;),</span>
+
+  /**
+   * Indonesian (in)
+   */
+<span class="fc" id="L373">  IN(&quot;in&quot;),</span>
+
+  /**
+   * Ido (io)
+   */
+<span class="fc" id="L378">  IO(&quot;io&quot;),</span>
+
+  /**
+   * Icelandic (is)
+   */
+<span class="fc" id="L383">  IS(&quot;is&quot;),</span>
+
+  /**
+   * Italian (it)
+   */
+<span class="fc" id="L388">  IT(&quot;it&quot;),</span>
+
+  /**
+   * Inuktitut (iu)
+   */
+<span class="fc" id="L393">  IU(&quot;iu&quot;),</span>
+
+  /**
+   * Hebrew (iw)
+   */
+<span class="fc" id="L398">  IW(&quot;iw&quot;),</span>
+
+  /**
+   * Japanese (ja)
+   */
+<span class="fc" id="L403">  JA(&quot;ja&quot;),</span>
+
+  /**
+   * Yiddish (ji)
+   */
+<span class="fc" id="L408">  JI(&quot;ji&quot;),</span>
+
+  /**
+   * Javanese (jv)
+   */
+<span class="fc" id="L413">  JV(&quot;jv&quot;),</span>
+
+  /**
+   * Georgian (ka)
+   */
+<span class="fc" id="L418">  KA(&quot;ka&quot;),</span>
+
+  /**
+   * Kongo (kg)
+   */
+<span class="fc" id="L423">  KG(&quot;kg&quot;),</span>
+
+  /**
+   * Kikuyu (ki)
+   */
+<span class="fc" id="L428">  KI(&quot;ki&quot;),</span>
+
+  /**
+   * Kwanyama (kj)
+   */
+<span class="fc" id="L433">  KJ(&quot;kj&quot;),</span>
+
+  /**
+   * Kazakh (kk)
+   */
+<span class="fc" id="L438">  KK(&quot;kk&quot;),</span>
+
+  /**
+   * Greenlandic (kl)
+   */
+<span class="fc" id="L443">  KL(&quot;kl&quot;),</span>
+
+  /**
+   * Khmer (km)
+   */
+<span class="fc" id="L448">  KM(&quot;km&quot;),</span>
+
+  /**
+   * Kannada (kn)
+   */
+<span class="fc" id="L453">  KN(&quot;kn&quot;),</span>
+
+  /**
+   * Korean (ko)
+   */
+<span class="fc" id="L458">  KO(&quot;ko&quot;),</span>
+
+  /**
+   * Kanuri (kr)
+   */
+<span class="fc" id="L463">  KR(&quot;kr&quot;),</span>
+
+  /**
+   * Kashmiri (ks)
+   */
+<span class="fc" id="L468">  KS(&quot;ks&quot;),</span>
+
+  /**
+   * Kurdish (ku)
+   */
+<span class="fc" id="L473">  KU(&quot;ku&quot;),</span>
+
+  /**
+   * Komi (kv)
+   */
+<span class="fc" id="L478">  KV(&quot;kv&quot;),</span>
+
+  /**
+   * Cornish (kw)
+   */
+<span class="fc" id="L483">  KW(&quot;kw&quot;),</span>
+
+  /**
+   * Kirghiz (ky)
+   */
+<span class="fc" id="L488">  KY(&quot;ky&quot;),</span>
+
+  /**
+   * Latin (la)
+   */
+<span class="fc" id="L493">  LA(&quot;la&quot;),</span>
+
+  /**
+   * Luxembourgish (lb)
+   */
+<span class="fc" id="L498">  LB(&quot;lb&quot;),</span>
+
+  /**
+   * Ganda (lg)
+   */
+<span class="fc" id="L503">  LG(&quot;lg&quot;),</span>
+
+  /**
+   * Limburgish (li)
+   */
+<span class="fc" id="L508">  LI(&quot;li&quot;),</span>
+
+  /**
+   * Lingala (ln)
+   */
+<span class="fc" id="L513">  LN(&quot;ln&quot;),</span>
+
+  /**
+   * Lao (lo)
+   */
+<span class="fc" id="L518">  LO(&quot;lo&quot;),</span>
+
+  /**
+   * Lithuanian (lt)
+   */
+<span class="fc" id="L523">  LT(&quot;lt&quot;),</span>
+
+  /**
+   * Luba-Katanga (lu)
+   */
+<span class="fc" id="L528">  LU(&quot;lu&quot;),</span>
+
+  /**
+   * Latvian (lv)
+   */
+<span class="fc" id="L533">  LV(&quot;lv&quot;),</span>
+
+  /**
+   * Malagasy (mg)
+   */
+<span class="fc" id="L538">  MG(&quot;mg&quot;),</span>
+
+  /**
+   * Marshallese (mh)
+   */
+<span class="fc" id="L543">  MH(&quot;mh&quot;),</span>
+
+  /**
+   * Maori (mi)
+   */
+<span class="fc" id="L548">  MI(&quot;mi&quot;),</span>
+
+  /**
+   * Macedonian (mk)
+   */
+<span class="fc" id="L553">  MK(&quot;mk&quot;),</span>
+
+  /**
+   * Malayalam (ml)
+   */
+<span class="fc" id="L558">  ML(&quot;ml&quot;),</span>
+
+  /**
+   * Mongolian (mn)
+   */
+<span class="fc" id="L563">  MN(&quot;mn&quot;),</span>
+
+  /**
+   * Moldavian (mo)
+   */
+<span class="fc" id="L568">  MO(&quot;mo&quot;),</span>
+
+  /**
+   * Marathi (mr)
+   */
+<span class="fc" id="L573">  MR(&quot;mr&quot;),</span>
+
+  /**
+   * Malay (ms)
+   */
+<span class="fc" id="L578">  MS(&quot;ms&quot;),</span>
+
+  /**
+   * Maltese (mt)
+   */
+<span class="fc" id="L583">  MT(&quot;mt&quot;),</span>
+
+  /**
+   * Burmese (my)
+   */
+<span class="fc" id="L588">  MY(&quot;my&quot;),</span>
+
+  /**
+   * Nauru (na)
+   */
+<span class="fc" id="L593">  NA(&quot;na&quot;),</span>
+
+  /**
+   * Norwegian Bokmål (nb)
+   */
+<span class="fc" id="L598">  NB(&quot;nb&quot;),</span>
+
+  /**
+   * North Ndebele (nd)
+   */
+<span class="fc" id="L603">  ND(&quot;nd&quot;),</span>
+
+  /**
+   * Nepali (ne)
+   */
+<span class="fc" id="L608">  NE(&quot;ne&quot;),</span>
+
+  /**
+   * Ndonga (ng)
+   */
+<span class="fc" id="L613">  NG(&quot;ng&quot;),</span>
+
+  /**
+   * Dutch (nl)
+   */
+<span class="fc" id="L618">  NL(&quot;nl&quot;),</span>
+
+  /**
+   * Norwegian Nynorsk (nn)
+   */
+<span class="fc" id="L623">  NN(&quot;nn&quot;),</span>
+
+  /**
+   * Norwegian (no)
+   */
+<span class="fc" id="L628">  NO(&quot;no&quot;),</span>
+
+  /**
+   * South Ndebele (nr)
+   */
+<span class="fc" id="L633">  NR(&quot;nr&quot;),</span>
+
+  /**
+   * Navajo (nv)
+   */
+<span class="fc" id="L638">  NV(&quot;nv&quot;),</span>
+
+  /**
+   * Nyanja (ny)
+   */
+<span class="fc" id="L643">  NY(&quot;ny&quot;),</span>
+
+  /**
+   * Occitan (oc)
+   */
+<span class="fc" id="L648">  OC(&quot;oc&quot;),</span>
+
+  /**
+   * Ojibwa (oj)
+   */
+<span class="fc" id="L653">  OJ(&quot;oj&quot;),</span>
+
+  /**
+   * Oromo (om)
+   */
+<span class="fc" id="L658">  OM(&quot;om&quot;),</span>
+
+  /**
+   * Oriya (or)
+   */
+<span class="fc" id="L663">  OR(&quot;or&quot;),</span>
+
+  /**
+   * Ossetian (os)
+   */
+<span class="fc" id="L668">  OS(&quot;os&quot;),</span>
+
+  /**
+   * Panjabi (pa)
+   */
+<span class="fc" id="L673">  PA(&quot;pa&quot;),</span>
+
+  /**
+   * Pali (pi)
+   */
+<span class="fc" id="L678">  PI(&quot;pi&quot;),</span>
+
+  /**
+   * Polish (pl)
+   */
+<span class="fc" id="L683">  PL(&quot;pl&quot;),</span>
+
+  /**
+   * Pushto (ps)
+   */
+<span class="fc" id="L688">  PS(&quot;ps&quot;),</span>
+
+  /**
+   * Portuguese (pt)
+   */
+<span class="fc" id="L693">  PT(&quot;pt&quot;),</span>
+
+  /**
+   * Quechua (qu)
+   */
+<span class="fc" id="L698">  QU(&quot;qu&quot;),</span>
+
+  /**
+   * Raeto-Romance (rm)
+   */
+<span class="fc" id="L703">  RM(&quot;rm&quot;),</span>
+
+  /**
+   * Rundi (rn)
+   */
+<span class="fc" id="L708">  RN(&quot;rn&quot;),</span>
+
+  /**
+   * Romanian (ro)
+   */
+<span class="fc" id="L713">  RO(&quot;ro&quot;),</span>
+
+  /**
+   * Russian (ru)
+   */
+<span class="fc" id="L718">  RU(&quot;ru&quot;),</span>
+
+  /**
+   * Kinyarwanda (rw)
+   */
+<span class="fc" id="L723">  RW(&quot;rw&quot;),</span>
+
+  /**
+   * Sanskrit (sa)
+   */
+<span class="fc" id="L728">  SA(&quot;sa&quot;),</span>
+
+  /**
+   * Sardinian (sc)
+   */
+<span class="fc" id="L733">  SC(&quot;sc&quot;),</span>
+
+  /**
+   * Sindhi (sd)
+   */
+<span class="fc" id="L738">  SD(&quot;sd&quot;),</span>
+
+  /**
+   * Northern Sami (se)
+   */
+<span class="fc" id="L743">  SE(&quot;se&quot;),</span>
+
+  /**
+   * Sango (sg)
+   */
+<span class="fc" id="L748">  SG(&quot;sg&quot;),</span>
+
+  /**
+   * Sinhalese (si)
+   */
+<span class="fc" id="L753">  SI(&quot;si&quot;),</span>
+
+  /**
+   * Slovak (sk)
+   */
+<span class="fc" id="L758">  SK(&quot;sk&quot;),</span>
+
+  /**
+   * Slovenian (sl)
+   */
+<span class="fc" id="L763">  SL(&quot;sl&quot;),</span>
+
+  /**
+   * Samoan (sm)
+   */
+<span class="fc" id="L768">  SM(&quot;sm&quot;),</span>
+
+  /**
+   * Shona (sn)
+   */
+<span class="fc" id="L773">  SN(&quot;sn&quot;),</span>
+
+  /**
+   * Somali (so)
+   */
+<span class="fc" id="L778">  SO(&quot;so&quot;),</span>
+
+  /**
+   * Albanian (sq)
+   */
+<span class="fc" id="L783">  SQ(&quot;sq&quot;),</span>
+
+  /**
+   * Serbian (sr)
+   */
+<span class="fc" id="L788">  SR(&quot;sr&quot;),</span>
+
+  /**
+   * Swati (ss)
+   */
+<span class="fc" id="L793">  SS(&quot;ss&quot;),</span>
+
+  /**
+   * Southern Sotho (st)
+   */
+<span class="fc" id="L798">  ST(&quot;st&quot;),</span>
+
+  /**
+   * Sundanese (su)
+   */
+<span class="fc" id="L803">  SU(&quot;su&quot;),</span>
+
+  /**
+   * Swedish (sv)
+   */
+<span class="fc" id="L808">  SV(&quot;sv&quot;),</span>
+
+  /**
+   * Swahili (sw)
+   */
+<span class="fc" id="L813">  SW(&quot;sw&quot;),</span>
+
+  /**
+   * Tamil (ta)
+   */
+<span class="fc" id="L818">  TA(&quot;ta&quot;),</span>
+
+  /**
+   * Telugu (te)
+   */
+<span class="fc" id="L823">  TE(&quot;te&quot;),</span>
+
+  /**
+   * Tajik (tg)
+   */
+<span class="fc" id="L828">  TG(&quot;tg&quot;),</span>
+
+  /**
+   * Thai (th)
+   */
+<span class="fc" id="L833">  TH(&quot;th&quot;),</span>
+
+  /**
+   * Tigrinya (ti)
+   */
+<span class="fc" id="L838">  TI(&quot;ti&quot;),</span>
+
+  /**
+   * Turkmen (tk)
+   */
+<span class="fc" id="L843">  TK(&quot;tk&quot;),</span>
+
+  /**
+   * Tagalog (tl)
+   */
+<span class="fc" id="L848">  TL(&quot;tl&quot;),</span>
+
+  /**
+   * Tswana (tn)
+   */
+<span class="fc" id="L853">  TN(&quot;tn&quot;),</span>
+
+  /**
+   * Tonga (to)
+   */
+<span class="fc" id="L858">  TO(&quot;to&quot;),</span>
+
+  /**
+   * Turkish (tr)
+   */
+<span class="fc" id="L863">  TR(&quot;tr&quot;),</span>
+
+  /**
+   * Tsonga (ts)
+   */
+<span class="fc" id="L868">  TS(&quot;ts&quot;),</span>
+
+  /**
+   * Tatar (tt)
+   */
+<span class="fc" id="L873">  TT(&quot;tt&quot;),</span>
+
+  /**
+   * Twi (tw)
+   */
+<span class="fc" id="L878">  TW(&quot;tw&quot;),</span>
+
+  /**
+   * Tahitian (ty)
+   */
+<span class="fc" id="L883">  TY(&quot;ty&quot;),</span>
+
+  /**
+   * Uighur (ug)
+   */
+<span class="fc" id="L888">  UG(&quot;ug&quot;),</span>
+
+  /**
+   * Ukrainian (uk)
+   */
+<span class="fc" id="L893">  UK(&quot;uk&quot;),</span>
+
+  /**
+   * Urdu (ur)
+   */
+<span class="fc" id="L898">  UR(&quot;ur&quot;),</span>
+
+  /**
+   * Uzbek (uz)
+   */
+<span class="fc" id="L903">  UZ(&quot;uz&quot;),</span>
+
+  /**
+   * Venda (ve)
+   */
+<span class="fc" id="L908">  VE(&quot;ve&quot;),</span>
+
+  /**
+   * Vietnamese (vi)
+   */
+<span class="fc" id="L913">  VI(&quot;vi&quot;),</span>
+
+  /**
+   * Volapük (vo)
+   */
+<span class="fc" id="L918">  VO(&quot;vo&quot;),</span>
+
+  /**
+   * Walloon (wa)
+   */
+<span class="fc" id="L923">  WA(&quot;wa&quot;),</span>
+
+  /**
+   * Wolof (wo)
+   */
+<span class="fc" id="L928">  WO(&quot;wo&quot;),</span>
+
+  /**
+   * Xhosa (xh)
+   */
+<span class="fc" id="L933">  XH(&quot;xh&quot;),</span>
+
+  /**
+   * Yiddish (yi)
+   */
+<span class="fc" id="L938">  YI(&quot;yi&quot;),</span>
+
+  /**
+   * Yoruba (yo)
+   */
+<span class="fc" id="L943">  YO(&quot;yo&quot;),</span>
+
+  /**
+   * Zhuang (za)
+   */
+<span class="fc" id="L948">  ZA(&quot;za&quot;),</span>
+
+  /**
+   * Chinese (zh)
+   */
+<span class="fc" id="L953">  ZH(&quot;zh&quot;),</span>
+
+  /**
+   * Zulu (zu)
+   */
+<span class="fc" id="L958">  ZU(&quot;zu&quot;);</span>
 
   private String value;
 
-<span class="fc" id="L242">  TwoLetterLanguageCode(String value) {</span>
-<span class="fc" id="L243">    this.value = value;</span>
-<span class="fc" id="L244">  }</span>
+<span class="fc" id="L962">  TwoLetterLanguageCode(String value) {</span>
+<span class="fc" id="L963">    this.value = value;</span>
+<span class="fc" id="L964">  }</span>
 
   @Override
   @JsonValue
   public String toString() {
-<span class="nc" id="L249">    return String.valueOf(value);</span>
+<span class="fc" id="L969">    return value;</span>
   }
 
   /**
@@ -255,12 +975,7 @@ import org.springframework.util.StringUtils;
    * @return the locale
    */
   public Locale toLocale() {
-<span class="fc" id="L258">    return Arrays</span>
-<span class="fc" id="L259">        .stream(Locale.getAvailableLocales())</span>
-<span class="fc" id="L260">        .filter(locale -&gt; value.equalsIgnoreCase(locale.getLanguage()))</span>
-<span class="fc" id="L261">        .findAny()</span>
-<span class="fc" id="L262">        .map(locale -&gt; new Locale(locale.getLanguage()))</span>
-<span class="fc" id="L263">        .orElse(null);</span>
+<span class="fc" id="L978">    return new Locale(value);</span>
   }
 
   /**
@@ -271,12 +986,42 @@ import org.springframework.util.StringUtils;
    */
   @JsonCreator
   public static TwoLetterLanguageCode fromValue(String text) {
-<span class="pc bpc" id="L274" title="1 of 2 branches missed.">    for (TwoLetterLanguageCode b : TwoLetterLanguageCode.values()) {</span>
-<span class="fc bfc" id="L275" title="All 2 branches covered.">      if (String.valueOf(b.value).equals(text)) {</span>
-<span class="fc" id="L276">        return b;</span>
+<span class="fc" id="L989">    return fromValue(text, null);</span>
+  }
+
+  /**
+   * From value two letter language code.
+   *
+   * @param text        the text
+   * @param defaultCode the default code
+   * @return the two letter language code
+   */
+  public static TwoLetterLanguageCode fromValue(String text, TwoLetterLanguageCode defaultCode) {
+<span class="pc bpc" id="L1000" title="1 of 2 branches missed.">    String source = text != null ? text.trim() : null;</span>
+<span class="pc bpc" id="L1001" title="1 of 4 branches missed.">    if (source == null || source.length() &lt; 2) {</span>
+<span class="fc" id="L1002">      return defaultCode;</span>
+    }
+<span class="fc" id="L1004">    source = source.replace(&quot;-&quot;, &quot;_&quot;);</span>
+<span class="fc" id="L1005">    int index = source.indexOf('_');</span>
+<span class="pc bpc" id="L1006" title="1 of 4 branches missed.">    if (source.length() == 3 &amp;&amp; index &lt; 0) {</span>
+<span class="fc" id="L1007">      ThreeLetterLanguageCode threeLetter = ThreeLetterLanguageCode.fromValue(text);</span>
+<span class="pc bpc" id="L1008" title="1 of 2 branches missed.">      if (threeLetter != null) {</span>
+<span class="fc" id="L1009">        return fromLocale(threeLetter.toLocale(), defaultCode);</span>
       }
     }
-<span class="nc" id="L279">    return null;</span>
+<span class="fc bfc" id="L1012" title="All 2 branches covered.">    if (index &gt;= 0) {</span>
+<span class="fc" id="L1013">      String[] parts = source.split(Pattern.quote(&quot;_&quot;));</span>
+<span class="pc bpc" id="L1014" title="1 of 2 branches missed.">      if (parts.length &gt; 0) {</span>
+<span class="fc" id="L1015">        return fromValue(parts[0], defaultCode);</span>
+      }
+    }
+<span class="fc" id="L1018">    source = source.substring(0, 2).toLowerCase();</span>
+<span class="pc bpc" id="L1019" title="1 of 2 branches missed.">    for (TwoLetterLanguageCode b : TwoLetterLanguageCode.values()) {</span>
+<span class="fc bfc" id="L1020" title="All 2 branches covered.">      if (b.value.equals(source)) {</span>
+<span class="fc" id="L1021">        return b;</span>
+      }
+    }
+<span class="nc" id="L1024">    return defaultCode;</span>
   }
 
   /**
@@ -286,10 +1031,21 @@ import org.springframework.util.StringUtils;
    * @return the two letter language code
    */
   public static TwoLetterLanguageCode fromLocale(Locale locale) {
-<span class="pc bpc" id="L289" title="2 of 4 branches missed.">    if (locale == null || !StringUtils.hasText(locale.getLanguage())) {</span>
-<span class="nc" id="L290">      return null;</span>
+<span class="fc" id="L1034">    return fromLocale(locale, null);</span>
+  }
+
+  /**
+   * From locale.
+   *
+   * @param locale      the locale
+   * @param defaultCode the default code
+   * @return the two letter language code
+   */
+  public static TwoLetterLanguageCode fromLocale(Locale locale, TwoLetterLanguageCode defaultCode) {
+<span class="pc bpc" id="L1045" title="2 of 4 branches missed.">    if (locale == null || !StringUtils.hasText(locale.getLanguage())) {</span>
+<span class="nc" id="L1046">      return defaultCode;</span>
     }
-<span class="fc" id="L292">    return fromValue(locale.getLanguage());</span>
+<span class="fc" id="L1048">    return fromValue(locale.getLanguage(), defaultCode);</span>
   }
 
 }

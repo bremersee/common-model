@@ -8,8 +8,8 @@ package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.Arrays;
 import java.util.Locale;
+import java.util.regex.Pattern;
 import org.springframework.util.StringUtils;
 
 /**
@@ -18,490 +18,1270 @@ import org.springframework.util.StringUtils;
 <span class="fc" id="L18">public enum TwoLetterCountryCode {</span>
 
   /**
-   * Ae two letter country code.
+   * Andorra (AD)
    */
-<span class="fc" id="L23">  AE(&quot;AE&quot;),</span>
+<span class="fc" id="L23">  AD(&quot;AD&quot;),</span>
 
   /**
-   * Al two letter country code.
+   * United Arab Emirates (AE)
    */
-<span class="fc" id="L28">  AL(&quot;AL&quot;),</span>
+<span class="fc" id="L28">  AE(&quot;AE&quot;),</span>
 
   /**
-   * Ar two letter country code.
+   * Afghanistan (AF)
    */
-<span class="fc" id="L33">  AR(&quot;AR&quot;),</span>
+<span class="fc" id="L33">  AF(&quot;AF&quot;),</span>
 
   /**
-   * At two letter country code.
+   * Antigua and Barbuda (AG)
    */
-<span class="fc" id="L38">  AT(&quot;AT&quot;),</span>
+<span class="fc" id="L38">  AG(&quot;AG&quot;),</span>
 
   /**
-   * Au two letter country code.
+   * Anguilla (AI)
    */
-<span class="fc" id="L43">  AU(&quot;AU&quot;),</span>
+<span class="fc" id="L43">  AI(&quot;AI&quot;),</span>
 
   /**
-   * Ba two letter country code.
+   * Albania (AL)
    */
-<span class="fc" id="L48">  BA(&quot;BA&quot;),</span>
+<span class="fc" id="L48">  AL(&quot;AL&quot;),</span>
 
   /**
-   * Be two letter country code.
+   * Armenia (AM)
    */
-<span class="fc" id="L53">  BE(&quot;BE&quot;),</span>
+<span class="fc" id="L53">  AM(&quot;AM&quot;),</span>
 
   /**
-   * Bg two letter country code.
+   * Netherlands Antilles (AN)
    */
-<span class="fc" id="L58">  BG(&quot;BG&quot;),</span>
+<span class="fc" id="L58">  AN(&quot;AN&quot;),</span>
 
   /**
-   * Bh two letter country code.
+   * Angola (AO)
    */
-<span class="fc" id="L63">  BH(&quot;BH&quot;),</span>
+<span class="fc" id="L63">  AO(&quot;AO&quot;),</span>
 
   /**
-   * Bo two letter country code.
+   * Antarctica (AQ)
    */
-<span class="fc" id="L68">  BO(&quot;BO&quot;),</span>
+<span class="fc" id="L68">  AQ(&quot;AQ&quot;),</span>
 
   /**
-   * Br two letter country code.
+   * Argentina (AR)
    */
-<span class="fc" id="L73">  BR(&quot;BR&quot;),</span>
+<span class="fc" id="L73">  AR(&quot;AR&quot;),</span>
 
   /**
-   * By two letter country code.
+   * American Samoa (AS)
    */
-<span class="fc" id="L78">  BY(&quot;BY&quot;),</span>
+<span class="fc" id="L78">  AS(&quot;AS&quot;),</span>
 
   /**
-   * Ca two letter country code.
+   * Austria (AT)
    */
-<span class="fc" id="L83">  CA(&quot;CA&quot;),</span>
+<span class="fc" id="L83">  AT(&quot;AT&quot;),</span>
 
   /**
-   * Ch two letter country code.
+   * Australia (AU)
    */
-<span class="fc" id="L88">  CH(&quot;CH&quot;),</span>
+<span class="fc" id="L88">  AU(&quot;AU&quot;),</span>
 
   /**
-   * Cl two letter country code.
+   * Aruba (AW)
    */
-<span class="fc" id="L93">  CL(&quot;CL&quot;),</span>
+<span class="fc" id="L93">  AW(&quot;AW&quot;),</span>
 
   /**
-   * Cn two letter country code.
+   * Åland Islands (AX)
    */
-<span class="fc" id="L98">  CN(&quot;CN&quot;),</span>
+<span class="fc" id="L98">  AX(&quot;AX&quot;),</span>
 
   /**
-   * Co two letter country code.
+   * Azerbaijan (AZ)
    */
-<span class="fc" id="L103">  CO(&quot;CO&quot;),</span>
+<span class="fc" id="L103">  AZ(&quot;AZ&quot;),</span>
 
   /**
-   * Cr two letter country code.
+   * Bosnia and Herzegovina (BA)
    */
-<span class="fc" id="L108">  CR(&quot;CR&quot;),</span>
+<span class="fc" id="L108">  BA(&quot;BA&quot;),</span>
 
   /**
-   * Cu two letter country code.
+   * Barbados (BB)
    */
-<span class="fc" id="L113">  CU(&quot;CU&quot;),</span>
+<span class="fc" id="L113">  BB(&quot;BB&quot;),</span>
 
   /**
-   * Cy two letter country code.
+   * Bangladesh (BD)
    */
-<span class="fc" id="L118">  CY(&quot;CY&quot;),</span>
+<span class="fc" id="L118">  BD(&quot;BD&quot;),</span>
 
   /**
-   * Cz two letter country code.
+   * Belgium (BE)
    */
-<span class="fc" id="L123">  CZ(&quot;CZ&quot;),</span>
+<span class="fc" id="L123">  BE(&quot;BE&quot;),</span>
 
   /**
-   * De two letter country code.
+   * Burkina Faso (BF)
    */
-<span class="fc" id="L128">  DE(&quot;DE&quot;),</span>
+<span class="fc" id="L128">  BF(&quot;BF&quot;),</span>
 
   /**
-   * Dk two letter country code.
+   * Bulgaria (BG)
    */
-<span class="fc" id="L133">  DK(&quot;DK&quot;),</span>
+<span class="fc" id="L133">  BG(&quot;BG&quot;),</span>
 
   /**
-   * Do two letter country code.
+   * Bahrain (BH)
    */
-<span class="fc" id="L138">  DO(&quot;DO&quot;),</span>
+<span class="fc" id="L138">  BH(&quot;BH&quot;),</span>
 
   /**
-   * Dz two letter country code.
+   * Burundi (BI)
    */
-<span class="fc" id="L143">  DZ(&quot;DZ&quot;),</span>
+<span class="fc" id="L143">  BI(&quot;BI&quot;),</span>
 
   /**
-   * Ec two letter country code.
+   * Benin (BJ)
    */
-<span class="fc" id="L148">  EC(&quot;EC&quot;),</span>
+<span class="fc" id="L148">  BJ(&quot;BJ&quot;),</span>
 
   /**
-   * Ee two letter country code.
+   * Saint Barthélemy (BL)
    */
-<span class="fc" id="L153">  EE(&quot;EE&quot;),</span>
+<span class="fc" id="L153">  BL(&quot;BL&quot;),</span>
 
   /**
-   * Eg two letter country code.
+   * Bermuda (BM)
    */
-<span class="fc" id="L158">  EG(&quot;EG&quot;),</span>
+<span class="fc" id="L158">  BM(&quot;BM&quot;),</span>
 
   /**
-   * Es two letter country code.
+   * Brunei (BN)
    */
-<span class="fc" id="L163">  ES(&quot;ES&quot;),</span>
+<span class="fc" id="L163">  BN(&quot;BN&quot;),</span>
 
   /**
-   * Fi two letter country code.
+   * Bolivia (BO)
    */
-<span class="fc" id="L168">  FI(&quot;FI&quot;),</span>
+<span class="fc" id="L168">  BO(&quot;BO&quot;),</span>
 
   /**
-   * Fr two letter country code.
+   * Bonaire, Sint Eustatius and Saba (BQ)
    */
-<span class="fc" id="L173">  FR(&quot;FR&quot;),</span>
+<span class="fc" id="L173">  BQ(&quot;BQ&quot;),</span>
 
   /**
-   * Gb two letter country code.
+   * Brazil (BR)
    */
-<span class="fc" id="L178">  GB(&quot;GB&quot;),</span>
+<span class="fc" id="L178">  BR(&quot;BR&quot;),</span>
 
   /**
-   * Gr two letter country code.
+   * Bahamas (BS)
    */
-<span class="fc" id="L183">  GR(&quot;GR&quot;),</span>
+<span class="fc" id="L183">  BS(&quot;BS&quot;),</span>
 
   /**
-   * Gt two letter country code.
+   * Bhutan (BT)
    */
-<span class="fc" id="L188">  GT(&quot;GT&quot;),</span>
+<span class="fc" id="L188">  BT(&quot;BT&quot;),</span>
 
   /**
-   * Hk two letter country code.
+   * Bouvet Island (BV)
    */
-<span class="fc" id="L193">  HK(&quot;HK&quot;),</span>
+<span class="fc" id="L193">  BV(&quot;BV&quot;),</span>
 
   /**
-   * Hn two letter country code.
+   * Botswana (BW)
    */
-<span class="fc" id="L198">  HN(&quot;HN&quot;),</span>
+<span class="fc" id="L198">  BW(&quot;BW&quot;),</span>
 
   /**
-   * Hr two letter country code.
+   * Belarus (BY)
    */
-<span class="fc" id="L203">  HR(&quot;HR&quot;),</span>
+<span class="fc" id="L203">  BY(&quot;BY&quot;),</span>
 
   /**
-   * Hu two letter country code.
+   * Belize (BZ)
    */
-<span class="fc" id="L208">  HU(&quot;HU&quot;),</span>
+<span class="fc" id="L208">  BZ(&quot;BZ&quot;),</span>
 
   /**
-   * Id two letter country code.
+   * Canada (CA)
    */
-<span class="fc" id="L213">  ID(&quot;ID&quot;),</span>
+<span class="fc" id="L213">  CA(&quot;CA&quot;),</span>
 
   /**
-   * Ie two letter country code.
+   * Cocos Islands (CC)
    */
-<span class="fc" id="L218">  IE(&quot;IE&quot;),</span>
+<span class="fc" id="L218">  CC(&quot;CC&quot;),</span>
 
   /**
-   * Il two letter country code.
+   * The Democratic Republic Of Congo (CD)
    */
-<span class="fc" id="L223">  IL(&quot;IL&quot;),</span>
+<span class="fc" id="L223">  CD(&quot;CD&quot;),</span>
 
   /**
-   * In two letter country code.
+   * Central African Republic (CF)
    */
-<span class="fc" id="L228">  IN(&quot;IN&quot;),</span>
+<span class="fc" id="L228">  CF(&quot;CF&quot;),</span>
 
   /**
-   * Iq two letter country code.
+   * Congo (CG)
    */
-<span class="fc" id="L233">  IQ(&quot;IQ&quot;),</span>
+<span class="fc" id="L233">  CG(&quot;CG&quot;),</span>
 
   /**
-   * Is two letter country code.
+   * Switzerland (CH)
    */
-<span class="fc" id="L238">  IS(&quot;IS&quot;),</span>
+<span class="fc" id="L238">  CH(&quot;CH&quot;),</span>
 
   /**
-   * It two letter country code.
+   * Côte d'Ivoire (CI)
    */
-<span class="fc" id="L243">  IT(&quot;IT&quot;),</span>
+<span class="fc" id="L243">  CI(&quot;CI&quot;),</span>
 
   /**
-   * Jo two letter country code.
+   * Cook Islands (CK)
    */
-<span class="fc" id="L248">  JO(&quot;JO&quot;),</span>
+<span class="fc" id="L248">  CK(&quot;CK&quot;),</span>
 
   /**
-   * Jp two letter country code.
+   * Chile (CL)
    */
-<span class="fc" id="L253">  JP(&quot;JP&quot;),</span>
+<span class="fc" id="L253">  CL(&quot;CL&quot;),</span>
 
   /**
-   * Kr two letter country code.
+   * Cameroon (CM)
    */
-<span class="fc" id="L258">  KR(&quot;KR&quot;),</span>
+<span class="fc" id="L258">  CM(&quot;CM&quot;),</span>
 
   /**
-   * Kw two letter country code.
+   * China (CN)
    */
-<span class="fc" id="L263">  KW(&quot;KW&quot;),</span>
+<span class="fc" id="L263">  CN(&quot;CN&quot;),</span>
 
   /**
-   * Lb two letter country code.
+   * Colombia (CO)
    */
-<span class="fc" id="L268">  LB(&quot;LB&quot;),</span>
+<span class="fc" id="L268">  CO(&quot;CO&quot;),</span>
 
   /**
-   * Lt two letter country code.
+   * Costa Rica (CR)
    */
-<span class="fc" id="L273">  LT(&quot;LT&quot;),</span>
+<span class="fc" id="L273">  CR(&quot;CR&quot;),</span>
 
   /**
-   * Lu two letter country code.
+   * Serbia and Montenegro (CS)
    */
-<span class="fc" id="L278">  LU(&quot;LU&quot;),</span>
+<span class="fc" id="L278">  CS(&quot;CS&quot;),</span>
 
   /**
-   * Lv two letter country code.
+   * Cuba (CU)
    */
-<span class="fc" id="L283">  LV(&quot;LV&quot;),</span>
+<span class="fc" id="L283">  CU(&quot;CU&quot;),</span>
 
   /**
-   * Ly two letter country code.
+   * Cape Verde (CV)
    */
-<span class="fc" id="L288">  LY(&quot;LY&quot;),</span>
+<span class="fc" id="L288">  CV(&quot;CV&quot;),</span>
 
   /**
-   * Ma two letter country code.
+   * Curaçao (CW)
    */
-<span class="fc" id="L293">  MA(&quot;MA&quot;),</span>
+<span class="fc" id="L293">  CW(&quot;CW&quot;),</span>
 
   /**
-   * Me two letter country code.
+   * Christmas Island (CX)
    */
-<span class="fc" id="L298">  ME(&quot;ME&quot;),</span>
+<span class="fc" id="L298">  CX(&quot;CX&quot;),</span>
 
   /**
-   * Mk two letter country code.
+   * Cyprus (CY)
    */
-<span class="fc" id="L303">  MK(&quot;MK&quot;),</span>
+<span class="fc" id="L303">  CY(&quot;CY&quot;),</span>
 
   /**
-   * Mt two letter country code.
+   * Czech Republic (CZ)
    */
-<span class="fc" id="L308">  MT(&quot;MT&quot;),</span>
+<span class="fc" id="L308">  CZ(&quot;CZ&quot;),</span>
 
   /**
-   * Mx two letter country code.
+   * Germany (DE)
    */
-<span class="fc" id="L313">  MX(&quot;MX&quot;),</span>
+<span class="fc" id="L313">  DE(&quot;DE&quot;),</span>
 
   /**
-   * My two letter country code.
+   * Djibouti (DJ)
    */
-<span class="fc" id="L318">  MY(&quot;MY&quot;),</span>
+<span class="fc" id="L318">  DJ(&quot;DJ&quot;),</span>
 
   /**
-   * Ni two letter country code.
+   * Denmark (DK)
    */
-<span class="fc" id="L323">  NI(&quot;NI&quot;),</span>
+<span class="fc" id="L323">  DK(&quot;DK&quot;),</span>
 
   /**
-   * Nl two letter country code.
+   * Dominica (DM)
    */
-<span class="fc" id="L328">  NL(&quot;NL&quot;),</span>
+<span class="fc" id="L328">  DM(&quot;DM&quot;),</span>
 
   /**
-   * No two letter country code.
+   * Dominican Republic (DO)
    */
-<span class="fc" id="L333">  NO(&quot;NO&quot;),</span>
+<span class="fc" id="L333">  DO(&quot;DO&quot;),</span>
 
   /**
-   * Nz two letter country code.
+   * Algeria (DZ)
    */
-<span class="fc" id="L338">  NZ(&quot;NZ&quot;),</span>
+<span class="fc" id="L338">  DZ(&quot;DZ&quot;),</span>
 
   /**
-   * Om two letter country code.
+   * Ecuador (EC)
    */
-<span class="fc" id="L343">  OM(&quot;OM&quot;),</span>
+<span class="fc" id="L343">  EC(&quot;EC&quot;),</span>
 
   /**
-   * Pa two letter country code.
+   * Estonia (EE)
    */
-<span class="fc" id="L348">  PA(&quot;PA&quot;),</span>
+<span class="fc" id="L348">  EE(&quot;EE&quot;),</span>
 
   /**
-   * Pe two letter country code.
+   * Egypt (EG)
    */
-<span class="fc" id="L353">  PE(&quot;PE&quot;),</span>
+<span class="fc" id="L353">  EG(&quot;EG&quot;),</span>
 
   /**
-   * Ph two letter country code.
+   * Western Sahara (EH)
    */
-<span class="fc" id="L358">  PH(&quot;PH&quot;),</span>
+<span class="fc" id="L358">  EH(&quot;EH&quot;),</span>
 
   /**
-   * Pl two letter country code.
+   * Eritrea (ER)
    */
-<span class="fc" id="L363">  PL(&quot;PL&quot;),</span>
+<span class="fc" id="L363">  ER(&quot;ER&quot;),</span>
 
   /**
-   * Pr two letter country code.
+   * Spain (ES)
    */
-<span class="fc" id="L368">  PR(&quot;PR&quot;),</span>
+<span class="fc" id="L368">  ES(&quot;ES&quot;),</span>
 
   /**
-   * Pt two letter country code.
+   * Ethiopia (ET)
    */
-<span class="fc" id="L373">  PT(&quot;PT&quot;),</span>
+<span class="fc" id="L373">  ET(&quot;ET&quot;),</span>
 
   /**
-   * Py two letter country code.
+   * Finland (FI)
    */
-<span class="fc" id="L378">  PY(&quot;PY&quot;),</span>
+<span class="fc" id="L378">  FI(&quot;FI&quot;),</span>
 
   /**
-   * Qa two letter country code.
+   * Fiji (FJ)
    */
-<span class="fc" id="L383">  QA(&quot;QA&quot;),</span>
+<span class="fc" id="L383">  FJ(&quot;FJ&quot;),</span>
 
   /**
-   * Ro two letter country code.
+   * Falkland Islands (FK)
    */
-<span class="fc" id="L388">  RO(&quot;RO&quot;),</span>
+<span class="fc" id="L388">  FK(&quot;FK&quot;),</span>
 
   /**
-   * Rs two letter country code.
+   * Micronesia (FM)
    */
-<span class="fc" id="L393">  RS(&quot;RS&quot;),</span>
+<span class="fc" id="L393">  FM(&quot;FM&quot;),</span>
 
   /**
-   * Ru two letter country code.
+   * Faroe Islands (FO)
    */
-<span class="fc" id="L398">  RU(&quot;RU&quot;),</span>
+<span class="fc" id="L398">  FO(&quot;FO&quot;),</span>
 
   /**
-   * Sa two letter country code.
+   * France (FR)
    */
-<span class="fc" id="L403">  SA(&quot;SA&quot;),</span>
+<span class="fc" id="L403">  FR(&quot;FR&quot;),</span>
 
   /**
-   * Sd two letter country code.
+   * Gabon (GA)
    */
-<span class="fc" id="L408">  SD(&quot;SD&quot;),</span>
+<span class="fc" id="L408">  GA(&quot;GA&quot;),</span>
 
   /**
-   * Se two letter country code.
+   * United Kingdom (GB)
    */
-<span class="fc" id="L413">  SE(&quot;SE&quot;),</span>
+<span class="fc" id="L413">  GB(&quot;GB&quot;),</span>
 
   /**
-   * Sg two letter country code.
+   * Grenada (GD)
    */
-<span class="fc" id="L418">  SG(&quot;SG&quot;),</span>
+<span class="fc" id="L418">  GD(&quot;GD&quot;),</span>
 
   /**
-   * Si two letter country code.
+   * Georgia (GE)
    */
-<span class="fc" id="L423">  SI(&quot;SI&quot;),</span>
+<span class="fc" id="L423">  GE(&quot;GE&quot;),</span>
 
   /**
-   * Sk two letter country code.
+   * French Guiana (GF)
    */
-<span class="fc" id="L428">  SK(&quot;SK&quot;),</span>
+<span class="fc" id="L428">  GF(&quot;GF&quot;),</span>
 
   /**
-   * Sv two letter country code.
+   * Guernsey (GG)
    */
-<span class="fc" id="L433">  SV(&quot;SV&quot;),</span>
+<span class="fc" id="L433">  GG(&quot;GG&quot;),</span>
 
   /**
-   * Sy two letter country code.
+   * Ghana (GH)
    */
-<span class="fc" id="L438">  SY(&quot;SY&quot;),</span>
+<span class="fc" id="L438">  GH(&quot;GH&quot;),</span>
 
   /**
-   * Th two letter country code.
+   * Gibraltar (GI)
    */
-<span class="fc" id="L443">  TH(&quot;TH&quot;),</span>
+<span class="fc" id="L443">  GI(&quot;GI&quot;),</span>
 
   /**
-   * Tn two letter country code.
+   * Greenland (GL)
    */
-<span class="fc" id="L448">  TN(&quot;TN&quot;),</span>
+<span class="fc" id="L448">  GL(&quot;GL&quot;),</span>
 
   /**
-   * Tr two letter country code.
+   * Gambia (GM)
    */
-<span class="fc" id="L453">  TR(&quot;TR&quot;),</span>
+<span class="fc" id="L453">  GM(&quot;GM&quot;),</span>
 
   /**
-   * Tw two letter country code.
+   * Guinea (GN)
    */
-<span class="fc" id="L458">  TW(&quot;TW&quot;),</span>
+<span class="fc" id="L458">  GN(&quot;GN&quot;),</span>
 
   /**
-   * Ua two letter country code.
+   * Guadeloupe (GP)
    */
-<span class="fc" id="L463">  UA(&quot;UA&quot;),</span>
+<span class="fc" id="L463">  GP(&quot;GP&quot;),</span>
 
   /**
-   * Us two letter country code.
+   * Equatorial Guinea (GQ)
    */
-<span class="fc" id="L468">  US(&quot;US&quot;),</span>
+<span class="fc" id="L468">  GQ(&quot;GQ&quot;),</span>
 
   /**
-   * Uy two letter country code.
+   * Greece (GR)
    */
-<span class="fc" id="L473">  UY(&quot;UY&quot;),</span>
+<span class="fc" id="L473">  GR(&quot;GR&quot;),</span>
 
   /**
-   * Ve two letter country code.
+   * South Georgia And The South Sandwich Islands (GS)
    */
-<span class="fc" id="L478">  VE(&quot;VE&quot;),</span>
+<span class="fc" id="L478">  GS(&quot;GS&quot;),</span>
 
   /**
-   * Vn two letter country code.
+   * Guatemala (GT)
    */
-<span class="fc" id="L483">  VN(&quot;VN&quot;),</span>
+<span class="fc" id="L483">  GT(&quot;GT&quot;),</span>
 
   /**
-   * Ye two letter country code.
+   * Guam (GU)
    */
-<span class="fc" id="L488">  YE(&quot;YE&quot;),</span>
+<span class="fc" id="L488">  GU(&quot;GU&quot;),</span>
 
   /**
-   * Za two letter country code.
+   * Guinea-Bissau (GW)
    */
-<span class="fc" id="L493">  ZA(&quot;ZA&quot;);</span>
+<span class="fc" id="L493">  GW(&quot;GW&quot;),</span>
+
+  /**
+   * Guyana (GY)
+   */
+<span class="fc" id="L498">  GY(&quot;GY&quot;),</span>
+
+  /**
+   * Hong Kong (HK)
+   */
+<span class="fc" id="L503">  HK(&quot;HK&quot;),</span>
+
+  /**
+   * Heard Island And McDonald Islands (HM)
+   */
+<span class="fc" id="L508">  HM(&quot;HM&quot;),</span>
+
+  /**
+   * Honduras (HN)
+   */
+<span class="fc" id="L513">  HN(&quot;HN&quot;),</span>
+
+  /**
+   * Croatia (HR)
+   */
+<span class="fc" id="L518">  HR(&quot;HR&quot;),</span>
+
+  /**
+   * Haiti (HT)
+   */
+<span class="fc" id="L523">  HT(&quot;HT&quot;),</span>
+
+  /**
+   * Hungary (HU)
+   */
+<span class="fc" id="L528">  HU(&quot;HU&quot;),</span>
+
+  /**
+   * Indonesia (ID)
+   */
+<span class="fc" id="L533">  ID(&quot;ID&quot;),</span>
+
+  /**
+   * Ireland (IE)
+   */
+<span class="fc" id="L538">  IE(&quot;IE&quot;),</span>
+
+  /**
+   * Israel (IL)
+   */
+<span class="fc" id="L543">  IL(&quot;IL&quot;),</span>
+
+  /**
+   * Isle Of Man (IM)
+   */
+<span class="fc" id="L548">  IM(&quot;IM&quot;),</span>
+
+  /**
+   * India (IN)
+   */
+<span class="fc" id="L553">  IN(&quot;IN&quot;),</span>
+
+  /**
+   * British Indian Ocean Territory (IO)
+   */
+<span class="fc" id="L558">  IO(&quot;IO&quot;),</span>
+
+  /**
+   * Iraq (IQ)
+   */
+<span class="fc" id="L563">  IQ(&quot;IQ&quot;),</span>
+
+  /**
+   * Iran (IR)
+   */
+<span class="fc" id="L568">  IR(&quot;IR&quot;),</span>
+
+  /**
+   * Iceland (IS)
+   */
+<span class="fc" id="L573">  IS(&quot;IS&quot;),</span>
+
+  /**
+   * Italy (IT)
+   */
+<span class="fc" id="L578">  IT(&quot;IT&quot;),</span>
+
+  /**
+   * Jersey (JE)
+   */
+<span class="fc" id="L583">  JE(&quot;JE&quot;),</span>
+
+  /**
+   * Jamaica (JM)
+   */
+<span class="fc" id="L588">  JM(&quot;JM&quot;),</span>
+
+  /**
+   * Jordan (JO)
+   */
+<span class="fc" id="L593">  JO(&quot;JO&quot;),</span>
+
+  /**
+   * Japan (JP)
+   */
+<span class="fc" id="L598">  JP(&quot;JP&quot;),</span>
+
+  /**
+   * Kenya (KE)
+   */
+<span class="fc" id="L603">  KE(&quot;KE&quot;),</span>
+
+  /**
+   * Kyrgyzstan (KG)
+   */
+<span class="fc" id="L608">  KG(&quot;KG&quot;),</span>
+
+  /**
+   * Cambodia (KH)
+   */
+<span class="fc" id="L613">  KH(&quot;KH&quot;),</span>
+
+  /**
+   * Kiribati (KI)
+   */
+<span class="fc" id="L618">  KI(&quot;KI&quot;),</span>
+
+  /**
+   * Comoros (KM)
+   */
+<span class="fc" id="L623">  KM(&quot;KM&quot;),</span>
+
+  /**
+   * Saint Kitts And Nevis (KN)
+   */
+<span class="fc" id="L628">  KN(&quot;KN&quot;),</span>
+
+  /**
+   * North Korea (KP)
+   */
+<span class="fc" id="L633">  KP(&quot;KP&quot;),</span>
+
+  /**
+   * South Korea (KR)
+   */
+<span class="fc" id="L638">  KR(&quot;KR&quot;),</span>
+
+  /**
+   * Kuwait (KW)
+   */
+<span class="fc" id="L643">  KW(&quot;KW&quot;),</span>
+
+  /**
+   * Cayman Islands (KY)
+   */
+<span class="fc" id="L648">  KY(&quot;KY&quot;),</span>
+
+  /**
+   * Kazakhstan (KZ)
+   */
+<span class="fc" id="L653">  KZ(&quot;KZ&quot;),</span>
+
+  /**
+   * Laos (LA)
+   */
+<span class="fc" id="L658">  LA(&quot;LA&quot;),</span>
+
+  /**
+   * Lebanon (LB)
+   */
+<span class="fc" id="L663">  LB(&quot;LB&quot;),</span>
+
+  /**
+   * Saint Lucia (LC)
+   */
+<span class="fc" id="L668">  LC(&quot;LC&quot;),</span>
+
+  /**
+   * Liechtenstein (LI)
+   */
+<span class="fc" id="L673">  LI(&quot;LI&quot;),</span>
+
+  /**
+   * Sri Lanka (LK)
+   */
+<span class="fc" id="L678">  LK(&quot;LK&quot;),</span>
+
+  /**
+   * Liberia (LR)
+   */
+<span class="fc" id="L683">  LR(&quot;LR&quot;),</span>
+
+  /**
+   * Lesotho (LS)
+   */
+<span class="fc" id="L688">  LS(&quot;LS&quot;),</span>
+
+  /**
+   * Lithuania (LT)
+   */
+<span class="fc" id="L693">  LT(&quot;LT&quot;),</span>
+
+  /**
+   * Luxembourg (LU)
+   */
+<span class="fc" id="L698">  LU(&quot;LU&quot;),</span>
+
+  /**
+   * Latvia (LV)
+   */
+<span class="fc" id="L703">  LV(&quot;LV&quot;),</span>
+
+  /**
+   * Libya (LY)
+   */
+<span class="fc" id="L708">  LY(&quot;LY&quot;),</span>
+
+  /**
+   * Morocco (MA)
+   */
+<span class="fc" id="L713">  MA(&quot;MA&quot;),</span>
+
+  /**
+   * Monaco (MC)
+   */
+<span class="fc" id="L718">  MC(&quot;MC&quot;),</span>
+
+  /**
+   * Moldova (MD)
+   */
+<span class="fc" id="L723">  MD(&quot;MD&quot;),</span>
+
+  /**
+   * Montenegro (ME)
+   */
+<span class="fc" id="L728">  ME(&quot;ME&quot;),</span>
+
+  /**
+   * Saint Martin (MF)
+   */
+<span class="fc" id="L733">  MF(&quot;MF&quot;),</span>
+
+  /**
+   * Madagascar (MG)
+   */
+<span class="fc" id="L738">  MG(&quot;MG&quot;),</span>
+
+  /**
+   * Marshall Islands (MH)
+   */
+<span class="fc" id="L743">  MH(&quot;MH&quot;),</span>
+
+  /**
+   * Macedonia (MK)
+   */
+<span class="fc" id="L748">  MK(&quot;MK&quot;),</span>
+
+  /**
+   * Mali (ML)
+   */
+<span class="fc" id="L753">  ML(&quot;ML&quot;),</span>
+
+  /**
+   * Myanmar (MM)
+   */
+<span class="fc" id="L758">  MM(&quot;MM&quot;),</span>
+
+  /**
+   * Mongolia (MN)
+   */
+<span class="fc" id="L763">  MN(&quot;MN&quot;),</span>
+
+  /**
+   * Macao (MO)
+   */
+<span class="fc" id="L768">  MO(&quot;MO&quot;),</span>
+
+  /**
+   * Northern Mariana Islands (MP)
+   */
+<span class="fc" id="L773">  MP(&quot;MP&quot;),</span>
+
+  /**
+   * Martinique (MQ)
+   */
+<span class="fc" id="L778">  MQ(&quot;MQ&quot;),</span>
+
+  /**
+   * Mauritania (MR)
+   */
+<span class="fc" id="L783">  MR(&quot;MR&quot;),</span>
+
+  /**
+   * Montserrat (MS)
+   */
+<span class="fc" id="L788">  MS(&quot;MS&quot;),</span>
+
+  /**
+   * Malta (MT)
+   */
+<span class="fc" id="L793">  MT(&quot;MT&quot;),</span>
+
+  /**
+   * Mauritius (MU)
+   */
+<span class="fc" id="L798">  MU(&quot;MU&quot;),</span>
+
+  /**
+   * Maldives (MV)
+   */
+<span class="fc" id="L803">  MV(&quot;MV&quot;),</span>
+
+  /**
+   * Malawi (MW)
+   */
+<span class="fc" id="L808">  MW(&quot;MW&quot;),</span>
+
+  /**
+   * Mexico (MX)
+   */
+<span class="fc" id="L813">  MX(&quot;MX&quot;),</span>
+
+  /**
+   * Malaysia (MY)
+   */
+<span class="fc" id="L818">  MY(&quot;MY&quot;),</span>
+
+  /**
+   * Mozambique (MZ)
+   */
+<span class="fc" id="L823">  MZ(&quot;MZ&quot;),</span>
+
+  /**
+   * Namibia (NA)
+   */
+<span class="fc" id="L828">  NA(&quot;NA&quot;),</span>
+
+  /**
+   * New Caledonia (NC)
+   */
+<span class="fc" id="L833">  NC(&quot;NC&quot;),</span>
+
+  /**
+   * Niger (NE)
+   */
+<span class="fc" id="L838">  NE(&quot;NE&quot;),</span>
+
+  /**
+   * Norfolk Island (NF)
+   */
+<span class="fc" id="L843">  NF(&quot;NF&quot;),</span>
+
+  /**
+   * Nigeria (NG)
+   */
+<span class="fc" id="L848">  NG(&quot;NG&quot;),</span>
+
+  /**
+   * Nicaragua (NI)
+   */
+<span class="fc" id="L853">  NI(&quot;NI&quot;),</span>
+
+  /**
+   * Netherlands (NL)
+   */
+<span class="fc" id="L858">  NL(&quot;NL&quot;),</span>
+
+  /**
+   * Norway (NO)
+   */
+<span class="fc" id="L863">  NO(&quot;NO&quot;),</span>
+
+  /**
+   * Nepal (NP)
+   */
+<span class="fc" id="L868">  NP(&quot;NP&quot;),</span>
+
+  /**
+   * Nauru (NR)
+   */
+<span class="fc" id="L873">  NR(&quot;NR&quot;),</span>
+
+  /**
+   * Niue (NU)
+   */
+<span class="fc" id="L878">  NU(&quot;NU&quot;),</span>
+
+  /**
+   * New Zealand (NZ)
+   */
+<span class="fc" id="L883">  NZ(&quot;NZ&quot;),</span>
+
+  /**
+   * Oman (OM)
+   */
+<span class="fc" id="L888">  OM(&quot;OM&quot;),</span>
+
+  /**
+   * Panama (PA)
+   */
+<span class="fc" id="L893">  PA(&quot;PA&quot;),</span>
+
+  /**
+   * Peru (PE)
+   */
+<span class="fc" id="L898">  PE(&quot;PE&quot;),</span>
+
+  /**
+   * French Polynesia (PF)
+   */
+<span class="fc" id="L903">  PF(&quot;PF&quot;),</span>
+
+  /**
+   * Papua New Guinea (PG)
+   */
+<span class="fc" id="L908">  PG(&quot;PG&quot;),</span>
+
+  /**
+   * Philippines (PH)
+   */
+<span class="fc" id="L913">  PH(&quot;PH&quot;),</span>
+
+  /**
+   * Pakistan (PK)
+   */
+<span class="fc" id="L918">  PK(&quot;PK&quot;),</span>
+
+  /**
+   * Poland (PL)
+   */
+<span class="fc" id="L923">  PL(&quot;PL&quot;),</span>
+
+  /**
+   * Saint Pierre And Miquelon (PM)
+   */
+<span class="fc" id="L928">  PM(&quot;PM&quot;),</span>
+
+  /**
+   * Pitcairn (PN)
+   */
+<span class="fc" id="L933">  PN(&quot;PN&quot;),</span>
+
+  /**
+   * Puerto Rico (PR)
+   */
+<span class="fc" id="L938">  PR(&quot;PR&quot;),</span>
+
+  /**
+   * Palestine (PS)
+   */
+<span class="fc" id="L943">  PS(&quot;PS&quot;),</span>
+
+  /**
+   * Portugal (PT)
+   */
+<span class="fc" id="L948">  PT(&quot;PT&quot;),</span>
+
+  /**
+   * Palau (PW)
+   */
+<span class="fc" id="L953">  PW(&quot;PW&quot;),</span>
+
+  /**
+   * Paraguay (PY)
+   */
+<span class="fc" id="L958">  PY(&quot;PY&quot;),</span>
+
+  /**
+   * Qatar (QA)
+   */
+<span class="fc" id="L963">  QA(&quot;QA&quot;),</span>
+
+  /**
+   * Reunion (RE)
+   */
+<span class="fc" id="L968">  RE(&quot;RE&quot;),</span>
+
+  /**
+   * Romania (RO)
+   */
+<span class="fc" id="L973">  RO(&quot;RO&quot;),</span>
+
+  /**
+   * Serbia (RS)
+   */
+<span class="fc" id="L978">  RS(&quot;RS&quot;),</span>
+
+  /**
+   * Russia (RU)
+   */
+<span class="fc" id="L983">  RU(&quot;RU&quot;),</span>
+
+  /**
+   * Rwanda (RW)
+   */
+<span class="fc" id="L988">  RW(&quot;RW&quot;),</span>
+
+  /**
+   * Saudi Arabia (SA)
+   */
+<span class="fc" id="L993">  SA(&quot;SA&quot;),</span>
+
+  /**
+   * Solomon Islands (SB)
+   */
+<span class="fc" id="L998">  SB(&quot;SB&quot;),</span>
+
+  /**
+   * Seychelles (SC)
+   */
+<span class="fc" id="L1003">  SC(&quot;SC&quot;),</span>
+
+  /**
+   * Sudan (SD)
+   */
+<span class="fc" id="L1008">  SD(&quot;SD&quot;),</span>
+
+  /**
+   * Sweden (SE)
+   */
+<span class="fc" id="L1013">  SE(&quot;SE&quot;),</span>
+
+  /**
+   * Singapore (SG)
+   */
+<span class="fc" id="L1018">  SG(&quot;SG&quot;),</span>
+
+  /**
+   * Saint Helena (SH)
+   */
+<span class="fc" id="L1023">  SH(&quot;SH&quot;),</span>
+
+  /**
+   * Slovenia (SI)
+   */
+<span class="fc" id="L1028">  SI(&quot;SI&quot;),</span>
+
+  /**
+   * Svalbard And Jan Mayen (SJ)
+   */
+<span class="fc" id="L1033">  SJ(&quot;SJ&quot;),</span>
+
+  /**
+   * Slovakia (SK)
+   */
+<span class="fc" id="L1038">  SK(&quot;SK&quot;),</span>
+
+  /**
+   * Sierra Leone (SL)
+   */
+<span class="fc" id="L1043">  SL(&quot;SL&quot;),</span>
+
+  /**
+   * San Marino (SM)
+   */
+<span class="fc" id="L1048">  SM(&quot;SM&quot;),</span>
+
+  /**
+   * Senegal (SN)
+   */
+<span class="fc" id="L1053">  SN(&quot;SN&quot;),</span>
+
+  /**
+   * Somalia (SO)
+   */
+<span class="fc" id="L1058">  SO(&quot;SO&quot;),</span>
+
+  /**
+   * Suriname (SR)
+   */
+<span class="fc" id="L1063">  SR(&quot;SR&quot;),</span>
+
+  /**
+   * South Sudan (SS)
+   */
+<span class="fc" id="L1068">  SS(&quot;SS&quot;),</span>
+
+  /**
+   * Sao Tome And Principe (ST)
+   */
+<span class="fc" id="L1073">  ST(&quot;ST&quot;),</span>
+
+  /**
+   * El Salvador (SV)
+   */
+<span class="fc" id="L1078">  SV(&quot;SV&quot;),</span>
+
+  /**
+   * Sint Maarten (Dutch part) (SX)
+   */
+<span class="fc" id="L1083">  SX(&quot;SX&quot;),</span>
+
+  /**
+   * Syria (SY)
+   */
+<span class="fc" id="L1088">  SY(&quot;SY&quot;),</span>
+
+  /**
+   * Swaziland (SZ)
+   */
+<span class="fc" id="L1093">  SZ(&quot;SZ&quot;),</span>
+
+  /**
+   * Turks And Caicos Islands (TC)
+   */
+<span class="fc" id="L1098">  TC(&quot;TC&quot;),</span>
+
+  /**
+   * Chad (TD)
+   */
+<span class="fc" id="L1103">  TD(&quot;TD&quot;),</span>
+
+  /**
+   * French Southern Territories (TF)
+   */
+<span class="fc" id="L1108">  TF(&quot;TF&quot;),</span>
+
+  /**
+   * Togo (TG)
+   */
+<span class="fc" id="L1113">  TG(&quot;TG&quot;),</span>
+
+  /**
+   * Thailand (TH)
+   */
+<span class="fc" id="L1118">  TH(&quot;TH&quot;),</span>
+
+  /**
+   * Tajikistan (TJ)
+   */
+<span class="fc" id="L1123">  TJ(&quot;TJ&quot;),</span>
+
+  /**
+   * Tokelau (TK)
+   */
+<span class="fc" id="L1128">  TK(&quot;TK&quot;),</span>
+
+  /**
+   * Timor-Leste (TL)
+   */
+<span class="fc" id="L1133">  TL(&quot;TL&quot;),</span>
+
+  /**
+   * Turkmenistan (TM)
+   */
+<span class="fc" id="L1138">  TM(&quot;TM&quot;),</span>
+
+  /**
+   * Tunisia (TN)
+   */
+<span class="fc" id="L1143">  TN(&quot;TN&quot;),</span>
+
+  /**
+   * Tonga (TO)
+   */
+<span class="fc" id="L1148">  TO(&quot;TO&quot;),</span>
+
+  /**
+   * Turkey (TR)
+   */
+<span class="fc" id="L1153">  TR(&quot;TR&quot;),</span>
+
+  /**
+   * Trinidad and Tobago (TT)
+   */
+<span class="fc" id="L1158">  TT(&quot;TT&quot;),</span>
+
+  /**
+   * Tuvalu (TV)
+   */
+<span class="fc" id="L1163">  TV(&quot;TV&quot;),</span>
+
+  /**
+   * Taiwan (TW)
+   */
+<span class="fc" id="L1168">  TW(&quot;TW&quot;),</span>
+
+  /**
+   * Tanzania (TZ)
+   */
+<span class="fc" id="L1173">  TZ(&quot;TZ&quot;),</span>
+
+  /**
+   * Ukraine (UA)
+   */
+<span class="fc" id="L1178">  UA(&quot;UA&quot;),</span>
+
+  /**
+   * Uganda (UG)
+   */
+<span class="fc" id="L1183">  UG(&quot;UG&quot;),</span>
+
+  /**
+   * United States Minor Outlying Islands (UM)
+   */
+<span class="fc" id="L1188">  UM(&quot;UM&quot;),</span>
+
+  /**
+   * United States (US)
+   */
+<span class="fc" id="L1193">  US(&quot;US&quot;),</span>
+
+  /**
+   * Uruguay (UY)
+   */
+<span class="fc" id="L1198">  UY(&quot;UY&quot;),</span>
+
+  /**
+   * Uzbekistan (UZ)
+   */
+<span class="fc" id="L1203">  UZ(&quot;UZ&quot;),</span>
+
+  /**
+   * Vatican (VA)
+   */
+<span class="fc" id="L1208">  VA(&quot;VA&quot;),</span>
+
+  /**
+   * Saint Vincent And The Grenadines (VC)
+   */
+<span class="fc" id="L1213">  VC(&quot;VC&quot;),</span>
+
+  /**
+   * Venezuela (VE)
+   */
+<span class="fc" id="L1218">  VE(&quot;VE&quot;),</span>
+
+  /**
+   * British Virgin Islands (VG)
+   */
+<span class="fc" id="L1223">  VG(&quot;VG&quot;),</span>
+
+  /**
+   * U.S. Virgin Islands (VI)
+   */
+<span class="fc" id="L1228">  VI(&quot;VI&quot;),</span>
+
+  /**
+   * Vietnam (VN)
+   */
+<span class="fc" id="L1233">  VN(&quot;VN&quot;),</span>
+
+  /**
+   * Vanuatu (VU)
+   */
+<span class="fc" id="L1238">  VU(&quot;VU&quot;),</span>
+
+  /**
+   * Wallis And Futuna (WF)
+   */
+<span class="fc" id="L1243">  WF(&quot;WF&quot;),</span>
+
+  /**
+   * Samoa (WS)
+   */
+<span class="fc" id="L1248">  WS(&quot;WS&quot;),</span>
+
+  /**
+   * Yemen (YE)
+   */
+<span class="fc" id="L1253">  YE(&quot;YE&quot;),</span>
+
+  /**
+   * Mayotte (YT)
+   */
+<span class="fc" id="L1258">  YT(&quot;YT&quot;),</span>
+
+  /**
+   * South Africa (ZA)
+   */
+<span class="fc" id="L1263">  ZA(&quot;ZA&quot;),</span>
+
+  /**
+   * Zambia (ZM)
+   */
+<span class="fc" id="L1268">  ZM(&quot;ZM&quot;),</span>
+
+  /**
+   * Zimbabwe (ZW)
+   */
+<span class="fc" id="L1273">  ZW(&quot;ZW&quot;);</span>
 
   private String value;
 
-<span class="fc" id="L497">  TwoLetterCountryCode(String value) {</span>
-<span class="fc" id="L498">    this.value = value;</span>
-<span class="fc" id="L499">  }</span>
+<span class="fc" id="L1277">  TwoLetterCountryCode(String value) {</span>
+<span class="fc" id="L1278">    this.value = value;</span>
+<span class="fc" id="L1279">  }</span>
 
   @Override
   @JsonValue
   public String toString() {
-<span class="nc" id="L504">    return String.valueOf(value);</span>
+<span class="fc" id="L1284">    return value;</span>
   }
 
   /**
@@ -510,12 +1290,7 @@ import org.springframework.util.StringUtils;
    * @return the locale
    */
   public Locale toLocale() {
-<span class="fc" id="L513">    return Arrays</span>
-<span class="fc" id="L514">        .stream(Locale.getAvailableLocales())</span>
-<span class="fc" id="L515">        .filter(locale -&gt; value.equalsIgnoreCase(locale.getCountry()))</span>
-<span class="fc" id="L516">        .findAny()</span>
-<span class="fc" id="L517">        .map(locale -&gt; new Locale(&quot;&quot;, locale.getCountry()))</span>
-<span class="fc" id="L518">        .orElse(null);</span>
+<span class="fc" id="L1293">    return new Locale(&quot;&quot;, value);</span>
   }
 
   /**
@@ -526,12 +1301,42 @@ import org.springframework.util.StringUtils;
    */
   @JsonCreator
   public static TwoLetterCountryCode fromValue(String text) {
-<span class="pc bpc" id="L529" title="1 of 2 branches missed.">    for (TwoLetterCountryCode b : TwoLetterCountryCode.values()) {</span>
-<span class="fc bfc" id="L530" title="All 2 branches covered.">      if (String.valueOf(b.value).equals(text)) {</span>
-<span class="fc" id="L531">        return b;</span>
+<span class="fc" id="L1304">    return fromValue(text, null);</span>
+  }
+
+  /**
+   * From value two letter country code.
+   *
+   * @param text        the text
+   * @param defaultCode the default code
+   * @return the two letter country code
+   */
+  public static TwoLetterCountryCode fromValue(String text, TwoLetterCountryCode defaultCode) {
+<span class="pc bpc" id="L1315" title="1 of 2 branches missed.">    String source = text != null ? text.trim() : null;</span>
+<span class="pc bpc" id="L1316" title="2 of 4 branches missed.">    if (source == null || source.length() &lt; 2) {</span>
+<span class="nc" id="L1317">      return defaultCode;</span>
+    }
+<span class="fc" id="L1319">    source = source.replace(&quot;-&quot;, &quot;_&quot;);</span>
+<span class="fc" id="L1320">    int index = source.indexOf('_');</span>
+<span class="pc bpc" id="L1321" title="1 of 4 branches missed.">    if (source.length() == 3 &amp;&amp; index &lt; 0) {</span>
+<span class="fc" id="L1322">      ThreeLetterCountryCode threeLetter = ThreeLetterCountryCode.fromValue(text);</span>
+<span class="pc bpc" id="L1323" title="1 of 2 branches missed.">      if (threeLetter != null) {</span>
+<span class="fc" id="L1324">        return fromLocale(threeLetter.toLocale(), defaultCode);</span>
       }
     }
-<span class="nc" id="L534">    return null;</span>
+<span class="fc bfc" id="L1327" title="All 2 branches covered.">    if (index &gt;= 0) {</span>
+<span class="fc" id="L1328">      String[] parts = source.split(Pattern.quote(&quot;_&quot;));</span>
+<span class="pc bpc" id="L1329" title="1 of 2 branches missed.">      if (parts.length &gt; 1) {</span>
+<span class="fc" id="L1330">        return fromValue(parts[1], defaultCode);</span>
+      }
+    }
+<span class="fc" id="L1333">    source = source.substring(0, 2).toUpperCase();</span>
+<span class="fc bfc" id="L1334" title="All 2 branches covered.">    for (TwoLetterCountryCode b : TwoLetterCountryCode.values()) {</span>
+<span class="fc bfc" id="L1335" title="All 2 branches covered.">      if (b.value.equals(source)) {</span>
+<span class="fc" id="L1336">        return b;</span>
+      }
+    }
+<span class="fc" id="L1339">    return defaultCode;</span>
   }
 
   /**
@@ -541,10 +1346,21 @@ import org.springframework.util.StringUtils;
    * @return the two letter country code
    */
   public static TwoLetterCountryCode fromLocale(Locale locale) {
-<span class="pc bpc" id="L544" title="2 of 4 branches missed.">    if (locale == null || !StringUtils.hasText(locale.getCountry())) {</span>
-<span class="nc" id="L545">      return null;</span>
+<span class="fc" id="L1349">    return fromLocale(locale, null);</span>
+  }
+
+  /**
+   * From locale.
+   *
+   * @param locale      the locale
+   * @param defaultCode the default code
+   * @return the two letter country code
+   */
+  public static TwoLetterCountryCode fromLocale(Locale locale, TwoLetterCountryCode defaultCode) {
+<span class="pc bpc" id="L1360" title="2 of 4 branches missed.">    if (locale == null || !StringUtils.hasText(locale.getCountry())) {</span>
+<span class="nc" id="L1361">      return defaultCode;</span>
     }
-<span class="fc" id="L547">    return fromValue(locale.getCountry());</span>
+<span class="fc" id="L1363">    return fromValue(locale.getCountry(), defaultCode);</span>
   }
 
 }

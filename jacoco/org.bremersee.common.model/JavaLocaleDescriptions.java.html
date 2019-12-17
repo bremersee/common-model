@@ -23,7 +23,7 @@ import lombok.ToString;
  */
 @ApiModel(description = &quot;Java locales and their descriptions.&quot;)
 @JsonIgnoreProperties(ignoreUnknown = true)
-<span class="pc bpc" id="L26" title="9 of 14 branches missed.">@EqualsAndHashCode</span>
+<span class="nc bnc" id="L26" title="All 14 branches missed.">@EqualsAndHashCode</span>
 <span class="nc" id="L27">@ToString</span>
 <span class="nc" id="L28">@NoArgsConstructor</span>
 @SuppressWarnings({&quot;WeakerAccess&quot;, &quot;unused&quot;})
@@ -31,7 +31,7 @@ public class JavaLocaleDescriptions implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-<span class="pc" id="L34">  @JsonProperty(&quot;entries&quot;)</span>
+<span class="nc" id="L34">  @JsonProperty(&quot;entries&quot;)</span>
   private List&lt;JavaLocaleDescription&gt; entries = null;
 
   /**
@@ -39,11 +39,11 @@ public class JavaLocaleDescriptions implements Serializable {
    *
    * @param entries the entries
    */
-<span class="fc" id="L42">  public JavaLocaleDescriptions(Collection&lt;? extends JavaLocaleDescription&gt; entries) {</span>
-<span class="pc bpc" id="L43" title="1 of 2 branches missed.">    if (entries != null) {</span>
-<span class="fc" id="L44">      this.entries = new ArrayList&lt;&gt;(entries);</span>
+<span class="nc" id="L42">  public JavaLocaleDescriptions(Collection&lt;? extends JavaLocaleDescription&gt; entries) {</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">    if (entries != null) {</span>
+<span class="nc" id="L44">      this.entries = new ArrayList&lt;&gt;(entries);</span>
     }
-<span class="fc" id="L46">  }</span>
+<span class="nc" id="L46">  }</span>
 
   /**
    * Get descriptions.
@@ -52,7 +52,7 @@ public class JavaLocaleDescriptions implements Serializable {
    */
   @ApiModelProperty(value = &quot;The descriptions.&quot;)
   public List&lt;JavaLocaleDescription&gt; getEntries() {
-<span class="fc" id="L55">    return entries;</span>
+<span class="nc" id="L55">    return entries;</span>
   }
 
   /**

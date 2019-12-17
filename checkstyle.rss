@@ -27,7 +27,7 @@ under the License.
     <item>
       <title>File: 71,
              Errors: 0,
-             Warnings: 3,
+             Warnings: 875,
              Infos: 0
       </title>
             <link>https://github.com/bremersee/common-model/checkstyle.html</link>
@@ -103,6 +103,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.Link.java">org/bremersee/common/model/Link.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.ThreeLetterLanguageCodeTest.java">org/bremersee/common/model/ThreeLetterLanguageCodeTest.java</a>
                 </td>
                 <td>
                   0
@@ -200,6 +214,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.JavaLocaleTest.java">org/bremersee/common/model/JavaLocaleTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.JavaLocales.java">org/bremersee/common/model/JavaLocales.java</a>
                 </td>
                 <td>
@@ -242,7 +270,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.ThreeLetterLanguageCode.java">org/bremersee/common/model/ThreeLetterLanguageCode.java</a>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.MongoSearchLanguageTest.java">org/bremersee/common/model/MongoSearchLanguageTest.java</a>
                 </td>
                 <td>
                   0
@@ -256,13 +284,13 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.HttpLanguageTags.java">org/bremersee/common/model/HttpLanguageTags.java</a>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.ThreeLetterLanguageCode.java">org/bremersee/common/model/ThreeLetterLanguageCode.java</a>
                 </td>
                 <td>
                   0
                 </td>
                 <td>
-                  0
+                  185
                 </td>
                 <td>
                   0
@@ -327,20 +355,6 @@ under the License.
                           <tr>
                 <td>
                   <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.exception.model.Handler.java">org/bremersee/exception/model/Handler.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.HttpLanguageTagDescriptions.java">org/bremersee/common/model/HttpLanguageTagDescriptions.java</a>
                 </td>
                 <td>
                   0
@@ -472,6 +486,20 @@ under the License.
                   0
                 </td>
                 <td>
+                  249
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.ThreeLetterCountryCodeTest.java">org/bremersee/common/model/ThreeLetterCountryCodeTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
                   0
                 </td>
                 <td>
@@ -578,20 +606,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.LocaleHelperTest.java">org/bremersee/common/model/LocaleHelperTest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.exception.model.RestApiException.java">org/bremersee/exception/model/RestApiException.java</a>
                 </td>
                 <td>
@@ -634,7 +648,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.HttpLanguageTag.java">org/bremersee/common/model/HttpLanguageTag.java</a>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.geojson.model.LineString.java">org/bremersee/geojson/model/LineString.java</a>
                 </td>
                 <td>
                   0
@@ -648,7 +662,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.geojson.model.LineString.java">org/bremersee/geojson/model/LineString.java</a>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.TwoLetterLanguageCodeTest.java">org/bremersee/common/model/TwoLetterLanguageCodeTest.java</a>
                 </td>
                 <td>
                   0
@@ -677,6 +691,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.TwoLetterLanguageCode.java">org/bremersee/common/model/TwoLetterLanguageCode.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  188
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.TwoLetterCountryCodeTest.java">org/bremersee/common/model/TwoLetterCountryCodeTest.java</a>
                 </td>
                 <td>
                   0
@@ -900,20 +928,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.LocaleHelper.java">org/bremersee/common/model/LocaleHelper.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.geojson.model.Polygon.java">org/bremersee/geojson/model/Polygon.java</a>
                 </td>
                 <td>
@@ -948,7 +962,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  250
                 </td>
                 <td>
                   0
@@ -999,20 +1013,6 @@ under the License.
                           <tr>
                 <td>
                   <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.TwoLetterCountryCodes.java">org/bremersee/common/model/TwoLetterCountryCodes.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://github.com/bremersee/common-model/checkstyle.html#org.bremersee.common.model.HttpLanguageTagDescription.java">org/bremersee/common/model/HttpLanguageTagDescription.java</a>
                 </td>
                 <td>
                   0

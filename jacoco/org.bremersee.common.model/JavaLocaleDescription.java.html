@@ -25,7 +25,7 @@ import org.springframework.validation.annotation.Validated;
 @ApiModel(description = &quot;A java locale and it's description.&quot;)
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
-<span class="pc bpc" id="L28" title="15 of 22 branches missed.">@EqualsAndHashCode</span>
+<span class="nc bnc" id="L28" title="All 22 branches missed.">@EqualsAndHashCode</span>
 <span class="nc" id="L29">@ToString</span>
 <span class="nc" id="L30">@NoArgsConstructor</span>
 @SuppressWarnings(&quot;unused&quot;)
@@ -34,7 +34,7 @@ public class JavaLocaleDescription implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty(value = &quot;locale&quot;, required = true)
-  private JavaLocale locale;
+  private String locale;
 
   @JsonProperty(value = &quot;description&quot;, required = true)
   @JacksonXmlProperty(localName = &quot;description&quot;)
@@ -46,11 +46,11 @@ public class JavaLocaleDescription implements Serializable {
    * @param locale      the locale
    * @param description the description
    */
-<span class="pc" id="L49">  @Builder</span>
-<span class="fc" id="L50">  public JavaLocaleDescription(JavaLocale locale, String description) {</span>
-<span class="fc" id="L51">    this.locale = locale;</span>
-<span class="fc" id="L52">    this.description = description;</span>
-<span class="fc" id="L53">  }</span>
+<span class="nc" id="L49">  @Builder</span>
+<span class="nc" id="L50">  public JavaLocaleDescription(String locale, String description) {</span>
+<span class="nc" id="L51">    this.locale = locale;</span>
+<span class="nc" id="L52">    this.description = description;</span>
+<span class="nc" id="L53">  }</span>
 
   /**
    * Get the locale.
@@ -59,8 +59,8 @@ public class JavaLocaleDescription implements Serializable {
    */
   @ApiModelProperty(required = true, value = &quot;The locale.&quot;)
   @NotNull
-  public JavaLocale getLocale() {
-<span class="fc" id="L63">    return locale;</span>
+  public String getLocale() {
+<span class="nc" id="L63">    return locale;</span>
   }
 
   /**
@@ -68,7 +68,7 @@ public class JavaLocaleDescription implements Serializable {
    *
    * @param locale the locale
    */
-  public void setLocale(JavaLocale locale) {
+  public void setLocale(String locale) {
 <span class="nc" id="L72">    this.locale = locale;</span>
 <span class="nc" id="L73">  }</span>
 
@@ -80,7 +80,7 @@ public class JavaLocaleDescription implements Serializable {
   @ApiModelProperty(required = true, value = &quot;The description of the locale.&quot;)
   @NotNull
   public String getDescription() {
-<span class="fc" id="L83">    return description;</span>
+<span class="nc" id="L83">    return description;</span>
   }
 
   /**
