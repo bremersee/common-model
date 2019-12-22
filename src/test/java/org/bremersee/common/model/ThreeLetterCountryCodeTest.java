@@ -2,11 +2,9 @@ package org.bremersee.common.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 import java.util.Locale;
 import java.util.MissingResourceException;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.util.StringUtils;
 
@@ -16,38 +14,6 @@ import org.springframework.util.StringUtils;
  * @author Christian Bremer
  */
 public class ThreeLetterCountryCodeTest {
-
-  /**
-   * Source code creator.
-   */
-  @Ignore
-  @Test
-  public void sourceCodeCreator() {
-    String[] isos = Locale.getISOCountries();
-    StringBuilder sb = new StringBuilder();
-    for (int i = 0; i < isos.length; i++) {
-      String iso = isos[i];
-      Locale locale = new Locale("", iso);
-      if (StringUtils.hasText(locale.getISO3Country())) {
-        String iso3 = locale.getISO3Country();
-        sb.append("  /**\n");
-        sb.append("   * ")
-            .append(locale.getDisplayCountry(Locale.ENGLISH))
-            .append(" (")
-            .append(iso3)
-            .append(")\n");
-        sb.append("   */\n");
-        sb.append("  ").append(iso3.toUpperCase()).append("(\"").append(iso3).append("\")");
-        if (i < isos.length - 1) {
-          sb.append(",\n\n");
-        } else {
-          sb.append(";\n");
-        }
-      }
-    }
-    assertTrue(sb.length() > 0);
-    System.out.println(sb);
-  }
 
   /**
    * From locale.
@@ -63,7 +29,7 @@ public class ThreeLetterCountryCodeTest {
           assertEquals(locale.getISO3Country(), code.toLocale().getISO3Country());
         }
       } catch (MissingResourceException e) {
-        System.out.println(e.getMessage());
+        // ignored
       }
     }
   }
@@ -106,7 +72,7 @@ public class ThreeLetterCountryCodeTest {
           assertEquals(locale.getISO3Country(), code.toString());
         }
       } catch (MissingResourceException e) {
-        System.out.println(e.getMessage());
+        // ignored
       }
     }
   }

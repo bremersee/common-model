@@ -2,11 +2,8 @@ package org.bremersee.common.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 import java.util.Locale;
-import java.util.MissingResourceException;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.util.StringUtils;
 
@@ -18,38 +15,12 @@ import org.springframework.util.StringUtils;
 public class TwoLetterCountryCodeTest {
 
   /**
-   * Source code creator.
-   */
-  @Ignore
-  @Test
-  public void sourceCodeCreator() {
-    String[] isos = Locale.getISOCountries();
-    StringBuilder sb = new StringBuilder();
-    for (int i = 0; i < isos.length; i++) {
-      String iso = isos[i];
-      Locale locale = new Locale("", iso);
-      sb.append("  /**\n");
-      sb.append("   * ").append(locale.getDisplayCountry(Locale.ENGLISH)).append(" (").append(iso)
-          .append(")\n");
-      sb.append("   */\n");
-      sb.append("  ").append(iso.toUpperCase()).append("(\"").append(iso).append("\")");
-      if (i < isos.length - 1) {
-        sb.append(",\n\n");
-      } else {
-        sb.append(";\n");
-      }
-    }
-    assertTrue(sb.length() > 0);
-    System.out.println(sb);
-  }
-
-  /**
    * From locale.
    */
   @Test
   public void fromLocale() {
     for (Locale locale : Locale.getAvailableLocales()) {
-      if (StringUtils.hasText(locale.getCountry())) {
+      if (StringUtils.hasText(locale.getCountry()) && locale.getCountry().length() == 2) {
         TwoLetterCountryCode code = TwoLetterCountryCode.fromLocale(locale);
         assertNotNull(code);
         assertEquals(locale.getCountry(), code.toString());
@@ -91,7 +62,7 @@ public class TwoLetterCountryCodeTest {
   @Test
   public void fromLocaleValue() {
     for (Locale locale : Locale.getAvailableLocales()) {
-      if (StringUtils.hasText(locale.getCountry())) {
+      if (StringUtils.hasText(locale.getCountry()) && locale.getCountry().length() == 2) {
         TwoLetterCountryCode code = TwoLetterCountryCode.fromValue(locale.toString());
         assertNotNull(code);
         assertEquals(locale.getCountry(), code.toString());

@@ -30,6 +30,7 @@ public class JavaLocaleTest {
     for (TwoLetterLanguageCode languageCode : TwoLetterLanguageCode.values()) {
       for (TwoLetterCountryCode countryCode : TwoLetterCountryCode.values()) {
         String text = languageCode.toString() + "-" + countryCode.toString();
+
         JavaLocale javaLocale0 = JavaLocale.fromValue(text);
         assertNotNull(javaLocale0);
         JavaLocale javaLocale1 = new JavaLocale(languageCode.toString(), countryCode.toString());
