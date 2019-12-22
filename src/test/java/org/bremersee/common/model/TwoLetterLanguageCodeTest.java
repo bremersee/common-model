@@ -2,10 +2,8 @@ package org.bremersee.common.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 import java.util.Locale;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.util.StringUtils;
 
@@ -17,41 +15,12 @@ import org.springframework.util.StringUtils;
 public class TwoLetterLanguageCodeTest {
 
   /**
-   * Source code creator.
-   */
-  @Ignore
-  @Test
-  public void sourceCodeCreator() {
-    String[] isos = Locale.getISOLanguages();
-    StringBuilder sb = new StringBuilder();
-    for (int i = 0; i < isos.length; i++) {
-      String iso = isos[i];
-      Locale locale = new Locale(iso);
-      sb.append("  /**\n");
-      sb.append("   * ")
-          .append(locale.getDisplayLanguage(Locale.ENGLISH))
-          .append(" (")
-          .append(iso)
-          .append(")\n");
-      sb.append("   */\n");
-      sb.append("  ").append(iso.toUpperCase()).append("(\"").append(iso).append("\")");
-      if (i < isos.length - 1) {
-        sb.append(",\n\n");
-      } else {
-        sb.append(";\n");
-      }
-    }
-    assertTrue(sb.length() > 0);
-    System.out.println(sb);
-  }
-
-  /**
    * From locale.
    */
   @Test
   public void fromLocale() {
     for (Locale locale : Locale.getAvailableLocales()) {
-      if (StringUtils.hasText(locale.getLanguage())) {
+      if (StringUtils.hasText(locale.getLanguage()) && locale.getLanguage().length() == 2) {
         TwoLetterLanguageCode code = TwoLetterLanguageCode.fromLocale(locale);
         assertNotNull(code);
         assertEquals(locale.getLanguage(), code.toString());
@@ -93,7 +62,7 @@ public class TwoLetterLanguageCodeTest {
   @Test
   public void fromLocaleValue() {
     for (Locale locale : Locale.getAvailableLocales()) {
-      if (StringUtils.hasText(locale.getLanguage())) {
+      if (StringUtils.hasText(locale.getLanguage()) && locale.getLanguage().length() == 2) {
         TwoLetterLanguageCode code = TwoLetterLanguageCode.fromValue(locale.toString());
         assertNotNull(code);
         assertEquals(locale.getLanguage(), code.toString());

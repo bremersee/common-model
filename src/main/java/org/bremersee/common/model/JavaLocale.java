@@ -11,7 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.regex.Pattern;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -42,10 +44,13 @@ public class JavaLocale implements Serializable {
    */
   @SuppressWarnings("WeakerAccess")
   protected JavaLocale(String value) {
-    setLanguage(value);
-    if (value != null) {
+    if (value == null || value.trim().length() < 2) {
+      setLanguage(null);
+      setCountry(null);
+    } else {
       String source = value.trim().replace("-", "_");
       String[] parts = source.split(Pattern.quote("_"));
+      setLanguage(parts[0]);
       if (parts.length > 1) {
         setCountry(parts[1]);
       }
@@ -104,8 +109,24 @@ public class JavaLocale implements Serializable {
    */
   @JsonProperty("language")
   public void setLanguage(String language) {
-    final TwoLetterLanguageCode code = TwoLetterLanguageCode.fromValue(language);
-    this.language = code != null ? code.toString() : null;
+    if (StringUtils.hasText(language)) {
+      for (Locale l : Locale.getAvailableLocales()) {
+        try {
+          if (l.getLanguage().equalsIgnoreCase(language)
+              || (l.getISO3Language() != null && l.getISO3Language().equalsIgnoreCase(language))) {
+            this.language = l.getLanguage();
+            return;
+          }
+        } catch (MissingResourceException ignored) {
+          // ignored
+        }
+      }
+      if (Arrays.stream(Locale.getISOLanguages()).anyMatch(iso -> iso.equalsIgnoreCase(language))) {
+        this.language = language.toLowerCase();
+        return;
+      }
+    }
+    this.language = null;
   }
 
   /**
@@ -126,8 +147,24 @@ public class JavaLocale implements Serializable {
    */
   @JsonProperty("country")
   public void setCountry(String country) {
-    final TwoLetterCountryCode code = TwoLetterCountryCode.fromValue(language);
-    this.country = country;
+    if (StringUtils.hasText(country)) {
+      for (Locale l : Locale.getAvailableLocales()) {
+        try {
+          if (l.getCountry().equalsIgnoreCase(country)
+              || (l.getISO3Country() != null && l.getISO3Country().equalsIgnoreCase(country))) {
+            this.country = l.getCountry();
+            return;
+          }
+        } catch (MissingResourceException ignored) {
+          // ignored
+        }
+      }
+      if (Arrays.stream(Locale.getISOCountries()).anyMatch(iso -> iso.equalsIgnoreCase(country))) {
+        this.country = country.toUpperCase();
+        return;
+      }
+    }
+    this.country = null;
   }
 
   @Override

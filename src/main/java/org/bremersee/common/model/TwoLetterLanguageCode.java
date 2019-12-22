@@ -1,15 +1,14 @@
 /*
  * The template was taken from
  * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
- */
+ * to add @JsonIgnoreProperties(ignoreUnknown = true).
+   */
 
 package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Locale;
-import java.util.regex.Pattern;
 import org.springframework.util.StringUtils;
 
 /**
@@ -18,948 +17,948 @@ import org.springframework.util.StringUtils;
 public enum TwoLetterLanguageCode {
 
   /**
-   * Afar (aa)
+   * Afar (aa).
    */
   AA("aa"),
 
   /**
-   * Abkhazian (ab)
+   * Abchasisch (ab).
    */
   AB("ab"),
 
   /**
-   * Avestan (ae)
+   * Avestisch (ae).
    */
   AE("ae"),
 
   /**
-   * Afrikaans (af)
+   * Afrikaans (af).
    */
   AF("af"),
 
   /**
-   * Akan (ak)
+   * Akan (ak).
    */
   AK("ak"),
 
   /**
-   * Amharic (am)
+   * Amharisch (am).
    */
   AM("am"),
 
   /**
-   * Aragonese (an)
+   * Aragonesisch (an).
    */
   AN("an"),
 
   /**
-   * Arabic (ar)
+   * Arabisch (ar).
    */
   AR("ar"),
 
   /**
-   * Assamese (as)
+   * Assamesisch (as).
    */
   AS("as"),
 
   /**
-   * Avaric (av)
+   * Awarisch (av).
    */
   AV("av"),
 
   /**
-   * Aymara (ay)
+   * Aymara (ay).
    */
   AY("ay"),
 
   /**
-   * Azerbaijani (az)
+   * Aserbaidschanisch (az).
    */
   AZ("az"),
 
   /**
-   * Bashkir (ba)
+   * Baschkirisch (ba).
    */
   BA("ba"),
 
   /**
-   * Belarusian (be)
+   * Weißrussisch (be).
    */
   BE("be"),
 
   /**
-   * Bulgarian (bg)
+   * Bulgarisch (bg).
    */
   BG("bg"),
 
   /**
-   * Bihari (bh)
+   * Biharisch (bh).
    */
   BH("bh"),
 
   /**
-   * Bislama (bi)
+   * Bislama (bi).
    */
   BI("bi"),
 
   /**
-   * Bambara (bm)
+   * Bambara (bm).
    */
   BM("bm"),
 
   /**
-   * Bengali (bn)
+   * Bengalisch (bn).
    */
   BN("bn"),
 
   /**
-   * Tibetan (bo)
+   * Tibetisch (bo).
    */
   BO("bo"),
 
   /**
-   * Breton (br)
+   * Bretonisch (br).
    */
   BR("br"),
 
   /**
-   * Bosnian (bs)
+   * Bosnisch (bs).
    */
   BS("bs"),
 
   /**
-   * Catalan (ca)
+   * Katalanisch (ca).
    */
   CA("ca"),
 
   /**
-   * Chechen (ce)
+   * Tschetschenisch (ce).
    */
   CE("ce"),
 
   /**
-   * Chamorro (ch)
+   * Chamorro (ch).
    */
   CH("ch"),
 
   /**
-   * Corsican (co)
+   * Korsisch (co).
    */
   CO("co"),
 
   /**
-   * Cree (cr)
+   * Cree (cr).
    */
   CR("cr"),
 
   /**
-   * Czech (cs)
+   * Tschechisch (cs).
    */
   CS("cs"),
 
   /**
-   * Church Slavic (cu)
+   * Kirchenslawisch (cu).
    */
   CU("cu"),
 
   /**
-   * Chuvash (cv)
+   * Tschuwaschisch (cv).
    */
   CV("cv"),
 
   /**
-   * Welsh (cy)
+   * Walisisch (cy).
    */
   CY("cy"),
 
   /**
-   * Danish (da)
+   * Dänisch (da).
    */
   DA("da"),
 
   /**
-   * German (de)
+   * Deutsch (de).
    */
   DE("de"),
 
   /**
-   * Divehi (dv)
+   * Dhivehi (dv).
    */
   DV("dv"),
 
   /**
-   * Dzongkha (dz)
+   * Dzongkha (dz).
    */
   DZ("dz"),
 
   /**
-   * Ewe (ee)
+   * Ewe (ee).
    */
   EE("ee"),
 
   /**
-   * Greek (el)
+   * Griechisch (el).
    */
   EL("el"),
 
   /**
-   * English (en)
+   * Englisch (en).
    */
   EN("en"),
 
   /**
-   * Esperanto (eo)
+   * Esperanto (eo).
    */
   EO("eo"),
 
   /**
-   * Spanish (es)
+   * Spanisch (es).
    */
   ES("es"),
 
   /**
-   * Estonian (et)
+   * Estnisch (et).
    */
   ET("et"),
 
   /**
-   * Basque (eu)
+   * Baskisch (eu).
    */
   EU("eu"),
 
   /**
-   * Persian (fa)
+   * Persisch (fa).
    */
   FA("fa"),
 
   /**
-   * Fulah (ff)
+   * Ful (ff).
    */
   FF("ff"),
 
   /**
-   * Finnish (fi)
+   * Finnisch (fi).
    */
   FI("fi"),
 
   /**
-   * Fijian (fj)
+   * Fidschi (fj).
    */
   FJ("fj"),
 
   /**
-   * Faroese (fo)
+   * Färöisch (fo).
    */
   FO("fo"),
 
   /**
-   * French (fr)
+   * Französisch (fr).
    */
   FR("fr"),
 
   /**
-   * Frisian (fy)
+   * Westfriesisch (fy).
    */
   FY("fy"),
 
   /**
-   * Irish (ga)
+   * Irisch (ga).
    */
   GA("ga"),
 
   /**
-   * Scottish Gaelic (gd)
+   * Schottisches Gälisch (gd).
    */
   GD("gd"),
 
   /**
-   * Gallegan (gl)
+   * Galicisch (gl).
    */
   GL("gl"),
 
   /**
-   * Guarani (gn)
+   * Guaraní (gn).
    */
   GN("gn"),
 
   /**
-   * Gujarati (gu)
+   * Gujarati (gu).
    */
   GU("gu"),
 
   /**
-   * Manx (gv)
+   * Manx (gv).
    */
   GV("gv"),
 
   /**
-   * Hausa (ha)
+   * Haussa (ha).
    */
   HA("ha"),
 
   /**
-   * Hebrew (he)
+   * Hebräisch (he).
    */
   HE("he"),
 
   /**
-   * Hindi (hi)
+   * Hindi (hi).
    */
   HI("hi"),
 
   /**
-   * Hiri Motu (ho)
+   * Hiri-Motu (ho).
    */
   HO("ho"),
 
   /**
-   * Croatian (hr)
+   * Kroatisch (hr).
    */
   HR("hr"),
 
   /**
-   * Haitian (ht)
+   * Haiti-Kreolisch (ht).
    */
   HT("ht"),
 
   /**
-   * Hungarian (hu)
+   * Ungarisch (hu).
    */
   HU("hu"),
 
   /**
-   * Armenian (hy)
+   * Armenisch (hy).
    */
   HY("hy"),
 
   /**
-   * Herero (hz)
+   * Herero (hz).
    */
   HZ("hz"),
 
   /**
-   * Interlingua (ia)
+   * Interlingua (ia).
    */
   IA("ia"),
 
   /**
-   * Indonesian (id)
+   * Indonesisch (id).
    */
   ID("id"),
 
   /**
-   * Interlingue (ie)
+   * Interlingue (ie).
    */
   IE("ie"),
 
   /**
-   * Igbo (ig)
+   * Igbo (ig).
    */
   IG("ig"),
 
   /**
-   * Sichuan Yi (ii)
+   * Yi (ii).
    */
   II("ii"),
 
   /**
-   * Inupiaq (ik)
+   * Inupiak (ik).
    */
   IK("ik"),
 
   /**
-   * Indonesian (in)
+   * Indonesisch (in).
    */
   IN("in"),
 
   /**
-   * Ido (io)
+   * Ido (io).
    */
   IO("io"),
 
   /**
-   * Icelandic (is)
+   * Isländisch (is).
    */
   IS("is"),
 
   /**
-   * Italian (it)
+   * Italienisch (it).
    */
   IT("it"),
 
   /**
-   * Inuktitut (iu)
+   * Inuktitut (iu).
    */
   IU("iu"),
 
   /**
-   * Hebrew (iw)
+   * Hebräisch (iw).
    */
   IW("iw"),
 
   /**
-   * Japanese (ja)
+   * Japanisch (ja).
    */
   JA("ja"),
 
   /**
-   * Yiddish (ji)
+   * Jiddish (ji).
    */
   JI("ji"),
 
   /**
-   * Javanese (jv)
+   * Javanisch (jv).
    */
   JV("jv"),
 
   /**
-   * Georgian (ka)
+   * Georgisch (ka).
    */
   KA("ka"),
 
   /**
-   * Kongo (kg)
+   * Kongolesisch (kg).
    */
   KG("kg"),
 
   /**
-   * Kikuyu (ki)
+   * Kikuyu (ki).
    */
   KI("ki"),
 
   /**
-   * Kwanyama (kj)
+   * Kwanyama (kj).
    */
   KJ("kj"),
 
   /**
-   * Kazakh (kk)
+   * Kasachisch (kk).
    */
   KK("kk"),
 
   /**
-   * Greenlandic (kl)
+   * Grönländisch (kl).
    */
   KL("kl"),
 
   /**
-   * Khmer (km)
+   * Khmer (km).
    */
   KM("km"),
 
   /**
-   * Kannada (kn)
+   * Kannada (kn).
    */
   KN("kn"),
 
   /**
-   * Korean (ko)
+   * Koreanisch (ko).
    */
   KO("ko"),
 
   /**
-   * Kanuri (kr)
+   * Kanuri (kr).
    */
   KR("kr"),
 
   /**
-   * Kashmiri (ks)
+   * Kaschmiri (ks).
    */
   KS("ks"),
 
   /**
-   * Kurdish (ku)
+   * Kurdisch (ku).
    */
   KU("ku"),
 
   /**
-   * Komi (kv)
+   * Komi (kv).
    */
   KV("kv"),
 
   /**
-   * Cornish (kw)
+   * Kornisch (kw).
    */
   KW("kw"),
 
   /**
-   * Kirghiz (ky)
+   * Kirgisisch (ky).
    */
   KY("ky"),
 
   /**
-   * Latin (la)
+   * Latein (la).
    */
   LA("la"),
 
   /**
-   * Luxembourgish (lb)
+   * Luxemburgisch (lb).
    */
   LB("lb"),
 
   /**
-   * Ganda (lg)
+   * Ganda (lg).
    */
   LG("lg"),
 
   /**
-   * Limburgish (li)
+   * Limburgisch (li).
    */
   LI("li"),
 
   /**
-   * Lingala (ln)
+   * Lingala (ln).
    */
   LN("ln"),
 
   /**
-   * Lao (lo)
+   * Laotisch (lo).
    */
   LO("lo"),
 
   /**
-   * Lithuanian (lt)
+   * Litauisch (lt).
    */
   LT("lt"),
 
   /**
-   * Luba-Katanga (lu)
+   * Luba-Katanga (lu).
    */
   LU("lu"),
 
   /**
-   * Latvian (lv)
+   * Lettisch (lv).
    */
   LV("lv"),
 
   /**
-   * Malagasy (mg)
+   * Madagassisch (mg).
    */
   MG("mg"),
 
   /**
-   * Marshallese (mh)
+   * Marschallesisch (mh).
    */
   MH("mh"),
 
   /**
-   * Maori (mi)
+   * Maori (mi).
    */
   MI("mi"),
 
   /**
-   * Macedonian (mk)
+   * Mazedonisch (mk).
    */
   MK("mk"),
 
   /**
-   * Malayalam (ml)
+   * Malayalam (ml).
    */
   ML("ml"),
 
   /**
-   * Mongolian (mn)
+   * Mongolisch (mn).
    */
   MN("mn"),
 
   /**
-   * Moldavian (mo)
+   * Moldavisch (mo).
    */
   MO("mo"),
 
   /**
-   * Marathi (mr)
+   * Marathi (mr).
    */
   MR("mr"),
 
   /**
-   * Malay (ms)
+   * Malaiisch (ms).
    */
   MS("ms"),
 
   /**
-   * Maltese (mt)
+   * Maltesisch (mt).
    */
   MT("mt"),
 
   /**
-   * Burmese (my)
+   * Birmanisch (my).
    */
   MY("my"),
 
   /**
-   * Nauru (na)
+   * Nauruisch (na).
    */
   NA("na"),
 
   /**
-   * Norwegian Bokmål (nb)
+   * Norwegisch Bokmål (nb).
    */
   NB("nb"),
 
   /**
-   * North Ndebele (nd)
+   * Nord-Ndebele (nd).
    */
   ND("nd"),
 
   /**
-   * Nepali (ne)
+   * Nepalesisch (ne).
    */
   NE("ne"),
 
   /**
-   * Ndonga (ng)
+   * Ndonga (ng).
    */
   NG("ng"),
 
   /**
-   * Dutch (nl)
+   * Niederländisch (nl).
    */
   NL("nl"),
 
   /**
-   * Norwegian Nynorsk (nn)
+   * Norwegisch Nynorsk (nn).
    */
   NN("nn"),
 
   /**
-   * Norwegian (no)
+   * Norwegisch (no).
    */
   NO("no"),
 
   /**
-   * South Ndebele (nr)
+   * Süd-Ndebele (nr).
    */
   NR("nr"),
 
   /**
-   * Navajo (nv)
+   * Navajo (nv).
    */
   NV("nv"),
 
   /**
-   * Nyanja (ny)
+   * Nyanja (ny).
    */
   NY("ny"),
 
   /**
-   * Occitan (oc)
+   * Okzitanisch (oc).
    */
   OC("oc"),
 
   /**
-   * Ojibwa (oj)
+   * Ojibwa (oj).
    */
   OJ("oj"),
 
   /**
-   * Oromo (om)
+   * Oromo (om).
    */
   OM("om"),
 
   /**
-   * Oriya (or)
+   * Oriya (or).
    */
   OR("or"),
 
   /**
-   * Ossetian (os)
+   * Ossetisch (os).
    */
   OS("os"),
 
   /**
-   * Panjabi (pa)
+   * Punjabi (pa).
    */
   PA("pa"),
 
   /**
-   * Pali (pi)
+   * Pali (pi).
    */
   PI("pi"),
 
   /**
-   * Polish (pl)
+   * Polnisch (pl).
    */
   PL("pl"),
 
   /**
-   * Pushto (ps)
+   * Paschtu (ps).
    */
   PS("ps"),
 
   /**
-   * Portuguese (pt)
+   * Portugiesisch (pt).
    */
   PT("pt"),
 
   /**
-   * Quechua (qu)
+   * Quechua (qu).
    */
   QU("qu"),
 
   /**
-   * Raeto-Romance (rm)
+   * Rätoromanisch (rm).
    */
   RM("rm"),
 
   /**
-   * Rundi (rn)
+   * Rundi (rn).
    */
   RN("rn"),
 
   /**
-   * Romanian (ro)
+   * Rumänisch (ro).
    */
   RO("ro"),
 
   /**
-   * Russian (ru)
+   * Russisch (ru).
    */
   RU("ru"),
 
   /**
-   * Kinyarwanda (rw)
+   * Kinyarwanda (rw).
    */
   RW("rw"),
 
   /**
-   * Sanskrit (sa)
+   * Sanskrit (sa).
    */
   SA("sa"),
 
   /**
-   * Sardinian (sc)
+   * Sardisch (sc).
    */
   SC("sc"),
 
   /**
-   * Sindhi (sd)
+   * Sindhi (sd).
    */
   SD("sd"),
 
   /**
-   * Northern Sami (se)
+   * Nordsamisch (se).
    */
   SE("se"),
 
   /**
-   * Sango (sg)
+   * Sango (sg).
    */
   SG("sg"),
 
   /**
-   * Sinhalese (si)
+   * Singhalesisch (si).
    */
   SI("si"),
 
   /**
-   * Slovak (sk)
+   * Slowakisch (sk).
    */
   SK("sk"),
 
   /**
-   * Slovenian (sl)
+   * Slowenisch (sl).
    */
   SL("sl"),
 
   /**
-   * Samoan (sm)
+   * Samoanisch (sm).
    */
   SM("sm"),
 
   /**
-   * Shona (sn)
+   * Shona (sn).
    */
   SN("sn"),
 
   /**
-   * Somali (so)
+   * Somali (so).
    */
   SO("so"),
 
   /**
-   * Albanian (sq)
+   * Albanisch (sq).
    */
   SQ("sq"),
 
   /**
-   * Serbian (sr)
+   * Serbisch (sr).
    */
   SR("sr"),
 
   /**
-   * Swati (ss)
+   * Swazi (ss).
    */
   SS("ss"),
 
   /**
-   * Southern Sotho (st)
+   * Süd-Sotho (st).
    */
   ST("st"),
 
   /**
-   * Sundanese (su)
+   * Sundanesisch (su).
    */
   SU("su"),
 
   /**
-   * Swedish (sv)
+   * Schwedisch (sv).
    */
   SV("sv"),
 
   /**
-   * Swahili (sw)
+   * Suaheli (sw).
    */
   SW("sw"),
 
   /**
-   * Tamil (ta)
+   * Tamil (ta).
    */
   TA("ta"),
 
   /**
-   * Telugu (te)
+   * Telugu (te).
    */
   TE("te"),
 
   /**
-   * Tajik (tg)
+   * Tadschikisch (tg).
    */
   TG("tg"),
 
   /**
-   * Thai (th)
+   * Thailändisch (th).
    */
   TH("th"),
 
   /**
-   * Tigrinya (ti)
+   * Tigrinya (ti).
    */
   TI("ti"),
 
   /**
-   * Turkmen (tk)
+   * Turkmenisch (tk).
    */
   TK("tk"),
 
   /**
-   * Tagalog (tl)
+   * Tagalog (tl).
    */
   TL("tl"),
 
   /**
-   * Tswana (tn)
+   * Tswana (tn).
    */
   TN("tn"),
 
   /**
-   * Tonga (to)
+   * Tongaisch (to).
    */
   TO("to"),
 
   /**
-   * Turkish (tr)
+   * Türkisch (tr).
    */
   TR("tr"),
 
   /**
-   * Tsonga (ts)
+   * Tsonga (ts).
    */
   TS("ts"),
 
   /**
-   * Tatar (tt)
+   * Tatarisch (tt).
    */
   TT("tt"),
 
   /**
-   * Twi (tw)
+   * Twi (tw).
    */
   TW("tw"),
 
   /**
-   * Tahitian (ty)
+   * Tahitisch (ty).
    */
   TY("ty"),
 
   /**
-   * Uighur (ug)
+   * Uigurisch (ug).
    */
   UG("ug"),
 
   /**
-   * Ukrainian (uk)
+   * Ukrainisch (uk).
    */
   UK("uk"),
 
   /**
-   * Urdu (ur)
+   * Urdu (ur).
    */
   UR("ur"),
 
   /**
-   * Uzbek (uz)
+   * Usbekisch (uz).
    */
   UZ("uz"),
 
   /**
-   * Venda (ve)
+   * Venda (ve).
    */
   VE("ve"),
 
   /**
-   * Vietnamese (vi)
+   * Vietnamesisch (vi).
    */
   VI("vi"),
 
   /**
-   * Volapük (vo)
+   * Volapük (vo).
    */
   VO("vo"),
 
   /**
-   * Walloon (wa)
+   * Wallonisch (wa).
    */
   WA("wa"),
 
   /**
-   * Wolof (wo)
+   * Wolof (wo).
    */
   WO("wo"),
 
   /**
-   * Xhosa (xh)
+   * Xhosa (xh).
    */
   XH("xh"),
 
   /**
-   * Yiddish (yi)
+   * Jiddish (yi).
    */
   YI("yi"),
 
   /**
-   * Yoruba (yo)
+   * Yoruba (yo).
    */
   YO("yo"),
 
   /**
-   * Zhuang (za)
+   * Zhuang (za).
    */
   ZA("za"),
 
   /**
-   * Chinese (zh)
+   * Chinesisch (zh).
    */
   ZH("zh"),
 
   /**
-   * Zulu (zu)
+   * Zulu (zu).
    */
   ZU("zu");
 
-  private String value;
+  private final String value;
 
-  TwoLetterLanguageCode(String value) {
+  TwoLetterLanguageCode(final String value) {
     this.value = value;
   }
 
@@ -985,7 +984,7 @@ public enum TwoLetterLanguageCode {
    * @return the two letter language code
    */
   @JsonCreator
-  public static TwoLetterLanguageCode fromValue(String text) {
+  public static TwoLetterLanguageCode fromValue(final String text) {
     return fromValue(text, null);
   }
 
@@ -996,26 +995,31 @@ public enum TwoLetterLanguageCode {
    * @param defaultCode the default code
    * @return the two letter language code
    */
-  public static TwoLetterLanguageCode fromValue(String text, TwoLetterLanguageCode defaultCode) {
-    String source = text != null ? text.trim() : null;
+  @SuppressWarnings("DuplicatedCode")
+  public static TwoLetterLanguageCode fromValue(
+      final String text,
+      final TwoLetterLanguageCode defaultCode) {
+
+    String source = text != null ? text.trim().toLowerCase() : null;
     if (source == null || source.length() < 2) {
       return defaultCode;
     }
     source = source.replace("-", "_");
     int index = source.indexOf('_');
-    if (source.length() == 3 && index < 0) {
-      ThreeLetterLanguageCode threeLetter = ThreeLetterLanguageCode.fromValue(text);
-      if (threeLetter != null) {
-        return fromLocale(threeLetter.toLocale(), defaultCode);
+    if (index > -1) {
+      source = source.substring(0, index).trim();
+    }
+    if (source.length() < 2) {
+      return defaultCode;
+    }
+    if (source.length() > 2) {
+      ThreeLetterLanguageCode threeLetterLanguageCode = ThreeLetterLanguageCode.fromValue(text);
+      if (threeLetterLanguageCode != null && threeLetterLanguageCode.hasTwoLetterCode()) {
+        return threeLetterLanguageCode.getTwoLetterLanguageCode();
+      } else {
+        return defaultCode;
       }
     }
-    if (index >= 0) {
-      String[] parts = source.split(Pattern.quote("_"));
-      if (parts.length > 0) {
-        return fromValue(parts[0], defaultCode);
-      }
-    }
-    source = source.substring(0, 2).toLowerCase();
     for (TwoLetterLanguageCode b : TwoLetterLanguageCode.values()) {
       if (b.value.equals(source)) {
         return b;
@@ -1030,7 +1034,7 @@ public enum TwoLetterLanguageCode {
    * @param locale the locale
    * @return the two letter language code
    */
-  public static TwoLetterLanguageCode fromLocale(Locale locale) {
+  public static TwoLetterLanguageCode fromLocale(final Locale locale) {
     return fromLocale(locale, null);
   }
 
@@ -1041,7 +1045,9 @@ public enum TwoLetterLanguageCode {
    * @param defaultCode the default code
    * @return the two letter language code
    */
-  public static TwoLetterLanguageCode fromLocale(Locale locale, TwoLetterLanguageCode defaultCode) {
+  public static TwoLetterLanguageCode fromLocale(
+      final Locale locale,
+      final TwoLetterLanguageCode defaultCode) {
     if (locale == null || !StringUtils.hasText(locale.getLanguage())) {
       return defaultCode;
     }
