@@ -2,15 +2,31 @@ pipeline {
   agent {
     label 'maven'
   }
+  tools {
+    jdk 'jdk11'
+    maven 'm3'
+  }
   stages {
-    stage('Build') {
+    stage('Tools') {
       steps {
-        sh 'mvn -B clean compile'
+        sh 'java -version'
+        sh 'mvn -B --version'
       }
     }
     stage('Test') {
       steps {
-        sh 'mvn -B test'
+        sh 'mvn -B clean test'
+      }
+    }
+    stage('Deploy') {
+      when {
+        anyOf {
+          branch 'develop'
+          branch 'master'
+        }
+      }
+      steps {
+        sh 'mvn -B -P deploy clean deploy'
       }
     }
     stage('Snapshot Site') {
@@ -27,17 +43,6 @@ pipeline {
       }
       steps {
         sh 'mvn -B -P gh-pages-site site site:stage scm-publish:publish-scm'
-      }
-    }
-    stage('Deploy') {
-      when {
-        anyOf {
-          branch 'develop'
-          branch 'master'
-        }
-      }
-      steps {
-        sh 'mvn -B -P deploy deploy'
       }
     }
   }
