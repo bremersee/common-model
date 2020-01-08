@@ -1,11 +1,13 @@
 package org.bremersee.common.model;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Locale;
 import java.util.MissingResourceException;
-import org.junit.Test;
+import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.junit.jupiter.api.Test;
 import org.springframework.util.StringUtils;
 
 /**
@@ -13,13 +15,13 @@ import org.springframework.util.StringUtils;
  *
  * @author Christian Bremer
  */
-public class ThreeLetterCountryCodeTest {
+class ThreeLetterCountryCodeTest {
 
   /**
    * From locale.
    */
   @Test
-  public void fromLocale() {
+  void fromLocale() {
     for (Locale locale : Locale.getAvailableLocales()) {
       try {
         if (StringUtils.hasText(locale.getISO3Country())) {
@@ -38,7 +40,7 @@ public class ThreeLetterCountryCodeTest {
    * From two letter value.
    */
   @Test
-  public void fromTwoLetterValue() {
+  void fromTwoLetterValue() {
     for (String iso : Locale.getISOCountries()) {
       ThreeLetterCountryCode code = ThreeLetterCountryCode.fromValue(iso);
       assertNotNull(code);
@@ -50,7 +52,7 @@ public class ThreeLetterCountryCodeTest {
    * From three letter value.
    */
   @Test
-  public void fromThreeLetterValue() {
+  void fromThreeLetterValue() {
     for (String iso : Locale.getISOCountries()) {
       Locale locale = new Locale("", iso);
       ThreeLetterCountryCode code = ThreeLetterCountryCode.fromValue(locale.getISO3Country());
@@ -63,7 +65,7 @@ public class ThreeLetterCountryCodeTest {
    * From locale value.
    */
   @Test
-  public void fromLocaleValue() {
+  void fromLocaleValue() {
     for (Locale locale : Locale.getAvailableLocales()) {
       try {
         if (StringUtils.hasText(locale.getISO3Country())) {

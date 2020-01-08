@@ -108,10 +108,52 @@
     </dependency>
 
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
 
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>${jacoco-maven-plugin}</version>
+          <configuration>
+            <excludes>
+              <exclude>org/bremersee/common/model/**</exclude>
+              <exclude>org/bremersee/exception/model/**</exclude>
+              <exclude>org/bremersee/geojson/model/**</exclude>
+            </excludes>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <configuration>
+          <dataFile>${project.build.directory}/coverage-reports/jacoco.exec</dataFile>
+          <excludes>
+            <exclude>org/bremersee/common/model/**</exclude>
+            <exclude>org/bremersee/exception/model/**</exclude>
+            <exclude>org/bremersee/geojson/model/**</exclude>
+          </excludes>
+        </configuration>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
 </project>

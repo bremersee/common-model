@@ -1,10 +1,12 @@
 package org.bremersee.common.model;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Locale;
-import org.junit.Test;
+import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.junit.jupiter.api.Test;
 import org.springframework.util.StringUtils;
 
 /**
@@ -12,13 +14,13 @@ import org.springframework.util.StringUtils;
  *
  * @author Christian Bremer
  */
-public class TwoLetterCountryCodeTest {
+class TwoLetterCountryCodeTest {
 
   /**
    * From locale.
    */
   @Test
-  public void fromLocale() {
+  void fromLocale() {
     for (Locale locale : Locale.getAvailableLocales()) {
       if (StringUtils.hasText(locale.getCountry()) && locale.getCountry().length() == 2) {
         TwoLetterCountryCode code = TwoLetterCountryCode.fromLocale(locale);
@@ -33,7 +35,7 @@ public class TwoLetterCountryCodeTest {
    * From two letter value.
    */
   @Test
-  public void fromTwoLetterValue() {
+  void fromTwoLetterValue() {
     for (String text : Locale.getISOCountries()) {
       TwoLetterCountryCode code = TwoLetterCountryCode.fromValue(text);
       assertNotNull(code);
@@ -45,7 +47,7 @@ public class TwoLetterCountryCodeTest {
    * From three letter value.
    */
   @Test
-  public void fromThreeLetterValue() {
+  void fromThreeLetterValue() {
     for (String iso : Locale.getISOCountries()) {
       Locale locale = new Locale("", iso);
       if (locale.getISO3Country() != null) {
@@ -60,7 +62,7 @@ public class TwoLetterCountryCodeTest {
    * From locale value.
    */
   @Test
-  public void fromLocaleValue() {
+  void fromLocaleValue() {
     for (Locale locale : Locale.getAvailableLocales()) {
       if (StringUtils.hasText(locale.getCountry()) && locale.getCountry().length() == 2) {
         TwoLetterCountryCode code = TwoLetterCountryCode.fromValue(locale.toString());
