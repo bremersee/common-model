@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Locale;
 import java.util.MissingResourceException;
-import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.util.StringUtils;
 
@@ -20,7 +20,7 @@ class ThreeLetterLanguageCodeTest {
   /**
    * Source code creator.
    */
-  @Ignore
+  @Disabled
   @Test
   void sourceCodeCreator() {
     String[] isos = Locale.getISOLanguages();
