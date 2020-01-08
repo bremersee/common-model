@@ -104,4 +104,22 @@
     </dependency>
   </dependencies>
 
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>${jacoco-maven-plugin}</version>
+          <configuration>
+            <excludes>
+              <exclude>org/bremersee/common/model/**</exclude>
+              <exclude>org/bremersee/exception/model/**</exclude>
+              <exclude>org/bremersee/geojson/model/**</exclude>
+            </excludes>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 </project>
