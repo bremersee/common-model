@@ -1,5 +1,7 @@
 # Common Model
 
+[![codecov](https://codecov.io/gh/bremersee/common-base/branch/develop/graph/badge.svg)](https://codecov.io/gh/bremersee/common-model)
+
 Library of the common model.
 
 #### Maven Site
