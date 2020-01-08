@@ -2,6 +2,9 @@ pipeline {
   agent {
     label 'maven'
   }
+  environment {
+    CODECOV_TOKEN = credentials('common-model-codecov-token')
+  }
   tools {
     jdk 'jdk11'
     maven 'm3'
@@ -14,8 +17,21 @@ pipeline {
       }
     }
     stage('Test') {
+      when {
+        not {
+          branch 'feature/*'
+        }
+      }
       steps {
         sh 'mvn -B clean test'
+      }
+      post {
+        always {
+          junit '**/surefire-reports/*.xml'
+          jacoco(
+              execPattern: '**/coverage-reports/*.exec'
+          )
+        }
       }
     }
     stage('Deploy') {
@@ -42,7 +58,23 @@ pipeline {
         branch 'master'
       }
       steps {
-        sh 'mvn -B -P gh-pages-site site site:stage scm-publish:publish-scm'
+        sh 'mvn -B -P gh-pages-site clean site site:stage scm-publish:publish-scm'
+      }
+    }
+    stage('Deploy Feature') {
+      when {
+        branch 'feature/*'
+      }
+      steps {
+        sh 'mvn -B -P feature,allow-features clean deploy'
+      }
+      post {
+        always {
+          junit '**/surefire-reports/*.xml'
+          jacoco(
+              execPattern: '**/coverage-reports/*.exec'
+          )
+        }
       }
     }
   }
