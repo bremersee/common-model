@@ -1,14 +1,14 @@
 package org.bremersee.common.model;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import org.bremersee.common.model.JavaLocale.Separator;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.util.StringUtils;
 
 /**
@@ -16,13 +16,13 @@ import org.springframework.util.StringUtils;
  *
  * @author Christian Bremer
  */
-public class JavaLocaleTest {
+class JavaLocaleTest {
 
   /**
    * Test possibilities.
    */
   @Test
-  public void testPossibilities() {
+  void testPossibilities() {
     Map<String, String> exceptions = new HashMap<>();
     exceptions.put("he", "iw");
     exceptions.put("id", "in");
@@ -56,7 +56,7 @@ public class JavaLocaleTest {
    * From locale.
    */
   @Test
-  public void fromLocale() {
+  void fromLocale() {
     for (Locale locale : Locale.getAvailableLocales()) {
       JavaLocale javaLocale = JavaLocale.fromLocale(locale);
       if (StringUtils.hasText(locale.toString())) {

@@ -16,6 +16,9 @@
 
 package org.bremersee.xml;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.StringWriter;
@@ -29,8 +32,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.bremersee.xml.model1.Person;
 import org.bremersee.xml.model3.Company;
 import org.bremersee.xml.model3.ObjectFactory;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 
 /**
@@ -38,7 +40,7 @@ import org.w3c.dom.Document;
  *
  * @author Christian Bremer
  */
-public class XmlDocumentBuilderTest {
+class XmlDocumentBuilderTest {
 
   private JaxbContextBuilder jaxbContextBuilder = JaxbContextBuilder
       .builder()
@@ -50,7 +52,7 @@ public class XmlDocumentBuilderTest {
    * @throws Exception the exception
    */
   @Test
-  public void testWithNamespaces() throws Exception {
+  void testWithNamespaces() throws Exception {
     Person expected = new Person();
     expected.setFirstName("Anna Livia");
     expected.setLastName("Plurabelle");
@@ -67,7 +69,7 @@ public class XmlDocumentBuilderTest {
     System.out.println(xml);
 
     Person actual = (Person) jaxbContextBuilder.buildUnmarshaller().unmarshal(document);
-    Assert.assertEquals(expected, actual);
+    assertEquals(expected, actual);
 
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     jaxbContextBuilder.buildMarshaller().marshal(expected, out);
@@ -83,49 +85,49 @@ public class XmlDocumentBuilderTest {
     document = builder.buildDocument(new ByteArrayInputStream(out.toByteArray()));
 
     actual = (Person) jaxbContextBuilder.buildUnmarshaller().unmarshal(document);
-    Assert.assertEquals(expected, actual);
+    assertEquals(expected, actual);
   }
 
   /**
    * Test without namespaces and expect error.
-   *
-   * @throws Exception the exception
    */
-  @Test(expected = UnmarshalException.class)
-  public void testWithoutNamespacesAndExpectError() throws Exception {
-    Person expected = new Person();
-    expected.setFirstName("Anna Livia");
-    expected.setLastName("Plurabelle");
-    XmlDocumentBuilder builder = XmlDocumentBuilder.builder();
-    Document document = builder.buildDocument(expected, jaxbContextBuilder.buildJaxbContext());
+  @Test
+  void testWithoutNamespacesAndExpectError() {
+    assertThrows(UnmarshalException.class, () -> {
+      Person expected = new Person();
+      expected.setFirstName("Anna Livia");
+      expected.setLastName("Plurabelle");
+      XmlDocumentBuilder builder = XmlDocumentBuilder.builder();
+      Document document = builder.buildDocument(expected, jaxbContextBuilder.buildJaxbContext());
 
-    TransformerFactory transformerFactory = TransformerFactory.newInstance();
-    Transformer transformer = transformerFactory.newTransformer();
-    DOMSource domSource = new DOMSource(document);
-    StringWriter sw = new StringWriter();
-    StreamResult streamResult = new StreamResult(sw);
-    transformer.transform(domSource, streamResult);
-    String xml = sw.toString();
-    System.out.println(xml);
+      TransformerFactory transformerFactory = TransformerFactory.newInstance();
+      Transformer transformer = transformerFactory.newTransformer();
+      DOMSource domSource = new DOMSource(document);
+      StringWriter sw = new StringWriter();
+      StreamResult streamResult = new StreamResult(sw);
+      transformer.transform(domSource, streamResult);
+      String xml = sw.toString();
+      System.out.println(xml);
 
-    Person actual = (Person) jaxbContextBuilder.buildUnmarshaller().unmarshal(document);
-    Assert.assertEquals(expected, actual);
+      Person actual = (Person) jaxbContextBuilder.buildUnmarshaller().unmarshal(document);
+      assertEquals(expected, actual);
 
-    ByteArrayOutputStream out = new ByteArrayOutputStream();
-    jaxbContextBuilder.buildMarshaller().marshal(expected, out);
+      ByteArrayOutputStream out = new ByteArrayOutputStream();
+      jaxbContextBuilder.buildMarshaller().marshal(expected, out);
 
-    builder = builder.configureFactory(
-        null,
-        null,
-        false,
-        false,
-        false,
-        false,
-        null);
-    document = builder.buildDocument(new ByteArrayInputStream(out.toByteArray()));
+      builder = builder.configureFactory(
+          null,
+          null,
+          false,
+          false,
+          false,
+          false,
+          null);
+      document = builder.buildDocument(new ByteArrayInputStream(out.toByteArray()));
 
-    actual = (Person) jaxbContextBuilder.buildUnmarshaller().unmarshal(document);
-    Assert.assertEquals(expected, actual);
+      actual = (Person) jaxbContextBuilder.buildUnmarshaller().unmarshal(document);
+      assertEquals(expected, actual);
+    });
   }
 
   /**
@@ -134,7 +136,7 @@ public class XmlDocumentBuilderTest {
    * @throws Exception the exception
    */
   @Test
-  public void testWithoutNamespaces() throws Exception {
+  void testWithoutNamespaces() throws Exception {
     JAXBContext jaxbContext = JAXBContext.newInstance(ObjectFactory.class.getPackage().getName());
 
     Company expected = new Company();
@@ -160,7 +162,7 @@ public class XmlDocumentBuilderTest {
     System.out.println(xml);
 
     Company actual = (Company) jaxbContextBuilder.buildUnmarshaller().unmarshal(document);
-    Assert.assertEquals(expected, actual);
+    assertEquals(expected, actual);
   }
 
 }

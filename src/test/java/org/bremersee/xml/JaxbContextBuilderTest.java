@@ -16,6 +16,12 @@
 
 package org.bremersee.xml;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.ServiceLoader;
@@ -25,15 +31,14 @@ import org.bremersee.xml.model2.Vehicle;
 import org.bremersee.xml.model3.Company;
 import org.bremersee.xml.model4.Address;
 import org.bremersee.xml.provider.ExampleJaxbContextDataProvider;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * The jaxb context builder test.
  *
  * @author Christian Bremer
  */
-public class JaxbContextBuilderTest {
+class JaxbContextBuilderTest {
 
   /**
    * Test jaxb context builder.
@@ -41,73 +46,73 @@ public class JaxbContextBuilderTest {
    * @throws Exception the exception
    */
   @Test
-  public void testJaxbContextBuilder() throws Exception {
+  void testJaxbContextBuilder() throws Exception {
 
     JaxbContextBuilder jaxbContextBuilder = JaxbContextBuilder
         .builder()
         .processAll(ServiceLoader.load(JaxbContextDataProvider.class));
 
     String contextPath = jaxbContextBuilder.buildContextPath();
-    Assert.assertNotNull(contextPath);
-    Assert.assertTrue(
+    assertNotNull(contextPath);
+    assertTrue(
         contextPath.contains(org.bremersee.xml.model1.ObjectFactory.class.getPackage().getName()));
-    Assert.assertTrue(
+    assertTrue(
         contextPath.contains(org.bremersee.xml.model2.ObjectFactory.class.getPackage().getName()));
-    Assert.assertTrue(
+    assertTrue(
         contextPath.contains(org.bremersee.xml.model3.ObjectFactory.class.getPackage().getName()));
-    Assert.assertTrue(
+    assertTrue(
         contextPath.contains(org.bremersee.xml.model4.ObjectFactory.class.getPackage().getName()));
 
     contextPath = jaxbContextBuilder.buildContextPath("");
-    Assert.assertFalse(
+    assertFalse(
         contextPath.contains(org.bremersee.xml.model1.ObjectFactory.class.getPackage().getName()));
-    Assert.assertFalse(
+    assertFalse(
         contextPath.contains(org.bremersee.xml.model2.ObjectFactory.class.getPackage().getName()));
-    Assert.assertTrue(
+    assertTrue(
         contextPath.contains(org.bremersee.xml.model3.ObjectFactory.class.getPackage().getName()));
-    Assert.assertTrue(
+    assertTrue(
         contextPath.contains(org.bremersee.xml.model4.ObjectFactory.class.getPackage().getName()));
 
     contextPath = jaxbContextBuilder
         .buildContextPath("http://bremersee.org/xmlschemas/common-xml-test-model-1");
-    Assert.assertTrue(
+    assertTrue(
         contextPath.contains(org.bremersee.xml.model1.ObjectFactory.class.getPackage().getName()));
-    Assert.assertFalse(
+    assertFalse(
         contextPath.contains(org.bremersee.xml.model2.ObjectFactory.class.getPackage().getName()));
-    Assert.assertFalse(
+    assertFalse(
         contextPath.contains(org.bremersee.xml.model3.ObjectFactory.class.getPackage().getName()));
-    Assert.assertFalse(
+    assertFalse(
         contextPath.contains(org.bremersee.xml.model4.ObjectFactory.class.getPackage().getName()));
 
     jaxbContextBuilder = jaxbContextBuilder
         .addAll(new ExampleJaxbContextDataProvider().getJaxbContextData());
 
     String schemaLocation = jaxbContextBuilder.buildSchemaLocation();
-    Assert.assertNotNull(schemaLocation);
-    Assert.assertTrue(
+    assertNotNull(schemaLocation);
+    assertTrue(
         schemaLocation.contains("http://bremersee.org/xmlschemas/common-xml-test-model-1 "
             + "http://bremersee.github.io/xmlschemas/common-xml-test-model-1.xsd"));
-    Assert.assertTrue(
+    assertTrue(
         schemaLocation.contains("http://bremersee.org/xmlschemas/common-xml-test-model-2 "
             + "http://bremersee.github.io/xmlschemas/common-xml-test-model-2.xsd"));
 
     schemaLocation = jaxbContextBuilder
         .buildSchemaLocation("http://bremersee.org/xmlschemas/common-xml-test-model-2");
-    Assert.assertFalse(
+    assertFalse(
         schemaLocation.contains("http://bremersee.org/xmlschemas/common-xml-test-model-1 "
             + "http://bremersee.github.io/xmlschemas/common-xml-test-model-1.xsd"));
-    Assert.assertTrue(
+    assertTrue(
         schemaLocation.contains("http://bremersee.org/xmlschemas/common-xml-test-model-2 "
             + "http://bremersee.github.io/xmlschemas/common-xml-test-model-2.xsd"));
 
-    Assert.assertTrue(jaxbContextBuilder.supports(Person.class));
-    Assert.assertTrue(jaxbContextBuilder.supports(Vehicle.class));
-    Assert.assertTrue(jaxbContextBuilder.supports(Company.class));
-    Assert.assertTrue(jaxbContextBuilder.supports(Address.class));
+    assertTrue(jaxbContextBuilder.supports(Person.class));
+    assertTrue(jaxbContextBuilder.supports(Vehicle.class));
+    assertTrue(jaxbContextBuilder.supports(Company.class));
+    assertTrue(jaxbContextBuilder.supports(Address.class));
 
-    Assert.assertFalse(jaxbContextBuilder.supports(JaxbContextData.class));
+    assertFalse(jaxbContextBuilder.supports(JaxbContextData.class));
 
-    Assert.assertFalse(jaxbContextBuilder.supports(
+    assertFalse(jaxbContextBuilder.supports(
         Person.class,
         "http://bremersee.org/xmlschemas/common-xml-test-model-2"));
 
@@ -124,7 +129,7 @@ public class JaxbContextBuilderTest {
    * @throws Exception the exception
    */
   @Test
-  public void writeAndReadXml() throws Exception {
+  void writeAndReadXml() throws Exception {
 
     Vehicle vehicle = new Vehicle();
     vehicle.setBrand("A brand");
@@ -148,39 +153,38 @@ public class JaxbContextBuilderTest {
         .buildUnmarshaller()
         .unmarshal(new StringReader(xml));
 
-    Assert.assertEquals(vehicle, readVehicle);
+    assertEquals(vehicle, readVehicle);
   }
 
   /**
    * Write xml but read fails.
-   *
-   * @throws Exception the exception
    */
-  @Test(expected = JAXBException.class)
-  public void writeXmlButReadFails() throws Exception {
+  @Test
+  void writeXmlButReadFails() {
+    assertThrows(JAXBException.class, () -> {
+      Company company = new Company();
+      company.setName("XML Generator Service");
 
-    Company company = new Company();
-    company.setName("XML Generator Service");
+      JaxbContextBuilder jaxbContextBuilder = JaxbContextBuilder
+          .builder()
+          .formattedOutput(true)
+          .add(new JaxbContextData(org.bremersee.xml.model1.ObjectFactory.class.getPackage()))
+          .add(new JaxbContextData(org.bremersee.xml.model3.ObjectFactory.class.getPackage()
+              .getName()));
 
-    JaxbContextBuilder jaxbContextBuilder = JaxbContextBuilder
-        .builder()
-        .formattedOutput(true)
-        .add(new JaxbContextData(org.bremersee.xml.model1.ObjectFactory.class.getPackage()))
-        .add(new JaxbContextData(org.bremersee.xml.model3.ObjectFactory.class.getPackage()
-            .getName()));
+      StringWriter sw = new StringWriter();
+      jaxbContextBuilder
+          .buildMarshaller()
+          .marshal(company, sw);
 
-    StringWriter sw = new StringWriter();
-    jaxbContextBuilder
-        .buildMarshaller()
-        .marshal(company, sw);
+      String xml = sw.toString();
+      System.out.println(xml);
+      System.out.print("\n");
 
-    String xml = sw.toString();
-    System.out.println(xml);
-    System.out.print("\n");
-
-    jaxbContextBuilder
-        .buildUnmarshaller("http://bremersee.org/xmlschemas/common-xml-test-model-1")
-        .unmarshal(new StringReader(xml));
+      jaxbContextBuilder
+          .buildUnmarshaller("http://bremersee.org/xmlschemas/common-xml-test-model-1")
+          .unmarshal(new StringReader(xml));
+    });
   }
 
 }
