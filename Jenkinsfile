@@ -55,6 +55,11 @@ pipeline {
       steps {
         sh 'mvn -B site-deploy'
       }
+      post {
+        always {
+          sh 'curl -s https://codecov.io/bash | bash -s - -t ${CODECOV_TOKEN}'
+        }
+      }
     }
     stage('Deploy Feature') {
       when {

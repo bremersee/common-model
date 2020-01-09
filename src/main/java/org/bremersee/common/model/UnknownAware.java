@@ -72,7 +72,7 @@ public abstract class UnknownAware {
   /**
    * Any json setter.
    *
-   * @param name  the name
+   * @param name the name
    * @param value the value
    */
   @JsonAnySetter
@@ -98,9 +98,9 @@ public abstract class UnknownAware {
   /**
    * Find a value from the unknown map.
    *
-   * @param <T>      the class type
+   * @param <T> the class type
    * @param jsonPath the json path, e. g. {@code $.firstKey.secondKey.thirdKey}
-   * @param clazz    the expected result class
+   * @param clazz the expected result class
    * @return an empty optional if the value was not found or can not be casted, otherwise the value
    */
   public <T> Optional<T> findUnknown(final String jsonPath, final Class<T> clazz) {
@@ -138,9 +138,9 @@ public abstract class UnknownAware {
   /**
    * Find a list from the unknown map.
    *
-   * @param <E>      the list element type
+   * @param <E> the list element type
    * @param jsonPath the json path, e. g. {@code $.firstKey.secondKey.thirdKey}
-   * @param clazz    he list element type
+   * @param clazz he list element type
    * @return an empty optional if the list was not found or can not be casted, otherwise the list
    */
   public <E> Optional<List<E>> findUnknownList(final String jsonPath, final Class<E> clazz) {

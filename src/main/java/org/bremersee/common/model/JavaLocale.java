@@ -56,7 +56,7 @@ public class JavaLocale implements Serializable {
    * Instantiates a new java locale.
    *
    * @param language the language
-   * @param country  the country
+   * @param country the country
    */
   @Builder(toBuilder = true)
   public JavaLocale(String language, String country) {
@@ -68,7 +68,7 @@ public class JavaLocale implements Serializable {
    * Instantiates a new java locale.
    *
    * @param language the language
-   * @param country  the country
+   * @param country the country
    */
   public JavaLocale(TwoLetterLanguageCode language, TwoLetterCountryCode country) {
     this.language = language != null ? language.toString() : null;
@@ -79,7 +79,7 @@ public class JavaLocale implements Serializable {
    * Instantiates a new java locale.
    *
    * @param language the language
-   * @param country  the country
+   * @param country the country
    */
   public JavaLocale(ThreeLetterLanguageCode language, ThreeLetterCountryCode country) {
     this.language = language != null ? language.toLocale().getLanguage() : null;

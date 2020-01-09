@@ -1307,7 +1307,7 @@ public enum TwoLetterCountryCode {
   /**
    * From value two letter country code.
    *
-   * @param text        the text
+   * @param text the text
    * @param defaultCode the default code
    * @return the two letter country code
    */
@@ -1352,7 +1352,7 @@ public enum TwoLetterCountryCode {
   /**
    * From locale.
    *
-   * @param locale      the locale
+   * @param locale the locale
    * @param defaultCode the default code
    * @return the two letter country code
    */

@@ -45,7 +45,7 @@ public class AccessControlList implements Serializable {
   /**
    * Instantiates a new access control list.
    *
-   * @param owner   the owner
+   * @param owner the owner
    * @param entries the entries
    */
   @Builder(toBuilder = true)

@@ -138,7 +138,7 @@ public enum MongoSearchLanguage {
   /**
    * From two letter language code.
    *
-   * @param text     the text
+   * @param text the text
    * @param fallback the fallback language
    * @return the two letter language code
    */
@@ -161,7 +161,7 @@ public enum MongoSearchLanguage {
   /**
    * From locale.
    *
-   * @param locale   the locale
+   * @param locale the locale
    * @param fallback the fallback language
    * @return the two letter language code
    */
