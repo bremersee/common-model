@@ -48,7 +48,7 @@ public class AccessControlList implements Serializable {
    * @param owner   the owner
    * @param entries the entries
    */
-  @Builder
+  @Builder(toBuilder = true)
   public AccessControlList(
       String owner,
       List<AccessControlEntry> entries) {

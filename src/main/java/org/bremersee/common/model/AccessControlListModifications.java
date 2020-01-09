@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -42,9 +43,9 @@ public class AccessControlListModifications implements Serializable {
    * Instantiates new access control list modifications.
    *
    * @param newOwner the new owner
-   * @param entries  the entries
+   * @param entries the modification entries
    */
-  @Builder
+  @Builder(toBuilder = true)
   public AccessControlListModifications(
       String newOwner,
       List<AccessControlEntryModifications> entries) {
@@ -72,19 +73,22 @@ public class AccessControlListModifications implements Serializable {
   }
 
   /**
-   * Get entries.
+   * Get modification entries.
    *
-   * @return entries entries
+   * @return the modification entries
    */
   @ApiModelProperty(value = "The access control entries.")
   public List<AccessControlEntryModifications> getEntries() {
+    if (entries == null) {
+      entries = new ArrayList<>();
+    }
     return entries;
   }
 
   /**
-   * Sets entries.
+   * Sets modification entries.
    *
-   * @param entries the entries
+   * @param entries the modification entries
    */
   public void setEntries(List<AccessControlEntryModifications> entries) {
     this.entries = entries;

@@ -46,7 +46,7 @@ public class LineString extends Geometry implements Serializable {
    * @param bbox        the bbox
    * @param coordinates the coordinates
    */
-  @Builder
+  @Builder(toBuilder = true)
   public LineString(BoundingBox bbox, List<Position> coordinates) {
     super(bbox);
     setType(TypeEnum.LINESTRING);

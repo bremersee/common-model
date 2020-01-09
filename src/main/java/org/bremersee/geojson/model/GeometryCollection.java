@@ -46,7 +46,7 @@ public class GeometryCollection extends Geometry implements Serializable {
    * @param bbox       the bbox
    * @param geometries the geometries
    */
-  @Builder
+  @Builder(toBuilder = true)
   public GeometryCollection(BoundingBox bbox, List<Geometry> geometries) {
     super(bbox);
     setType(TypeEnum.GEOMETRYCOLLECTION);

@@ -70,7 +70,7 @@ public class AccessControlEntryModifications implements Serializable {
    * @param addGroups    the add groups
    * @param removeGroups the remove groups
    */
-  @Builder
+  @Builder(toBuilder = true)
   public AccessControlEntryModifications(
       String permission,
       Boolean guest,
@@ -119,9 +119,6 @@ public class AccessControlEntryModifications implements Serializable {
    */
   @ApiModelProperty(value = "Specifies whether anybody is granted.")
   public Boolean getGuest() {
-    if (guest == null) {
-      guest = Boolean.FALSE;
-    }
     return guest;
   }
 

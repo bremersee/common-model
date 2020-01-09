@@ -46,7 +46,7 @@ public class MultiPolygon extends Geometry implements Serializable {
    * @param bbox        the bbox
    * @param coordinates the coordinates
    */
-  @Builder
+  @Builder(toBuilder = true)
   public MultiPolygon(BoundingBox bbox, List<List<List<Position>>> coordinates) {
     super(bbox);
     setType(TypeEnum.MULTIPOLYGON);

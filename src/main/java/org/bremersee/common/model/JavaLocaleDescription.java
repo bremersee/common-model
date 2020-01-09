@@ -8,7 +8,6 @@ package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.Serializable;
@@ -37,16 +36,15 @@ public class JavaLocaleDescription implements Serializable {
   private String locale;
 
   @JsonProperty(value = "description", required = true)
-  @JacksonXmlProperty(localName = "description")
   private String description;
 
   /**
    * Instantiates a new java locale description.
    *
-   * @param locale      the locale
+   * @param locale the locale
    * @param description the description
    */
-  @Builder
+  @Builder(toBuilder = true)
   public JavaLocaleDescription(String locale, String description) {
     this.locale = locale;
     this.description = description;

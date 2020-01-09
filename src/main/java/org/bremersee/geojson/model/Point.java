@@ -45,7 +45,7 @@ public class Point extends Geometry implements Serializable {
    * @param bbox        the bbox
    * @param coordinates the coordinates
    */
-  @Builder
+  @Builder(toBuilder = true)
   public Point(BoundingBox bbox, Position coordinates) {
     super(bbox);
     setType(TypeEnum.POINT);

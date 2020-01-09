@@ -46,10 +46,10 @@ public abstract class Geometry implements Serializable {
   private static final long serialVersionUID = 1L;
 
   @JsonProperty("type")
-  private TypeEnum type = null;
+  TypeEnum type = null;
 
   @JsonProperty("bbox")
-  private BoundingBox bbox = null;
+  BoundingBox bbox = null;
 
   /**
    * Instantiates a new geometry.

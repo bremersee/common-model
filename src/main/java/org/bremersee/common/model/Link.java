@@ -52,7 +52,7 @@ public class Link implements Serializable {
    * @param text        the text
    * @param description the description
    */
-  @Builder
+  @Builder(toBuilder = true)
   public Link(String href, String type, String text, String description) {
     this.href = href;
     this.type = type;

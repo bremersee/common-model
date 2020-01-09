@@ -63,7 +63,7 @@ public class JavaLocale implements Serializable {
    * @param language the language
    * @param country  the country
    */
-  @Builder
+  @Builder(toBuilder = true)
   public JavaLocale(String language, String country) {
     setLanguage(language);
     setCountry(country);

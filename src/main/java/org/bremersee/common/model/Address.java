@@ -69,7 +69,7 @@ public class Address implements Serializable {
    * @param countryCode      the country code
    * @param formattedAddress the formatted address
    */
-  @Builder
+  @Builder(toBuilder = true)
   public Address(String streetNumber, String street, String postalCode, String city,
       String suburb, String state, String country,
       TwoLetterCountryCode countryCode, String formattedAddress) {

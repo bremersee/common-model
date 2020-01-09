@@ -63,7 +63,7 @@ public class StackTraceItem implements Serializable {
    * @param fileName       the file name
    * @param lineNumber     the line number
    */
-  @Builder
+  @Builder(toBuilder = true)
   public StackTraceItem(
       String declaringClass,
       String methodName,

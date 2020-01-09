@@ -59,7 +59,7 @@ public class Handler implements Serializable {
    * @param methodName           the method name
    * @param methodParameterTypes the method parameter types
    */
-  @Builder
+  @Builder(toBuilder = true)
   public Handler(
       String className,
       String methodName,
