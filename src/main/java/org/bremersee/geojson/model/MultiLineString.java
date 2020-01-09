@@ -46,7 +46,7 @@ public class MultiLineString extends Geometry implements Serializable {
    * @param bbox        the bbox
    * @param coordinates the coordinates
    */
-  @Builder
+  @Builder(toBuilder = true)
   public MultiLineString(BoundingBox bbox, List<List<Position>> coordinates) {
     super(bbox);
     setType(TypeEnum.MULTILINESTRING);

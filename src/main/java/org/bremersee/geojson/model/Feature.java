@@ -57,7 +57,7 @@ public class Feature implements Serializable {
    * @param geometry   the geometry
    * @param properties the properties
    */
-  @Builder
+  @Builder(toBuilder = true)
   public Feature(
       String id,
       BoundingBox bbox,

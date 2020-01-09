@@ -53,12 +53,12 @@ public class AccessControlEntry implements Serializable {
    * Instantiates a new access control entry.
    *
    * @param permission the permission
-   * @param guest      the guest
-   * @param users      the users
-   * @param roles      the roles
-   * @param groups     the groups
+   * @param guest the guest
+   * @param users the users
+   * @param roles the roles
+   * @param groups the groups
    */
-  @Builder
+  @Builder(toBuilder = true)
   public AccessControlEntry(
       String permission,
       Boolean guest,
@@ -100,9 +100,6 @@ public class AccessControlEntry implements Serializable {
    */
   @ApiModelProperty(value = "Specifies whether anybody is granted.")
   public Boolean getGuest() {
-    if (guest == null) {
-      guest = Boolean.FALSE;
-    }
     return guest;
   }
 

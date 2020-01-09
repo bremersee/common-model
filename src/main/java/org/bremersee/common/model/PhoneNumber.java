@@ -38,7 +38,7 @@ public class PhoneNumber implements Serializable {
   @JsonProperty("category")
   private String category;
 
-  @Builder
+  @Builder(toBuilder = true)
   public PhoneNumber(String value, String category) {
     this.value = value;
     this.category = category;

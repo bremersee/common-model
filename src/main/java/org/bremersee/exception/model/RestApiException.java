@@ -105,7 +105,7 @@ public class RestApiException implements Serializable {
    * @param stackTrace         the stack trace
    * @param cause              the cause
    */
-  @Builder
+  @Builder(toBuilder = true)
   public RestApiException(
       String id,
       OffsetDateTime timestamp,

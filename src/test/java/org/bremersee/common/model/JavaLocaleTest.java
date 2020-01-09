@@ -1,8 +1,10 @@
 package org.bremersee.common.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -67,4 +69,61 @@ class JavaLocaleTest {
       }
     }
   }
+
+  /**
+   * From three letter language code and three letter country code.
+   */
+  @Test
+  void fromThreeLetterLanguageCodeAndThreeLetterCountryCode() {
+    JavaLocale model = new JavaLocale(ThreeLetterLanguageCode.DEU, ThreeLetterCountryCode.DEU);
+    assertEquals("de", model.getLanguage());
+    assertEquals("DE", model.getCountry());
+
+    //noinspection RedundantCast
+    model = new JavaLocale((ThreeLetterLanguageCode)null, (ThreeLetterCountryCode)null);
+    assertNull(model.getLanguage());
+    assertNull(model.getCountry());
+
+    assertEquals(Locale.JAPAN, model.toLocale(Locale.JAPAN));
+  }
+
+  /**
+   * Gets language.
+   */
+  @Test
+  void getLanguage() {
+    JavaLocale model = new JavaLocale();
+    model.setLanguage("de");
+    assertEquals("de", model.getLanguage());
+
+    model = JavaLocale.builder().language("de").build();
+    assertEquals("de", model.getLanguage());
+
+    assertNotEquals(model, null);
+    assertNotEquals(model, new Object());
+    assertEquals(model, model);
+    assertEquals(model, model.toBuilder().language("de").build());
+
+    assertTrue(model.toString().contains("de"));
+  }
+
+  /**
+   * Gets country.
+   */
+  @Test
+  void getCountry() {
+    JavaLocale model = new JavaLocale();
+    model.setCountry("DE");
+    assertEquals("DE", model.getCountry());
+
+    model = JavaLocale.builder().country("DE").build();
+    assertEquals("DE", model.getCountry());
+
+    assertEquals(model, model);
+    assertEquals(model, model.toBuilder().country("DE").build());
+
+    model.setLanguage("de");
+    assertTrue(model.toString().contains("de-DE"));
+  }
+
 }

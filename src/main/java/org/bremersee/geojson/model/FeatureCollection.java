@@ -44,7 +44,7 @@ public class FeatureCollection implements Serializable {
   @JsonProperty("features")
   private List<Feature> features = null;
 
-  @Builder
+  @Builder(toBuilder = true)
   public FeatureCollection(
       BoundingBox bbox,
       List<Feature> features) {

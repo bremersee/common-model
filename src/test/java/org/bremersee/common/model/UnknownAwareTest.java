@@ -18,10 +18,14 @@ package org.bremersee.common.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,10 +37,62 @@ import org.junit.jupiter.api.Test;
  *
  * @author Christian Bremer
  */
-public class UnknownAwareTest {
+class UnknownAwareTest {
 
+  /**
+   * Test model.
+   */
   @Test
-  public void findFromRoot() {
+  void testModel() {
+    ConcreteUnknown model = new ConcreteUnknown();
+    assertNull(model.unknown());
+    assertFalse(model.hasUnknown());
+    assertFalse(model.findUnknown("something", Object.class).isPresent());
+    assertFalse(model.findUnknownList("something", Object.class).isPresent());
+    assertFalse(model.findUnknownMap("something").isPresent());
+
+    assertTrue(model.toString().length() > 0);
+
+    model.unknown(null);
+    assertNull(model.unknown());
+    assertFalse(model.hasUnknown());
+
+    model.unknown(Collections.emptyMap());
+    assertNull(model.unknown());
+    assertFalse(model.hasUnknown());
+
+    assertNotEquals(model, null);
+    assertNotEquals(model, new Object());
+    assertEquals(model, model);
+    assertEquals(model, new ConcreteUnknown());
+
+    model.unknown(Collections.singletonMap("something", "value"));
+    assertNotNull(model.unknown());
+    assertTrue(model.hasUnknown());
+
+    model = new ConcreteUnknown();
+    model.unknown(null, "value");
+    assertNull(model.unknown());
+    assertFalse(model.hasUnknown());
+
+    model.unknown("", "value");
+    assertNull(model.unknown());
+    assertFalse(model.hasUnknown());
+
+    model.unknown("something", "value");
+    assertNotNull(model.unknown());
+    assertTrue(model.hasUnknown());
+
+    assertEquals(model, new ConcreteUnknown(Collections.singletonMap("something", "value")));
+
+    assertTrue(model.toString().contains("something"));
+  }
+
+  /**
+   * Find from root.
+   */
+  @Test
+  void findFromRoot() {
     final ConcreteUnknown unknown = new ConcreteUnknown();
     unknown.unknown("test", "expected");
     Optional<String> actual = unknown.findUnknown("$.test", String.class);
@@ -44,24 +100,33 @@ public class UnknownAwareTest {
     assertEquals("expected", actual.get());
   }
 
+  /**
+   * Find not from root.
+   */
   @Test
-  public void findNotFromRoot() {
+  void findNotFromRoot() {
     final ConcreteUnknown unknown = new ConcreteUnknown();
     unknown.unknown("test", "expected");
     Optional<String> actual = unknown.findUnknown("$.foo", String.class);
     assertFalse(actual.isPresent());
   }
 
+  /**
+   * Find not from root class cast exception.
+   */
   @Test
-  public void findNotFromRootClassCastException() {
+  void findNotFromRootClassCastException() {
     final ConcreteUnknown unknown = new ConcreteUnknown();
     unknown.unknown("test", "expected");
     Optional<Integer> actual = unknown.findUnknown("$.test", Integer.class);
     assertFalse(actual.isPresent());
   }
 
+  /**
+   * Find map from root.
+   */
   @Test
-  public void findMapFromRoot() {
+  void findMapFromRoot() {
     final Map<String, Object> expected = new LinkedHashMap<>();
     expected.put("sub", "expected");
 
@@ -83,8 +148,11 @@ public class UnknownAwareTest {
     assertFalse(unknown.findUnknown("$.test", String.class).isPresent());
   }
 
+  /**
+   * Find list from root.
+   */
   @Test
-  public void findListFromRoot() {
+  void findListFromRoot() {
     final List<String> expected = Arrays.asList("one", "two");
 
     final ConcreteUnknown unknown = new ConcreteUnknown();
@@ -97,8 +165,11 @@ public class UnknownAwareTest {
     assertEquals("two", actualList.get().get(1));
   }
 
+  /**
+   * Find bad list from root.
+   */
   @Test
-  public void findBadListFromRoot() {
+  void findBadListFromRoot() {
     assertThrows(ClassCastException.class, () -> {
       final List<String> expected = Arrays.asList("one", "two");
 
@@ -113,6 +184,20 @@ public class UnknownAwareTest {
 
   private static class ConcreteUnknown extends UnknownAware {
 
+    /**
+     * Instantiates a new Concrete unknown.
+     */
+    public ConcreteUnknown() {
+    }
+
+    /**
+     * Instantiates a new Concrete unknown.
+     *
+     * @param unknown the unknown
+     */
+    public ConcreteUnknown(Map<String, Object> unknown) {
+      super(unknown);
+    }
   }
 
 }

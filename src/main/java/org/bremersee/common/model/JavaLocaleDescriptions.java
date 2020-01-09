@@ -52,6 +52,9 @@ public class JavaLocaleDescriptions implements Serializable {
    */
   @ApiModelProperty(value = "The descriptions.")
   public List<JavaLocaleDescription> getEntries() {
+    if (entries == null) {
+      entries = new ArrayList<>();
+    }
     return entries;
   }
 
