@@ -43,7 +43,7 @@ public class GeometryCollection extends Geometry implements Serializable {
   /**
    * Instantiates a new geometry collection.
    *
-   * @param bbox       the bbox
+   * @param bbox the bbox
    * @param geometries the geometries
    */
   @Builder(toBuilder = true)

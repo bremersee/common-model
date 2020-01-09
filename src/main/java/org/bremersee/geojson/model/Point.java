@@ -42,7 +42,7 @@ public class Point extends Geometry implements Serializable {
   /**
    * Instantiates a new point.
    *
-   * @param bbox        the bbox
+   * @param bbox the bbox
    * @param coordinates the coordinates
    */
   @Builder(toBuilder = true)

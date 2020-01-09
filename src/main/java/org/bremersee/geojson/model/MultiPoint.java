@@ -43,7 +43,7 @@ public class MultiPoint extends Geometry implements Serializable {
   /**
    * Instantiates a new multi point.
    *
-   * @param bbox        the bbox
+   * @param bbox the bbox
    * @param coordinates the coordinates
    */
   @Builder(toBuilder = true)

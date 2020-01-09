@@ -43,7 +43,7 @@ public class LineString extends Geometry implements Serializable {
   /**
    * Instantiates a new line string.
    *
-   * @param bbox        the bbox
+   * @param bbox the bbox
    * @param coordinates the coordinates
    */
   @Builder(toBuilder = true)

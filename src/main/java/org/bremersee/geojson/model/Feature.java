@@ -52,9 +52,9 @@ public class Feature implements Serializable {
   /**
    * Instantiates a new feature.
    *
-   * @param id         the id
-   * @param bbox       the bbox
-   * @param geometry   the geometry
+   * @param id the id
+   * @param bbox the bbox
+   * @param geometry the geometry
    * @param properties the properties
    */
   @Builder(toBuilder = true)

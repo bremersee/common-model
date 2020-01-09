@@ -25,6 +25,8 @@ import org.springframework.validation.annotation.Validated;
 
 /**
  * The handler where the exception occurred.
+ *
+ * @author Christian Bremer
  */
 @ApiModel(description = "The handler where the exception occurred.")
 @Validated
@@ -55,8 +57,8 @@ public class Handler implements Serializable {
   /**
    * Instantiates a new handler.
    *
-   * @param className            the class name
-   * @param methodName           the method name
+   * @param className the class name
+   * @param methodName the method name
    * @param methodParameterTypes the method parameter types
    */
   @Builder(toBuilder = true)
