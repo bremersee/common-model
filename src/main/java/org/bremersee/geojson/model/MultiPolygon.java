@@ -43,7 +43,7 @@ public class MultiPolygon extends Geometry implements Serializable {
   /**
    * Instantiates a new multi polygon.
    *
-   * @param bbox        the bbox
+   * @param bbox the bbox
    * @param coordinates the coordinates
    */
   @Builder(toBuilder = true)

@@ -24,6 +24,8 @@ import org.springframework.validation.annotation.Validated;
 
 /**
  * A stack trace element of an exception.
+ *
+ * @author Christian Bremer
  */
 @ApiModel(description = "A stack trace element of an exception.")
 @Validated
@@ -59,9 +61,9 @@ public class StackTraceItem implements Serializable {
    * Instantiates a new stack trace item.
    *
    * @param declaringClass the declaring class
-   * @param methodName     the method name
-   * @param fileName       the file name
-   * @param lineNumber     the line number
+   * @param methodName the method name
+   * @param fileName the file name
+   * @param lineNumber the line number
    */
   @Builder(toBuilder = true)
   public StackTraceItem(

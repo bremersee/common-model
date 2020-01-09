@@ -43,7 +43,7 @@ public class Polygon extends Geometry implements Serializable {
   /**
    * Instantiates a new polygon.
    *
-   * @param bbox        the bbox
+   * @param bbox the bbox
    * @param coordinates the coordinates
    */
   @Builder(toBuilder = true)

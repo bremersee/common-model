@@ -28,6 +28,8 @@ import org.springframework.validation.annotation.Validated;
 
 /**
  * The serialized exception.
+ *
+ * @author Christian Bremer
  */
 @ApiModel(description = "The serialized exception.")
 @Validated
@@ -93,17 +95,17 @@ public class RestApiException implements Serializable {
   /**
    * Instantiates a new rest api exception.
    *
-   * @param id                 the id
-   * @param timestamp          the timestamp
-   * @param message            the message
-   * @param errorCode          the error code
+   * @param id the id
+   * @param timestamp the timestamp
+   * @param message the message
+   * @param errorCode the error code
    * @param errorCodeInherited the error code inherited
-   * @param className          the class name
-   * @param application        the application
-   * @param path               the path
-   * @param handler            the handler
-   * @param stackTrace         the stack trace
-   * @param cause              the cause
+   * @param className the class name
+   * @param application the application
+   * @param path the path
+   * @param handler the handler
+   * @param stackTrace the stack trace
+   * @param cause the cause
    */
   @Builder(toBuilder = true)
   public RestApiException(
@@ -214,9 +216,6 @@ public class RestApiException implements Serializable {
    */
   @ApiModelProperty(value = "Is the error code inherited from the cause?")
   public Boolean getErrorCodeInherited() {
-    if (errorCodeInherited == null) {
-      errorCodeInherited = Boolean.FALSE;
-    }
     return errorCodeInherited;
   }
 
