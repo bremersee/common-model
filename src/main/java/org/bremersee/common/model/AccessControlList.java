@@ -97,6 +97,5 @@ public class AccessControlList implements Serializable {
     this.entries = entries;
   }
 
-
 }
 

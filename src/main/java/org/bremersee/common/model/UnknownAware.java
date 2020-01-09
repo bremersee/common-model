@@ -118,7 +118,7 @@ public abstract class UnknownAware {
       }
       if ((value instanceof Map) && tokenizer.hasMoreTokens()) {
         try {
-          //noinspection unchecked
+          //noinspection unchecked,rawtypes
           tmpUnknown = (Map) value;
         } catch (Exception e) {
           return Optional.empty();
@@ -148,7 +148,7 @@ public abstract class UnknownAware {
       return Optional.empty();
     }
     try {
-      //noinspection Convert2MethodRef,unchecked
+      //noinspection Convert2MethodRef,unchecked,rawtypes
       return findUnknown(jsonPath, List.class).map(
           (Function<List, List<E>>) list -> Collections.unmodifiableList(list));
 
@@ -162,11 +162,11 @@ public abstract class UnknownAware {
    *
    * @param jsonPath the json path, e. g. {@code $.firstKey.secondKey.thirdKey}
    * @return an empty optional if the map / json object was not found or can not be casted,
-   * otherwise the map / json object
+   *     otherwise the map / json object
    */
   public Optional<Map<String, Object>> findUnknownMap(final String jsonPath) {
     try {
-      //noinspection Convert2MethodRef,unchecked
+      //noinspection Convert2MethodRef,unchecked,rawtypes
       return findUnknown(jsonPath, Map.class)
           .map((Function<Map, Map<String, Object>>) map -> Collections.unmodifiableMap(map));
 

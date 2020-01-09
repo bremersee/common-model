@@ -35,5 +35,6 @@ public class TwoLetterLanguageCodes extends ArrayList<TwoLetterLanguageCode>
   public TwoLetterLanguageCodes(Collection<? extends TwoLetterLanguageCode> languageCodes) {
     super(languageCodes);
   }
+
 }
 
