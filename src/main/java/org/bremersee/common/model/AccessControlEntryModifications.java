@@ -61,13 +61,13 @@ public class AccessControlEntryModifications implements Serializable {
   /**
    * Instantiates new access control entry modifications.
    *
-   * @param permission   the permission
-   * @param guest        the guest
-   * @param addUsers     the add users
-   * @param removeUsers  the remove users
-   * @param addRoles     the add roles
-   * @param removeRoles  the remove roles
-   * @param addGroups    the add groups
+   * @param permission the permission
+   * @param guest the guest
+   * @param addUsers the add users
+   * @param removeUsers the remove users
+   * @param addRoles the add roles
+   * @param removeRoles the remove roles
+   * @param addGroups the add groups
    * @param removeGroups the remove groups
    */
   @Builder(toBuilder = true)

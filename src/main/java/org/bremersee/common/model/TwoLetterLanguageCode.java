@@ -2,7 +2,7 @@
  * The template was taken from
  * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
  * to add @JsonIgnoreProperties(ignoreUnknown = true).
-   */
+ */
 
 package org.bremersee.common.model;
 
@@ -991,7 +991,7 @@ public enum TwoLetterLanguageCode {
   /**
    * From value two letter language code.
    *
-   * @param text        the text
+   * @param text the text
    * @param defaultCode the default code
    * @return the two letter language code
    */
@@ -1041,7 +1041,7 @@ public enum TwoLetterLanguageCode {
   /**
    * From locale.
    *
-   * @param locale      the locale
+   * @param locale the locale
    * @param defaultCode the default code
    * @return the two letter language code
    */

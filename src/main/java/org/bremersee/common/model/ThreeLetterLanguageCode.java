@@ -2,7 +2,7 @@
  * The template was taken from
  * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
  * to add @JsonIgnoreProperties(ignoreUnknown = true).
-   */
+ */
 
 package org.bremersee.common.model;
 
@@ -36,7 +36,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Aghem (Kamerun) (agq).
    */
-  AGQ("agq", null),
+  AGQ("agq"),
 
   /**
    * Akan (Ghana) (aka).
@@ -61,7 +61,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Asu (Tansania) (asa).
    */
-  ASA("asa", null),
+  ASA("asa"),
 
   /**
    * Assamesisch (asm).
@@ -71,7 +71,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Asturianisch (ast).
    */
-  AST("ast", null),
+  AST("ast"),
 
   /**
    * Awarisch (ava).
@@ -106,7 +106,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Basaa (Kamerun) (bas).
    */
-  BAS("bas", null),
+  BAS("bas"),
 
   /**
    * Weißrussisch (bel).
@@ -116,7 +116,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Bemba (bem).
    */
-  BEM("bem", null),
+  BEM("bem"),
 
   /**
    * Bengalisch (ben).
@@ -126,7 +126,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Bena (Tansania) (bez).
    */
-  BEZ("bez", null),
+  BEZ("bez"),
 
   /**
    * Biharisch (bih).
@@ -156,7 +156,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Bodo (Indien) (brx).
    */
-  BRX("brx", null),
+  BRX("brx"),
 
   /**
    * Bulgarisch (bul).
@@ -171,12 +171,12 @@ public enum ThreeLetterLanguageCode {
   /**
    * ccp (ccp).
    */
-  CCP("ccp", null),
+  CCP("ccp"),
 
   /**
    * Cebuano (ceb).
    */
-  CEB("ceb", null),
+  CEB("ceb"),
 
   /**
    * Tschechisch (ces).
@@ -186,7 +186,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Rukiga (cgg).
    */
-  CGG("cgg", null),
+  CGG("cgg"),
 
   /**
    * Chamorro (cha).
@@ -201,7 +201,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Cherokee (chr).
    */
-  CHR("chr", null),
+  CHR("chr"),
 
   /**
    * Kirchenslawisch (Russland) (chu).
@@ -216,7 +216,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Zentralkurdisch (ckb).
    */
-  CKB("ckb", null),
+  CKB("ckb"),
 
   /**
    * Kornisch (Vereinigtes Königreich) (cor).
@@ -246,7 +246,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Taita (dav).
    */
-  DAV("dav", null),
+  DAV("dav"),
 
   /**
    * Deutsch (Italien) (deu).
@@ -261,22 +261,22 @@ public enum ThreeLetterLanguageCode {
   /**
    * Zarma (Niger) (dje).
    */
-  DJE("dje", null),
+  DJE("dje"),
 
   /**
    * Niedersorbisch (Deutschland) (dsb).
    */
-  DSB("dsb", null),
+  DSB("dsb"),
 
   /**
    * Duala (Kamerun) (dua).
    */
-  DUA("dua", null),
+  DUA("dua"),
 
   /**
    * Diola (Senegal) (dyo).
    */
-  DYO("dyo", null),
+  DYO("dyo"),
 
   /**
    * Dzongkha (Bhutan) (dzo).
@@ -286,7 +286,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Embu (ebu).
    */
-  EBU("ebu", null),
+  EBU("ebu"),
 
   /**
    * Griechisch (ell).
@@ -321,7 +321,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Ewondo (ewo).
    */
-  EWO("ewo", null),
+  EWO("ewo"),
 
   /**
    * Färöisch (Dänemark) (fao).
@@ -341,7 +341,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Filipino (Philippinen) (fil).
    */
-  FIL("fil", null),
+  FIL("fil"),
 
   /**
    * Finnisch (Finnland) (fin).
@@ -366,7 +366,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Friaulisch (fur).
    */
-  FUR("fur", null),
+  FUR("fur"),
 
   /**
    * Schottisches Gälisch (Vereinigtes Königreich) (gla).
@@ -396,7 +396,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Schweizerdeutsch (gsw).
    */
-  GSW("gsw", null),
+  GSW("gsw"),
 
   /**
    * Gujarati (guj).
@@ -406,7 +406,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Gusii (Kenia) (guz).
    */
-  GUZ("guz", null),
+  GUZ("guz"),
 
   /**
    * Haiti-Kreolisch (hat).
@@ -421,7 +421,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Hawaiisch (Vereinigte Staaten) (haw).
    */
-  HAW("haw", null),
+  HAW("haw"),
 
   /**
    * Hebräisch (heb).
@@ -451,7 +451,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Obersorbisch (hsb).
    */
-  HSB("hsb", null),
+  HSB("hsb"),
 
   /**
    * Ungarisch (Ungarn) (hun).
@@ -521,12 +521,12 @@ public enum ThreeLetterLanguageCode {
   /**
    * Ngomba (jgo).
    */
-  JGO("jgo", null),
+  JGO("jgo"),
 
   /**
    * Machame (Tansania) (jmc).
    */
-  JMC("jmc", null),
+  JMC("jmc"),
 
   /**
    * Japanisch (Japan, JP, Japanischer Kalender) (jpn).
@@ -536,7 +536,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Kabylisch (kab).
    */
-  KAB("kab", null),
+  KAB("kab"),
 
   /**
    * Grönländisch (Grönland) (kal).
@@ -546,7 +546,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Kamba (kam).
    */
-  KAM("kam", null),
+  KAM("kam"),
 
   /**
    * Kannada (Indien) (kan).
@@ -576,12 +576,12 @@ public enum ThreeLetterLanguageCode {
   /**
    * Makonde (Tansania) (kde).
    */
-  KDE("kde", null),
+  KDE("kde"),
 
   /**
    * Kabuverdianu (Cabo Verde) (kea).
    */
-  KEA("kea", null),
+  KEA("kea"),
 
   /**
    * Khmer (khm).
@@ -591,7 +591,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Koyra Chiini (khq).
    */
-  KHQ("khq", null),
+  KHQ("khq"),
 
   /**
    * Kikuyu (Kenia) (kik).
@@ -611,17 +611,17 @@ public enum ThreeLetterLanguageCode {
   /**
    * Kako (kkj).
    */
-  KKJ("kkj", null),
+  KKJ("kkj"),
 
   /**
    * Kalenjin (kln).
    */
-  KLN("kln", null),
+  KLN("kln"),
 
   /**
    * Konkani (kok).
    */
-  KOK("kok", null),
+  KOK("kok"),
 
   /**
    * Komi (kom).
@@ -641,17 +641,17 @@ public enum ThreeLetterLanguageCode {
   /**
    * Shambala (ksb).
    */
-  KSB("ksb", null),
+  KSB("ksb"),
 
   /**
    * Bafia (Kamerun) (ksf).
    */
-  KSF("ksf", null),
+  KSF("ksf"),
 
   /**
    * Kölsch (Deutschland) (ksh).
    */
-  KSH("ksh", null),
+  KSH("ksh"),
 
   /**
    * Kwanyama (kua).
@@ -666,7 +666,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Langi (lag).
    */
-  LAG("lag", null),
+  LAG("lag"),
 
   /**
    * Laotisch (lao).
@@ -701,12 +701,12 @@ public enum ThreeLetterLanguageCode {
   /**
    * Lakota (Vereinigte Staaten) (lkt).
    */
-  LKT("lkt", null),
+  LKT("lkt"),
 
   /**
    * Nördliches Luri (Iran) (lrc).
    */
-  LRC("lrc", null),
+  LRC("lrc"),
 
   /**
    * Luxemburgisch (Luxemburg) (ltz).
@@ -726,12 +726,12 @@ public enum ThreeLetterLanguageCode {
   /**
    * Luo (luo).
    */
-  LUO("luo", null),
+  LUO("luo"),
 
   /**
    * Luhya (Kenia) (luy).
    */
-  LUY("luy", null),
+  LUY("luy"),
 
   /**
    * Marschallesisch (mah).
@@ -751,27 +751,27 @@ public enum ThreeLetterLanguageCode {
   /**
    * Massai (Kenia) (mas).
    */
-  MAS("mas", null),
+  MAS("mas"),
 
   /**
    * Meru (Kenia) (mer).
    */
-  MER("mer", null),
+  MER("mer"),
 
   /**
    * Morisyen (Mauritius) (mfe).
    */
-  MFE("mfe", null),
+  MFE("mfe"),
 
   /**
    * Makhuwa-Meetto (mgh).
    */
-  MGH("mgh", null),
+  MGH("mgh"),
 
   /**
    * Meta’ (mgo).
    */
-  MGO("mgo", null),
+  MGO("mgo"),
 
   /**
    * Mazedonisch (Nordmazedonien) (mkd).
@@ -811,7 +811,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Mundang (mua).
    */
-  MUA("mua", null),
+  MUA("mua"),
 
   /**
    * Birmanisch (Myanmar) (mya).
@@ -821,12 +821,12 @@ public enum ThreeLetterLanguageCode {
   /**
    * Masanderanisch (Iran) (mzn).
    */
-  MZN("mzn", null),
+  MZN("mzn"),
 
   /**
    * Nama (naq).
    */
-  NAQ("naq", null),
+  NAQ("naq"),
 
   /**
    * Nauruisch (nau).
@@ -856,7 +856,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Niederdeutsch (nds).
    */
-  NDS("nds", null),
+  NDS("nds"),
 
   /**
    * Nepalesisch (Indien) (nep).
@@ -871,12 +871,12 @@ public enum ThreeLetterLanguageCode {
   /**
    * Kwasio (nmg).
    */
-  NMG("nmg", null),
+  NMG("nmg"),
 
   /**
    * Ngiemboon (Kamerun) (nnh).
    */
-  NNH("nnh", null),
+  NNH("nnh"),
 
   /**
    * Norwegisch Nynorsk (nno).
@@ -896,7 +896,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Nuer (Südsudan) (nus).
    */
-  NUS("nus", null),
+  NUS("nus"),
 
   /**
    * Nyanja (nya).
@@ -906,7 +906,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Nyankole (Uganda) (nyn).
    */
-  NYN("nyn", null),
+  NYN("nyn"),
 
   /**
    * Okzitanisch (oci).
@@ -956,7 +956,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Altpreußisch (prg).
    */
-  PRG("prg", null),
+  PRG("prg"),
 
   /**
    * Paschtu (pus).
@@ -971,7 +971,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Rombo (Tansania) (rof).
    */
-  ROF("rof", null),
+  ROF("rof"),
 
   /**
    * Rätoromanisch (roh).
@@ -996,7 +996,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Rwa (Tansania) (rwk).
    */
-  RWK("rwk", null),
+  RWK("rwk"),
 
   /**
    * Sango (Zentralafrikanische Republik) (sag).
@@ -1006,7 +1006,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Jakutisch (sah).
    */
-  SAH("sah", null),
+  SAH("sah"),
 
   /**
    * Sanskrit (san).
@@ -1016,27 +1016,27 @@ public enum ThreeLetterLanguageCode {
   /**
    * Samburu (saq).
    */
-  SAQ("saq", null),
+  SAQ("saq"),
 
   /**
    * Sangu (sbp).
    */
-  SBP("sbp", null),
+  SBP("sbp"),
 
   /**
    * Sena (seh).
    */
-  SEH("seh", null),
+  SEH("seh"),
 
   /**
    * Koyra Senni (ses).
    */
-  SES("ses", null),
+  SES("ses"),
 
   /**
    * Taschelhit (Tifinagh, Marokko) (shi).
    */
-  SHI("shi", null),
+  SHI("shi"),
 
   /**
    * Singhalesisch (Sri Lanka) (sin).
@@ -1061,7 +1061,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Inari-Samisch (smn).
    */
-  SMN("smn", null),
+  SMN("smn"),
 
   /**
    * Samoanisch (smo).
@@ -1151,7 +1151,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Teso (teo).
    */
-  TEO("teo", null),
+  TEO("teo"),
 
   /**
    * Tadschikisch (Tadschikistan) (tgk).
@@ -1206,12 +1206,12 @@ public enum ThreeLetterLanguageCode {
   /**
    * Tasawaq (Niger) (twq).
    */
-  TWQ("twq", null),
+  TWQ("twq"),
 
   /**
    * Zentralatlas-Tamazight (tzm).
    */
-  TZM("tzm", null),
+  TZM("tzm"),
 
   /**
    * Uigurisch (China) (uig).
@@ -1236,7 +1236,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * Vai (Vai) (vai).
    */
-  VAI("vai", null),
+  VAI("vai"),
 
   /**
    * Venda (ven).
@@ -1256,12 +1256,12 @@ public enum ThreeLetterLanguageCode {
   /**
    * Vunjo (Tansania) (vun).
    */
-  VUN("vun", null),
+  VUN("vun"),
 
   /**
    * Walliserdeutsch (wae).
    */
-  WAE("wae", null),
+  WAE("wae"),
 
   /**
    * Wallonisch (wln).
@@ -1281,12 +1281,12 @@ public enum ThreeLetterLanguageCode {
   /**
    * Soga (Uganda) (xog).
    */
-  XOG("xog", null),
+  XOG("xog"),
 
   /**
    * Yangben (yav).
    */
-  YAV("yav", null),
+  YAV("yav"),
 
   /**
    * Jiddish (yid).
@@ -1301,12 +1301,12 @@ public enum ThreeLetterLanguageCode {
   /**
    * Kantonesisch (Vereinfacht, China) (yue).
    */
-  YUE("yue", null),
+  YUE("yue"),
 
   /**
    * Tamazight (zgh).
    */
-  ZGH("zgh", null),
+  ZGH("zgh"),
 
   /**
    * Zhuang (zha).
@@ -1403,7 +1403,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * From value three letter language code.
    *
-   * @param text        the text
+   * @param text the text
    * @param defaultCode the default code
    * @return the three letter language code
    */
@@ -1450,7 +1450,7 @@ public enum ThreeLetterLanguageCode {
   /**
    * From locale three letter language code.
    *
-   * @param locale      the locale
+   * @param locale the locale
    * @param defaultCode the default code
    * @return the three letter language code
    */

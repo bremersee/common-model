@@ -59,14 +59,14 @@ public class Address implements Serializable {
   /**
    * Instantiates a new address.
    *
-   * @param streetNumber     the street number
-   * @param street           the street
-   * @param postalCode       the postal code
-   * @param city             the city
-   * @param suburb           the suburb
-   * @param state            the state
-   * @param country          the country
-   * @param countryCode      the country code
+   * @param streetNumber the street number
+   * @param street the street
+   * @param postalCode the postal code
+   * @param city the city
+   * @param suburb the suburb
+   * @param state the state
+   * @param country the country
+   * @param countryCode the country code
    * @param formattedAddress the formatted address
    */
   @Builder(toBuilder = true)

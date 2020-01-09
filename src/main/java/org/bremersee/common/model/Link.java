@@ -47,9 +47,9 @@ public class Link implements Serializable {
   /**
    * Instantiates a new link.
    *
-   * @param href        the href
-   * @param type        the type
-   * @param text        the text
+   * @param href the href
+   * @param type the type
+   * @param text the text
    * @param description the description
    */
   @Builder(toBuilder = true)

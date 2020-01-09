@@ -2,7 +2,7 @@
  * The template was taken from
  * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
  * to add @JsonIgnoreProperties(ignoreUnknown = true).
-   */
+ */
 
 package org.bremersee.common.model;
 
@@ -1340,7 +1340,7 @@ public enum ThreeLetterCountryCode {
   /**
    * From value three letter country code.
    *
-   * @param text        the text
+   * @param text the text
    * @param defaultCode the default code
    * @return the three letter country code
    */
@@ -1378,7 +1378,7 @@ public enum ThreeLetterCountryCode {
   /**
    * From locale three letter country code.
    *
-   * @param locale      the locale
+   * @param locale the locale
    * @param defaultCode the default code
    * @return the three letter country code
    */
