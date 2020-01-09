@@ -34,5 +34,5 @@ public class JavaLocales extends ArrayList<JavaLocale> implements Serializable {
   public JavaLocales(Collection<? extends JavaLocale> locales) {
     super(locales);
   }
-}
 
+}

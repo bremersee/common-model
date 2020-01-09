@@ -34,5 +34,5 @@ public class TimeZoneIds extends ArrayList<TimeZoneId> implements Serializable {
   public TimeZoneIds(Collection<? extends TimeZoneId> timeZoneIds) {
     super(timeZoneIds);
   }
-}
 
+}

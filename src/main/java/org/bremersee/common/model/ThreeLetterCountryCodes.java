@@ -36,5 +36,5 @@ public class ThreeLetterCountryCodes extends ArrayList<ThreeLetterCountryCode>
       Collection<? extends ThreeLetterCountryCode> countryCodes) {
     super(countryCodes);
   }
-}
 
+}

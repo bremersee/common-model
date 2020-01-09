@@ -34,5 +34,5 @@ public class TwoLetterCountryCodes extends ArrayList<TwoLetterCountryCode> imple
   public TwoLetterCountryCodes(Collection<? extends TwoLetterCountryCode> countryCodes) {
     super(countryCodes);
   }
-}
 
+}

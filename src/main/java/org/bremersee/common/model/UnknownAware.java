@@ -162,7 +162,7 @@ public abstract class UnknownAware {
    *
    * @param jsonPath the json path, e. g. {@code $.firstKey.secondKey.thirdKey}
    * @return an empty optional if the map / json object was not found or can not be casted,
-   * otherwise the map / json object
+   *     otherwise the map / json object
    */
   public Optional<Map<String, Object>> findUnknownMap(final String jsonPath) {
     try {
