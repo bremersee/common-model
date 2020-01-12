@@ -3163,7 +3163,17 @@ public enum TimeZoneId {
   @Override
   @JsonValue
   public String toString() {
-    return String.valueOf(value);
+    return toString(false);
+  }
+
+  /**
+   * Returns the string representation of this time zone id.
+   *
+   * @param urlEncode specifies whether the return value should be url encoded or not
+   * @return the time zone id
+   */
+  public String toString(boolean urlEncode) {
+    return String.valueOf(urlEncode ? urlEncode(value) : value);
   }
 
   /**
