@@ -8,6 +8,8 @@ package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.TimeZone;
 import org.springframework.util.StringUtils;
 
@@ -3185,7 +3187,9 @@ public enum TimeZoneId {
       return null;
     }
     for (TimeZoneId b : TimeZoneId.values()) {
-      if (String.valueOf(b.value).equalsIgnoreCase(text) || b.name().equalsIgnoreCase(text)) {
+      if (String.valueOf(b.value).equalsIgnoreCase(text)
+          || b.name().equalsIgnoreCase(text)
+          || String.valueOf(urlEncode(b.value)).equalsIgnoreCase(text)) {
         return b;
       }
     }
@@ -3203,6 +3207,14 @@ public enum TimeZoneId {
       return null;
     }
     return fromValue(timeZone.getID());
+  }
+
+  private static String urlEncode(String value) {
+    try {
+      return URLEncoder.encode(value, StandardCharsets.UTF_8.name());
+    } catch (Exception e) {
+      return value;
+    }
   }
 }
 

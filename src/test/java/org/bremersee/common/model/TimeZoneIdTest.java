@@ -1,7 +1,12 @@
 package org.bremersee.common.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.TimeZone;
 import org.junit.jupiter.api.Test;
 
@@ -23,8 +28,18 @@ class TimeZoneIdTest {
    * From value.
    */
   @Test
-  void fromValue() {
-    TimeZoneId model = TimeZoneId.fromValue("GMT");
+  void fromValue() throws UnsupportedEncodingException {
+    TimeZoneId model = TimeZoneId.fromValue("Europe/Berlin");
+    assertNotNull(model);
+    assertEquals(TimeZoneId.EUROPE_BERLIN, model);
+    assertEquals("Europe/Berlin", model.toString());
+
+    model = TimeZoneId.fromValue(URLEncoder.encode("Europe/Berlin", StandardCharsets.UTF_8.name()));
+    assertNotNull(model);
+    assertEquals(TimeZoneId.EUROPE_BERLIN, model);
+    assertEquals("Europe/Berlin", model.toString());
+
+    model = TimeZoneId.fromValue("GMT");
     assertNotNull(model);
     assertEquals(TimeZoneId.GMT, model);
     assertEquals("GMT", model.toString());
