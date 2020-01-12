@@ -22,10 +22,30 @@ class TimeZoneIdTest {
    */
   @Test
   void toTimeZone() {
+    TimeZoneId model = TimeZoneId.fromValue("Europe/Berlin");
+    assertNotNull(model);
+    TimeZone timeZone = model.toTimeZone();
+    assertNotNull(timeZone);
+    assertEquals("Europe/Berlin", timeZone.getID());
+  }
+
+  /**
+   * To string url encoded.
+   *
+   * @throws UnsupportedEncodingException the unsupported encoding exception
+   */
+  @Test
+  void toStringUrlEncoded() throws UnsupportedEncodingException {
+    String expected = URLEncoder.encode("Europe/Berlin", StandardCharsets.UTF_8.name());
+    String actual = TimeZoneId.EUROPE_BERLIN.toString(true);
+    assertNotNull(actual);
+    assertEquals(expected, actual);
   }
 
   /**
    * From value.
+   *
+   * @throws UnsupportedEncodingException the unsupported encoding exception
    */
   @Test
   void fromValue() throws UnsupportedEncodingException {
