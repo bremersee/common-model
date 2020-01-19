@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 the original author or authors.
+ * Copyright 2018-2020 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *
  * @author Christian Bremer
  */
-@SuppressWarnings({"WeakerAccess", "unused"})
 public abstract class ConverterUtils {
 
   private ConverterUtils() {
