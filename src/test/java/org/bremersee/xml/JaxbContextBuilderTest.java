@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 the original author or authors.
+ * Copyright 2018-2020 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.StringReader;
 import java.io.StringWriter;
+import java.security.PrivilegedAction;
+import java.util.Map;
 import java.util.ServiceLoader;
 import javax.xml.bind.JAXBException;
 import org.bremersee.xml.model1.Person;
@@ -185,6 +187,24 @@ class JaxbContextBuilderTest {
           .buildUnmarshaller("http://bremersee.org/xmlschemas/common-xml-test-model-1")
           .unmarshal(new StringReader(xml));
     });
+  }
+
+  @Test
+  void buildMarshallerProperties() {
+    ClassLoader classLoader;
+    if (System.getSecurityManager() == null) {
+      classLoader = Thread.currentThread().getContextClassLoader();
+    } else {
+      //noinspection unchecked,rawtypes
+      classLoader = (ClassLoader) java.security.AccessController.doPrivileged(
+          (PrivilegedAction) () -> Thread.currentThread().getContextClassLoader());
+    }
+    Map<String, ?> properties = JaxbContextBuilder.builder()
+        .contextClassLoader(classLoader)
+        .processAll(ServiceLoader.load(JaxbContextDataProvider.class).iterator())
+        .buildMarshallerProperties();
+    assertNotNull(properties);
+    assertEquals("UTF-8", properties.get("jaxb.encoding"));
   }
 
 }

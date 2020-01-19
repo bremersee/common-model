@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 the original author or authors.
+ * Copyright 2018-2020 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,7 +42,6 @@ import javax.xml.bind.annotation.XmlType;
  *
  * @author Christian Bremer
  */
-@SuppressWarnings({"unused", "UnusedReturnValue"})
 public interface JaxbContextBuilder {
 
   /**
@@ -83,6 +82,7 @@ public interface JaxbContextBuilder {
    * @param data the data
    * @return the jaxb context builder
    */
+  @SuppressWarnings("unused")
   JaxbContextBuilder addAll(Iterator<? extends JaxbContextData> data);
 
   /**
@@ -215,7 +215,7 @@ public interface JaxbContextBuilder {
 
     private ClassLoader classLoader;
 
-    @SuppressWarnings({"unchecked"})
+    @SuppressWarnings({"unchecked", "rawtypes"})
     private ClassLoader getContextClassLoader() {
       if (classLoader == null) {
         if (System.getSecurityManager() == null) {
@@ -261,7 +261,7 @@ public interface JaxbContextBuilder {
     @Override
     public JaxbContextBuilder addAll(final Iterable<? extends JaxbContextData> data) {
       if (data != null) {
-        addAll(data.iterator());
+        return addAll(data.iterator());
       }
       return this;
     }
@@ -338,7 +338,7 @@ public interface JaxbContextBuilder {
             .map(ds -> ds.getNameSpace() + " " + ds.getSchemaLocation())
             .collect(Collectors.joining(" "));
       }
-      return new DataDetails(key, contextPath, schemaLocation, dataSet);
+      return new DataDetails(key, contextPath, schemaLocation);
     }
 
     public boolean supports(final Class<?> clazz, final String... nameSpaces) {
@@ -419,22 +419,17 @@ public interface JaxbContextBuilder {
 
       private String schemaLocation;
 
-      private Set<JaxbContextData> dataSet;
-
       /**
        * Instantiates a data details.
        *
        * @param key the key
        * @param contextPath the context path
        * @param schemaLocation the schema location
-       * @param dataSet the data set
        */
-      DataDetails(String key, String contextPath, String schemaLocation,
-          Set<JaxbContextData> dataSet) {
+      DataDetails(String key, String contextPath, String schemaLocation) {
         this.key = key;
         this.contextPath = contextPath;
         this.schemaLocation = schemaLocation;
-        this.dataSet = dataSet;
       }
 
       /**
@@ -462,15 +457,6 @@ public interface JaxbContextBuilder {
        */
       String getSchemaLocation() {
         return schemaLocation;
-      }
-
-      /**
-       * Gets data set.
-       *
-       * @return the data set
-       */
-      Set<JaxbContextData> getDataSet() {
-        return dataSet;
       }
     }
 
