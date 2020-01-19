@@ -1,7 +1,17 @@
 /*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.exception.model;
@@ -28,6 +38,8 @@ import org.springframework.validation.annotation.Validated;
 
 /**
  * The serialized exception.
+ *
+ * @author Christian Bremer
  */
 @ApiModel(description = "The serialized exception.")
 @Validated
@@ -41,7 +53,6 @@ import org.springframework.validation.annotation.Validated;
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
-@SuppressWarnings("unused")
 public class RestApiException implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -93,19 +104,20 @@ public class RestApiException implements Serializable {
   /**
    * Instantiates a new rest api exception.
    *
-   * @param id                 the id
-   * @param timestamp          the timestamp
-   * @param message            the message
-   * @param errorCode          the error code
+   * @param id the id
+   * @param timestamp the timestamp
+   * @param message the message
+   * @param errorCode the error code
    * @param errorCodeInherited the error code inherited
-   * @param className          the class name
-   * @param application        the application
-   * @param path               the path
-   * @param handler            the handler
-   * @param stackTrace         the stack trace
-   * @param cause              the cause
+   * @param className the class name
+   * @param application the application
+   * @param path the path
+   * @param handler the handler
+   * @param stackTrace the stack trace
+   * @param cause the cause
    */
-  @Builder
+  @Builder(toBuilder = true)
+  @SuppressWarnings("unused")
   public RestApiException(
       String id,
       OffsetDateTime timestamp,
@@ -214,9 +226,6 @@ public class RestApiException implements Serializable {
    */
   @ApiModelProperty(value = "Is the error code inherited from the cause?")
   public Boolean getErrorCodeInherited() {
-    if (errorCodeInherited == null) {
-      errorCodeInherited = Boolean.FALSE;
-    }
     return errorCodeInherited;
   }
 

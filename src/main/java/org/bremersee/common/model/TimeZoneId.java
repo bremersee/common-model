@@ -1,20 +1,33 @@
 /*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.TimeZone;
 import org.springframework.util.StringUtils;
 
 /**
  * Time zone ID.
+ *
+ * @author Christian Bremer
  */
-@SuppressWarnings("unused")
 public enum TimeZoneId {
 
   /**
@@ -3161,7 +3174,17 @@ public enum TimeZoneId {
   @Override
   @JsonValue
   public String toString() {
-    return String.valueOf(value);
+    return toString(false);
+  }
+
+  /**
+   * Returns the string representation of this time zone id.
+   *
+   * @param urlEncode specifies whether the return value should be url encoded or not
+   * @return the time zone id
+   */
+  public String toString(boolean urlEncode) {
+    return String.valueOf(urlEncode ? urlEncode(value) : value);
   }
 
   /**
@@ -3185,7 +3208,9 @@ public enum TimeZoneId {
       return null;
     }
     for (TimeZoneId b : TimeZoneId.values()) {
-      if (String.valueOf(b.value).equalsIgnoreCase(text) || b.name().equalsIgnoreCase(text)) {
+      if (String.valueOf(b.value).equalsIgnoreCase(text)
+          || b.name().equalsIgnoreCase(text)
+          || String.valueOf(urlEncode(b.value)).equalsIgnoreCase(text)) {
         return b;
       }
     }
@@ -3203,6 +3228,14 @@ public enum TimeZoneId {
       return null;
     }
     return fromValue(timeZone.getID());
+  }
+
+  private static String urlEncode(String value) {
+    try {
+      return URLEncoder.encode(value, StandardCharsets.UTF_8.name());
+    } catch (Exception e) {
+      return value;
+    }
   }
 }
 

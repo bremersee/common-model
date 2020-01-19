@@ -1,28 +1,46 @@
+/*
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.bremersee.common.model;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import org.bremersee.common.model.JavaLocale.Separator;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.util.StringUtils;
 
 /**
- * The type Java locale test.
+ * The java locale test.
  *
  * @author Christian Bremer
  */
-public class JavaLocaleTest {
+class JavaLocaleTest {
 
   /**
    * Test possibilities.
    */
   @Test
-  public void testPossibilities() {
+  void testPossibilities() {
     Map<String, String> exceptions = new HashMap<>();
     exceptions.put("he", "iw");
     exceptions.put("id", "in");
@@ -56,15 +74,70 @@ public class JavaLocaleTest {
    * From locale.
    */
   @Test
-  public void fromLocale() {
+  void fromLocale() {
     for (Locale locale : Locale.getAvailableLocales()) {
       JavaLocale javaLocale = JavaLocale.fromLocale(locale);
+      assertNotNull(javaLocale);
       if (StringUtils.hasText(locale.toString())) {
-        assertNotNull(javaLocale);
         assertEquals(locale.getLanguage(), javaLocale.getLanguage());
-      } else {
-        assertNull(javaLocale);
       }
     }
   }
+
+  /**
+   * From three letter language code and three letter country code.
+   */
+  @Test
+  void fromThreeLetterLanguageCodeAndThreeLetterCountryCode() {
+    JavaLocale model = new JavaLocale(ThreeLetterLanguageCode.DEU, ThreeLetterCountryCode.DEU);
+    assertEquals("de", model.getLanguage());
+    assertEquals("DE", model.getCountry());
+
+    //noinspection RedundantCast
+    model = new JavaLocale((ThreeLetterLanguageCode)null, (ThreeLetterCountryCode)null);
+    assertNull(model.getLanguage());
+    assertNull(model.getCountry());
+
+    assertEquals(Locale.JAPAN, model.toLocale(Locale.JAPAN));
+  }
+
+  /**
+   * Gets language.
+   */
+  @Test
+  void getLanguage() {
+    JavaLocale model = new JavaLocale();
+    model.setLanguage("de");
+    assertEquals("de", model.getLanguage());
+
+    model = JavaLocale.builder().language("de").build();
+    assertEquals("de", model.getLanguage());
+
+    assertNotEquals(model, null);
+    assertNotEquals(model, new Object());
+    assertEquals(model, model);
+    assertEquals(model, model.toBuilder().language("de").build());
+
+    assertTrue(model.toString().contains("de"));
+  }
+
+  /**
+   * Gets country.
+   */
+  @Test
+  void getCountry() {
+    JavaLocale model = new JavaLocale();
+    model.setCountry("DE");
+    assertEquals("DE", model.getCountry());
+
+    model = JavaLocale.builder().country("DE").build();
+    assertEquals("DE", model.getCountry());
+
+    assertEquals(model, model);
+    assertEquals(model, model.toBuilder().country("DE").build());
+
+    model.setLanguage("de");
+    assertTrue(model.toString().contains("de-DE"));
+  }
+
 }

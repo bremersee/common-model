@@ -1,13 +1,29 @@
+/*
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.bremersee.common.model;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Locale;
 import java.util.MissingResourceException;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import org.springframework.util.StringUtils;
 
 /**
@@ -15,14 +31,14 @@ import org.springframework.util.StringUtils;
  *
  * @author Christian Bremer
  */
-public class ThreeLetterCountryCodeTest {
+class ThreeLetterCountryCodeTest {
 
   /**
    * Source code creator.
    */
-  @Ignore
+  @Disabled
   @Test
-  public void sourceCodeCreator() {
+  void sourceCodeCreator() {
     String[] isos = Locale.getISOCountries();
     StringBuilder sb = new StringBuilder();
     for (int i = 0; i < isos.length; i++) {
@@ -53,7 +69,7 @@ public class ThreeLetterCountryCodeTest {
    * From locale.
    */
   @Test
-  public void fromLocale() {
+  void fromLocale() {
     for (Locale locale : Locale.getAvailableLocales()) {
       try {
         if (StringUtils.hasText(locale.getISO3Country())) {
@@ -72,7 +88,7 @@ public class ThreeLetterCountryCodeTest {
    * From two letter value.
    */
   @Test
-  public void fromTwoLetterValue() {
+  void fromTwoLetterValue() {
     for (String iso : Locale.getISOCountries()) {
       ThreeLetterCountryCode code = ThreeLetterCountryCode.fromValue(iso);
       assertNotNull(code);
@@ -84,7 +100,7 @@ public class ThreeLetterCountryCodeTest {
    * From three letter value.
    */
   @Test
-  public void fromThreeLetterValue() {
+  void fromThreeLetterValue() {
     for (String iso : Locale.getISOCountries()) {
       Locale locale = new Locale("", iso);
       ThreeLetterCountryCode code = ThreeLetterCountryCode.fromValue(locale.getISO3Country());
@@ -97,7 +113,7 @@ public class ThreeLetterCountryCodeTest {
    * From locale value.
    */
   @Test
-  public void fromLocaleValue() {
+  void fromLocaleValue() {
     for (Locale locale : Locale.getAvailableLocales()) {
       try {
         if (StringUtils.hasText(locale.getISO3Country())) {

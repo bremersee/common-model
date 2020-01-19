@@ -1,7 +1,17 @@
 /*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.common.model;
@@ -20,6 +30,8 @@ import org.springframework.validation.annotation.Validated;
 
 /**
  * A link description.
+ *
+ * @author Christian Bremer
  */
 @ApiModel(description = "A link description.")
 @Validated
@@ -27,7 +39,6 @@ import org.springframework.validation.annotation.Validated;
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
-@SuppressWarnings("unused")
 public class Link implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -47,12 +58,13 @@ public class Link implements Serializable {
   /**
    * Instantiates a new link.
    *
-   * @param href        the href
-   * @param type        the type
-   * @param text        the text
+   * @param href the href
+   * @param type the type
+   * @param text the text
    * @param description the description
    */
-  @Builder
+  @Builder(toBuilder = true)
+  @SuppressWarnings("unused")
   public Link(String href, String type, String text, String description) {
     this.href = href;
     this.type = type;

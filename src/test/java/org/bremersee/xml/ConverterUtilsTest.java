@@ -1,4 +1,25 @@
+/*
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.bremersee.xml;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Instant;
 import java.time.OffsetDateTime;
@@ -11,16 +32,15 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.Duration;
 import javax.xml.datatype.XMLGregorianCalendar;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 /**
  * The converter utilities test.
  *
  * @author Christian Bremer
  */
-public class ConverterUtilsTest {
+class ConverterUtilsTest {
 
   private static String xmlCalStrZ = "2019-03-27T17:41:31.687Z";
 
@@ -37,8 +57,8 @@ public class ConverterUtilsTest {
   /**
    * Setup test.
    */
-  @BeforeClass
-  public static void setup() {
+  @BeforeAll
+  static void setup() {
     try {
       xmlCalZ = DatatypeFactory.newInstance().newXMLGregorianCalendar(xmlCalStrZ);
       xmlCalNewYork = DatatypeFactory.newInstance().newXMLGregorianCalendar(xmlCalStrNewYork);
@@ -50,168 +70,168 @@ public class ConverterUtilsTest {
     dateTimeNewYork = OffsetDateTime
         .parse(xmlCalStrNewYork, DateTimeFormatter.ISO_OFFSET_DATE_TIME);
 
-    Assert.assertEquals(xmlCalZ.toXMLFormat(), dateTimeZ.toString());
-    Assert.assertEquals(xmlCalNewYork.toXMLFormat(), dateTimeNewYork.toString());
+    assertEquals(xmlCalZ.toXMLFormat(), dateTimeZ.toString());
+    assertEquals(xmlCalNewYork.toXMLFormat(), dateTimeNewYork.toString());
   }
 
   /**
    * Duration test.
    */
   @Test
-  public void duration() {
+  void duration() {
     Duration xmlDuration = ConverterUtils.millisToXmlDuration(1234L);
-    Assert.assertNotNull(xmlDuration);
+    assertNotNull(xmlDuration);
     Long millis = ConverterUtils.xmlDurationToMillis(xmlDuration);
-    Assert.assertNotNull(millis);
-    Assert.assertEquals(Long.valueOf(1234L), millis);
+    assertNotNull(millis);
+    assertEquals(Long.valueOf(1234L), millis);
 
     xmlDuration = ConverterUtils.durationToXmlDuration(java.time.Duration.ofMillis(987655432L));
-    Assert.assertNotNull(xmlDuration);
+    assertNotNull(xmlDuration);
     java.time.Duration duration = ConverterUtils.xmlDurationToDuration(xmlDuration);
-    Assert.assertNotNull(duration);
-    Assert.assertEquals(987655432L, duration.toMillis());
+    assertNotNull(duration);
+    assertEquals(987655432L, duration.toMillis());
 
-    Assert.assertNull(ConverterUtils.millisToXmlDuration(null));
-    Assert.assertNull(ConverterUtils.durationToXmlDuration(null));
-    Assert.assertNull(ConverterUtils.xmlDurationToDuration(null));
-    Assert.assertNull(ConverterUtils.xmlDurationToMillis(null));
+    assertNull(ConverterUtils.millisToXmlDuration(null));
+    assertNull(ConverterUtils.durationToXmlDuration(null));
+    assertNull(ConverterUtils.xmlDurationToDuration(null));
+    assertNull(ConverterUtils.xmlDurationToMillis(null));
   }
 
   /**
    * Calendar test.
    */
   @Test
-  public void calendar() {
+  void calendar() {
     GregorianCalendar cal = ConverterUtils.xmlCalendarToCalendar(xmlCalZ);
-    Assert.assertNotNull(cal);
-    Assert.assertEquals(xmlCalStrZ, ConverterUtils.calendarToXmlCalendar(cal).toXMLFormat());
+    assertNotNull(cal);
+    assertEquals(xmlCalStrZ, ConverterUtils.calendarToXmlCalendar(cal).toXMLFormat());
 
     cal = ConverterUtils.xmlCalendarToCalendar(xmlCalNewYork);
-    Assert.assertNotNull(cal);
-    Assert.assertEquals(xmlCalStrNewYork, ConverterUtils.calendarToXmlCalendar(cal).toXMLFormat());
+    assertNotNull(cal);
+    assertEquals(xmlCalStrNewYork, ConverterUtils.calendarToXmlCalendar(cal).toXMLFormat());
 
-    Assert.assertNull(ConverterUtils.xmlCalendarToCalendar(null));
-    Assert.assertNull(ConverterUtils.calendarToXmlCalendar(null));
+    assertNull(ConverterUtils.xmlCalendarToCalendar(null));
+    assertNull(ConverterUtils.calendarToXmlCalendar(null));
   }
 
   /**
    * Date time test.
    */
   @Test
-  public void dateTime() {
+  void dateTime() {
     OffsetDateTime dateTime = ConverterUtils.xmlCalendarToOffsetDateTime(xmlCalZ);
-    Assert.assertNotNull(dateTime);
-    Assert.assertEquals(
+    assertNotNull(dateTime);
+    assertEquals(
         xmlCalStrZ,
         ConverterUtils.offsetDateTimeToXmlCalendar(dateTime).toXMLFormat());
 
     dateTime = ConverterUtils.xmlCalendarToOffsetDateTime(xmlCalNewYork);
-    Assert.assertNotNull(dateTime);
-    Assert.assertEquals(
+    assertNotNull(dateTime);
+    assertEquals(
         xmlCalStrNewYork,
         ConverterUtils.offsetDateTimeToXmlCalendar(dateTime).toXMLFormat());
 
-    Assert.assertNull(ConverterUtils.xmlCalendarToOffsetDateTime(null));
-    Assert.assertNull(ConverterUtils.offsetDateTimeToXmlCalendar(null));
+    assertNull(ConverterUtils.xmlCalendarToOffsetDateTime(null));
+    assertNull(ConverterUtils.offsetDateTimeToXmlCalendar(null));
   }
 
   /**
    * Date time UTC test.
    */
   @Test
-  public void dateTimeUtc() {
+  void dateTimeUtc() {
     OffsetDateTime dateTime = ConverterUtils.xmlCalendarToOffsetDateTimeUtc(xmlCalNewYork);
-    Assert.assertNotNull(dateTime);
-    Assert.assertEquals(
+    assertNotNull(dateTime);
+    assertEquals(
         dateTime.toString(),
         ConverterUtils.offsetDateTimeToXmlCalendarUtc(dateTime).toXMLFormat());
-    Assert.assertTrue(dateTime.toString().endsWith("Z"));
+    assertTrue(dateTime.toString().endsWith("Z"));
 
-    Assert.assertNull(ConverterUtils.xmlCalendarToOffsetDateTimeUtc(null));
-    Assert.assertNull(ConverterUtils.offsetDateTimeToXmlCalendarUtc(null));
+    assertNull(ConverterUtils.xmlCalendarToOffsetDateTimeUtc(null));
+    assertNull(ConverterUtils.offsetDateTimeToXmlCalendarUtc(null));
   }
 
   /**
    * Date test.
    */
   @Test
-  public void date() {
+  void date() {
     Date date = ConverterUtils.xmlCalendarToDate(xmlCalZ);
-    Assert.assertNotNull(date);
-    Assert.assertEquals(Date.from(dateTimeZ.toInstant()), date);
+    assertNotNull(date);
+    assertEquals(Date.from(dateTimeZ.toInstant()), date);
 
     XMLGregorianCalendar cal = ConverterUtils.dateToXmlCalendar(date, TimeZone.getTimeZone("GMT"));
-    Assert.assertNotNull(cal);
-    Assert.assertEquals(date, cal.toGregorianCalendar().getTime());
-    Assert.assertEquals(xmlCalStrZ, cal.toXMLFormat());
+    assertNotNull(cal);
+    assertEquals(date, cal.toGregorianCalendar().getTime());
+    assertEquals(xmlCalStrZ, cal.toXMLFormat());
 
     date = ConverterUtils.xmlCalendarToDate(xmlCalNewYork);
-    Assert.assertNotNull(date);
-    Assert.assertEquals(Date.from(dateTimeNewYork.toInstant()), date);
+    assertNotNull(date);
+    assertEquals(Date.from(dateTimeNewYork.toInstant()), date);
 
     cal = ConverterUtils.dateToXmlCalendar(date, TimeZone.getTimeZone("America/New_York"));
-    Assert.assertNotNull(cal);
-    Assert.assertEquals(date, cal.toGregorianCalendar().getTime());
-    Assert.assertEquals(xmlCalStrNewYork, cal.toXMLFormat());
+    assertNotNull(cal);
+    assertEquals(date, cal.toGregorianCalendar().getTime());
+    assertEquals(xmlCalStrNewYork, cal.toXMLFormat());
 
-    Assert.assertNull(ConverterUtils.xmlCalendarToDate(null));
-    Assert.assertNull(ConverterUtils.dateToXmlCalendar(null));
+    assertNull(ConverterUtils.xmlCalendarToDate(null));
+    assertNull(ConverterUtils.dateToXmlCalendar(null));
   }
 
   /**
    * Instant test.
    */
   @Test
-  public void instant() {
+  void instant() {
     Instant instant = ConverterUtils.xmlCalendarToInstant(xmlCalZ);
-    Assert.assertNotNull(instant);
-    Assert.assertEquals(xmlCalZ.toGregorianCalendar().getTime().toInstant(), instant);
+    assertNotNull(instant);
+    assertEquals(xmlCalZ.toGregorianCalendar().getTime().toInstant(), instant);
 
     XMLGregorianCalendar cal = ConverterUtils.instantToXmlCalendar(instant, ZoneOffset.UTC);
-    Assert.assertNotNull(cal);
-    Assert.assertEquals(instant, cal.toGregorianCalendar().getTime().toInstant());
-    Assert.assertEquals(xmlCalStrZ, cal.toXMLFormat());
+    assertNotNull(cal);
+    assertEquals(instant, cal.toGregorianCalendar().getTime().toInstant());
+    assertEquals(xmlCalStrZ, cal.toXMLFormat());
 
     instant = ConverterUtils.xmlCalendarToInstant(xmlCalNewYork);
-    Assert.assertNotNull(instant);
-    Assert.assertEquals(xmlCalNewYork.toGregorianCalendar().getTime().toInstant(), instant);
+    assertNotNull(instant);
+    assertEquals(xmlCalNewYork.toGregorianCalendar().getTime().toInstant(), instant);
 
     cal = ConverterUtils.instantToXmlCalendar(
         instant, TimeZone.getTimeZone("America/New_York").toZoneId());
-    Assert.assertNotNull(cal);
-    Assert.assertEquals(instant, cal.toGregorianCalendar().getTime().toInstant());
-    Assert.assertEquals(xmlCalStrNewYork, cal.toXMLFormat());
+    assertNotNull(cal);
+    assertEquals(instant, cal.toGregorianCalendar().getTime().toInstant());
+    assertEquals(xmlCalStrNewYork, cal.toXMLFormat());
 
-    Assert.assertNull(ConverterUtils.xmlCalendarToInstant(null));
-    Assert.assertNull(ConverterUtils.instantToXmlCalendar(null));
+    assertNull(ConverterUtils.xmlCalendarToInstant(null));
+    assertNull(ConverterUtils.instantToXmlCalendar(null));
   }
 
   /**
    * Millis test.
    */
   @Test
-  public void millis() {
+  void millis() {
     Long millis = ConverterUtils.xmlCalendarToMillis(xmlCalZ);
-    Assert.assertNotNull(millis);
-    Assert.assertEquals(xmlCalZ.toGregorianCalendar().getTime().getTime(), (long) millis);
+    assertNotNull(millis);
+    assertEquals(xmlCalZ.toGregorianCalendar().getTime().getTime(), (long) millis);
 
     XMLGregorianCalendar cal = ConverterUtils.millisToXmlCalendar(
         millis, TimeZone.getTimeZone("GMT"));
-    Assert.assertNotNull(cal);
-    Assert.assertEquals((long) millis, cal.toGregorianCalendar().getTime().getTime());
-    Assert.assertEquals(xmlCalStrZ, cal.toXMLFormat());
+    assertNotNull(cal);
+    assertEquals((long) millis, cal.toGregorianCalendar().getTime().getTime());
+    assertEquals(xmlCalStrZ, cal.toXMLFormat());
 
     millis = ConverterUtils.xmlCalendarToMillis(xmlCalNewYork);
-    Assert.assertNotNull(millis);
-    Assert.assertEquals(Date.from(dateTimeNewYork.toInstant()), new Date(millis));
+    assertNotNull(millis);
+    assertEquals(Date.from(dateTimeNewYork.toInstant()), new Date(millis));
 
     cal = ConverterUtils.millisToXmlCalendar(millis, TimeZone.getTimeZone("America/New_York"));
-    Assert.assertNotNull(cal);
-    Assert.assertEquals((long) millis, cal.toGregorianCalendar().getTime().getTime());
-    Assert.assertEquals(xmlCalStrNewYork, cal.toXMLFormat());
+    assertNotNull(cal);
+    assertEquals((long) millis, cal.toGregorianCalendar().getTime().getTime());
+    assertEquals(xmlCalStrNewYork, cal.toXMLFormat());
 
-    Assert.assertNull(ConverterUtils.xmlCalendarToMillis(null));
-    Assert.assertNull(ConverterUtils.millisToXmlCalendar(null));
+    assertNull(ConverterUtils.xmlCalendarToMillis(null));
+    assertNull(ConverterUtils.millisToXmlCalendar(null));
   }
 
 }
