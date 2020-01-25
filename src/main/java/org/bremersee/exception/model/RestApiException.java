@@ -17,9 +17,14 @@
 package org.bremersee.exception.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import io.swagger.annotations.ApiModel;
@@ -29,11 +34,18 @@ import java.time.OffsetDateTime;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.bremersee.xml.adapter.OffsetDateTimeXmlAdapter;
 import org.springframework.validation.annotation.Validated;
 
 /**
@@ -43,13 +55,17 @@ import org.springframework.validation.annotation.Validated;
  */
 @ApiModel(description = "The serialized exception.")
 @Validated
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "_type", visible = true)
+@JsonTypeInfo(include = As.EXISTING_PROPERTY, use = Id.NAME, property = "_type", visible = true)
 @JsonSubTypes({
+    @JsonSubTypes.Type(value = RestApiException.class, name = "restApiExceptionType")
 })
 @JacksonXmlRootElement(localName = "RestApiException")
 @XmlRootElement(name = "RestApiException")
+@XmlType(name = "restApiExceptionType")
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlSeeAlso({Handler.class, StackTraceItem.class})
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(Include.NON_EMPTY)
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
@@ -57,12 +73,21 @@ public class RestApiException implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
+  @ApiModelProperty(
+      name = "_type",
+      value = "The type specifier, must always be 'restApiExceptionType'.")
+  @JsonProperty("_type")
+  @JacksonXmlProperty(localName = "_type", isAttribute = true)
+  @XmlAttribute(name = "_type")
+  private String type = "restApiExceptionType";
+
   @JsonProperty("id")
   @JacksonXmlProperty(localName = "id")
   private String id = null;
 
   @JsonProperty("timestamp")
   @JacksonXmlProperty(localName = "timestamp")
+  @XmlJavaTypeAdapter(OffsetDateTimeXmlAdapter.class)
   private OffsetDateTime timestamp;
 
   @JsonProperty("message")
@@ -94,7 +119,10 @@ public class RestApiException implements Serializable {
   private Handler handler = null;
 
   @JsonProperty("stackTrace")
-  @JacksonXmlProperty(localName = "stackTrace")
+  @JacksonXmlElementWrapper(localName = "stackTrace")
+  @JacksonXmlProperty(localName = "stackTraceItem")
+  @XmlElementWrapper(name = "stackTrace")
+  @XmlElement(name = "stackTraceItem")
   private List<StackTraceItem> stackTrace = null;
 
   @JsonProperty("cause")

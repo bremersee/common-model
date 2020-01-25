@@ -17,6 +17,8 @@
 package org.bremersee.exception.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
@@ -26,6 +28,7 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -41,8 +44,10 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 @JacksonXmlRootElement(localName = "StackTraceItem")
 @XmlRootElement(name = "StackTraceItem")
+@XmlType(name = "stackTraceItemType")
 @XmlAccessorType(XmlAccessType.FIELD)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(Include.NON_EMPTY)
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
