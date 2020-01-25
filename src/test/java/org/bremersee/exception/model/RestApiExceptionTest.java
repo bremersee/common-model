@@ -16,14 +16,26 @@
 
 package org.bremersee.exception.model;
 
+import static java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator.Feature;
+import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.fasterxml.jackson.module.jaxb.JaxbAnnotationModule;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.time.OffsetDateTime;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
+import org.bremersee.xml.JaxbContextBuilder;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -254,6 +266,159 @@ class RestApiExceptionTest {
     assertEquals(model, model.toBuilder().handler(value).build());
 
     assertTrue(model.toString().contains(value.toString()));
+  }
+
+  /**
+   * Json.
+   *
+   * @throws Exception the exception
+   */
+  @Test
+  void json() throws Exception {
+    RestApiException cause = RestApiException.builder()
+        .id(UUID.randomUUID().toString())
+        .application("test")
+        .path("/api/somewhere")
+        .message("value")
+        .errorCode("1234")
+        .errorCodeInherited(Boolean.FALSE)
+        .timestamp(OffsetDateTime.parse("2007-12-24T18:20Z", ISO_OFFSET_DATE_TIME))
+        .build();
+    Handler handler = Handler.builder()
+        .methodName("getSomething")
+        .methodParameterTypes(Arrays.asList("java.lang.String", "java.lang.Boolean"))
+        .className("org.bremersee.SomethingController")
+        .build();
+    StackTraceItem i0 = StackTraceItem.builder()
+        .methodName("getSomething")
+        .lineNumber(123)
+        .declaringClass("org.bremersee.SomethingController")
+        .build();
+    StackTraceItem i1 = StackTraceItem.builder()
+        .methodName("findSomething")
+        .lineNumber(456)
+        .declaringClass("org.bremersee.SomethingRepository")
+        .build();
+    RestApiException model = RestApiException.builder()
+        .cause(cause)
+        .handler(handler)
+        .stackTrace(Arrays.asList(i0, i1))
+        .errorCodeInherited(true)
+        .errorCode(cause.getErrorCode())
+        .path("(api/something")
+        .id("5678")
+        .message("Something went wrong.")
+        .application("junit")
+        .timestamp(OffsetDateTime.parse("2007-12-24T18:21Z", ISO_OFFSET_DATE_TIME))
+        .build();
+
+    ObjectMapper objectMapper = new ObjectMapper();
+    objectMapper.registerModule(new Jdk8Module());
+    objectMapper.registerModule(new JavaTimeModule());
+    objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+    objectMapper.enable(SerializationFeature.WRITE_DATES_WITH_ZONE_ID);
+
+    String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(model);
+    // System.out.println(json);
+
+    RestApiException actualModel = objectMapper.readValue(json, RestApiException.class);
+    assertEquals(model, actualModel);
+
+    // now with jaxb annotation module
+    objectMapper.registerModule(new JaxbAnnotationModule());
+    actualModel = objectMapper.readValue(json, RestApiException.class);
+    assertEquals(model, actualModel);
+
+    String anotherJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(model);
+    assertEquals(json, anotherJson);
+  }
+
+  /**
+   * Xml.
+   *
+   * @throws Exception the exception
+   */
+  @Test
+  void xml() throws Exception {
+    RestApiException cause = RestApiException.builder()
+        .id(UUID.randomUUID().toString())
+        .application("test")
+        .path("/api/somewhere")
+        .message("value")
+        .errorCode("1234")
+        .errorCodeInherited(Boolean.FALSE)
+        .timestamp(OffsetDateTime.parse("2007-12-24T18:20Z", ISO_OFFSET_DATE_TIME))
+        .build();
+    Handler handler = Handler.builder()
+        .methodName("getSomething")
+        .methodParameterTypes(Arrays.asList("java.lang.String", "java.lang.Boolean"))
+        .className("org.bremersee.SomethingController")
+        .build();
+    StackTraceItem i0 = StackTraceItem.builder()
+        .methodName("getSomething")
+        .lineNumber(123)
+        .declaringClass("org.bremersee.SomethingController")
+        .build();
+    StackTraceItem i1 = StackTraceItem.builder()
+        .methodName("findSomething")
+        .lineNumber(456)
+        .declaringClass("org.bremersee.SomethingRepository")
+        .build();
+    RestApiException model = RestApiException.builder()
+        .cause(cause)
+        .handler(handler)
+        .stackTrace(Arrays.asList(i0, i1))
+        .errorCodeInherited(true)
+        .errorCode(cause.getErrorCode())
+        .path("(api/something")
+        .id("5678")
+        .message("Something went wrong.")
+        .application("junit")
+        .timestamp(OffsetDateTime.parse("2007-12-24T18:21Z", ISO_OFFSET_DATE_TIME))
+        .build();
+
+    XmlMapper xmlMapper = new XmlMapper();
+    xmlMapper.registerModule(new Jdk8Module());
+    xmlMapper.registerModule(new JavaTimeModule());
+    xmlMapper.enable(Feature.WRITE_XML_DECLARATION);
+    xmlMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+    xmlMapper.enable(SerializationFeature.WRITE_DATES_WITH_ZONE_ID);
+    String xml = xmlMapper
+        .writerWithDefaultPrettyPrinter()
+        .writeValueAsString(model);
+    // System.out.println(xml);
+
+    RestApiException actualModel = xmlMapper
+        .readValue(new StringReader(xml), RestApiException.class);
+    assertEquals(model, actualModel);
+
+    xmlMapper.registerModule(new JaxbAnnotationModule());
+
+    String xmlWithJaxbModule = xmlMapper
+        .writerWithDefaultPrettyPrinter()
+        .writeValueAsString(model);
+    actualModel = xmlMapper
+        .readValue(new StringReader(xml), RestApiException.class);
+    assertEquals(model, actualModel);
+    assertEquals(xml, xmlWithJaxbModule);
+
+    JaxbContextBuilder jaxbContextBuilder = JaxbContextBuilder
+        .builder()
+        .withFormattedOutput(true);
+
+    actualModel = (RestApiException) jaxbContextBuilder
+        .buildUnmarshaller(RestApiException.class)
+        .unmarshal(new StringReader(xml));
+    assertEquals(model, actualModel);
+
+    StringWriter sw = new StringWriter();
+    jaxbContextBuilder.buildMarshaller(model).marshal(model, sw);
+    String jaxbXml = sw.toString();
+    // System.out.println(jaxbXml);
+
+    actualModel = xmlMapper
+        .readValue(new StringReader(jaxbXml), RestApiException.class);
+    assertEquals(model, actualModel);
   }
 
 }
