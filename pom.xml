@@ -23,7 +23,7 @@
     <github.repo>common-model</github.repo>
     <gh-pages-staging-dir>${project.build.directory}/staging</gh-pages-staging-dir>
 
-    <common-xml.version>1.0.0-SNAPSHOT</common-xml.version>
+    <common-xml.version>1.0.1</common-xml.version>
   </properties>
 
   <scm>
