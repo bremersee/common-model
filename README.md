@@ -4,4 +4,4 @@
 
 Library of the common model.
 
-[Maven Site](https://nexus.bremersee.org/repository/maven-sites/common-model/1.1.10/index.html)
+[Maven Site](https://nexus.bremersee.org/repository/maven-sites/common-model/1.1.11/index.html)
