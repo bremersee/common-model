@@ -12,7 +12,7 @@
   </parent>
 
   <artifactId>common-model</artifactId>
-  <version>1.1.11-SNAPSHOT</version>
+  <version>1.1.11</version>
   <packaging>jar</packaging>
 
   <name>common-model</name>
@@ -23,7 +23,7 @@
     <github.repo>common-model</github.repo>
     <gh-pages-staging-dir>${project.build.directory}/staging</gh-pages-staging-dir>
 
-    <common-xml.version>1.0.1</common-xml.version>
+    <common-xml.version>1.0.2</common-xml.version>
   </properties>
 
   <scm>
