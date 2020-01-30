@@ -43,6 +43,9 @@ public class Link implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
+  @JsonProperty("id")
+  private String id;
+
   @JsonProperty(value = "href", required = true)
   private String href;
 
@@ -58,6 +61,7 @@ public class Link implements Serializable {
   /**
    * Instantiates a new link.
    *
+   * @param id the id
    * @param href the href
    * @param type the type
    * @param text the text
@@ -65,11 +69,31 @@ public class Link implements Serializable {
    */
   @Builder(toBuilder = true)
   @SuppressWarnings("unused")
-  public Link(String href, String type, String text, String description) {
+  public Link(String id, String href, String type, String text, String description) {
+    this.id = id;
     this.href = href;
     this.type = type;
     this.text = text;
     this.description = description;
+  }
+
+  /**
+   * Gets id.
+   *
+   * @return the id
+   */
+  @ApiModelProperty(required = true, value = "The ID.")
+  public String getId() {
+    return id;
+  }
+
+  /**
+   * Sets id.
+   *
+   * @param id the id
+   */
+  public void setId(String id) {
+    this.id = id;
   }
 
   /**

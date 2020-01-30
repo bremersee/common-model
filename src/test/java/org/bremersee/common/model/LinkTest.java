@@ -48,6 +48,24 @@ class LinkTest {
   }
 
   /**
+   * Gets id.
+   */
+  @Test
+  void getId() {
+    Link model = new Link();
+    model.setId("value");
+    assertEquals("value", model.getId());
+
+    model = Link.builder().id("value").build();
+    assertEquals("value", model.getId());
+
+    assertEquals(model, model);
+    assertEquals(model, model.toBuilder().id("value").build());
+
+    assertTrue(model.toString().contains("value"));
+  }
+
+  /**
    * Gets type.
    */
   @Test
