@@ -145,6 +145,7 @@ public class Link implements Serializable {
    *
    * @return the blank
    */
+  @ApiModelProperty("Specified whether to open the link in a blank target (default is false).")
   public Boolean getBlank() {
     return blank;
   }
