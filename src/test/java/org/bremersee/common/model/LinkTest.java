@@ -84,6 +84,26 @@ class LinkTest {
   }
 
   /**
+   * Gets blank.
+   */
+  @Test
+  void getBlank() {
+    Link model = new Link();
+    assertEquals(Boolean.FALSE, model.getBlank());
+
+    model.setBlank(true);
+    assertEquals(Boolean.TRUE, model.getBlank());
+
+    model = Link.builder().blank(true).build();
+    assertEquals(Boolean.TRUE, model.getBlank());
+
+    assertEquals(model, model);
+    assertEquals(model, model.toBuilder().blank(true).build());
+
+    assertTrue(model.toString().contains("true"));
+  }
+
+  /**
    * Gets text.
    */
   @Test

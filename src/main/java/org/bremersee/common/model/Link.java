@@ -41,7 +41,7 @@ import org.springframework.validation.annotation.Validated;
 @NoArgsConstructor
 public class Link implements Serializable {
 
-  private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 2L;
 
   @JsonProperty("id")
   private String id;
@@ -51,6 +51,9 @@ public class Link implements Serializable {
 
   @JsonProperty("type")
   private String type;
+
+  @JsonProperty("blank")
+  private Boolean blank = Boolean.FALSE;
 
   @JsonProperty("text")
   private String text;
@@ -64,15 +67,17 @@ public class Link implements Serializable {
    * @param id the id
    * @param href the href
    * @param type the type
+   * @param blank specified whether to open the link in a blank target (default is false)
    * @param text the text
    * @param description the description
    */
   @Builder(toBuilder = true)
   @SuppressWarnings("unused")
-  public Link(String id, String href, String type, String text, String description) {
+  public Link(String id, String href, String type, Boolean blank, String text, String description) {
     this.id = id;
     this.href = href;
     this.type = type;
+    this.blank = Boolean.TRUE.equals(blank);
     this.text = text;
     this.description = description;
   }
@@ -133,6 +138,24 @@ public class Link implements Serializable {
    */
   public void setType(String type) {
     this.type = type;
+  }
+
+  /**
+   * Specified whether to open the link in a blank target (default is {@code false}).
+   *
+   * @return the blank
+   */
+  public Boolean getBlank() {
+    return blank;
+  }
+
+  /**
+   * Specified whether to open the link in a blank target (default is {@code false}).
+   *
+   * @param blank the blank
+   */
+  public void setBlank(Boolean blank) {
+    this.blank = Boolean.TRUE.equals(blank);
   }
 
   /**
