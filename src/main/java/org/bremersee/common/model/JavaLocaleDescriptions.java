@@ -18,8 +18,7 @@ package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,7 +32,7 @@ import lombok.ToString;
  *
  * @author Christian Bremer
  */
-@ApiModel(description = "Java locales and their descriptions.")
+@Schema(description = "Java locales and their descriptions.")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode
 @ToString
@@ -61,7 +60,7 @@ public class JavaLocaleDescriptions implements Serializable {
    *
    * @return entries the descriptions
    */
-  @ApiModelProperty(value = "The descriptions.")
+  @Schema(description = "The descriptions.")
   public List<JavaLocaleDescription> getEntries() {
     if (entries == null) {
       entries = new ArrayList<>();

@@ -18,8 +18,7 @@ package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Locale;
@@ -35,7 +34,7 @@ import org.springframework.util.StringUtils;
  *
  * @author Christian Bremer
  */
-@ApiModel(description = "A locale representation.")
+@Schema(description = "A locale representation.")
 @EqualsAndHashCode
 @NoArgsConstructor
 public class JavaLocale implements Serializable {
@@ -106,7 +105,7 @@ public class JavaLocale implements Serializable {
    *
    * @return the language
    */
-  @ApiModelProperty("The two letter language code.")
+  @Schema(description = "The two letter language code.", example = "de")
   @JsonProperty("language")
   public String getLanguage() {
     return language;
@@ -144,7 +143,7 @@ public class JavaLocale implements Serializable {
    *
    * @return the country
    */
-  @ApiModelProperty("The two letter country code.")
+  @Schema(description = "The two letter country code.", example = "DE")
   @JsonProperty("country")
   public String getCountry() {
     return country;

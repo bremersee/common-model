@@ -22,8 +22,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -40,7 +39,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
-@ApiModel(description = "A stack trace element of an exception.")
+@Schema(description = "A stack trace element of an exception.")
 @Validated
 @JacksonXmlRootElement(localName = "StackTraceItem")
 @XmlRootElement(name = "StackTraceItem")
@@ -97,7 +96,7 @@ public class StackTraceItem implements Serializable {
    *
    * @return declaringClass declaring class
    */
-  @ApiModelProperty(value = "The declaring class.")
+  @Schema(description = "The declaring class.")
   public String getDeclaringClass() {
     return declaringClass;
   }
@@ -116,7 +115,7 @@ public class StackTraceItem implements Serializable {
    *
    * @return methodName method name
    */
-  @ApiModelProperty(value = "The method name.")
+  @Schema(description = "The method name.")
   public String getMethodName() {
     return methodName;
   }
@@ -135,7 +134,7 @@ public class StackTraceItem implements Serializable {
    *
    * @return fileName file name
    */
-  @ApiModelProperty(value = "The file name.")
+  @Schema(description = "The file name.")
   public String getFileName() {
     return fileName;
   }
@@ -154,7 +153,7 @@ public class StackTraceItem implements Serializable {
    *
    * @return lineNumber line number
    */
-  @ApiModelProperty(value = "The line number.")
+  @Schema(description = "The line number.")
   public Integer getLineNumber() {
     return lineNumber;
   }

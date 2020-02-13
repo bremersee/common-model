@@ -18,8 +18,7 @@ package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +33,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
-@ApiModel(description = "Specifies modifications of an access control list.")
+@Schema(description = "Specifies modifications of an access control list.")
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode
@@ -70,7 +69,7 @@ public class AccessControlListModifications implements Serializable {
    *
    * @return newOwner new owner
    */
-  @ApiModelProperty(value = "The owner is always granted and can only be changed by the owner.")
+  @Schema(description = "The owner is always granted and can only be changed by the owner.")
   public String getNewOwner() {
     return newOwner;
   }
@@ -89,7 +88,7 @@ public class AccessControlListModifications implements Serializable {
    *
    * @return the modification entries
    */
-  @ApiModelProperty(value = "The access control entries.")
+  @Schema(description = "The access control entries.")
   public List<AccessControlEntryModifications> getEntries() {
     if (entries == null) {
       entries = new ArrayList<>();

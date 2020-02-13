@@ -18,8 +18,7 @@ package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import javax.validation.constraints.NotNull;
 import lombok.Builder;
@@ -33,7 +32,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
-@ApiModel(description = "A phone number.")
+@Schema(description = "A phone number.")
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode
@@ -61,7 +60,7 @@ public class PhoneNumber implements Serializable {
    *
    * @return value value
    */
-  @ApiModelProperty(required = true, value = "The phone number")
+  @Schema(description = "The phone number", required = true, example = "00490325092901")
   @NotNull
   public String getValue() {
     return value;
@@ -81,7 +80,7 @@ public class PhoneNumber implements Serializable {
    *
    * @return category category
    */
-  @ApiModelProperty(value = "The category.")
+  @Schema(description = "The category.")
   public String getCategory() {
     return category;
   }

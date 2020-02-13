@@ -18,8 +18,7 @@ package org.bremersee.geojson.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -31,7 +30,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
-@ApiModel(description = "GeoJSON Point.")
+@Schema(description = "GeoJSON Point.")
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode(callSuper = true)
@@ -68,7 +67,7 @@ public class Point extends Geometry implements Serializable {
    *
    * @return coordinates coordinates
    */
-  @ApiModelProperty(value = "The coordinates.")
+  @Schema(description = "The coordinates.")
   public Position getCoordinates() {
     return coordinates;
   }

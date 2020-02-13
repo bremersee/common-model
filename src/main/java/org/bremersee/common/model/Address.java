@@ -18,8 +18,7 @@ package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -31,7 +30,7 @@ import lombok.ToString;
  *
  * @author Christian Bremer
  */
-@ApiModel(description = "Address data.")
+@Schema(description = "Address data.")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode
 @ToString
@@ -101,7 +100,7 @@ public class Address implements Serializable {
    *
    * @return streetNumber street number
    */
-  @ApiModelProperty(value = "The street number.")
+  @Schema(description = "The street number.", example = "100")
   public String getStreetNumber() {
     return streetNumber;
   }
@@ -120,7 +119,7 @@ public class Address implements Serializable {
    *
    * @return street street
    */
-  @ApiModelProperty(value = "The street name.")
+  @Schema(description = "The street name.", example = "Kurfürstendamm")
   public String getStreet() {
     return street;
   }
@@ -139,7 +138,7 @@ public class Address implements Serializable {
    *
    * @return postalCode postal code
    */
-  @ApiModelProperty(value = "The postal code.")
+  @Schema(description = "The postal code.", example = "10709")
   public String getPostalCode() {
     return postalCode;
   }
@@ -158,7 +157,7 @@ public class Address implements Serializable {
    *
    * @return city city
    */
-  @ApiModelProperty(value = "The city name.")
+  @Schema(description = "The city name.", example = "Berlin")
   public String getCity() {
     return city;
   }
@@ -177,7 +176,7 @@ public class Address implements Serializable {
    *
    * @return suburb suburb
    */
-  @ApiModelProperty(value = "The suburb name.")
+  @Schema(description = "The suburb name.")
   public String getSuburb() {
     return suburb;
   }
@@ -196,7 +195,7 @@ public class Address implements Serializable {
    *
    * @return state state
    */
-  @ApiModelProperty(value = "The state name.")
+  @Schema(description = "The state name.")
   public String getState() {
     return state;
   }
@@ -215,7 +214,7 @@ public class Address implements Serializable {
    *
    * @return country country
    */
-  @ApiModelProperty(value = "The country name.")
+  @Schema(description = "The country name.", example = "Germany")
   public String getCountry() {
     return country;
   }
@@ -234,7 +233,7 @@ public class Address implements Serializable {
    *
    * @return countryCode country code
    */
-  @ApiModelProperty(value = "The country code.")
+  @Schema(description = "The country code.", example = "DE")
   public TwoLetterCountryCode getCountryCode() {
     return countryCode;
   }
@@ -253,7 +252,7 @@ public class Address implements Serializable {
    *
    * @return formattedAddress formatted address
    */
-  @ApiModelProperty(value = "The street number.")
+  @Schema(description = "The street number.", example = "Kurfürstendamm 100, 10709 Berlin")
   public String getFormattedAddress() {
     return formattedAddress;
   }

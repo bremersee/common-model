@@ -23,8 +23,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -44,7 +43,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
-@ApiModel(description = "The handler where the exception occurred.")
+@Schema(description = "The handler where the exception occurred.")
 @Validated
 @JacksonXmlRootElement(localName = "Handler")
 @XmlRootElement(name = "Handler")
@@ -97,7 +96,7 @@ public class Handler implements Serializable {
    *
    * @return className class name
    */
-  @ApiModelProperty(value = "The class name of the handler.")
+  @Schema(description = "The class name of the handler.")
   public String getClassName() {
     return className;
   }
@@ -116,7 +115,7 @@ public class Handler implements Serializable {
    *
    * @return methodName method name
    */
-  @ApiModelProperty(value = "The method name of the handler.")
+  @Schema(description = "The method name of the handler.")
   public String getMethodName() {
     return methodName;
   }
@@ -135,7 +134,7 @@ public class Handler implements Serializable {
    *
    * @return methodParameterTypes method parameter types
    */
-  @ApiModelProperty(value = "The method parameters.")
+  @Schema(description = "The method parameters.")
   public List<String> getMethodParameterTypes() {
     return methodParameterTypes;
   }

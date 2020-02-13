@@ -19,7 +19,7 @@ package org.bremersee.common.model;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -43,7 +43,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public abstract class UnknownAware {
 
-  @ApiModelProperty(value = "Unknown properties.", dataType = "java.lang.Object", hidden = true)
+  @Schema(description = "Unknown properties.", hidden = true)
   @JsonIgnore
   private Map<String, Object> unknown;
 

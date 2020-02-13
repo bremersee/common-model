@@ -18,10 +18,10 @@ package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.AccessMode;
 import java.io.Serializable;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -33,7 +33,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
-@ApiModel(description = "A link description.")
+@Schema(description = "A link description.")
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode
@@ -87,7 +87,7 @@ public class Link implements Serializable {
    *
    * @return the id
    */
-  @ApiModelProperty(required = true, value = "The ID.")
+  @Schema(description = "The ID.", accessMode = AccessMode.READ_ONLY)
   public String getId() {
     return id;
   }
@@ -106,8 +106,8 @@ public class Link implements Serializable {
    *
    * @return href href
    */
-  @ApiModelProperty(required = true, value = "The URI.")
-  @NotNull
+  @Schema(description = "The URI.", required = true)
+  @NotBlank
   public String getHref() {
     return href;
   }
@@ -126,7 +126,7 @@ public class Link implements Serializable {
    *
    * @return type type
    */
-  @ApiModelProperty(value = "The type.")
+  @Schema(description = "The type.")
   public String getType() {
     return type;
   }
@@ -145,7 +145,9 @@ public class Link implements Serializable {
    *
    * @return the blank
    */
-  @ApiModelProperty("Specified whether to open the link in a blank target (default is false).")
+  @Schema(
+      description = "Specified whether to open the link in a blank target (default is false).",
+      defaultValue = "false")
   public Boolean getBlank() {
     return blank;
   }
@@ -164,7 +166,7 @@ public class Link implements Serializable {
    *
    * @return text text
    */
-  @ApiModelProperty(value = "The link text.")
+  @Schema(description = "The link text.")
   public String getText() {
     return text;
   }
@@ -183,7 +185,7 @@ public class Link implements Serializable {
    *
    * @return description description
    */
-  @ApiModelProperty(value = "A short description.")
+  @Schema(description = "A short description.")
   public String getDescription() {
     return description;
   }

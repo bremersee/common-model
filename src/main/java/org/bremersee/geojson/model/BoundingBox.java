@@ -16,7 +16,7 @@
 
 package org.bremersee.geojson.model;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
-@ApiModel(description = "The bounding box of a geometry, feature or feature collection.")
+@Schema(description = "The bounding box of a geometry, feature or feature collection.")
 @Validated
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)

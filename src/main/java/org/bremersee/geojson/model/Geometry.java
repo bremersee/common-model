@@ -22,8 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import javax.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
@@ -36,7 +35,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
-@ApiModel(description = "GeoJSON Geometry.")
+@Schema(description = "GeoJSON Geometry.")
 @Validated
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type", visible = true)
 @JsonSubTypes({
@@ -76,7 +75,7 @@ public abstract class Geometry implements Serializable {
    *
    * @return type type
    */
-  @ApiModelProperty(required = true, value = "The geometry type.")
+  @Schema(description = "The geometry type.", required = true)
   @NotNull
   public TypeEnum getType() {
     return type;
@@ -96,7 +95,7 @@ public abstract class Geometry implements Serializable {
    *
    * @return bbox bbox
    */
-  @ApiModelProperty(value = "The boundling box.")
+  @Schema(description = "The boundling box.")
   public BoundingBox getBbox() {
     return bbox;
   }

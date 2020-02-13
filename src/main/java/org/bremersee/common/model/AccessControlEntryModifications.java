@@ -18,8 +18,7 @@ package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.List;
 import javax.validation.constraints.NotNull;
@@ -35,7 +34,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
-@ApiModel(description = "Specifies modifications of an access control entry.")
+@Schema(description = "Specifies modifications of an access control entry.")
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode
@@ -108,7 +107,7 @@ public class AccessControlEntryModifications implements Serializable {
    *
    * @return permission permission
    */
-  @ApiModelProperty(required = true, value = "Specifies the permission.")
+  @Schema(description = "Specifies the permission.", required = true, example = "read")
   @NotNull
   @Pattern(regexp = "^[a-z_]+$")
   public String getPermission() {
@@ -129,7 +128,7 @@ public class AccessControlEntryModifications implements Serializable {
    *
    * @return guest guest
    */
-  @ApiModelProperty(value = "Specifies whether anybody is granted.")
+  @Schema(description = "Specifies whether anybody is granted.")
   public Boolean getGuest() {
     return guest;
   }
@@ -148,7 +147,7 @@ public class AccessControlEntryModifications implements Serializable {
    *
    * @return addUsers add users
    */
-  @ApiModelProperty(value = "Users to be added.")
+  @Schema(description = "Users to be added.")
   public List<String> getAddUsers() {
     return addUsers;
   }
@@ -167,7 +166,7 @@ public class AccessControlEntryModifications implements Serializable {
    *
    * @return removeUsers remove users
    */
-  @ApiModelProperty(value = "Users to be removed.")
+  @Schema(description = "Users to be removed.")
   public List<String> getRemoveUsers() {
     return removeUsers;
   }
@@ -186,7 +185,7 @@ public class AccessControlEntryModifications implements Serializable {
    *
    * @return addRoles add roles
    */
-  @ApiModelProperty(value = "Roles to be added.")
+  @Schema(description = "Roles to be added.")
   public List<String> getAddRoles() {
     return addRoles;
   }
@@ -205,7 +204,7 @@ public class AccessControlEntryModifications implements Serializable {
    *
    * @return removeRoles remove roles
    */
-  @ApiModelProperty(value = "Roles to be removed.")
+  @Schema(description = "Roles to be removed.")
   public List<String> getRemoveRoles() {
     return removeRoles;
   }
@@ -224,7 +223,7 @@ public class AccessControlEntryModifications implements Serializable {
    *
    * @return addGroups add groups
    */
-  @ApiModelProperty(value = "Groups to be added.")
+  @Schema(description = "Groups to be added.")
   public List<String> getAddGroups() {
     return addGroups;
   }
@@ -243,7 +242,7 @@ public class AccessControlEntryModifications implements Serializable {
    *
    * @return removeGroups remove groups
    */
-  @ApiModelProperty(value = "Groups to be removed.")
+  @Schema(description = "Groups to be removed.")
   public List<String> getRemoveGroups() {
     return removeGroups;
   }

@@ -20,8 +20,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import javax.validation.constraints.NotNull;
 import lombok.Builder;
@@ -35,7 +34,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
-@ApiModel(description = "A Feature object represents a spatially bounded thing.")
+@Schema(description = "A Feature object represents a spatially bounded thing.")
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode
@@ -85,7 +84,7 @@ public class Feature implements Serializable {
    *
    * @return type type
    */
-  @ApiModelProperty(required = true, value = "The feature type.")
+  @Schema(description = "The feature type, must be 'Feature'.", required = true)
   @NotNull
   public TypeEnum getType() {
     return type;
@@ -105,7 +104,7 @@ public class Feature implements Serializable {
    *
    * @return id id
    */
-  @ApiModelProperty(value = "The identifier of this feature.")
+  @Schema(description = "The identifier of this feature.")
   public String getId() {
     return id;
   }
@@ -124,7 +123,7 @@ public class Feature implements Serializable {
    *
    * @return bbox bbox
    */
-  @ApiModelProperty(value = "The bounding box.")
+  @Schema(description = "The bounding box.")
   public BoundingBox getBbox() {
     return bbox;
   }
@@ -143,7 +142,7 @@ public class Feature implements Serializable {
    *
    * @return geometry geometry
    */
-  @ApiModelProperty(value = "The geometry.")
+  @Schema(description = "The geometry.")
   public Geometry getGeometry() {
     return geometry;
   }
@@ -162,7 +161,7 @@ public class Feature implements Serializable {
    *
    * @return properties properties
    */
-  @ApiModelProperty(value = "The feature properties.")
+  @Schema(description = "The feature properties.")
   public Object getProperties() {
     return properties;
   }

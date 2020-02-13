@@ -18,8 +18,7 @@ package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import javax.validation.constraints.NotNull;
 import lombok.Builder;
@@ -33,7 +32,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
-@ApiModel(description = "A java locale and it's description.")
+@Schema(description = "A java locale and it's description.")
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode
@@ -67,7 +66,7 @@ public class JavaLocaleDescription implements Serializable {
    *
    * @return the locale
    */
-  @ApiModelProperty(required = true, value = "The locale.")
+  @Schema(description = "The locale.", required = true, example = "de")
   @NotNull
   public String getLocale() {
     return locale;
@@ -87,7 +86,7 @@ public class JavaLocaleDescription implements Serializable {
    *
    * @return description description
    */
-  @ApiModelProperty(required = true, value = "The description of the locale.")
+  @Schema(description = "The description of the locale.", required = true, example = "German")
   @NotNull
   public String getDescription() {
     return description;
