@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JavaLocale.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">common-model</a> &gt; <a href="index.source.html" class="el_package">org.bremersee.common.model</a> &gt; <span class="el_source">JavaLocale.java</span></div><h1>JavaLocale.java</h1><pre class="source lang-java linenums">/*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.regex.Pattern;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -20,11 +31,12 @@ import org.springframework.util.StringUtils;
 
 /**
  * Java locale model.
+ *
+ * @author Christian Bremer
  */
-@ApiModel(description = &quot;A locale representation.&quot;)
-<span class="pc bpc" id="L25" title="15 of 22 branches missed.">@EqualsAndHashCode</span>
-<span class="nc" id="L26">@NoArgsConstructor</span>
-@SuppressWarnings({&quot;WeakerAccess&quot;, &quot;unused&quot;})
+@Schema(description = &quot;A locale representation.&quot;)
+<span class="pc bpc" id="L38" title="9 of 22 branches missed.">@EqualsAndHashCode</span>
+<span class="fc" id="L39">@NoArgsConstructor</span>
 public class JavaLocale implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -40,61 +52,63 @@ public class JavaLocale implements Serializable {
    *
    * @param value the value
    */
-  @SuppressWarnings(&quot;WeakerAccess&quot;)
-<span class="fc" id="L44">  protected JavaLocale(String value) {</span>
-<span class="fc" id="L45">    setLanguage(value);</span>
-<span class="pc bpc" id="L46" title="1 of 2 branches missed.">    if (value != null) {</span>
-<span class="fc" id="L47">      String source = value.trim().replace(&quot;-&quot;, &quot;_&quot;);</span>
-<span class="fc" id="L48">      String[] parts = source.split(Pattern.quote(&quot;_&quot;));</span>
-<span class="fc bfc" id="L49" title="All 2 branches covered.">      if (parts.length &gt; 1) {</span>
-<span class="fc" id="L50">        setCountry(parts[1]);</span>
+<span class="fc" id="L55">  protected JavaLocale(String value) {</span>
+<span class="pc bpc" id="L56" title="1 of 4 branches missed.">    if (value == null || value.trim().length() &lt; 2) {</span>
+<span class="fc" id="L57">      setLanguage(null);</span>
+<span class="fc" id="L58">      setCountry(null);</span>
+    } else {
+<span class="fc" id="L60">      String source = value.trim().replace(&quot;-&quot;, &quot;_&quot;);</span>
+<span class="fc" id="L61">      String[] parts = source.split(Pattern.quote(&quot;_&quot;));</span>
+<span class="fc" id="L62">      setLanguage(parts[0]);</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">      if (parts.length &gt; 1) {</span>
+<span class="fc" id="L64">        setCountry(parts[1]);</span>
       }
     }
-<span class="fc" id="L53">  }</span>
+<span class="fc" id="L67">  }</span>
 
   /**
    * Instantiates a new java locale.
    *
    * @param language the language
-   * @param country  the country
+   * @param country the country
    */
-<span class="nc" id="L61">  @Builder</span>
-<span class="fc" id="L62">  public JavaLocale(String language, String country) {</span>
-<span class="fc" id="L63">    setLanguage(language);</span>
-<span class="fc" id="L64">    setCountry(country);</span>
-<span class="fc" id="L65">  }</span>
+<span class="pc" id="L75">  @Builder(toBuilder = true)</span>
+<span class="fc" id="L76">  public JavaLocale(String language, String country) {</span>
+<span class="fc" id="L77">    setLanguage(language);</span>
+<span class="fc" id="L78">    setCountry(country);</span>
+<span class="fc" id="L79">  }</span>
 
   /**
    * Instantiates a new java locale.
    *
    * @param language the language
-   * @param country  the country
+   * @param country the country
    */
-<span class="fc" id="L73">  public JavaLocale(TwoLetterLanguageCode language, TwoLetterCountryCode country) {</span>
-<span class="pc bpc" id="L74" title="1 of 2 branches missed.">    this.language = language != null ? language.toString() : null;</span>
-<span class="pc bpc" id="L75" title="1 of 2 branches missed.">    this.country = country != null ? country.toString() : null;</span>
-<span class="fc" id="L76">  }</span>
+<span class="fc" id="L87">  public JavaLocale(TwoLetterLanguageCode language, TwoLetterCountryCode country) {</span>
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">    this.language = language != null ? language.toString() : null;</span>
+<span class="pc bpc" id="L89" title="1 of 2 branches missed.">    this.country = country != null ? country.toString() : null;</span>
+<span class="fc" id="L90">  }</span>
 
   /**
    * Instantiates a new java locale.
    *
    * @param language the language
-   * @param country  the country
+   * @param country the country
    */
-<span class="nc" id="L84">  public JavaLocale(ThreeLetterLanguageCode language, ThreeLetterCountryCode country) {</span>
-<span class="nc bnc" id="L85" title="All 2 branches missed.">    this.language = language != null ? language.toLocale().getLanguage() : null;</span>
-<span class="nc bnc" id="L86" title="All 2 branches missed.">    this.country = country != null ? country.toLocale().getCountry() : null;</span>
-<span class="nc" id="L87">  }</span>
+<span class="fc" id="L98">  public JavaLocale(ThreeLetterLanguageCode language, ThreeLetterCountryCode country) {</span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">    this.language = language != null ? language.toLocale().getLanguage() : null;</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">    this.country = country != null ? country.toLocale().getCountry() : null;</span>
+<span class="fc" id="L101">  }</span>
 
   /**
    * Gets language.
    *
    * @return the language
    */
-  @ApiModelProperty(&quot;The two letter language code.&quot;)
+  @Schema(description = &quot;The two letter language code.&quot;, example = &quot;de&quot;)
   @JsonProperty(&quot;language&quot;)
   public String getLanguage() {
-<span class="fc" id="L97">    return language;</span>
+<span class="fc" id="L111">    return language;</span>
   }
 
   /**
@@ -104,19 +118,35 @@ public class JavaLocale implements Serializable {
    */
   @JsonProperty(&quot;language&quot;)
   public void setLanguage(String language) {
-<span class="fc" id="L107">    final TwoLetterLanguageCode code = TwoLetterLanguageCode.fromValue(language);</span>
-<span class="fc bfc" id="L108" title="All 2 branches covered.">    this.language = code != null ? code.toString() : null;</span>
-<span class="fc" id="L109">  }</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">    if (StringUtils.hasText(language)) {</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">      for (Locale l : Locale.getAvailableLocales()) {</span>
+        try {
+<span class="fc bfc" id="L124" title="All 2 branches covered.">          if (l.getLanguage().equalsIgnoreCase(language)</span>
+<span class="pc bpc" id="L125" title="2 of 4 branches missed.">              || (l.getISO3Language() != null &amp;&amp; l.getISO3Language().equalsIgnoreCase(language))) {</span>
+<span class="fc" id="L126">            this.language = l.getLanguage();</span>
+<span class="fc" id="L127">            return;</span>
+          }
+<span class="nc" id="L129">        } catch (MissingResourceException ignored) {</span>
+          // ignored
+<span class="fc" id="L131">        }</span>
+      }
+<span class="pc bpc" id="L133" title="1 of 2 branches missed.">      if (Arrays.stream(Locale.getISOLanguages()).anyMatch(iso -&gt; iso.equalsIgnoreCase(language))) {</span>
+<span class="fc" id="L134">        this.language = language.toLowerCase();</span>
+<span class="fc" id="L135">        return;</span>
+      }
+    }
+<span class="fc" id="L138">    this.language = null;</span>
+<span class="fc" id="L139">  }</span>
 
   /**
    * Gets country.
    *
    * @return the country
    */
-  @ApiModelProperty(&quot;The two letter country code.&quot;)
+  @Schema(description = &quot;The two letter country code.&quot;, example = &quot;DE&quot;)
   @JsonProperty(&quot;country&quot;)
   public String getCountry() {
-<span class="fc" id="L119">    return country;</span>
+<span class="fc" id="L149">    return country;</span>
   }
 
   /**
@@ -126,13 +156,29 @@ public class JavaLocale implements Serializable {
    */
   @JsonProperty(&quot;country&quot;)
   public void setCountry(String country) {
-<span class="fc" id="L129">    final TwoLetterCountryCode code = TwoLetterCountryCode.fromValue(language);</span>
-<span class="fc" id="L130">    this.country = country;</span>
-<span class="fc" id="L131">  }</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">    if (StringUtils.hasText(country)) {</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">      for (Locale l : Locale.getAvailableLocales()) {</span>
+        try {
+<span class="fc bfc" id="L162" title="All 2 branches covered.">          if (l.getCountry().equalsIgnoreCase(country)</span>
+<span class="pc bpc" id="L163" title="2 of 4 branches missed.">              || (l.getISO3Country() != null &amp;&amp; l.getISO3Country().equalsIgnoreCase(country))) {</span>
+<span class="fc" id="L164">            this.country = l.getCountry();</span>
+<span class="fc" id="L165">            return;</span>
+          }
+<span class="fc" id="L167">        } catch (MissingResourceException ignored) {</span>
+          // ignored
+<span class="fc" id="L169">        }</span>
+      }
+<span class="pc bpc" id="L171" title="1 of 2 branches missed.">      if (Arrays.stream(Locale.getISOCountries()).anyMatch(iso -&gt; iso.equalsIgnoreCase(country))) {</span>
+<span class="fc" id="L172">        this.country = country.toUpperCase();</span>
+<span class="fc" id="L173">        return;</span>
+      }
+    }
+<span class="fc" id="L176">    this.country = null;</span>
+<span class="fc" id="L177">  }</span>
 
   @Override
   public String toString() {
-<span class="nc" id="L135">    return toString(Separator.HYPHEN);</span>
+<span class="fc" id="L181">    return toString(Separator.HYPHEN);</span>
   }
 
   /**
@@ -142,15 +188,15 @@ public class JavaLocale implements Serializable {
    * @return the locale string
    */
   public String toString(Separator separator) {
-<span class="fc" id="L145">    StringBuilder sb = new StringBuilder();</span>
-<span class="pc bpc" id="L146" title="1 of 2 branches missed.">    if (StringUtils.hasText(getLanguage())) {</span>
-<span class="fc" id="L147">      sb.append(getLanguage());</span>
-<span class="pc bpc" id="L148" title="1 of 2 branches missed.">      if (StringUtils.hasText(getCountry())) {</span>
-<span class="fc" id="L149">        sb.append(Separator.fromNullable(separator).toString());</span>
-<span class="fc" id="L150">        sb.append(getCountry());</span>
+<span class="fc" id="L191">    StringBuilder sb = new StringBuilder();</span>
+<span class="pc bpc" id="L192" title="1 of 2 branches missed.">    if (StringUtils.hasText(getLanguage())) {</span>
+<span class="fc" id="L193">      sb.append(getLanguage());</span>
+<span class="fc bfc" id="L194" title="All 2 branches covered.">      if (StringUtils.hasText(getCountry())) {</span>
+<span class="fc" id="L195">        sb.append(Separator.fromNullable(separator).toString());</span>
+<span class="fc" id="L196">        sb.append(getCountry());</span>
       }
     }
-<span class="fc" id="L153">    return sb.toString();</span>
+<span class="fc" id="L199">    return sb.toString();</span>
   }
 
   /**
@@ -159,7 +205,7 @@ public class JavaLocale implements Serializable {
    * @return the locale
    */
   public Locale toLocale() {
-<span class="fc" id="L162">    return toLocale(null);</span>
+<span class="fc" id="L208">    return toLocale(null);</span>
   }
 
   /**
@@ -169,12 +215,12 @@ public class JavaLocale implements Serializable {
    * @return the locale
    */
   public Locale toLocale(Locale defaultLocale) {
-<span class="pc bpc" id="L172" title="3 of 4 branches missed.">    if (!StringUtils.hasText(getLanguage()) &amp;&amp; !StringUtils.hasText(getCountry())) {</span>
-<span class="nc" id="L173">      return defaultLocale;</span>
+<span class="pc bpc" id="L218" title="1 of 4 branches missed.">    if (!StringUtils.hasText(getLanguage()) &amp;&amp; !StringUtils.hasText(getCountry())) {</span>
+<span class="fc" id="L219">      return defaultLocale;</span>
     }
-<span class="pc bpc" id="L175" title="1 of 2 branches missed.">    String language = getLanguage() == null ? &quot;&quot; : getLanguage();</span>
-<span class="pc bpc" id="L176" title="1 of 2 branches missed.">    String country = getCountry() == null ? &quot;&quot; : getCountry();</span>
-<span class="fc" id="L177">    return new Locale(language, country);</span>
+<span class="pc bpc" id="L221" title="1 of 2 branches missed.">    String language = getLanguage() == null ? &quot;&quot; : getLanguage();</span>
+<span class="pc bpc" id="L222" title="1 of 2 branches missed.">    String country = getCountry() == null ? &quot;&quot; : getCountry();</span>
+<span class="fc" id="L223">    return new Locale(language, country);</span>
   }
 
   /**
@@ -184,12 +230,7 @@ public class JavaLocale implements Serializable {
    * @return the java locale
    */
   public static JavaLocale fromValue(String value) {
-<span class="fc" id="L187">    JavaLocale javaLocale = new JavaLocale(value);</span>
-<span class="fc bfc" id="L188" title="All 2 branches covered.">    if (StringUtils.hasText(javaLocale.getLanguage())</span>
-<span class="pc bpc" id="L189" title="1 of 2 branches missed.">        || StringUtils.hasText(javaLocale.getCountry())) {</span>
-<span class="fc" id="L190">      return javaLocale;</span>
-    }
-<span class="fc" id="L192">    return null;</span>
+<span class="fc" id="L233">    return new JavaLocale(value);</span>
   }
 
   /**
@@ -199,33 +240,33 @@ public class JavaLocale implements Serializable {
    * @return the java locale
    */
   public static JavaLocale fromLocale(Locale locale) {
-<span class="pc bpc" id="L202" title="1 of 2 branches missed.">    return locale == null ? null : fromValue(locale.toString());</span>
+<span class="pc bpc" id="L243" title="1 of 2 branches missed.">    return locale == null ? null : fromValue(locale.toString());</span>
   }
 
   /**
    * The enum Separator.
    */
-<span class="fc" id="L208">  public enum Separator {</span>
+<span class="fc" id="L249">  public enum Separator {</span>
 
     /**
      * Hyphen separator ({@literal -}).
      */
-<span class="fc" id="L213">    HYPHEN(&quot;-&quot;),</span>
+<span class="fc" id="L254">    HYPHEN(&quot;-&quot;),</span>
 
     /**
      * Underscore separator ({@literal _}).
      */
-<span class="fc" id="L218">    UNDERSCORE(&quot;_&quot;);</span>
+<span class="fc" id="L259">    UNDERSCORE(&quot;_&quot;);</span>
 
     private String value;
 
-<span class="fc" id="L222">    Separator(String value) {</span>
-<span class="fc" id="L223">      this.value = value;</span>
-<span class="fc" id="L224">    }</span>
+<span class="fc" id="L263">    Separator(String value) {</span>
+<span class="fc" id="L264">      this.value = value;</span>
+<span class="fc" id="L265">    }</span>
 
     @Override
     public String toString() {
-<span class="fc" id="L228">      return value;</span>
+<span class="fc" id="L269">      return value;</span>
     }
 
     /**
@@ -235,10 +276,10 @@ public class JavaLocale implements Serializable {
      * @return the separator
      */
     public static Separator fromNullable(Separator separator) {
-<span class="pc bpc" id="L238" title="1 of 2 branches missed.">      return separator == null ? HYPHEN : separator;</span>
+<span class="pc bpc" id="L279" title="1 of 2 branches missed.">      return separator == null ? HYPHEN : separator;</span>
     }
   }
 
 }
 
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

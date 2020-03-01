@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FeatureCollection.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">common-model</a> &gt; <a href="index.source.html" class="el_package">org.bremersee.geojson.model</a> &gt; <span class="el_source">FeatureCollection.java</span></div><h1>FeatureCollection.java</h1><pre class="source lang-java linenums">/*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.geojson.model;
@@ -10,8 +20,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.List;
 import javax.validation.constraints.NotNull;
@@ -23,44 +32,48 @@ import org.springframework.validation.annotation.Validated;
 
 /**
  * A collection of features.
+ *
+ * @author Christian Bremer
  */
-@ApiModel(description = &quot;A collection of features.&quot;)
+@Schema(description = &quot;A collection of features.&quot;)
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
-<span class="nc bnc" id="L30" title="All 30 branches missed.">@EqualsAndHashCode</span>
-<span class="nc" id="L31">@ToString</span>
-<span class="nc" id="L32">@NoArgsConstructor</span>
-@SuppressWarnings(&quot;unused&quot;)
+<span class="pc bpc" id="L41" title="15 of 30 branches missed.">@EqualsAndHashCode</span>
+<span class="fc" id="L42">@ToString</span>
+<span class="fc" id="L43">@NoArgsConstructor</span>
 public class FeatureCollection implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-<span class="nc" id="L38">  @JsonProperty(&quot;type&quot;)</span>
+<span class="fc" id="L48">  @JsonProperty(&quot;type&quot;)</span>
   private TypeEnum type = TypeEnum.FEATURECOLLECTION;
 
-<span class="nc" id="L41">  @JsonProperty(&quot;bbox&quot;)</span>
+<span class="fc" id="L51">  @JsonProperty(&quot;bbox&quot;)</span>
   private BoundingBox bbox = null;
 
-<span class="nc" id="L44">  @JsonProperty(&quot;features&quot;)</span>
+<span class="fc" id="L54">  @JsonProperty(&quot;features&quot;)</span>
   private List&lt;Feature&gt; features = null;
 
-<span class="nc" id="L47">  @Builder</span>
+<span class="pc" id="L57">  @Builder(toBuilder = true)</span>
+  @SuppressWarnings(&quot;unused&quot;)
   public FeatureCollection(
       BoundingBox bbox,
-<span class="nc" id="L50">      List&lt;Feature&gt; features) {</span>
-<span class="nc" id="L51">    this.bbox = bbox;</span>
-<span class="nc" id="L52">    this.features = features;</span>
-<span class="nc" id="L53">  }</span>
+<span class="fc" id="L61">      List&lt;Feature&gt; features) {</span>
+<span class="fc" id="L62">    this.bbox = bbox;</span>
+<span class="fc" id="L63">    this.features = features;</span>
+<span class="fc" id="L64">  }</span>
 
   /**
    * The feature collection type.
    *
    * @return type type
    */
-  @ApiModelProperty(required = true, value = &quot;The feature collection type.&quot;)
+  @Schema(
+      description = &quot;The feature collection type, must be 'FeatureCollection'.&quot;,
+      required = true)
   @NotNull
   public TypeEnum getType() {
-<span class="nc" id="L63">    return type;</span>
+<span class="fc" id="L76">    return type;</span>
   }
 
   /**
@@ -69,17 +82,17 @@ public class FeatureCollection implements Serializable {
    * @param type the type
    */
   public void setType(TypeEnum type) {
-<span class="nc" id="L72">    this.type = type;</span>
-<span class="nc" id="L73">  }</span>
+<span class="fc" id="L85">    this.type = type;</span>
+<span class="fc" id="L86">  }</span>
 
   /**
    * Get bounding box.
    *
    * @return bbox bbox
    */
-  @ApiModelProperty(value = &quot;The bounding box.&quot;)
+  @Schema(description = &quot;The bounding box.&quot;)
   public BoundingBox getBbox() {
-<span class="nc" id="L82">    return bbox;</span>
+<span class="fc" id="L95">    return bbox;</span>
   }
 
   /**
@@ -88,17 +101,17 @@ public class FeatureCollection implements Serializable {
    * @param bbox the bbox
    */
   public void setBbox(BoundingBox bbox) {
-<span class="nc" id="L91">    this.bbox = bbox;</span>
-<span class="nc" id="L92">  }</span>
+<span class="fc" id="L104">    this.bbox = bbox;</span>
+<span class="fc" id="L105">  }</span>
 
   /**
    * Get features.
    *
    * @return features features
    */
-  @ApiModelProperty(value = &quot;The features.&quot;)
+  @Schema(description = &quot;The features.&quot;)
   public List&lt;Feature&gt; getFeatures() {
-<span class="nc" id="L101">    return features;</span>
+<span class="fc" id="L114">    return features;</span>
   }
 
   /**
@@ -107,29 +120,29 @@ public class FeatureCollection implements Serializable {
    * @param features the features
    */
   public void setFeatures(List&lt;Feature&gt; features) {
-<span class="nc" id="L110">    this.features = features;</span>
-<span class="nc" id="L111">  }</span>
+<span class="fc" id="L123">    this.features = features;</span>
+<span class="fc" id="L124">  }</span>
 
   /**
    * The feature collection type.
    */
-<span class="nc" id="L116">  public enum TypeEnum {</span>
+<span class="fc" id="L129">  public enum TypeEnum {</span>
 
     /**
      * Featurecollection type enum.
      */
-<span class="nc" id="L121">    FEATURECOLLECTION(&quot;FeatureCollection&quot;);</span>
+<span class="fc" id="L134">    FEATURECOLLECTION(&quot;FeatureCollection&quot;);</span>
 
     private String value;
 
-<span class="nc" id="L125">    TypeEnum(String value) {</span>
-<span class="nc" id="L126">      this.value = value;</span>
-<span class="nc" id="L127">    }</span>
+<span class="fc" id="L138">    TypeEnum(String value) {</span>
+<span class="fc" id="L139">      this.value = value;</span>
+<span class="fc" id="L140">    }</span>
 
     @Override
     @JsonValue
     public String toString() {
-<span class="nc" id="L132">      return String.valueOf(value);</span>
+<span class="fc" id="L145">      return String.valueOf(value);</span>
     }
 
     /**
@@ -140,14 +153,14 @@ public class FeatureCollection implements Serializable {
      */
     @JsonCreator
     public static TypeEnum fromValue(String text) {
-<span class="nc bnc" id="L143" title="All 2 branches missed.">      for (TypeEnum b : TypeEnum.values()) {</span>
-<span class="nc bnc" id="L144" title="All 2 branches missed.">        if (String.valueOf(b.value).equals(text)) {</span>
-<span class="nc" id="L145">          return b;</span>
+<span class="fc bfc" id="L156" title="All 2 branches covered.">      for (TypeEnum b : TypeEnum.values()) {</span>
+<span class="fc bfc" id="L157" title="All 2 branches covered.">        if (String.valueOf(b.value).equals(text)) {</span>
+<span class="fc" id="L158">          return b;</span>
         }
       }
-<span class="nc" id="L148">      return null;</span>
+<span class="fc" id="L161">      return null;</span>
     }
   }
 }
 
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

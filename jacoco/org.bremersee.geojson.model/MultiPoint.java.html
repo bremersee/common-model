@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MultiPoint.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">common-model</a> &gt; <a href="index.source.html" class="el_package">org.bremersee.geojson.model</a> &gt; <span class="el_source">MultiPoint.java</span></div><h1>MultiPoint.java</h1><pre class="source lang-java linenums">/*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.geojson.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.List;
 import lombok.Builder;
@@ -19,48 +28,49 @@ import org.springframework.validation.annotation.Validated;
 
 /**
  * GeoJSON MultiPoint.
+ *
+ * @author Christian Bremer
  */
-@ApiModel(description = &quot;GeoJSON MultiPoint.&quot;)
+@Schema(description = &quot;GeoJSON MultiPoint.&quot;)
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
-<span class="nc bnc" id="L26" title="All 16 branches missed.">@EqualsAndHashCode(callSuper = true)</span>
-<span class="nc" id="L27">@ToString(callSuper = true)</span>
-@SuppressWarnings(&quot;unused&quot;)
+<span class="pc bpc" id="L37" title="6 of 16 branches missed.">@EqualsAndHashCode(callSuper = true)</span>
+<span class="fc" id="L38">@ToString(callSuper = true)</span>
 public class MultiPoint extends Geometry implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-<span class="nc" id="L33">  @JsonProperty(&quot;coordinates&quot;)</span>
+<span class="fc" id="L43">  @JsonProperty(&quot;coordinates&quot;)</span>
   private List&lt;Position&gt; coordinates = null;
 
   /**
    * Instantiates a new multi point.
    */
-<span class="nc" id="L39">  public MultiPoint() {</span>
-<span class="nc" id="L40">    setType(TypeEnum.MULTIPOINT);</span>
-<span class="nc" id="L41">  }</span>
+<span class="fc" id="L49">  public MultiPoint() {</span>
+<span class="fc" id="L50">    setType(TypeEnum.MULTIPOINT);</span>
+<span class="fc" id="L51">  }</span>
 
   /**
    * Instantiates a new multi point.
    *
-   * @param bbox        the bbox
+   * @param bbox the bbox
    * @param coordinates the coordinates
    */
-<span class="nc" id="L49">  @Builder</span>
+<span class="pc" id="L59">  @Builder(toBuilder = true)</span>
   public MultiPoint(BoundingBox bbox, List&lt;Position&gt; coordinates) {
-<span class="nc" id="L51">    super(bbox);</span>
-<span class="nc" id="L52">    setType(TypeEnum.MULTIPOINT);</span>
-<span class="nc" id="L53">    this.coordinates = coordinates;</span>
-<span class="nc" id="L54">  }</span>
+<span class="fc" id="L61">    super(bbox);</span>
+<span class="fc" id="L62">    setType(TypeEnum.MULTIPOINT);</span>
+<span class="fc" id="L63">    this.coordinates = coordinates;</span>
+<span class="fc" id="L64">  }</span>
 
   /**
    * Get coordinates.
    *
    * @return coordinates coordinates
    */
-  @ApiModelProperty(value = &quot;The coordinates.&quot;)
+  @Schema(description = &quot;The coordinates.&quot;)
   public List&lt;Position&gt; getCoordinates() {
-<span class="nc" id="L63">    return coordinates;</span>
+<span class="fc" id="L73">    return coordinates;</span>
   }
 
   /**
@@ -69,9 +79,9 @@ public class MultiPoint extends Geometry implements Serializable {
    * @param coordinates the coordinates
    */
   public void setCoordinates(List&lt;Position&gt; coordinates) {
-<span class="nc" id="L72">    this.coordinates = coordinates;</span>
-<span class="nc" id="L73">  }</span>
+<span class="fc" id="L82">    this.coordinates = coordinates;</span>
+<span class="fc" id="L83">  }</span>
 
 }
 
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

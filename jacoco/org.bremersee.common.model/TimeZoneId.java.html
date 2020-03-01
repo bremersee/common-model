@@ -1,3167 +1,3190 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TimeZoneId.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">common-model</a> &gt; <a href="index.source.html" class="el_package">org.bremersee.common.model</a> &gt; <span class="el_source">TimeZoneId.java</span></div><h1>TimeZoneId.java</h1><pre class="source lang-java linenums">/*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.TimeZone;
 import org.springframework.util.StringUtils;
 
 /**
  * Time zone ID.
+ *
+ * @author Christian Bremer
  */
-<span class="nc" id="L17">@SuppressWarnings(&quot;unused&quot;)</span>
-public enum TimeZoneId {
+<span class="fc" id="L31">public enum TimeZoneId {</span>
 
   /**
    * Act time zone id.
    */
-<span class="nc" id="L23">  ACT(&quot;ACT&quot;),</span>
+<span class="fc" id="L36">  ACT(&quot;ACT&quot;),</span>
 
   /**
    * Aet time zone id.
    */
-<span class="nc" id="L28">  AET(&quot;AET&quot;),</span>
+<span class="fc" id="L41">  AET(&quot;AET&quot;),</span>
 
   /**
    * Agt time zone id.
    */
-<span class="nc" id="L33">  AGT(&quot;AGT&quot;),</span>
+<span class="fc" id="L46">  AGT(&quot;AGT&quot;),</span>
 
   /**
    * Art time zone id.
    */
-<span class="nc" id="L38">  ART(&quot;ART&quot;),</span>
+<span class="fc" id="L51">  ART(&quot;ART&quot;),</span>
 
   /**
    * Ast time zone id.
    */
-<span class="nc" id="L43">  AST(&quot;AST&quot;),</span>
+<span class="fc" id="L56">  AST(&quot;AST&quot;),</span>
 
   /**
    * Africa abidjan time zone id.
    */
-<span class="nc" id="L48">  AFRICA_ABIDJAN(&quot;Africa/Abidjan&quot;),</span>
+<span class="fc" id="L61">  AFRICA_ABIDJAN(&quot;Africa/Abidjan&quot;),</span>
 
   /**
    * Africa accra time zone id.
    */
-<span class="nc" id="L53">  AFRICA_ACCRA(&quot;Africa/Accra&quot;),</span>
+<span class="fc" id="L66">  AFRICA_ACCRA(&quot;Africa/Accra&quot;),</span>
 
   /**
    * Africa addis ababa time zone id.
    */
-<span class="nc" id="L58">  AFRICA_ADDIS_ABABA(&quot;Africa/Addis_Ababa&quot;),</span>
+<span class="fc" id="L71">  AFRICA_ADDIS_ABABA(&quot;Africa/Addis_Ababa&quot;),</span>
 
   /**
    * Africa algiers time zone id.
    */
-<span class="nc" id="L63">  AFRICA_ALGIERS(&quot;Africa/Algiers&quot;),</span>
+<span class="fc" id="L76">  AFRICA_ALGIERS(&quot;Africa/Algiers&quot;),</span>
 
   /**
    * Africa asmara time zone id.
    */
-<span class="nc" id="L68">  AFRICA_ASMARA(&quot;Africa/Asmara&quot;),</span>
+<span class="fc" id="L81">  AFRICA_ASMARA(&quot;Africa/Asmara&quot;),</span>
 
   /**
    * Africa asmera time zone id.
    */
-<span class="nc" id="L73">  AFRICA_ASMERA(&quot;Africa/Asmera&quot;),</span>
+<span class="fc" id="L86">  AFRICA_ASMERA(&quot;Africa/Asmera&quot;),</span>
 
   /**
    * Africa bamako time zone id.
    */
-<span class="nc" id="L78">  AFRICA_BAMAKO(&quot;Africa/Bamako&quot;),</span>
+<span class="fc" id="L91">  AFRICA_BAMAKO(&quot;Africa/Bamako&quot;),</span>
 
   /**
    * Africa bangui time zone id.
    */
-<span class="nc" id="L83">  AFRICA_BANGUI(&quot;Africa/Bangui&quot;),</span>
+<span class="fc" id="L96">  AFRICA_BANGUI(&quot;Africa/Bangui&quot;),</span>
 
   /**
    * Africa banjul time zone id.
    */
-<span class="nc" id="L88">  AFRICA_BANJUL(&quot;Africa/Banjul&quot;),</span>
+<span class="fc" id="L101">  AFRICA_BANJUL(&quot;Africa/Banjul&quot;),</span>
 
   /**
    * Africa bissau time zone id.
    */
-<span class="nc" id="L93">  AFRICA_BISSAU(&quot;Africa/Bissau&quot;),</span>
+<span class="fc" id="L106">  AFRICA_BISSAU(&quot;Africa/Bissau&quot;),</span>
 
   /**
    * Africa blantyre time zone id.
    */
-<span class="nc" id="L98">  AFRICA_BLANTYRE(&quot;Africa/Blantyre&quot;),</span>
+<span class="fc" id="L111">  AFRICA_BLANTYRE(&quot;Africa/Blantyre&quot;),</span>
 
   /**
    * Africa brazzaville time zone id.
    */
-<span class="nc" id="L103">  AFRICA_BRAZZAVILLE(&quot;Africa/Brazzaville&quot;),</span>
+<span class="fc" id="L116">  AFRICA_BRAZZAVILLE(&quot;Africa/Brazzaville&quot;),</span>
 
   /**
    * Africa bujumbura time zone id.
    */
-<span class="nc" id="L108">  AFRICA_BUJUMBURA(&quot;Africa/Bujumbura&quot;),</span>
+<span class="fc" id="L121">  AFRICA_BUJUMBURA(&quot;Africa/Bujumbura&quot;),</span>
 
   /**
    * Africa cairo time zone id.
    */
-<span class="nc" id="L113">  AFRICA_CAIRO(&quot;Africa/Cairo&quot;),</span>
+<span class="fc" id="L126">  AFRICA_CAIRO(&quot;Africa/Cairo&quot;),</span>
 
   /**
    * Africa casablanca time zone id.
    */
-<span class="nc" id="L118">  AFRICA_CASABLANCA(&quot;Africa/Casablanca&quot;),</span>
+<span class="fc" id="L131">  AFRICA_CASABLANCA(&quot;Africa/Casablanca&quot;),</span>
 
   /**
    * Africa ceuta time zone id.
    */
-<span class="nc" id="L123">  AFRICA_CEUTA(&quot;Africa/Ceuta&quot;),</span>
+<span class="fc" id="L136">  AFRICA_CEUTA(&quot;Africa/Ceuta&quot;),</span>
 
   /**
    * Africa conakry time zone id.
    */
-<span class="nc" id="L128">  AFRICA_CONAKRY(&quot;Africa/Conakry&quot;),</span>
+<span class="fc" id="L141">  AFRICA_CONAKRY(&quot;Africa/Conakry&quot;),</span>
 
   /**
    * Africa dakar time zone id.
    */
-<span class="nc" id="L133">  AFRICA_DAKAR(&quot;Africa/Dakar&quot;),</span>
+<span class="fc" id="L146">  AFRICA_DAKAR(&quot;Africa/Dakar&quot;),</span>
 
   /**
    * Africa dar es salaam time zone id.
    */
-<span class="nc" id="L138">  AFRICA_DAR_ES_SALAAM(&quot;Africa/Dar_es_Salaam&quot;),</span>
+<span class="fc" id="L151">  AFRICA_DAR_ES_SALAAM(&quot;Africa/Dar_es_Salaam&quot;),</span>
 
   /**
    * Africa djibouti time zone id.
    */
-<span class="nc" id="L143">  AFRICA_DJIBOUTI(&quot;Africa/Djibouti&quot;),</span>
+<span class="fc" id="L156">  AFRICA_DJIBOUTI(&quot;Africa/Djibouti&quot;),</span>
 
   /**
    * Africa douala time zone id.
    */
-<span class="nc" id="L148">  AFRICA_DOUALA(&quot;Africa/Douala&quot;),</span>
+<span class="fc" id="L161">  AFRICA_DOUALA(&quot;Africa/Douala&quot;),</span>
 
   /**
    * Africa el aaiun time zone id.
    */
-<span class="nc" id="L153">  AFRICA_EL_AAIUN(&quot;Africa/El_Aaiun&quot;),</span>
+<span class="fc" id="L166">  AFRICA_EL_AAIUN(&quot;Africa/El_Aaiun&quot;),</span>
 
   /**
    * Africa freetown time zone id.
    */
-<span class="nc" id="L158">  AFRICA_FREETOWN(&quot;Africa/Freetown&quot;),</span>
+<span class="fc" id="L171">  AFRICA_FREETOWN(&quot;Africa/Freetown&quot;),</span>
 
   /**
    * Africa gaborone time zone id.
    */
-<span class="nc" id="L163">  AFRICA_GABORONE(&quot;Africa/Gaborone&quot;),</span>
+<span class="fc" id="L176">  AFRICA_GABORONE(&quot;Africa/Gaborone&quot;),</span>
 
   /**
    * Africa harare time zone id.
    */
-<span class="nc" id="L168">  AFRICA_HARARE(&quot;Africa/Harare&quot;),</span>
+<span class="fc" id="L181">  AFRICA_HARARE(&quot;Africa/Harare&quot;),</span>
 
   /**
    * Africa johannesburg time zone id.
    */
-<span class="nc" id="L173">  AFRICA_JOHANNESBURG(&quot;Africa/Johannesburg&quot;),</span>
+<span class="fc" id="L186">  AFRICA_JOHANNESBURG(&quot;Africa/Johannesburg&quot;),</span>
 
   /**
    * Africa juba time zone id.
    */
-<span class="nc" id="L178">  AFRICA_JUBA(&quot;Africa/Juba&quot;),</span>
+<span class="fc" id="L191">  AFRICA_JUBA(&quot;Africa/Juba&quot;),</span>
 
   /**
    * Africa kampala time zone id.
    */
-<span class="nc" id="L183">  AFRICA_KAMPALA(&quot;Africa/Kampala&quot;),</span>
+<span class="fc" id="L196">  AFRICA_KAMPALA(&quot;Africa/Kampala&quot;),</span>
 
   /**
    * Africa khartoum time zone id.
    */
-<span class="nc" id="L188">  AFRICA_KHARTOUM(&quot;Africa/Khartoum&quot;),</span>
+<span class="fc" id="L201">  AFRICA_KHARTOUM(&quot;Africa/Khartoum&quot;),</span>
 
   /**
    * Africa kigali time zone id.
    */
-<span class="nc" id="L193">  AFRICA_KIGALI(&quot;Africa/Kigali&quot;),</span>
+<span class="fc" id="L206">  AFRICA_KIGALI(&quot;Africa/Kigali&quot;),</span>
 
   /**
    * Africa kinshasa time zone id.
    */
-<span class="nc" id="L198">  AFRICA_KINSHASA(&quot;Africa/Kinshasa&quot;),</span>
+<span class="fc" id="L211">  AFRICA_KINSHASA(&quot;Africa/Kinshasa&quot;),</span>
 
   /**
    * Africa lagos time zone id.
    */
-<span class="nc" id="L203">  AFRICA_LAGOS(&quot;Africa/Lagos&quot;),</span>
+<span class="fc" id="L216">  AFRICA_LAGOS(&quot;Africa/Lagos&quot;),</span>
 
   /**
    * Africa libreville time zone id.
    */
-<span class="nc" id="L208">  AFRICA_LIBREVILLE(&quot;Africa/Libreville&quot;),</span>
+<span class="fc" id="L221">  AFRICA_LIBREVILLE(&quot;Africa/Libreville&quot;),</span>
 
   /**
    * Africa lome time zone id.
    */
-<span class="nc" id="L213">  AFRICA_LOME(&quot;Africa/Lome&quot;),</span>
+<span class="fc" id="L226">  AFRICA_LOME(&quot;Africa/Lome&quot;),</span>
 
   /**
    * Africa luanda time zone id.
    */
-<span class="nc" id="L218">  AFRICA_LUANDA(&quot;Africa/Luanda&quot;),</span>
+<span class="fc" id="L231">  AFRICA_LUANDA(&quot;Africa/Luanda&quot;),</span>
 
   /**
    * Africa lubumbashi time zone id.
    */
-<span class="nc" id="L223">  AFRICA_LUBUMBASHI(&quot;Africa/Lubumbashi&quot;),</span>
+<span class="fc" id="L236">  AFRICA_LUBUMBASHI(&quot;Africa/Lubumbashi&quot;),</span>
 
   /**
    * Africa lusaka time zone id.
    */
-<span class="nc" id="L228">  AFRICA_LUSAKA(&quot;Africa/Lusaka&quot;),</span>
+<span class="fc" id="L241">  AFRICA_LUSAKA(&quot;Africa/Lusaka&quot;),</span>
 
   /**
    * Africa malabo time zone id.
    */
-<span class="nc" id="L233">  AFRICA_MALABO(&quot;Africa/Malabo&quot;),</span>
+<span class="fc" id="L246">  AFRICA_MALABO(&quot;Africa/Malabo&quot;),</span>
 
   /**
    * Africa maputo time zone id.
    */
-<span class="nc" id="L238">  AFRICA_MAPUTO(&quot;Africa/Maputo&quot;),</span>
+<span class="fc" id="L251">  AFRICA_MAPUTO(&quot;Africa/Maputo&quot;),</span>
 
   /**
    * Africa maseru time zone id.
    */
-<span class="nc" id="L243">  AFRICA_MASERU(&quot;Africa/Maseru&quot;),</span>
+<span class="fc" id="L256">  AFRICA_MASERU(&quot;Africa/Maseru&quot;),</span>
 
   /**
    * Africa mbabane time zone id.
    */
-<span class="nc" id="L248">  AFRICA_MBABANE(&quot;Africa/Mbabane&quot;),</span>
+<span class="fc" id="L261">  AFRICA_MBABANE(&quot;Africa/Mbabane&quot;),</span>
 
   /**
    * Africa mogadishu time zone id.
    */
-<span class="nc" id="L253">  AFRICA_MOGADISHU(&quot;Africa/Mogadishu&quot;),</span>
+<span class="fc" id="L266">  AFRICA_MOGADISHU(&quot;Africa/Mogadishu&quot;),</span>
 
   /**
    * Africa monrovia time zone id.
    */
-<span class="nc" id="L258">  AFRICA_MONROVIA(&quot;Africa/Monrovia&quot;),</span>
+<span class="fc" id="L271">  AFRICA_MONROVIA(&quot;Africa/Monrovia&quot;),</span>
 
   /**
    * Africa nairobi time zone id.
    */
-<span class="nc" id="L263">  AFRICA_NAIROBI(&quot;Africa/Nairobi&quot;),</span>
+<span class="fc" id="L276">  AFRICA_NAIROBI(&quot;Africa/Nairobi&quot;),</span>
 
   /**
    * Africa ndjamena time zone id.
    */
-<span class="nc" id="L268">  AFRICA_NDJAMENA(&quot;Africa/Ndjamena&quot;),</span>
+<span class="fc" id="L281">  AFRICA_NDJAMENA(&quot;Africa/Ndjamena&quot;),</span>
 
   /**
    * Africa niamey time zone id.
    */
-<span class="nc" id="L273">  AFRICA_NIAMEY(&quot;Africa/Niamey&quot;),</span>
+<span class="fc" id="L286">  AFRICA_NIAMEY(&quot;Africa/Niamey&quot;),</span>
 
   /**
    * Africa nouakchott time zone id.
    */
-<span class="nc" id="L278">  AFRICA_NOUAKCHOTT(&quot;Africa/Nouakchott&quot;),</span>
+<span class="fc" id="L291">  AFRICA_NOUAKCHOTT(&quot;Africa/Nouakchott&quot;),</span>
 
   /**
    * Africa ouagadougou time zone id.
    */
-<span class="nc" id="L283">  AFRICA_OUAGADOUGOU(&quot;Africa/Ouagadougou&quot;),</span>
+<span class="fc" id="L296">  AFRICA_OUAGADOUGOU(&quot;Africa/Ouagadougou&quot;),</span>
 
   /**
    * Africa porto novo time zone id.
    */
-<span class="nc" id="L288">  AFRICA_PORTO_NOVO(&quot;Africa/Porto-Novo&quot;),</span>
+<span class="fc" id="L301">  AFRICA_PORTO_NOVO(&quot;Africa/Porto-Novo&quot;),</span>
 
   /**
    * Africa sao tome time zone id.
    */
-<span class="nc" id="L293">  AFRICA_SAO_TOME(&quot;Africa/Sao_Tome&quot;),</span>
+<span class="fc" id="L306">  AFRICA_SAO_TOME(&quot;Africa/Sao_Tome&quot;),</span>
 
   /**
    * Africa timbuktu time zone id.
    */
-<span class="nc" id="L298">  AFRICA_TIMBUKTU(&quot;Africa/Timbuktu&quot;),</span>
+<span class="fc" id="L311">  AFRICA_TIMBUKTU(&quot;Africa/Timbuktu&quot;),</span>
 
   /**
    * Africa tripoli time zone id.
    */
-<span class="nc" id="L303">  AFRICA_TRIPOLI(&quot;Africa/Tripoli&quot;),</span>
+<span class="fc" id="L316">  AFRICA_TRIPOLI(&quot;Africa/Tripoli&quot;),</span>
 
   /**
    * Africa tunis time zone id.
    */
-<span class="nc" id="L308">  AFRICA_TUNIS(&quot;Africa/Tunis&quot;),</span>
+<span class="fc" id="L321">  AFRICA_TUNIS(&quot;Africa/Tunis&quot;),</span>
 
   /**
    * Africa windhoek time zone id.
    */
-<span class="nc" id="L313">  AFRICA_WINDHOEK(&quot;Africa/Windhoek&quot;),</span>
+<span class="fc" id="L326">  AFRICA_WINDHOEK(&quot;Africa/Windhoek&quot;),</span>
 
   /**
    * America adak time zone id.
    */
-<span class="nc" id="L318">  AMERICA_ADAK(&quot;America/Adak&quot;),</span>
+<span class="fc" id="L331">  AMERICA_ADAK(&quot;America/Adak&quot;),</span>
 
   /**
    * America anchorage time zone id.
    */
-<span class="nc" id="L323">  AMERICA_ANCHORAGE(&quot;America/Anchorage&quot;),</span>
+<span class="fc" id="L336">  AMERICA_ANCHORAGE(&quot;America/Anchorage&quot;),</span>
 
   /**
    * America anguilla time zone id.
    */
-<span class="nc" id="L328">  AMERICA_ANGUILLA(&quot;America/Anguilla&quot;),</span>
+<span class="fc" id="L341">  AMERICA_ANGUILLA(&quot;America/Anguilla&quot;),</span>
 
   /**
    * America antigua time zone id.
    */
-<span class="nc" id="L333">  AMERICA_ANTIGUA(&quot;America/Antigua&quot;),</span>
+<span class="fc" id="L346">  AMERICA_ANTIGUA(&quot;America/Antigua&quot;),</span>
 
   /**
    * America araguaina time zone id.
    */
-<span class="nc" id="L338">  AMERICA_ARAGUAINA(&quot;America/Araguaina&quot;),</span>
+<span class="fc" id="L351">  AMERICA_ARAGUAINA(&quot;America/Araguaina&quot;),</span>
 
   /**
    * America argentina buenos aires time zone id.
    */
-<span class="nc" id="L343">  AMERICA_ARGENTINA_BUENOS_AIRES(&quot;America/Argentina/Buenos_Aires&quot;),</span>
+<span class="fc" id="L356">  AMERICA_ARGENTINA_BUENOS_AIRES(&quot;America/Argentina/Buenos_Aires&quot;),</span>
 
   /**
    * America argentina catamarca time zone id.
    */
-<span class="nc" id="L348">  AMERICA_ARGENTINA_CATAMARCA(&quot;America/Argentina/Catamarca&quot;),</span>
+<span class="fc" id="L361">  AMERICA_ARGENTINA_CATAMARCA(&quot;America/Argentina/Catamarca&quot;),</span>
 
   /**
    * America argentina comodrivadavia time zone id.
    */
-<span class="nc" id="L353">  AMERICA_ARGENTINA_COMODRIVADAVIA(&quot;America/Argentina/ComodRivadavia&quot;),</span>
+<span class="fc" id="L366">  AMERICA_ARGENTINA_COMODRIVADAVIA(&quot;America/Argentina/ComodRivadavia&quot;),</span>
 
   /**
    * America argentina cordoba time zone id.
    */
-<span class="nc" id="L358">  AMERICA_ARGENTINA_CORDOBA(&quot;America/Argentina/Cordoba&quot;),</span>
+<span class="fc" id="L371">  AMERICA_ARGENTINA_CORDOBA(&quot;America/Argentina/Cordoba&quot;),</span>
 
   /**
    * America argentina jujuy time zone id.
    */
-<span class="nc" id="L363">  AMERICA_ARGENTINA_JUJUY(&quot;America/Argentina/Jujuy&quot;),</span>
+<span class="fc" id="L376">  AMERICA_ARGENTINA_JUJUY(&quot;America/Argentina/Jujuy&quot;),</span>
 
   /**
    * America argentina la rioja time zone id.
    */
-<span class="nc" id="L368">  AMERICA_ARGENTINA_LA_RIOJA(&quot;America/Argentina/La_Rioja&quot;),</span>
+<span class="fc" id="L381">  AMERICA_ARGENTINA_LA_RIOJA(&quot;America/Argentina/La_Rioja&quot;),</span>
 
   /**
    * America argentina mendoza time zone id.
    */
-<span class="nc" id="L373">  AMERICA_ARGENTINA_MENDOZA(&quot;America/Argentina/Mendoza&quot;),</span>
+<span class="fc" id="L386">  AMERICA_ARGENTINA_MENDOZA(&quot;America/Argentina/Mendoza&quot;),</span>
 
   /**
    * America argentina rio gallegos time zone id.
    */
-<span class="nc" id="L378">  AMERICA_ARGENTINA_RIO_GALLEGOS(&quot;America/Argentina/Rio_Gallegos&quot;),</span>
+<span class="fc" id="L391">  AMERICA_ARGENTINA_RIO_GALLEGOS(&quot;America/Argentina/Rio_Gallegos&quot;),</span>
 
   /**
    * America argentina salta time zone id.
    */
-<span class="nc" id="L383">  AMERICA_ARGENTINA_SALTA(&quot;America/Argentina/Salta&quot;),</span>
+<span class="fc" id="L396">  AMERICA_ARGENTINA_SALTA(&quot;America/Argentina/Salta&quot;),</span>
 
   /**
    * America argentina san juan time zone id.
    */
-<span class="nc" id="L388">  AMERICA_ARGENTINA_SAN_JUAN(&quot;America/Argentina/San_Juan&quot;),</span>
+<span class="fc" id="L401">  AMERICA_ARGENTINA_SAN_JUAN(&quot;America/Argentina/San_Juan&quot;),</span>
 
   /**
    * America argentina san luis time zone id.
    */
-<span class="nc" id="L393">  AMERICA_ARGENTINA_SAN_LUIS(&quot;America/Argentina/San_Luis&quot;),</span>
+<span class="fc" id="L406">  AMERICA_ARGENTINA_SAN_LUIS(&quot;America/Argentina/San_Luis&quot;),</span>
 
   /**
    * America argentina tucuman time zone id.
    */
-<span class="nc" id="L398">  AMERICA_ARGENTINA_TUCUMAN(&quot;America/Argentina/Tucuman&quot;),</span>
+<span class="fc" id="L411">  AMERICA_ARGENTINA_TUCUMAN(&quot;America/Argentina/Tucuman&quot;),</span>
 
   /**
    * America argentina ushuaia time zone id.
    */
-<span class="nc" id="L403">  AMERICA_ARGENTINA_USHUAIA(&quot;America/Argentina/Ushuaia&quot;),</span>
+<span class="fc" id="L416">  AMERICA_ARGENTINA_USHUAIA(&quot;America/Argentina/Ushuaia&quot;),</span>
 
   /**
    * America aruba time zone id.
    */
-<span class="nc" id="L408">  AMERICA_ARUBA(&quot;America/Aruba&quot;),</span>
+<span class="fc" id="L421">  AMERICA_ARUBA(&quot;America/Aruba&quot;),</span>
 
   /**
    * America asuncion time zone id.
    */
-<span class="nc" id="L413">  AMERICA_ASUNCION(&quot;America/Asuncion&quot;),</span>
+<span class="fc" id="L426">  AMERICA_ASUNCION(&quot;America/Asuncion&quot;),</span>
 
   /**
    * America atikokan time zone id.
    */
-<span class="nc" id="L418">  AMERICA_ATIKOKAN(&quot;America/Atikokan&quot;),</span>
+<span class="fc" id="L431">  AMERICA_ATIKOKAN(&quot;America/Atikokan&quot;),</span>
 
   /**
    * America atka time zone id.
    */
-<span class="nc" id="L423">  AMERICA_ATKA(&quot;America/Atka&quot;),</span>
+<span class="fc" id="L436">  AMERICA_ATKA(&quot;America/Atka&quot;),</span>
 
   /**
    * America bahia time zone id.
    */
-<span class="nc" id="L428">  AMERICA_BAHIA(&quot;America/Bahia&quot;),</span>
+<span class="fc" id="L441">  AMERICA_BAHIA(&quot;America/Bahia&quot;),</span>
 
   /**
    * America bahia banderas time zone id.
    */
-<span class="nc" id="L433">  AMERICA_BAHIA_BANDERAS(&quot;America/Bahia_Banderas&quot;),</span>
+<span class="fc" id="L446">  AMERICA_BAHIA_BANDERAS(&quot;America/Bahia_Banderas&quot;),</span>
 
   /**
    * America barbados time zone id.
    */
-<span class="nc" id="L438">  AMERICA_BARBADOS(&quot;America/Barbados&quot;),</span>
+<span class="fc" id="L451">  AMERICA_BARBADOS(&quot;America/Barbados&quot;),</span>
 
   /**
    * America belem time zone id.
    */
-<span class="nc" id="L443">  AMERICA_BELEM(&quot;America/Belem&quot;),</span>
+<span class="fc" id="L456">  AMERICA_BELEM(&quot;America/Belem&quot;),</span>
 
   /**
    * America belize time zone id.
    */
-<span class="nc" id="L448">  AMERICA_BELIZE(&quot;America/Belize&quot;),</span>
+<span class="fc" id="L461">  AMERICA_BELIZE(&quot;America/Belize&quot;),</span>
 
   /**
    * America blanc sablon time zone id.
    */
-<span class="nc" id="L453">  AMERICA_BLANC_SABLON(&quot;America/Blanc-Sablon&quot;),</span>
+<span class="fc" id="L466">  AMERICA_BLANC_SABLON(&quot;America/Blanc-Sablon&quot;),</span>
 
   /**
    * America boa vista time zone id.
    */
-<span class="nc" id="L458">  AMERICA_BOA_VISTA(&quot;America/Boa_Vista&quot;),</span>
+<span class="fc" id="L471">  AMERICA_BOA_VISTA(&quot;America/Boa_Vista&quot;),</span>
 
   /**
    * America bogota time zone id.
    */
-<span class="nc" id="L463">  AMERICA_BOGOTA(&quot;America/Bogota&quot;),</span>
+<span class="fc" id="L476">  AMERICA_BOGOTA(&quot;America/Bogota&quot;),</span>
 
   /**
    * America boise time zone id.
    */
-<span class="nc" id="L468">  AMERICA_BOISE(&quot;America/Boise&quot;),</span>
+<span class="fc" id="L481">  AMERICA_BOISE(&quot;America/Boise&quot;),</span>
 
   /**
    * America buenos aires time zone id.
    */
-<span class="nc" id="L473">  AMERICA_BUENOS_AIRES(&quot;America/Buenos_Aires&quot;),</span>
+<span class="fc" id="L486">  AMERICA_BUENOS_AIRES(&quot;America/Buenos_Aires&quot;),</span>
 
   /**
    * America cambridge bay time zone id.
    */
-<span class="nc" id="L478">  AMERICA_CAMBRIDGE_BAY(&quot;America/Cambridge_Bay&quot;),</span>
+<span class="fc" id="L491">  AMERICA_CAMBRIDGE_BAY(&quot;America/Cambridge_Bay&quot;),</span>
 
   /**
    * America campo grande time zone id.
    */
-<span class="nc" id="L483">  AMERICA_CAMPO_GRANDE(&quot;America/Campo_Grande&quot;),</span>
+<span class="fc" id="L496">  AMERICA_CAMPO_GRANDE(&quot;America/Campo_Grande&quot;),</span>
 
   /**
    * America cancun time zone id.
    */
-<span class="nc" id="L488">  AMERICA_CANCUN(&quot;America/Cancun&quot;),</span>
+<span class="fc" id="L501">  AMERICA_CANCUN(&quot;America/Cancun&quot;),</span>
 
   /**
    * America caracas time zone id.
    */
-<span class="nc" id="L493">  AMERICA_CARACAS(&quot;America/Caracas&quot;),</span>
+<span class="fc" id="L506">  AMERICA_CARACAS(&quot;America/Caracas&quot;),</span>
 
   /**
    * America catamarca time zone id.
    */
-<span class="nc" id="L498">  AMERICA_CATAMARCA(&quot;America/Catamarca&quot;),</span>
+<span class="fc" id="L511">  AMERICA_CATAMARCA(&quot;America/Catamarca&quot;),</span>
 
   /**
    * America cayenne time zone id.
    */
-<span class="nc" id="L503">  AMERICA_CAYENNE(&quot;America/Cayenne&quot;),</span>
+<span class="fc" id="L516">  AMERICA_CAYENNE(&quot;America/Cayenne&quot;),</span>
 
   /**
    * America cayman time zone id.
    */
-<span class="nc" id="L508">  AMERICA_CAYMAN(&quot;America/Cayman&quot;),</span>
+<span class="fc" id="L521">  AMERICA_CAYMAN(&quot;America/Cayman&quot;),</span>
 
   /**
    * America chicago time zone id.
    */
-<span class="nc" id="L513">  AMERICA_CHICAGO(&quot;America/Chicago&quot;),</span>
+<span class="fc" id="L526">  AMERICA_CHICAGO(&quot;America/Chicago&quot;),</span>
 
   /**
    * America chihuahua time zone id.
    */
-<span class="nc" id="L518">  AMERICA_CHIHUAHUA(&quot;America/Chihuahua&quot;),</span>
+<span class="fc" id="L531">  AMERICA_CHIHUAHUA(&quot;America/Chihuahua&quot;),</span>
 
   /**
    * America coral harbour time zone id.
    */
-<span class="nc" id="L523">  AMERICA_CORAL_HARBOUR(&quot;America/Coral_Harbour&quot;),</span>
+<span class="fc" id="L536">  AMERICA_CORAL_HARBOUR(&quot;America/Coral_Harbour&quot;),</span>
 
   /**
    * America cordoba time zone id.
    */
-<span class="nc" id="L528">  AMERICA_CORDOBA(&quot;America/Cordoba&quot;),</span>
+<span class="fc" id="L541">  AMERICA_CORDOBA(&quot;America/Cordoba&quot;),</span>
 
   /**
    * America costa rica time zone id.
    */
-<span class="nc" id="L533">  AMERICA_COSTA_RICA(&quot;America/Costa_Rica&quot;),</span>
+<span class="fc" id="L546">  AMERICA_COSTA_RICA(&quot;America/Costa_Rica&quot;),</span>
 
   /**
    * America creston time zone id.
    */
-<span class="nc" id="L538">  AMERICA_CRESTON(&quot;America/Creston&quot;),</span>
+<span class="fc" id="L551">  AMERICA_CRESTON(&quot;America/Creston&quot;),</span>
 
   /**
    * America cuiaba time zone id.
    */
-<span class="nc" id="L543">  AMERICA_CUIABA(&quot;America/Cuiaba&quot;),</span>
+<span class="fc" id="L556">  AMERICA_CUIABA(&quot;America/Cuiaba&quot;),</span>
 
   /**
    * America curacao time zone id.
    */
-<span class="nc" id="L548">  AMERICA_CURACAO(&quot;America/Curacao&quot;),</span>
+<span class="fc" id="L561">  AMERICA_CURACAO(&quot;America/Curacao&quot;),</span>
 
   /**
    * America danmarkshavn time zone id.
    */
-<span class="nc" id="L553">  AMERICA_DANMARKSHAVN(&quot;America/Danmarkshavn&quot;),</span>
+<span class="fc" id="L566">  AMERICA_DANMARKSHAVN(&quot;America/Danmarkshavn&quot;),</span>
 
   /**
    * America dawson time zone id.
    */
-<span class="nc" id="L558">  AMERICA_DAWSON(&quot;America/Dawson&quot;),</span>
+<span class="fc" id="L571">  AMERICA_DAWSON(&quot;America/Dawson&quot;),</span>
 
   /**
    * America dawson creek time zone id.
    */
-<span class="nc" id="L563">  AMERICA_DAWSON_CREEK(&quot;America/Dawson_Creek&quot;),</span>
+<span class="fc" id="L576">  AMERICA_DAWSON_CREEK(&quot;America/Dawson_Creek&quot;),</span>
 
   /**
    * America denver time zone id.
    */
-<span class="nc" id="L568">  AMERICA_DENVER(&quot;America/Denver&quot;),</span>
+<span class="fc" id="L581">  AMERICA_DENVER(&quot;America/Denver&quot;),</span>
 
   /**
    * America detroit time zone id.
    */
-<span class="nc" id="L573">  AMERICA_DETROIT(&quot;America/Detroit&quot;),</span>
+<span class="fc" id="L586">  AMERICA_DETROIT(&quot;America/Detroit&quot;),</span>
 
   /**
    * America dominica time zone id.
    */
-<span class="nc" id="L578">  AMERICA_DOMINICA(&quot;America/Dominica&quot;),</span>
+<span class="fc" id="L591">  AMERICA_DOMINICA(&quot;America/Dominica&quot;),</span>
 
   /**
    * America edmonton time zone id.
    */
-<span class="nc" id="L583">  AMERICA_EDMONTON(&quot;America/Edmonton&quot;),</span>
+<span class="fc" id="L596">  AMERICA_EDMONTON(&quot;America/Edmonton&quot;),</span>
 
   /**
    * America eirunepe time zone id.
    */
-<span class="nc" id="L588">  AMERICA_EIRUNEPE(&quot;America/Eirunepe&quot;),</span>
+<span class="fc" id="L601">  AMERICA_EIRUNEPE(&quot;America/Eirunepe&quot;),</span>
 
   /**
    * America el salvador time zone id.
    */
-<span class="nc" id="L593">  AMERICA_EL_SALVADOR(&quot;America/El_Salvador&quot;),</span>
+<span class="fc" id="L606">  AMERICA_EL_SALVADOR(&quot;America/El_Salvador&quot;),</span>
 
   /**
    * America ensenada time zone id.
    */
-<span class="nc" id="L598">  AMERICA_ENSENADA(&quot;America/Ensenada&quot;),</span>
+<span class="fc" id="L611">  AMERICA_ENSENADA(&quot;America/Ensenada&quot;),</span>
 
   /**
    * America fort nelson time zone id.
    */
-<span class="nc" id="L603">  AMERICA_FORT_NELSON(&quot;America/Fort_Nelson&quot;),</span>
+<span class="fc" id="L616">  AMERICA_FORT_NELSON(&quot;America/Fort_Nelson&quot;),</span>
 
   /**
    * America fort wayne time zone id.
    */
-<span class="nc" id="L608">  AMERICA_FORT_WAYNE(&quot;America/Fort_Wayne&quot;),</span>
+<span class="fc" id="L621">  AMERICA_FORT_WAYNE(&quot;America/Fort_Wayne&quot;),</span>
 
   /**
    * America fortaleza time zone id.
    */
-<span class="nc" id="L613">  AMERICA_FORTALEZA(&quot;America/Fortaleza&quot;),</span>
+<span class="fc" id="L626">  AMERICA_FORTALEZA(&quot;America/Fortaleza&quot;),</span>
 
   /**
    * America glace bay time zone id.
    */
-<span class="nc" id="L618">  AMERICA_GLACE_BAY(&quot;America/Glace_Bay&quot;),</span>
+<span class="fc" id="L631">  AMERICA_GLACE_BAY(&quot;America/Glace_Bay&quot;),</span>
 
   /**
    * America godthab time zone id.
    */
-<span class="nc" id="L623">  AMERICA_GODTHAB(&quot;America/Godthab&quot;),</span>
+<span class="fc" id="L636">  AMERICA_GODTHAB(&quot;America/Godthab&quot;),</span>
 
   /**
    * America goose bay time zone id.
    */
-<span class="nc" id="L628">  AMERICA_GOOSE_BAY(&quot;America/Goose_Bay&quot;),</span>
+<span class="fc" id="L641">  AMERICA_GOOSE_BAY(&quot;America/Goose_Bay&quot;),</span>
 
   /**
    * America grand turk time zone id.
    */
-<span class="nc" id="L633">  AMERICA_GRAND_TURK(&quot;America/Grand_Turk&quot;),</span>
+<span class="fc" id="L646">  AMERICA_GRAND_TURK(&quot;America/Grand_Turk&quot;),</span>
 
   /**
    * America grenada time zone id.
    */
-<span class="nc" id="L638">  AMERICA_GRENADA(&quot;America/Grenada&quot;),</span>
+<span class="fc" id="L651">  AMERICA_GRENADA(&quot;America/Grenada&quot;),</span>
 
   /**
    * America guadeloupe time zone id.
    */
-<span class="nc" id="L643">  AMERICA_GUADELOUPE(&quot;America/Guadeloupe&quot;),</span>
+<span class="fc" id="L656">  AMERICA_GUADELOUPE(&quot;America/Guadeloupe&quot;),</span>
 
   /**
    * America guatemala time zone id.
    */
-<span class="nc" id="L648">  AMERICA_GUATEMALA(&quot;America/Guatemala&quot;),</span>
+<span class="fc" id="L661">  AMERICA_GUATEMALA(&quot;America/Guatemala&quot;),</span>
 
   /**
    * America guayaquil time zone id.
    */
-<span class="nc" id="L653">  AMERICA_GUAYAQUIL(&quot;America/Guayaquil&quot;),</span>
+<span class="fc" id="L666">  AMERICA_GUAYAQUIL(&quot;America/Guayaquil&quot;),</span>
 
   /**
    * America guyana time zone id.
    */
-<span class="nc" id="L658">  AMERICA_GUYANA(&quot;America/Guyana&quot;),</span>
+<span class="fc" id="L671">  AMERICA_GUYANA(&quot;America/Guyana&quot;),</span>
 
   /**
    * America halifax time zone id.
    */
-<span class="nc" id="L663">  AMERICA_HALIFAX(&quot;America/Halifax&quot;),</span>
+<span class="fc" id="L676">  AMERICA_HALIFAX(&quot;America/Halifax&quot;),</span>
 
   /**
    * America havana time zone id.
    */
-<span class="nc" id="L668">  AMERICA_HAVANA(&quot;America/Havana&quot;),</span>
+<span class="fc" id="L681">  AMERICA_HAVANA(&quot;America/Havana&quot;),</span>
 
   /**
    * America hermosillo time zone id.
    */
-<span class="nc" id="L673">  AMERICA_HERMOSILLO(&quot;America/Hermosillo&quot;),</span>
+<span class="fc" id="L686">  AMERICA_HERMOSILLO(&quot;America/Hermosillo&quot;),</span>
 
   /**
    * America indiana indianapolis time zone id.
    */
-<span class="nc" id="L678">  AMERICA_INDIANA_INDIANAPOLIS(&quot;America/Indiana/Indianapolis&quot;),</span>
+<span class="fc" id="L691">  AMERICA_INDIANA_INDIANAPOLIS(&quot;America/Indiana/Indianapolis&quot;),</span>
 
   /**
    * America indiana knox time zone id.
    */
-<span class="nc" id="L683">  AMERICA_INDIANA_KNOX(&quot;America/Indiana/Knox&quot;),</span>
+<span class="fc" id="L696">  AMERICA_INDIANA_KNOX(&quot;America/Indiana/Knox&quot;),</span>
 
   /**
    * America indiana marengo time zone id.
    */
-<span class="nc" id="L688">  AMERICA_INDIANA_MARENGO(&quot;America/Indiana/Marengo&quot;),</span>
+<span class="fc" id="L701">  AMERICA_INDIANA_MARENGO(&quot;America/Indiana/Marengo&quot;),</span>
 
   /**
    * America indiana petersburg time zone id.
    */
-<span class="nc" id="L693">  AMERICA_INDIANA_PETERSBURG(&quot;America/Indiana/Petersburg&quot;),</span>
+<span class="fc" id="L706">  AMERICA_INDIANA_PETERSBURG(&quot;America/Indiana/Petersburg&quot;),</span>
 
   /**
    * America indiana tell city time zone id.
    */
-<span class="nc" id="L698">  AMERICA_INDIANA_TELL_CITY(&quot;America/Indiana/Tell_City&quot;),</span>
+<span class="fc" id="L711">  AMERICA_INDIANA_TELL_CITY(&quot;America/Indiana/Tell_City&quot;),</span>
 
   /**
    * America indiana vevay time zone id.
    */
-<span class="nc" id="L703">  AMERICA_INDIANA_VEVAY(&quot;America/Indiana/Vevay&quot;),</span>
+<span class="fc" id="L716">  AMERICA_INDIANA_VEVAY(&quot;America/Indiana/Vevay&quot;),</span>
 
   /**
    * America indiana vincennes time zone id.
    */
-<span class="nc" id="L708">  AMERICA_INDIANA_VINCENNES(&quot;America/Indiana/Vincennes&quot;),</span>
+<span class="fc" id="L721">  AMERICA_INDIANA_VINCENNES(&quot;America/Indiana/Vincennes&quot;),</span>
 
   /**
    * America indiana winamac time zone id.
    */
-<span class="nc" id="L713">  AMERICA_INDIANA_WINAMAC(&quot;America/Indiana/Winamac&quot;),</span>
+<span class="fc" id="L726">  AMERICA_INDIANA_WINAMAC(&quot;America/Indiana/Winamac&quot;),</span>
 
   /**
    * America indianapolis time zone id.
    */
-<span class="nc" id="L718">  AMERICA_INDIANAPOLIS(&quot;America/Indianapolis&quot;),</span>
+<span class="fc" id="L731">  AMERICA_INDIANAPOLIS(&quot;America/Indianapolis&quot;),</span>
 
   /**
    * America inuvik time zone id.
    */
-<span class="nc" id="L723">  AMERICA_INUVIK(&quot;America/Inuvik&quot;),</span>
+<span class="fc" id="L736">  AMERICA_INUVIK(&quot;America/Inuvik&quot;),</span>
 
   /**
    * America iqaluit time zone id.
    */
-<span class="nc" id="L728">  AMERICA_IQALUIT(&quot;America/Iqaluit&quot;),</span>
+<span class="fc" id="L741">  AMERICA_IQALUIT(&quot;America/Iqaluit&quot;),</span>
 
   /**
    * America jamaica time zone id.
    */
-<span class="nc" id="L733">  AMERICA_JAMAICA(&quot;America/Jamaica&quot;),</span>
+<span class="fc" id="L746">  AMERICA_JAMAICA(&quot;America/Jamaica&quot;),</span>
 
   /**
    * America jujuy time zone id.
    */
-<span class="nc" id="L738">  AMERICA_JUJUY(&quot;America/Jujuy&quot;),</span>
+<span class="fc" id="L751">  AMERICA_JUJUY(&quot;America/Jujuy&quot;),</span>
 
   /**
    * America juneau time zone id.
    */
-<span class="nc" id="L743">  AMERICA_JUNEAU(&quot;America/Juneau&quot;),</span>
+<span class="fc" id="L756">  AMERICA_JUNEAU(&quot;America/Juneau&quot;),</span>
 
   /**
    * America kentucky louisville time zone id.
    */
-<span class="nc" id="L748">  AMERICA_KENTUCKY_LOUISVILLE(&quot;America/Kentucky/Louisville&quot;),</span>
+<span class="fc" id="L761">  AMERICA_KENTUCKY_LOUISVILLE(&quot;America/Kentucky/Louisville&quot;),</span>
 
   /**
    * America kentucky monticello time zone id.
    */
-<span class="nc" id="L753">  AMERICA_KENTUCKY_MONTICELLO(&quot;America/Kentucky/Monticello&quot;),</span>
+<span class="fc" id="L766">  AMERICA_KENTUCKY_MONTICELLO(&quot;America/Kentucky/Monticello&quot;),</span>
 
   /**
    * America knox in time zone id.
    */
-<span class="nc" id="L758">  AMERICA_KNOX_IN(&quot;America/Knox_IN&quot;),</span>
+<span class="fc" id="L771">  AMERICA_KNOX_IN(&quot;America/Knox_IN&quot;),</span>
 
   /**
    * America kralendijk time zone id.
    */
-<span class="nc" id="L763">  AMERICA_KRALENDIJK(&quot;America/Kralendijk&quot;),</span>
+<span class="fc" id="L776">  AMERICA_KRALENDIJK(&quot;America/Kralendijk&quot;),</span>
 
   /**
    * America la paz time zone id.
    */
-<span class="nc" id="L768">  AMERICA_LA_PAZ(&quot;America/La_Paz&quot;),</span>
+<span class="fc" id="L781">  AMERICA_LA_PAZ(&quot;America/La_Paz&quot;),</span>
 
   /**
    * America lima time zone id.
    */
-<span class="nc" id="L773">  AMERICA_LIMA(&quot;America/Lima&quot;),</span>
+<span class="fc" id="L786">  AMERICA_LIMA(&quot;America/Lima&quot;),</span>
 
   /**
    * America los angeles time zone id.
    */
-<span class="nc" id="L778">  AMERICA_LOS_ANGELES(&quot;America/Los_Angeles&quot;),</span>
+<span class="fc" id="L791">  AMERICA_LOS_ANGELES(&quot;America/Los_Angeles&quot;),</span>
 
   /**
    * America louisville time zone id.
    */
-<span class="nc" id="L783">  AMERICA_LOUISVILLE(&quot;America/Louisville&quot;),</span>
+<span class="fc" id="L796">  AMERICA_LOUISVILLE(&quot;America/Louisville&quot;),</span>
 
   /**
    * America lower princes time zone id.
    */
-<span class="nc" id="L788">  AMERICA_LOWER_PRINCES(&quot;America/Lower_Princes&quot;),</span>
+<span class="fc" id="L801">  AMERICA_LOWER_PRINCES(&quot;America/Lower_Princes&quot;),</span>
 
   /**
    * America maceio time zone id.
    */
-<span class="nc" id="L793">  AMERICA_MACEIO(&quot;America/Maceio&quot;),</span>
+<span class="fc" id="L806">  AMERICA_MACEIO(&quot;America/Maceio&quot;),</span>
 
   /**
    * America managua time zone id.
    */
-<span class="nc" id="L798">  AMERICA_MANAGUA(&quot;America/Managua&quot;),</span>
+<span class="fc" id="L811">  AMERICA_MANAGUA(&quot;America/Managua&quot;),</span>
 
   /**
    * America manaus time zone id.
    */
-<span class="nc" id="L803">  AMERICA_MANAUS(&quot;America/Manaus&quot;),</span>
+<span class="fc" id="L816">  AMERICA_MANAUS(&quot;America/Manaus&quot;),</span>
 
   /**
    * America marigot time zone id.
    */
-<span class="nc" id="L808">  AMERICA_MARIGOT(&quot;America/Marigot&quot;),</span>
+<span class="fc" id="L821">  AMERICA_MARIGOT(&quot;America/Marigot&quot;),</span>
 
   /**
    * America martinique time zone id.
    */
-<span class="nc" id="L813">  AMERICA_MARTINIQUE(&quot;America/Martinique&quot;),</span>
+<span class="fc" id="L826">  AMERICA_MARTINIQUE(&quot;America/Martinique&quot;),</span>
 
   /**
    * America matamoros time zone id.
    */
-<span class="nc" id="L818">  AMERICA_MATAMOROS(&quot;America/Matamoros&quot;),</span>
+<span class="fc" id="L831">  AMERICA_MATAMOROS(&quot;America/Matamoros&quot;),</span>
 
   /**
    * America mazatlan time zone id.
    */
-<span class="nc" id="L823">  AMERICA_MAZATLAN(&quot;America/Mazatlan&quot;),</span>
+<span class="fc" id="L836">  AMERICA_MAZATLAN(&quot;America/Mazatlan&quot;),</span>
 
   /**
    * America mendoza time zone id.
    */
-<span class="nc" id="L828">  AMERICA_MENDOZA(&quot;America/Mendoza&quot;),</span>
+<span class="fc" id="L841">  AMERICA_MENDOZA(&quot;America/Mendoza&quot;),</span>
 
   /**
    * America menominee time zone id.
    */
-<span class="nc" id="L833">  AMERICA_MENOMINEE(&quot;America/Menominee&quot;),</span>
+<span class="fc" id="L846">  AMERICA_MENOMINEE(&quot;America/Menominee&quot;),</span>
 
   /**
    * America merida time zone id.
    */
-<span class="nc" id="L838">  AMERICA_MERIDA(&quot;America/Merida&quot;),</span>
+<span class="fc" id="L851">  AMERICA_MERIDA(&quot;America/Merida&quot;),</span>
 
   /**
    * America metlakatla time zone id.
    */
-<span class="nc" id="L843">  AMERICA_METLAKATLA(&quot;America/Metlakatla&quot;),</span>
+<span class="fc" id="L856">  AMERICA_METLAKATLA(&quot;America/Metlakatla&quot;),</span>
 
   /**
    * America mexico city time zone id.
    */
-<span class="nc" id="L848">  AMERICA_MEXICO_CITY(&quot;America/Mexico_City&quot;),</span>
+<span class="fc" id="L861">  AMERICA_MEXICO_CITY(&quot;America/Mexico_City&quot;),</span>
 
   /**
    * America miquelon time zone id.
    */
-<span class="nc" id="L853">  AMERICA_MIQUELON(&quot;America/Miquelon&quot;),</span>
+<span class="fc" id="L866">  AMERICA_MIQUELON(&quot;America/Miquelon&quot;),</span>
 
   /**
    * America moncton time zone id.
    */
-<span class="nc" id="L858">  AMERICA_MONCTON(&quot;America/Moncton&quot;),</span>
+<span class="fc" id="L871">  AMERICA_MONCTON(&quot;America/Moncton&quot;),</span>
 
   /**
    * America monterrey time zone id.
    */
-<span class="nc" id="L863">  AMERICA_MONTERREY(&quot;America/Monterrey&quot;),</span>
+<span class="fc" id="L876">  AMERICA_MONTERREY(&quot;America/Monterrey&quot;),</span>
 
   /**
    * America montevideo time zone id.
    */
-<span class="nc" id="L868">  AMERICA_MONTEVIDEO(&quot;America/Montevideo&quot;),</span>
+<span class="fc" id="L881">  AMERICA_MONTEVIDEO(&quot;America/Montevideo&quot;),</span>
 
   /**
    * America montreal time zone id.
    */
-<span class="nc" id="L873">  AMERICA_MONTREAL(&quot;America/Montreal&quot;),</span>
+<span class="fc" id="L886">  AMERICA_MONTREAL(&quot;America/Montreal&quot;),</span>
 
   /**
    * America montserrat time zone id.
    */
-<span class="nc" id="L878">  AMERICA_MONTSERRAT(&quot;America/Montserrat&quot;),</span>
+<span class="fc" id="L891">  AMERICA_MONTSERRAT(&quot;America/Montserrat&quot;),</span>
 
   /**
    * America nassau time zone id.
    */
-<span class="nc" id="L883">  AMERICA_NASSAU(&quot;America/Nassau&quot;),</span>
+<span class="fc" id="L896">  AMERICA_NASSAU(&quot;America/Nassau&quot;),</span>
 
   /**
    * America new york time zone id.
    */
-<span class="nc" id="L888">  AMERICA_NEW_YORK(&quot;America/New_York&quot;),</span>
+<span class="fc" id="L901">  AMERICA_NEW_YORK(&quot;America/New_York&quot;),</span>
 
   /**
    * America nipigon time zone id.
    */
-<span class="nc" id="L893">  AMERICA_NIPIGON(&quot;America/Nipigon&quot;),</span>
+<span class="fc" id="L906">  AMERICA_NIPIGON(&quot;America/Nipigon&quot;),</span>
 
   /**
    * America nome time zone id.
    */
-<span class="nc" id="L898">  AMERICA_NOME(&quot;America/Nome&quot;),</span>
+<span class="fc" id="L911">  AMERICA_NOME(&quot;America/Nome&quot;),</span>
 
   /**
    * America noronha time zone id.
    */
-<span class="nc" id="L903">  AMERICA_NORONHA(&quot;America/Noronha&quot;),</span>
+<span class="fc" id="L916">  AMERICA_NORONHA(&quot;America/Noronha&quot;),</span>
 
   /**
    * America north dakota beulah time zone id.
    */
-<span class="nc" id="L908">  AMERICA_NORTH_DAKOTA_BEULAH(&quot;America/North_Dakota/Beulah&quot;),</span>
+<span class="fc" id="L921">  AMERICA_NORTH_DAKOTA_BEULAH(&quot;America/North_Dakota/Beulah&quot;),</span>
 
   /**
    * America north dakota center time zone id.
    */
-<span class="nc" id="L913">  AMERICA_NORTH_DAKOTA_CENTER(&quot;America/North_Dakota/Center&quot;),</span>
+<span class="fc" id="L926">  AMERICA_NORTH_DAKOTA_CENTER(&quot;America/North_Dakota/Center&quot;),</span>
 
   /**
    * America north dakota new salem time zone id.
    */
-<span class="nc" id="L918">  AMERICA_NORTH_DAKOTA_NEW_SALEM(&quot;America/North_Dakota/New_Salem&quot;),</span>
+<span class="fc" id="L931">  AMERICA_NORTH_DAKOTA_NEW_SALEM(&quot;America/North_Dakota/New_Salem&quot;),</span>
 
   /**
    * America ojinaga time zone id.
    */
-<span class="nc" id="L923">  AMERICA_OJINAGA(&quot;America/Ojinaga&quot;),</span>
+<span class="fc" id="L936">  AMERICA_OJINAGA(&quot;America/Ojinaga&quot;),</span>
 
   /**
    * America panama time zone id.
    */
-<span class="nc" id="L928">  AMERICA_PANAMA(&quot;America/Panama&quot;),</span>
+<span class="fc" id="L941">  AMERICA_PANAMA(&quot;America/Panama&quot;),</span>
 
   /**
    * America pangnirtung time zone id.
    */
-<span class="nc" id="L933">  AMERICA_PANGNIRTUNG(&quot;America/Pangnirtung&quot;),</span>
+<span class="fc" id="L946">  AMERICA_PANGNIRTUNG(&quot;America/Pangnirtung&quot;),</span>
 
   /**
    * America paramaribo time zone id.
    */
-<span class="nc" id="L938">  AMERICA_PARAMARIBO(&quot;America/Paramaribo&quot;),</span>
+<span class="fc" id="L951">  AMERICA_PARAMARIBO(&quot;America/Paramaribo&quot;),</span>
 
   /**
    * America phoenix time zone id.
    */
-<span class="nc" id="L943">  AMERICA_PHOENIX(&quot;America/Phoenix&quot;),</span>
+<span class="fc" id="L956">  AMERICA_PHOENIX(&quot;America/Phoenix&quot;),</span>
 
   /**
    * America port au prince time zone id.
    */
-<span class="nc" id="L948">  AMERICA_PORT_AU_PRINCE(&quot;America/Port-au-Prince&quot;),</span>
+<span class="fc" id="L961">  AMERICA_PORT_AU_PRINCE(&quot;America/Port-au-Prince&quot;),</span>
 
   /**
    * America port of spain time zone id.
    */
-<span class="nc" id="L953">  AMERICA_PORT_OF_SPAIN(&quot;America/Port_of_Spain&quot;),</span>
+<span class="fc" id="L966">  AMERICA_PORT_OF_SPAIN(&quot;America/Port_of_Spain&quot;),</span>
 
   /**
    * America porto acre time zone id.
    */
-<span class="nc" id="L958">  AMERICA_PORTO_ACRE(&quot;America/Porto_Acre&quot;),</span>
+<span class="fc" id="L971">  AMERICA_PORTO_ACRE(&quot;America/Porto_Acre&quot;),</span>
 
   /**
    * America porto velho time zone id.
    */
-<span class="nc" id="L963">  AMERICA_PORTO_VELHO(&quot;America/Porto_Velho&quot;),</span>
+<span class="fc" id="L976">  AMERICA_PORTO_VELHO(&quot;America/Porto_Velho&quot;),</span>
 
   /**
    * America puerto rico time zone id.
    */
-<span class="nc" id="L968">  AMERICA_PUERTO_RICO(&quot;America/Puerto_Rico&quot;),</span>
+<span class="fc" id="L981">  AMERICA_PUERTO_RICO(&quot;America/Puerto_Rico&quot;),</span>
 
   /**
    * America punta arenas time zone id.
    */
-<span class="nc" id="L973">  AMERICA_PUNTA_ARENAS(&quot;America/Punta_Arenas&quot;),</span>
+<span class="fc" id="L986">  AMERICA_PUNTA_ARENAS(&quot;America/Punta_Arenas&quot;),</span>
 
   /**
    * America rainy river time zone id.
    */
-<span class="nc" id="L978">  AMERICA_RAINY_RIVER(&quot;America/Rainy_River&quot;),</span>
+<span class="fc" id="L991">  AMERICA_RAINY_RIVER(&quot;America/Rainy_River&quot;),</span>
 
   /**
    * America rankin inlet time zone id.
    */
-<span class="nc" id="L983">  AMERICA_RANKIN_INLET(&quot;America/Rankin_Inlet&quot;),</span>
+<span class="fc" id="L996">  AMERICA_RANKIN_INLET(&quot;America/Rankin_Inlet&quot;),</span>
 
   /**
    * America recife time zone id.
    */
-<span class="nc" id="L988">  AMERICA_RECIFE(&quot;America/Recife&quot;),</span>
+<span class="fc" id="L1001">  AMERICA_RECIFE(&quot;America/Recife&quot;),</span>
 
   /**
    * America regina time zone id.
    */
-<span class="nc" id="L993">  AMERICA_REGINA(&quot;America/Regina&quot;),</span>
+<span class="fc" id="L1006">  AMERICA_REGINA(&quot;America/Regina&quot;),</span>
 
   /**
    * America resolute time zone id.
    */
-<span class="nc" id="L998">  AMERICA_RESOLUTE(&quot;America/Resolute&quot;),</span>
+<span class="fc" id="L1011">  AMERICA_RESOLUTE(&quot;America/Resolute&quot;),</span>
 
   /**
    * America rio branco time zone id.
    */
-<span class="nc" id="L1003">  AMERICA_RIO_BRANCO(&quot;America/Rio_Branco&quot;),</span>
+<span class="fc" id="L1016">  AMERICA_RIO_BRANCO(&quot;America/Rio_Branco&quot;),</span>
 
   /**
    * America rosario time zone id.
    */
-<span class="nc" id="L1008">  AMERICA_ROSARIO(&quot;America/Rosario&quot;),</span>
+<span class="fc" id="L1021">  AMERICA_ROSARIO(&quot;America/Rosario&quot;),</span>
 
   /**
    * America santa isabel time zone id.
    */
-<span class="nc" id="L1013">  AMERICA_SANTA_ISABEL(&quot;America/Santa_Isabel&quot;),</span>
+<span class="fc" id="L1026">  AMERICA_SANTA_ISABEL(&quot;America/Santa_Isabel&quot;),</span>
 
   /**
    * America santarem time zone id.
    */
-<span class="nc" id="L1018">  AMERICA_SANTAREM(&quot;America/Santarem&quot;),</span>
+<span class="fc" id="L1031">  AMERICA_SANTAREM(&quot;America/Santarem&quot;),</span>
 
   /**
    * America santiago time zone id.
    */
-<span class="nc" id="L1023">  AMERICA_SANTIAGO(&quot;America/Santiago&quot;),</span>
+<span class="fc" id="L1036">  AMERICA_SANTIAGO(&quot;America/Santiago&quot;),</span>
 
   /**
    * America santo domingo time zone id.
    */
-<span class="nc" id="L1028">  AMERICA_SANTO_DOMINGO(&quot;America/Santo_Domingo&quot;),</span>
+<span class="fc" id="L1041">  AMERICA_SANTO_DOMINGO(&quot;America/Santo_Domingo&quot;),</span>
 
   /**
    * America sao paulo time zone id.
    */
-<span class="nc" id="L1033">  AMERICA_SAO_PAULO(&quot;America/Sao_Paulo&quot;),</span>
+<span class="fc" id="L1046">  AMERICA_SAO_PAULO(&quot;America/Sao_Paulo&quot;),</span>
 
   /**
    * America scoresbysund time zone id.
    */
-<span class="nc" id="L1038">  AMERICA_SCORESBYSUND(&quot;America/Scoresbysund&quot;),</span>
+<span class="fc" id="L1051">  AMERICA_SCORESBYSUND(&quot;America/Scoresbysund&quot;),</span>
 
   /**
    * America shiprock time zone id.
    */
-<span class="nc" id="L1043">  AMERICA_SHIPROCK(&quot;America/Shiprock&quot;),</span>
+<span class="fc" id="L1056">  AMERICA_SHIPROCK(&quot;America/Shiprock&quot;),</span>
 
   /**
    * America sitka time zone id.
    */
-<span class="nc" id="L1048">  AMERICA_SITKA(&quot;America/Sitka&quot;),</span>
+<span class="fc" id="L1061">  AMERICA_SITKA(&quot;America/Sitka&quot;),</span>
 
   /**
    * America st barthelemy time zone id.
    */
-<span class="nc" id="L1053">  AMERICA_ST_BARTHELEMY(&quot;America/St_Barthelemy&quot;),</span>
+<span class="fc" id="L1066">  AMERICA_ST_BARTHELEMY(&quot;America/St_Barthelemy&quot;),</span>
 
   /**
    * America st johns time zone id.
    */
-<span class="nc" id="L1058">  AMERICA_ST_JOHNS(&quot;America/St_Johns&quot;),</span>
+<span class="fc" id="L1071">  AMERICA_ST_JOHNS(&quot;America/St_Johns&quot;),</span>
 
   /**
    * America st kitts time zone id.
    */
-<span class="nc" id="L1063">  AMERICA_ST_KITTS(&quot;America/St_Kitts&quot;),</span>
+<span class="fc" id="L1076">  AMERICA_ST_KITTS(&quot;America/St_Kitts&quot;),</span>
 
   /**
    * America st lucia time zone id.
    */
-<span class="nc" id="L1068">  AMERICA_ST_LUCIA(&quot;America/St_Lucia&quot;),</span>
+<span class="fc" id="L1081">  AMERICA_ST_LUCIA(&quot;America/St_Lucia&quot;),</span>
 
   /**
    * America st thomas time zone id.
    */
-<span class="nc" id="L1073">  AMERICA_ST_THOMAS(&quot;America/St_Thomas&quot;),</span>
+<span class="fc" id="L1086">  AMERICA_ST_THOMAS(&quot;America/St_Thomas&quot;),</span>
 
   /**
    * America st vincent time zone id.
    */
-<span class="nc" id="L1078">  AMERICA_ST_VINCENT(&quot;America/St_Vincent&quot;),</span>
+<span class="fc" id="L1091">  AMERICA_ST_VINCENT(&quot;America/St_Vincent&quot;),</span>
 
   /**
    * America swift current time zone id.
    */
-<span class="nc" id="L1083">  AMERICA_SWIFT_CURRENT(&quot;America/Swift_Current&quot;),</span>
+<span class="fc" id="L1096">  AMERICA_SWIFT_CURRENT(&quot;America/Swift_Current&quot;),</span>
 
   /**
    * America tegucigalpa time zone id.
    */
-<span class="nc" id="L1088">  AMERICA_TEGUCIGALPA(&quot;America/Tegucigalpa&quot;),</span>
+<span class="fc" id="L1101">  AMERICA_TEGUCIGALPA(&quot;America/Tegucigalpa&quot;),</span>
 
   /**
    * America thule time zone id.
    */
-<span class="nc" id="L1093">  AMERICA_THULE(&quot;America/Thule&quot;),</span>
+<span class="fc" id="L1106">  AMERICA_THULE(&quot;America/Thule&quot;),</span>
 
   /**
    * America thunder bay time zone id.
    */
-<span class="nc" id="L1098">  AMERICA_THUNDER_BAY(&quot;America/Thunder_Bay&quot;),</span>
+<span class="fc" id="L1111">  AMERICA_THUNDER_BAY(&quot;America/Thunder_Bay&quot;),</span>
 
   /**
    * America tijuana time zone id.
    */
-<span class="nc" id="L1103">  AMERICA_TIJUANA(&quot;America/Tijuana&quot;),</span>
+<span class="fc" id="L1116">  AMERICA_TIJUANA(&quot;America/Tijuana&quot;),</span>
 
   /**
    * America toronto time zone id.
    */
-<span class="nc" id="L1108">  AMERICA_TORONTO(&quot;America/Toronto&quot;),</span>
+<span class="fc" id="L1121">  AMERICA_TORONTO(&quot;America/Toronto&quot;),</span>
 
   /**
    * America tortola time zone id.
    */
-<span class="nc" id="L1113">  AMERICA_TORTOLA(&quot;America/Tortola&quot;),</span>
+<span class="fc" id="L1126">  AMERICA_TORTOLA(&quot;America/Tortola&quot;),</span>
 
   /**
    * America vancouver time zone id.
    */
-<span class="nc" id="L1118">  AMERICA_VANCOUVER(&quot;America/Vancouver&quot;),</span>
+<span class="fc" id="L1131">  AMERICA_VANCOUVER(&quot;America/Vancouver&quot;),</span>
 
   /**
    * America virgin time zone id.
    */
-<span class="nc" id="L1123">  AMERICA_VIRGIN(&quot;America/Virgin&quot;),</span>
+<span class="fc" id="L1136">  AMERICA_VIRGIN(&quot;America/Virgin&quot;),</span>
 
   /**
    * America whitehorse time zone id.
    */
-<span class="nc" id="L1128">  AMERICA_WHITEHORSE(&quot;America/Whitehorse&quot;),</span>
+<span class="fc" id="L1141">  AMERICA_WHITEHORSE(&quot;America/Whitehorse&quot;),</span>
 
   /**
    * America winnipeg time zone id.
    */
-<span class="nc" id="L1133">  AMERICA_WINNIPEG(&quot;America/Winnipeg&quot;),</span>
+<span class="fc" id="L1146">  AMERICA_WINNIPEG(&quot;America/Winnipeg&quot;),</span>
 
   /**
    * America yakutat time zone id.
    */
-<span class="nc" id="L1138">  AMERICA_YAKUTAT(&quot;America/Yakutat&quot;),</span>
+<span class="fc" id="L1151">  AMERICA_YAKUTAT(&quot;America/Yakutat&quot;),</span>
 
   /**
    * America yellowknife time zone id.
    */
-<span class="nc" id="L1143">  AMERICA_YELLOWKNIFE(&quot;America/Yellowknife&quot;),</span>
+<span class="fc" id="L1156">  AMERICA_YELLOWKNIFE(&quot;America/Yellowknife&quot;),</span>
 
   /**
    * Antarctica casey time zone id.
    */
-<span class="nc" id="L1148">  ANTARCTICA_CASEY(&quot;Antarctica/Casey&quot;),</span>
+<span class="fc" id="L1161">  ANTARCTICA_CASEY(&quot;Antarctica/Casey&quot;),</span>
 
   /**
    * Antarctica davis time zone id.
    */
-<span class="nc" id="L1153">  ANTARCTICA_DAVIS(&quot;Antarctica/Davis&quot;),</span>
+<span class="fc" id="L1166">  ANTARCTICA_DAVIS(&quot;Antarctica/Davis&quot;),</span>
 
   /**
    * Antarctica dumontdurville time zone id.
    */
-<span class="nc" id="L1158">  ANTARCTICA_DUMONTDURVILLE(&quot;Antarctica/DumontDUrville&quot;),</span>
+<span class="fc" id="L1171">  ANTARCTICA_DUMONTDURVILLE(&quot;Antarctica/DumontDUrville&quot;),</span>
 
   /**
    * Antarctica macquarie time zone id.
    */
-<span class="nc" id="L1163">  ANTARCTICA_MACQUARIE(&quot;Antarctica/Macquarie&quot;),</span>
+<span class="fc" id="L1176">  ANTARCTICA_MACQUARIE(&quot;Antarctica/Macquarie&quot;),</span>
 
   /**
    * Antarctica mawson time zone id.
    */
-<span class="nc" id="L1168">  ANTARCTICA_MAWSON(&quot;Antarctica/Mawson&quot;),</span>
+<span class="fc" id="L1181">  ANTARCTICA_MAWSON(&quot;Antarctica/Mawson&quot;),</span>
 
   /**
    * Antarctica mcmurdo time zone id.
    */
-<span class="nc" id="L1173">  ANTARCTICA_MCMURDO(&quot;Antarctica/McMurdo&quot;),</span>
+<span class="fc" id="L1186">  ANTARCTICA_MCMURDO(&quot;Antarctica/McMurdo&quot;),</span>
 
   /**
    * Antarctica palmer time zone id.
    */
-<span class="nc" id="L1178">  ANTARCTICA_PALMER(&quot;Antarctica/Palmer&quot;),</span>
+<span class="fc" id="L1191">  ANTARCTICA_PALMER(&quot;Antarctica/Palmer&quot;),</span>
 
   /**
    * Antarctica rothera time zone id.
    */
-<span class="nc" id="L1183">  ANTARCTICA_ROTHERA(&quot;Antarctica/Rothera&quot;),</span>
+<span class="fc" id="L1196">  ANTARCTICA_ROTHERA(&quot;Antarctica/Rothera&quot;),</span>
 
   /**
    * Antarctica south pole time zone id.
    */
-<span class="nc" id="L1188">  ANTARCTICA_SOUTH_POLE(&quot;Antarctica/South_Pole&quot;),</span>
+<span class="fc" id="L1201">  ANTARCTICA_SOUTH_POLE(&quot;Antarctica/South_Pole&quot;),</span>
 
   /**
    * Antarctica syowa time zone id.
    */
-<span class="nc" id="L1193">  ANTARCTICA_SYOWA(&quot;Antarctica/Syowa&quot;),</span>
+<span class="fc" id="L1206">  ANTARCTICA_SYOWA(&quot;Antarctica/Syowa&quot;),</span>
 
   /**
    * Antarctica troll time zone id.
    */
-<span class="nc" id="L1198">  ANTARCTICA_TROLL(&quot;Antarctica/Troll&quot;),</span>
+<span class="fc" id="L1211">  ANTARCTICA_TROLL(&quot;Antarctica/Troll&quot;),</span>
 
   /**
    * Antarctica vostok time zone id.
    */
-<span class="nc" id="L1203">  ANTARCTICA_VOSTOK(&quot;Antarctica/Vostok&quot;),</span>
+<span class="fc" id="L1216">  ANTARCTICA_VOSTOK(&quot;Antarctica/Vostok&quot;),</span>
 
   /**
    * Arctic longyearbyen time zone id.
    */
-<span class="nc" id="L1208">  ARCTIC_LONGYEARBYEN(&quot;Arctic/Longyearbyen&quot;),</span>
+<span class="fc" id="L1221">  ARCTIC_LONGYEARBYEN(&quot;Arctic/Longyearbyen&quot;),</span>
 
   /**
    * Asia aden time zone id.
    */
-<span class="nc" id="L1213">  ASIA_ADEN(&quot;Asia/Aden&quot;),</span>
+<span class="fc" id="L1226">  ASIA_ADEN(&quot;Asia/Aden&quot;),</span>
 
   /**
    * Asia almaty time zone id.
    */
-<span class="nc" id="L1218">  ASIA_ALMATY(&quot;Asia/Almaty&quot;),</span>
+<span class="fc" id="L1231">  ASIA_ALMATY(&quot;Asia/Almaty&quot;),</span>
 
   /**
    * Asia amman time zone id.
    */
-<span class="nc" id="L1223">  ASIA_AMMAN(&quot;Asia/Amman&quot;),</span>
+<span class="fc" id="L1236">  ASIA_AMMAN(&quot;Asia/Amman&quot;),</span>
 
   /**
    * Asia anadyr time zone id.
    */
-<span class="nc" id="L1228">  ASIA_ANADYR(&quot;Asia/Anadyr&quot;),</span>
+<span class="fc" id="L1241">  ASIA_ANADYR(&quot;Asia/Anadyr&quot;),</span>
 
   /**
    * Asia aqtau time zone id.
    */
-<span class="nc" id="L1233">  ASIA_AQTAU(&quot;Asia/Aqtau&quot;),</span>
+<span class="fc" id="L1246">  ASIA_AQTAU(&quot;Asia/Aqtau&quot;),</span>
 
   /**
    * Asia aqtobe time zone id.
    */
-<span class="nc" id="L1238">  ASIA_AQTOBE(&quot;Asia/Aqtobe&quot;),</span>
+<span class="fc" id="L1251">  ASIA_AQTOBE(&quot;Asia/Aqtobe&quot;),</span>
 
   /**
    * Asia ashgabat time zone id.
    */
-<span class="nc" id="L1243">  ASIA_ASHGABAT(&quot;Asia/Ashgabat&quot;),</span>
+<span class="fc" id="L1256">  ASIA_ASHGABAT(&quot;Asia/Ashgabat&quot;),</span>
 
   /**
    * Asia ashkhabad time zone id.
    */
-<span class="nc" id="L1248">  ASIA_ASHKHABAD(&quot;Asia/Ashkhabad&quot;),</span>
+<span class="fc" id="L1261">  ASIA_ASHKHABAD(&quot;Asia/Ashkhabad&quot;),</span>
 
   /**
    * Asia atyrau time zone id.
    */
-<span class="nc" id="L1253">  ASIA_ATYRAU(&quot;Asia/Atyrau&quot;),</span>
+<span class="fc" id="L1266">  ASIA_ATYRAU(&quot;Asia/Atyrau&quot;),</span>
 
   /**
    * Asia baghdad time zone id.
    */
-<span class="nc" id="L1258">  ASIA_BAGHDAD(&quot;Asia/Baghdad&quot;),</span>
+<span class="fc" id="L1271">  ASIA_BAGHDAD(&quot;Asia/Baghdad&quot;),</span>
 
   /**
    * Asia bahrain time zone id.
    */
-<span class="nc" id="L1263">  ASIA_BAHRAIN(&quot;Asia/Bahrain&quot;),</span>
+<span class="fc" id="L1276">  ASIA_BAHRAIN(&quot;Asia/Bahrain&quot;),</span>
 
   /**
    * Asia baku time zone id.
    */
-<span class="nc" id="L1268">  ASIA_BAKU(&quot;Asia/Baku&quot;),</span>
+<span class="fc" id="L1281">  ASIA_BAKU(&quot;Asia/Baku&quot;),</span>
 
   /**
    * Asia bangkok time zone id.
    */
-<span class="nc" id="L1273">  ASIA_BANGKOK(&quot;Asia/Bangkok&quot;),</span>
+<span class="fc" id="L1286">  ASIA_BANGKOK(&quot;Asia/Bangkok&quot;),</span>
 
   /**
    * Asia barnaul time zone id.
    */
-<span class="nc" id="L1278">  ASIA_BARNAUL(&quot;Asia/Barnaul&quot;),</span>
+<span class="fc" id="L1291">  ASIA_BARNAUL(&quot;Asia/Barnaul&quot;),</span>
 
   /**
    * Asia beirut time zone id.
    */
-<span class="nc" id="L1283">  ASIA_BEIRUT(&quot;Asia/Beirut&quot;),</span>
+<span class="fc" id="L1296">  ASIA_BEIRUT(&quot;Asia/Beirut&quot;),</span>
 
   /**
    * Asia bishkek time zone id.
    */
-<span class="nc" id="L1288">  ASIA_BISHKEK(&quot;Asia/Bishkek&quot;),</span>
+<span class="fc" id="L1301">  ASIA_BISHKEK(&quot;Asia/Bishkek&quot;),</span>
 
   /**
    * Asia brunei time zone id.
    */
-<span class="nc" id="L1293">  ASIA_BRUNEI(&quot;Asia/Brunei&quot;),</span>
+<span class="fc" id="L1306">  ASIA_BRUNEI(&quot;Asia/Brunei&quot;),</span>
 
   /**
    * Asia calcutta time zone id.
    */
-<span class="nc" id="L1298">  ASIA_CALCUTTA(&quot;Asia/Calcutta&quot;),</span>
+<span class="fc" id="L1311">  ASIA_CALCUTTA(&quot;Asia/Calcutta&quot;),</span>
 
   /**
    * Asia chita time zone id.
    */
-<span class="nc" id="L1303">  ASIA_CHITA(&quot;Asia/Chita&quot;),</span>
+<span class="fc" id="L1316">  ASIA_CHITA(&quot;Asia/Chita&quot;),</span>
 
   /**
    * Asia choibalsan time zone id.
    */
-<span class="nc" id="L1308">  ASIA_CHOIBALSAN(&quot;Asia/Choibalsan&quot;),</span>
+<span class="fc" id="L1321">  ASIA_CHOIBALSAN(&quot;Asia/Choibalsan&quot;),</span>
 
   /**
    * Asia chongqing time zone id.
    */
-<span class="nc" id="L1313">  ASIA_CHONGQING(&quot;Asia/Chongqing&quot;),</span>
+<span class="fc" id="L1326">  ASIA_CHONGQING(&quot;Asia/Chongqing&quot;),</span>
 
   /**
    * Asia chungking time zone id.
    */
-<span class="nc" id="L1318">  ASIA_CHUNGKING(&quot;Asia/Chungking&quot;),</span>
+<span class="fc" id="L1331">  ASIA_CHUNGKING(&quot;Asia/Chungking&quot;),</span>
 
   /**
    * Asia colombo time zone id.
    */
-<span class="nc" id="L1323">  ASIA_COLOMBO(&quot;Asia/Colombo&quot;),</span>
+<span class="fc" id="L1336">  ASIA_COLOMBO(&quot;Asia/Colombo&quot;),</span>
 
   /**
    * Asia dacca time zone id.
    */
-<span class="nc" id="L1328">  ASIA_DACCA(&quot;Asia/Dacca&quot;),</span>
+<span class="fc" id="L1341">  ASIA_DACCA(&quot;Asia/Dacca&quot;),</span>
 
   /**
    * Asia damascus time zone id.
    */
-<span class="nc" id="L1333">  ASIA_DAMASCUS(&quot;Asia/Damascus&quot;),</span>
+<span class="fc" id="L1346">  ASIA_DAMASCUS(&quot;Asia/Damascus&quot;),</span>
 
   /**
    * Asia dhaka time zone id.
    */
-<span class="nc" id="L1338">  ASIA_DHAKA(&quot;Asia/Dhaka&quot;),</span>
+<span class="fc" id="L1351">  ASIA_DHAKA(&quot;Asia/Dhaka&quot;),</span>
 
   /**
    * Asia dili time zone id.
    */
-<span class="nc" id="L1343">  ASIA_DILI(&quot;Asia/Dili&quot;),</span>
+<span class="fc" id="L1356">  ASIA_DILI(&quot;Asia/Dili&quot;),</span>
 
   /**
    * Asia dubai time zone id.
    */
-<span class="nc" id="L1348">  ASIA_DUBAI(&quot;Asia/Dubai&quot;),</span>
+<span class="fc" id="L1361">  ASIA_DUBAI(&quot;Asia/Dubai&quot;),</span>
 
   /**
    * Asia dushanbe time zone id.
    */
-<span class="nc" id="L1353">  ASIA_DUSHANBE(&quot;Asia/Dushanbe&quot;),</span>
+<span class="fc" id="L1366">  ASIA_DUSHANBE(&quot;Asia/Dushanbe&quot;),</span>
 
   /**
    * Asia famagusta time zone id.
    */
-<span class="nc" id="L1358">  ASIA_FAMAGUSTA(&quot;Asia/Famagusta&quot;),</span>
+<span class="fc" id="L1371">  ASIA_FAMAGUSTA(&quot;Asia/Famagusta&quot;),</span>
 
   /**
    * Asia gaza time zone id.
    */
-<span class="nc" id="L1363">  ASIA_GAZA(&quot;Asia/Gaza&quot;),</span>
+<span class="fc" id="L1376">  ASIA_GAZA(&quot;Asia/Gaza&quot;),</span>
 
   /**
    * Asia harbin time zone id.
    */
-<span class="nc" id="L1368">  ASIA_HARBIN(&quot;Asia/Harbin&quot;),</span>
+<span class="fc" id="L1381">  ASIA_HARBIN(&quot;Asia/Harbin&quot;),</span>
 
   /**
    * Asia hebron time zone id.
    */
-<span class="nc" id="L1373">  ASIA_HEBRON(&quot;Asia/Hebron&quot;),</span>
+<span class="fc" id="L1386">  ASIA_HEBRON(&quot;Asia/Hebron&quot;),</span>
 
   /**
    * Asia ho chi minh time zone id.
    */
-<span class="nc" id="L1378">  ASIA_HO_CHI_MINH(&quot;Asia/Ho_Chi_Minh&quot;),</span>
+<span class="fc" id="L1391">  ASIA_HO_CHI_MINH(&quot;Asia/Ho_Chi_Minh&quot;),</span>
 
   /**
    * Asia hong kong time zone id.
    */
-<span class="nc" id="L1383">  ASIA_HONG_KONG(&quot;Asia/Hong_Kong&quot;),</span>
+<span class="fc" id="L1396">  ASIA_HONG_KONG(&quot;Asia/Hong_Kong&quot;),</span>
 
   /**
    * Asia hovd time zone id.
    */
-<span class="nc" id="L1388">  ASIA_HOVD(&quot;Asia/Hovd&quot;),</span>
+<span class="fc" id="L1401">  ASIA_HOVD(&quot;Asia/Hovd&quot;),</span>
 
   /**
    * Asia irkutsk time zone id.
    */
-<span class="nc" id="L1393">  ASIA_IRKUTSK(&quot;Asia/Irkutsk&quot;),</span>
+<span class="fc" id="L1406">  ASIA_IRKUTSK(&quot;Asia/Irkutsk&quot;),</span>
 
   /**
    * Asia istanbul time zone id.
    */
-<span class="nc" id="L1398">  ASIA_ISTANBUL(&quot;Asia/Istanbul&quot;),</span>
+<span class="fc" id="L1411">  ASIA_ISTANBUL(&quot;Asia/Istanbul&quot;),</span>
 
   /**
    * Asia jakarta time zone id.
    */
-<span class="nc" id="L1403">  ASIA_JAKARTA(&quot;Asia/Jakarta&quot;),</span>
+<span class="fc" id="L1416">  ASIA_JAKARTA(&quot;Asia/Jakarta&quot;),</span>
 
   /**
    * Asia jayapura time zone id.
    */
-<span class="nc" id="L1408">  ASIA_JAYAPURA(&quot;Asia/Jayapura&quot;),</span>
+<span class="fc" id="L1421">  ASIA_JAYAPURA(&quot;Asia/Jayapura&quot;),</span>
 
   /**
    * Asia jerusalem time zone id.
    */
-<span class="nc" id="L1413">  ASIA_JERUSALEM(&quot;Asia/Jerusalem&quot;),</span>
+<span class="fc" id="L1426">  ASIA_JERUSALEM(&quot;Asia/Jerusalem&quot;),</span>
 
   /**
    * Asia kabul time zone id.
    */
-<span class="nc" id="L1418">  ASIA_KABUL(&quot;Asia/Kabul&quot;),</span>
+<span class="fc" id="L1431">  ASIA_KABUL(&quot;Asia/Kabul&quot;),</span>
 
   /**
    * Asia kamchatka time zone id.
    */
-<span class="nc" id="L1423">  ASIA_KAMCHATKA(&quot;Asia/Kamchatka&quot;),</span>
+<span class="fc" id="L1436">  ASIA_KAMCHATKA(&quot;Asia/Kamchatka&quot;),</span>
 
   /**
    * Asia karachi time zone id.
    */
-<span class="nc" id="L1428">  ASIA_KARACHI(&quot;Asia/Karachi&quot;),</span>
+<span class="fc" id="L1441">  ASIA_KARACHI(&quot;Asia/Karachi&quot;),</span>
 
   /**
    * Asia kashgar time zone id.
    */
-<span class="nc" id="L1433">  ASIA_KASHGAR(&quot;Asia/Kashgar&quot;),</span>
+<span class="fc" id="L1446">  ASIA_KASHGAR(&quot;Asia/Kashgar&quot;),</span>
 
   /**
    * Asia kathmandu time zone id.
    */
-<span class="nc" id="L1438">  ASIA_KATHMANDU(&quot;Asia/Kathmandu&quot;),</span>
+<span class="fc" id="L1451">  ASIA_KATHMANDU(&quot;Asia/Kathmandu&quot;),</span>
 
   /**
    * Asia katmandu time zone id.
    */
-<span class="nc" id="L1443">  ASIA_KATMANDU(&quot;Asia/Katmandu&quot;),</span>
+<span class="fc" id="L1456">  ASIA_KATMANDU(&quot;Asia/Katmandu&quot;),</span>
 
   /**
    * Asia khandyga time zone id.
    */
-<span class="nc" id="L1448">  ASIA_KHANDYGA(&quot;Asia/Khandyga&quot;),</span>
+<span class="fc" id="L1461">  ASIA_KHANDYGA(&quot;Asia/Khandyga&quot;),</span>
 
   /**
    * Asia kolkata time zone id.
    */
-<span class="nc" id="L1453">  ASIA_KOLKATA(&quot;Asia/Kolkata&quot;),</span>
+<span class="fc" id="L1466">  ASIA_KOLKATA(&quot;Asia/Kolkata&quot;),</span>
 
   /**
    * Asia krasnoyarsk time zone id.
    */
-<span class="nc" id="L1458">  ASIA_KRASNOYARSK(&quot;Asia/Krasnoyarsk&quot;),</span>
+<span class="fc" id="L1471">  ASIA_KRASNOYARSK(&quot;Asia/Krasnoyarsk&quot;),</span>
 
   /**
    * Asia kuala lumpur time zone id.
    */
-<span class="nc" id="L1463">  ASIA_KUALA_LUMPUR(&quot;Asia/Kuala_Lumpur&quot;),</span>
+<span class="fc" id="L1476">  ASIA_KUALA_LUMPUR(&quot;Asia/Kuala_Lumpur&quot;),</span>
 
   /**
    * Asia kuching time zone id.
    */
-<span class="nc" id="L1468">  ASIA_KUCHING(&quot;Asia/Kuching&quot;),</span>
+<span class="fc" id="L1481">  ASIA_KUCHING(&quot;Asia/Kuching&quot;),</span>
 
   /**
    * Asia kuwait time zone id.
    */
-<span class="nc" id="L1473">  ASIA_KUWAIT(&quot;Asia/Kuwait&quot;),</span>
+<span class="fc" id="L1486">  ASIA_KUWAIT(&quot;Asia/Kuwait&quot;),</span>
 
   /**
    * Asia macao time zone id.
    */
-<span class="nc" id="L1478">  ASIA_MACAO(&quot;Asia/Macao&quot;),</span>
+<span class="fc" id="L1491">  ASIA_MACAO(&quot;Asia/Macao&quot;),</span>
 
   /**
    * Asia macau time zone id.
    */
-<span class="nc" id="L1483">  ASIA_MACAU(&quot;Asia/Macau&quot;),</span>
+<span class="fc" id="L1496">  ASIA_MACAU(&quot;Asia/Macau&quot;),</span>
 
   /**
    * Asia magadan time zone id.
    */
-<span class="nc" id="L1488">  ASIA_MAGADAN(&quot;Asia/Magadan&quot;),</span>
+<span class="fc" id="L1501">  ASIA_MAGADAN(&quot;Asia/Magadan&quot;),</span>
 
   /**
    * Asia makassar time zone id.
    */
-<span class="nc" id="L1493">  ASIA_MAKASSAR(&quot;Asia/Makassar&quot;),</span>
+<span class="fc" id="L1506">  ASIA_MAKASSAR(&quot;Asia/Makassar&quot;),</span>
 
   /**
    * Asia manila time zone id.
    */
-<span class="nc" id="L1498">  ASIA_MANILA(&quot;Asia/Manila&quot;),</span>
+<span class="fc" id="L1511">  ASIA_MANILA(&quot;Asia/Manila&quot;),</span>
 
   /**
    * Asia muscat time zone id.
    */
-<span class="nc" id="L1503">  ASIA_MUSCAT(&quot;Asia/Muscat&quot;),</span>
+<span class="fc" id="L1516">  ASIA_MUSCAT(&quot;Asia/Muscat&quot;),</span>
 
   /**
    * Asia nicosia time zone id.
    */
-<span class="nc" id="L1508">  ASIA_NICOSIA(&quot;Asia/Nicosia&quot;),</span>
+<span class="fc" id="L1521">  ASIA_NICOSIA(&quot;Asia/Nicosia&quot;),</span>
 
   /**
    * Asia novokuznetsk time zone id.
    */
-<span class="nc" id="L1513">  ASIA_NOVOKUZNETSK(&quot;Asia/Novokuznetsk&quot;),</span>
+<span class="fc" id="L1526">  ASIA_NOVOKUZNETSK(&quot;Asia/Novokuznetsk&quot;),</span>
 
   /**
    * Asia novosibirsk time zone id.
    */
-<span class="nc" id="L1518">  ASIA_NOVOSIBIRSK(&quot;Asia/Novosibirsk&quot;),</span>
+<span class="fc" id="L1531">  ASIA_NOVOSIBIRSK(&quot;Asia/Novosibirsk&quot;),</span>
 
   /**
    * Asia omsk time zone id.
    */
-<span class="nc" id="L1523">  ASIA_OMSK(&quot;Asia/Omsk&quot;),</span>
+<span class="fc" id="L1536">  ASIA_OMSK(&quot;Asia/Omsk&quot;),</span>
 
   /**
    * Asia oral time zone id.
    */
-<span class="nc" id="L1528">  ASIA_ORAL(&quot;Asia/Oral&quot;),</span>
+<span class="fc" id="L1541">  ASIA_ORAL(&quot;Asia/Oral&quot;),</span>
 
   /**
    * Asia phnom penh time zone id.
    */
-<span class="nc" id="L1533">  ASIA_PHNOM_PENH(&quot;Asia/Phnom_Penh&quot;),</span>
+<span class="fc" id="L1546">  ASIA_PHNOM_PENH(&quot;Asia/Phnom_Penh&quot;),</span>
 
   /**
    * Asia pontianak time zone id.
    */
-<span class="nc" id="L1538">  ASIA_PONTIANAK(&quot;Asia/Pontianak&quot;),</span>
+<span class="fc" id="L1551">  ASIA_PONTIANAK(&quot;Asia/Pontianak&quot;),</span>
 
   /**
    * Asia pyongyang time zone id.
    */
-<span class="nc" id="L1543">  ASIA_PYONGYANG(&quot;Asia/Pyongyang&quot;),</span>
+<span class="fc" id="L1556">  ASIA_PYONGYANG(&quot;Asia/Pyongyang&quot;),</span>
 
   /**
    * Asia qatar time zone id.
    */
-<span class="nc" id="L1548">  ASIA_QATAR(&quot;Asia/Qatar&quot;),</span>
+<span class="fc" id="L1561">  ASIA_QATAR(&quot;Asia/Qatar&quot;),</span>
 
   /**
    * Asia qyzylorda time zone id.
    */
-<span class="nc" id="L1553">  ASIA_QYZYLORDA(&quot;Asia/Qyzylorda&quot;),</span>
+<span class="fc" id="L1566">  ASIA_QYZYLORDA(&quot;Asia/Qyzylorda&quot;),</span>
 
   /**
    * Asia rangoon time zone id.
    */
-<span class="nc" id="L1558">  ASIA_RANGOON(&quot;Asia/Rangoon&quot;),</span>
+<span class="fc" id="L1571">  ASIA_RANGOON(&quot;Asia/Rangoon&quot;),</span>
 
   /**
    * Asia riyadh time zone id.
    */
-<span class="nc" id="L1563">  ASIA_RIYADH(&quot;Asia/Riyadh&quot;),</span>
+<span class="fc" id="L1576">  ASIA_RIYADH(&quot;Asia/Riyadh&quot;),</span>
 
   /**
    * Asia saigon time zone id.
    */
-<span class="nc" id="L1568">  ASIA_SAIGON(&quot;Asia/Saigon&quot;),</span>
+<span class="fc" id="L1581">  ASIA_SAIGON(&quot;Asia/Saigon&quot;),</span>
 
   /**
    * Asia sakhalin time zone id.
    */
-<span class="nc" id="L1573">  ASIA_SAKHALIN(&quot;Asia/Sakhalin&quot;),</span>
+<span class="fc" id="L1586">  ASIA_SAKHALIN(&quot;Asia/Sakhalin&quot;),</span>
 
   /**
    * Asia samarkand time zone id.
    */
-<span class="nc" id="L1578">  ASIA_SAMARKAND(&quot;Asia/Samarkand&quot;),</span>
+<span class="fc" id="L1591">  ASIA_SAMARKAND(&quot;Asia/Samarkand&quot;),</span>
 
   /**
    * Asia seoul time zone id.
    */
-<span class="nc" id="L1583">  ASIA_SEOUL(&quot;Asia/Seoul&quot;),</span>
+<span class="fc" id="L1596">  ASIA_SEOUL(&quot;Asia/Seoul&quot;),</span>
 
   /**
    * Asia shanghai time zone id.
    */
-<span class="nc" id="L1588">  ASIA_SHANGHAI(&quot;Asia/Shanghai&quot;),</span>
+<span class="fc" id="L1601">  ASIA_SHANGHAI(&quot;Asia/Shanghai&quot;),</span>
 
   /**
    * Asia singapore time zone id.
    */
-<span class="nc" id="L1593">  ASIA_SINGAPORE(&quot;Asia/Singapore&quot;),</span>
+<span class="fc" id="L1606">  ASIA_SINGAPORE(&quot;Asia/Singapore&quot;),</span>
 
   /**
    * Asia srednekolymsk time zone id.
    */
-<span class="nc" id="L1598">  ASIA_SREDNEKOLYMSK(&quot;Asia/Srednekolymsk&quot;),</span>
+<span class="fc" id="L1611">  ASIA_SREDNEKOLYMSK(&quot;Asia/Srednekolymsk&quot;),</span>
 
   /**
    * Asia taipei time zone id.
    */
-<span class="nc" id="L1603">  ASIA_TAIPEI(&quot;Asia/Taipei&quot;),</span>
+<span class="fc" id="L1616">  ASIA_TAIPEI(&quot;Asia/Taipei&quot;),</span>
 
   /**
    * Asia tashkent time zone id.
    */
-<span class="nc" id="L1608">  ASIA_TASHKENT(&quot;Asia/Tashkent&quot;),</span>
+<span class="fc" id="L1621">  ASIA_TASHKENT(&quot;Asia/Tashkent&quot;),</span>
 
   /**
    * Asia tbilisi time zone id.
    */
-<span class="nc" id="L1613">  ASIA_TBILISI(&quot;Asia/Tbilisi&quot;),</span>
+<span class="fc" id="L1626">  ASIA_TBILISI(&quot;Asia/Tbilisi&quot;),</span>
 
   /**
    * Asia tehran time zone id.
    */
-<span class="nc" id="L1618">  ASIA_TEHRAN(&quot;Asia/Tehran&quot;),</span>
+<span class="fc" id="L1631">  ASIA_TEHRAN(&quot;Asia/Tehran&quot;),</span>
 
   /**
    * Asia tel aviv time zone id.
    */
-<span class="nc" id="L1623">  ASIA_TEL_AVIV(&quot;Asia/Tel_Aviv&quot;),</span>
+<span class="fc" id="L1636">  ASIA_TEL_AVIV(&quot;Asia/Tel_Aviv&quot;),</span>
 
   /**
    * Asia thimbu time zone id.
    */
-<span class="nc" id="L1628">  ASIA_THIMBU(&quot;Asia/Thimbu&quot;),</span>
+<span class="fc" id="L1641">  ASIA_THIMBU(&quot;Asia/Thimbu&quot;),</span>
 
   /**
    * Asia thimphu time zone id.
    */
-<span class="nc" id="L1633">  ASIA_THIMPHU(&quot;Asia/Thimphu&quot;),</span>
+<span class="fc" id="L1646">  ASIA_THIMPHU(&quot;Asia/Thimphu&quot;),</span>
 
   /**
    * Asia tokyo time zone id.
    */
-<span class="nc" id="L1638">  ASIA_TOKYO(&quot;Asia/Tokyo&quot;),</span>
+<span class="fc" id="L1651">  ASIA_TOKYO(&quot;Asia/Tokyo&quot;),</span>
 
   /**
    * Asia tomsk time zone id.
    */
-<span class="nc" id="L1643">  ASIA_TOMSK(&quot;Asia/Tomsk&quot;),</span>
+<span class="fc" id="L1656">  ASIA_TOMSK(&quot;Asia/Tomsk&quot;),</span>
 
   /**
    * Asia ujung pandang time zone id.
    */
-<span class="nc" id="L1648">  ASIA_UJUNG_PANDANG(&quot;Asia/Ujung_Pandang&quot;),</span>
+<span class="fc" id="L1661">  ASIA_UJUNG_PANDANG(&quot;Asia/Ujung_Pandang&quot;),</span>
 
   /**
    * Asia ulaanbaatar time zone id.
    */
-<span class="nc" id="L1653">  ASIA_ULAANBAATAR(&quot;Asia/Ulaanbaatar&quot;),</span>
+<span class="fc" id="L1666">  ASIA_ULAANBAATAR(&quot;Asia/Ulaanbaatar&quot;),</span>
 
   /**
    * Asia ulan bator time zone id.
    */
-<span class="nc" id="L1658">  ASIA_ULAN_BATOR(&quot;Asia/Ulan_Bator&quot;),</span>
+<span class="fc" id="L1671">  ASIA_ULAN_BATOR(&quot;Asia/Ulan_Bator&quot;),</span>
 
   /**
    * Asia urumqi time zone id.
    */
-<span class="nc" id="L1663">  ASIA_URUMQI(&quot;Asia/Urumqi&quot;),</span>
+<span class="fc" id="L1676">  ASIA_URUMQI(&quot;Asia/Urumqi&quot;),</span>
 
   /**
    * Asia ust nera time zone id.
    */
-<span class="nc" id="L1668">  ASIA_UST_NERA(&quot;Asia/Ust-Nera&quot;),</span>
+<span class="fc" id="L1681">  ASIA_UST_NERA(&quot;Asia/Ust-Nera&quot;),</span>
 
   /**
    * Asia vientiane time zone id.
    */
-<span class="nc" id="L1673">  ASIA_VIENTIANE(&quot;Asia/Vientiane&quot;),</span>
+<span class="fc" id="L1686">  ASIA_VIENTIANE(&quot;Asia/Vientiane&quot;),</span>
 
   /**
    * Asia vladivostok time zone id.
    */
-<span class="nc" id="L1678">  ASIA_VLADIVOSTOK(&quot;Asia/Vladivostok&quot;),</span>
+<span class="fc" id="L1691">  ASIA_VLADIVOSTOK(&quot;Asia/Vladivostok&quot;),</span>
 
   /**
    * Asia yakutsk time zone id.
    */
-<span class="nc" id="L1683">  ASIA_YAKUTSK(&quot;Asia/Yakutsk&quot;),</span>
+<span class="fc" id="L1696">  ASIA_YAKUTSK(&quot;Asia/Yakutsk&quot;),</span>
 
   /**
    * Asia yangon time zone id.
    */
-<span class="nc" id="L1688">  ASIA_YANGON(&quot;Asia/Yangon&quot;),</span>
+<span class="fc" id="L1701">  ASIA_YANGON(&quot;Asia/Yangon&quot;),</span>
 
   /**
    * Asia yekaterinburg time zone id.
    */
-<span class="nc" id="L1693">  ASIA_YEKATERINBURG(&quot;Asia/Yekaterinburg&quot;),</span>
+<span class="fc" id="L1706">  ASIA_YEKATERINBURG(&quot;Asia/Yekaterinburg&quot;),</span>
 
   /**
    * Asia yerevan time zone id.
    */
-<span class="nc" id="L1698">  ASIA_YEREVAN(&quot;Asia/Yerevan&quot;),</span>
+<span class="fc" id="L1711">  ASIA_YEREVAN(&quot;Asia/Yerevan&quot;),</span>
 
   /**
    * Atlantic azores time zone id.
    */
-<span class="nc" id="L1703">  ATLANTIC_AZORES(&quot;Atlantic/Azores&quot;),</span>
+<span class="fc" id="L1716">  ATLANTIC_AZORES(&quot;Atlantic/Azores&quot;),</span>
 
   /**
    * Atlantic bermuda time zone id.
    */
-<span class="nc" id="L1708">  ATLANTIC_BERMUDA(&quot;Atlantic/Bermuda&quot;),</span>
+<span class="fc" id="L1721">  ATLANTIC_BERMUDA(&quot;Atlantic/Bermuda&quot;),</span>
 
   /**
    * Atlantic canary time zone id.
    */
-<span class="nc" id="L1713">  ATLANTIC_CANARY(&quot;Atlantic/Canary&quot;),</span>
+<span class="fc" id="L1726">  ATLANTIC_CANARY(&quot;Atlantic/Canary&quot;),</span>
 
   /**
    * Atlantic cape verde time zone id.
    */
-<span class="nc" id="L1718">  ATLANTIC_CAPE_VERDE(&quot;Atlantic/Cape_Verde&quot;),</span>
+<span class="fc" id="L1731">  ATLANTIC_CAPE_VERDE(&quot;Atlantic/Cape_Verde&quot;),</span>
 
   /**
    * Atlantic faeroe time zone id.
    */
-<span class="nc" id="L1723">  ATLANTIC_FAEROE(&quot;Atlantic/Faeroe&quot;),</span>
+<span class="fc" id="L1736">  ATLANTIC_FAEROE(&quot;Atlantic/Faeroe&quot;),</span>
 
   /**
    * Atlantic faroe time zone id.
    */
-<span class="nc" id="L1728">  ATLANTIC_FAROE(&quot;Atlantic/Faroe&quot;),</span>
+<span class="fc" id="L1741">  ATLANTIC_FAROE(&quot;Atlantic/Faroe&quot;),</span>
 
   /**
    * Atlantic jan mayen time zone id.
    */
-<span class="nc" id="L1733">  ATLANTIC_JAN_MAYEN(&quot;Atlantic/Jan_Mayen&quot;),</span>
+<span class="fc" id="L1746">  ATLANTIC_JAN_MAYEN(&quot;Atlantic/Jan_Mayen&quot;),</span>
 
   /**
    * Atlantic madeira time zone id.
    */
-<span class="nc" id="L1738">  ATLANTIC_MADEIRA(&quot;Atlantic/Madeira&quot;),</span>
+<span class="fc" id="L1751">  ATLANTIC_MADEIRA(&quot;Atlantic/Madeira&quot;),</span>
 
   /**
    * Atlantic reykjavik time zone id.
    */
-<span class="nc" id="L1743">  ATLANTIC_REYKJAVIK(&quot;Atlantic/Reykjavik&quot;),</span>
+<span class="fc" id="L1756">  ATLANTIC_REYKJAVIK(&quot;Atlantic/Reykjavik&quot;),</span>
 
   /**
    * Atlantic south georgia time zone id.
    */
-<span class="nc" id="L1748">  ATLANTIC_SOUTH_GEORGIA(&quot;Atlantic/South_Georgia&quot;),</span>
+<span class="fc" id="L1761">  ATLANTIC_SOUTH_GEORGIA(&quot;Atlantic/South_Georgia&quot;),</span>
 
   /**
    * Atlantic st helena time zone id.
    */
-<span class="nc" id="L1753">  ATLANTIC_ST_HELENA(&quot;Atlantic/St_Helena&quot;),</span>
+<span class="fc" id="L1766">  ATLANTIC_ST_HELENA(&quot;Atlantic/St_Helena&quot;),</span>
 
   /**
    * Atlantic stanley time zone id.
    */
-<span class="nc" id="L1758">  ATLANTIC_STANLEY(&quot;Atlantic/Stanley&quot;),</span>
+<span class="fc" id="L1771">  ATLANTIC_STANLEY(&quot;Atlantic/Stanley&quot;),</span>
 
   /**
    * Australia act time zone id.
    */
-<span class="nc" id="L1763">  AUSTRALIA_ACT(&quot;Australia/ACT&quot;),</span>
+<span class="fc" id="L1776">  AUSTRALIA_ACT(&quot;Australia/ACT&quot;),</span>
 
   /**
    * Australia adelaide time zone id.
    */
-<span class="nc" id="L1768">  AUSTRALIA_ADELAIDE(&quot;Australia/Adelaide&quot;),</span>
+<span class="fc" id="L1781">  AUSTRALIA_ADELAIDE(&quot;Australia/Adelaide&quot;),</span>
 
   /**
    * Australia brisbane time zone id.
    */
-<span class="nc" id="L1773">  AUSTRALIA_BRISBANE(&quot;Australia/Brisbane&quot;),</span>
+<span class="fc" id="L1786">  AUSTRALIA_BRISBANE(&quot;Australia/Brisbane&quot;),</span>
 
   /**
    * Australia broken hill time zone id.
    */
-<span class="nc" id="L1778">  AUSTRALIA_BROKEN_HILL(&quot;Australia/Broken_Hill&quot;),</span>
+<span class="fc" id="L1791">  AUSTRALIA_BROKEN_HILL(&quot;Australia/Broken_Hill&quot;),</span>
 
   /**
    * Australia canberra time zone id.
    */
-<span class="nc" id="L1783">  AUSTRALIA_CANBERRA(&quot;Australia/Canberra&quot;),</span>
+<span class="fc" id="L1796">  AUSTRALIA_CANBERRA(&quot;Australia/Canberra&quot;),</span>
 
   /**
    * Australia currie time zone id.
    */
-<span class="nc" id="L1788">  AUSTRALIA_CURRIE(&quot;Australia/Currie&quot;),</span>
+<span class="fc" id="L1801">  AUSTRALIA_CURRIE(&quot;Australia/Currie&quot;),</span>
 
   /**
    * Australia darwin time zone id.
    */
-<span class="nc" id="L1793">  AUSTRALIA_DARWIN(&quot;Australia/Darwin&quot;),</span>
+<span class="fc" id="L1806">  AUSTRALIA_DARWIN(&quot;Australia/Darwin&quot;),</span>
 
   /**
    * Australia eucla time zone id.
    */
-<span class="nc" id="L1798">  AUSTRALIA_EUCLA(&quot;Australia/Eucla&quot;),</span>
+<span class="fc" id="L1811">  AUSTRALIA_EUCLA(&quot;Australia/Eucla&quot;),</span>
 
   /**
    * Australia hobart time zone id.
    */
-<span class="nc" id="L1803">  AUSTRALIA_HOBART(&quot;Australia/Hobart&quot;),</span>
+<span class="fc" id="L1816">  AUSTRALIA_HOBART(&quot;Australia/Hobart&quot;),</span>
 
   /**
    * Australia lhi time zone id.
    */
-<span class="nc" id="L1808">  AUSTRALIA_LHI(&quot;Australia/LHI&quot;),</span>
+<span class="fc" id="L1821">  AUSTRALIA_LHI(&quot;Australia/LHI&quot;),</span>
 
   /**
    * Australia lindeman time zone id.
    */
-<span class="nc" id="L1813">  AUSTRALIA_LINDEMAN(&quot;Australia/Lindeman&quot;),</span>
+<span class="fc" id="L1826">  AUSTRALIA_LINDEMAN(&quot;Australia/Lindeman&quot;),</span>
 
   /**
    * Australia lord howe time zone id.
    */
-<span class="nc" id="L1818">  AUSTRALIA_LORD_HOWE(&quot;Australia/Lord_Howe&quot;),</span>
+<span class="fc" id="L1831">  AUSTRALIA_LORD_HOWE(&quot;Australia/Lord_Howe&quot;),</span>
 
   /**
    * Australia melbourne time zone id.
    */
-<span class="nc" id="L1823">  AUSTRALIA_MELBOURNE(&quot;Australia/Melbourne&quot;),</span>
+<span class="fc" id="L1836">  AUSTRALIA_MELBOURNE(&quot;Australia/Melbourne&quot;),</span>
 
   /**
    * Australia nsw time zone id.
    */
-<span class="nc" id="L1828">  AUSTRALIA_NSW(&quot;Australia/NSW&quot;),</span>
+<span class="fc" id="L1841">  AUSTRALIA_NSW(&quot;Australia/NSW&quot;),</span>
 
   /**
    * Australia north time zone id.
    */
-<span class="nc" id="L1833">  AUSTRALIA_NORTH(&quot;Australia/North&quot;),</span>
+<span class="fc" id="L1846">  AUSTRALIA_NORTH(&quot;Australia/North&quot;),</span>
 
   /**
    * Australia perth time zone id.
    */
-<span class="nc" id="L1838">  AUSTRALIA_PERTH(&quot;Australia/Perth&quot;),</span>
+<span class="fc" id="L1851">  AUSTRALIA_PERTH(&quot;Australia/Perth&quot;),</span>
 
   /**
    * Australia queensland time zone id.
    */
-<span class="nc" id="L1843">  AUSTRALIA_QUEENSLAND(&quot;Australia/Queensland&quot;),</span>
+<span class="fc" id="L1856">  AUSTRALIA_QUEENSLAND(&quot;Australia/Queensland&quot;),</span>
 
   /**
    * Australia south time zone id.
    */
-<span class="nc" id="L1848">  AUSTRALIA_SOUTH(&quot;Australia/South&quot;),</span>
+<span class="fc" id="L1861">  AUSTRALIA_SOUTH(&quot;Australia/South&quot;),</span>
 
   /**
    * Australia sydney time zone id.
    */
-<span class="nc" id="L1853">  AUSTRALIA_SYDNEY(&quot;Australia/Sydney&quot;),</span>
+<span class="fc" id="L1866">  AUSTRALIA_SYDNEY(&quot;Australia/Sydney&quot;),</span>
 
   /**
    * Australia tasmania time zone id.
    */
-<span class="nc" id="L1858">  AUSTRALIA_TASMANIA(&quot;Australia/Tasmania&quot;),</span>
+<span class="fc" id="L1871">  AUSTRALIA_TASMANIA(&quot;Australia/Tasmania&quot;),</span>
 
   /**
    * Australia victoria time zone id.
    */
-<span class="nc" id="L1863">  AUSTRALIA_VICTORIA(&quot;Australia/Victoria&quot;),</span>
+<span class="fc" id="L1876">  AUSTRALIA_VICTORIA(&quot;Australia/Victoria&quot;),</span>
 
   /**
    * Australia west time zone id.
    */
-<span class="nc" id="L1868">  AUSTRALIA_WEST(&quot;Australia/West&quot;),</span>
+<span class="fc" id="L1881">  AUSTRALIA_WEST(&quot;Australia/West&quot;),</span>
 
   /**
    * Australia yancowinna time zone id.
    */
-<span class="nc" id="L1873">  AUSTRALIA_YANCOWINNA(&quot;Australia/Yancowinna&quot;),</span>
+<span class="fc" id="L1886">  AUSTRALIA_YANCOWINNA(&quot;Australia/Yancowinna&quot;),</span>
 
   /**
    * Bet time zone id.
    */
-<span class="nc" id="L1878">  BET(&quot;BET&quot;),</span>
+<span class="fc" id="L1891">  BET(&quot;BET&quot;),</span>
 
   /**
    * Bst time zone id.
    */
-<span class="nc" id="L1883">  BST(&quot;BST&quot;),</span>
+<span class="fc" id="L1896">  BST(&quot;BST&quot;),</span>
 
   /**
    * Brazil acre time zone id.
    */
-<span class="nc" id="L1888">  BRAZIL_ACRE(&quot;Brazil/Acre&quot;),</span>
+<span class="fc" id="L1901">  BRAZIL_ACRE(&quot;Brazil/Acre&quot;),</span>
 
   /**
    * Brazil denoronha time zone id.
    */
-<span class="nc" id="L1893">  BRAZIL_DENORONHA(&quot;Brazil/DeNoronha&quot;),</span>
+<span class="fc" id="L1906">  BRAZIL_DENORONHA(&quot;Brazil/DeNoronha&quot;),</span>
 
   /**
    * Brazil east time zone id.
    */
-<span class="nc" id="L1898">  BRAZIL_EAST(&quot;Brazil/East&quot;),</span>
+<span class="fc" id="L1911">  BRAZIL_EAST(&quot;Brazil/East&quot;),</span>
 
   /**
    * Brazil west time zone id.
    */
-<span class="nc" id="L1903">  BRAZIL_WEST(&quot;Brazil/West&quot;),</span>
+<span class="fc" id="L1916">  BRAZIL_WEST(&quot;Brazil/West&quot;),</span>
 
   /**
    * Cat time zone id.
    */
-<span class="nc" id="L1908">  CAT(&quot;CAT&quot;),</span>
+<span class="fc" id="L1921">  CAT(&quot;CAT&quot;),</span>
 
   /**
    * Cet time zone id.
    */
-<span class="nc" id="L1913">  CET(&quot;CET&quot;),</span>
+<span class="fc" id="L1926">  CET(&quot;CET&quot;),</span>
 
   /**
    * Cnt time zone id.
    */
-<span class="nc" id="L1918">  CNT(&quot;CNT&quot;),</span>
+<span class="fc" id="L1931">  CNT(&quot;CNT&quot;),</span>
 
   /**
    * Cst time zone id.
    */
-<span class="nc" id="L1923">  CST(&quot;CST&quot;),</span>
+<span class="fc" id="L1936">  CST(&quot;CST&quot;),</span>
 
   /**
    * Cst 6 cdt time zone id.
    */
-<span class="nc" id="L1928">  CST6CDT(&quot;CST6CDT&quot;),</span>
+<span class="fc" id="L1941">  CST6CDT(&quot;CST6CDT&quot;),</span>
 
   /**
    * Ctt time zone id.
    */
-<span class="nc" id="L1933">  CTT(&quot;CTT&quot;),</span>
+<span class="fc" id="L1946">  CTT(&quot;CTT&quot;),</span>
 
   /**
    * Canada atlantic time zone id.
    */
-<span class="nc" id="L1938">  CANADA_ATLANTIC(&quot;Canada/Atlantic&quot;),</span>
+<span class="fc" id="L1951">  CANADA_ATLANTIC(&quot;Canada/Atlantic&quot;),</span>
 
   /**
    * Canada central time zone id.
    */
-<span class="nc" id="L1943">  CANADA_CENTRAL(&quot;Canada/Central&quot;),</span>
+<span class="fc" id="L1956">  CANADA_CENTRAL(&quot;Canada/Central&quot;),</span>
 
   /**
    * Canada eastern time zone id.
    */
-<span class="nc" id="L1948">  CANADA_EASTERN(&quot;Canada/Eastern&quot;),</span>
+<span class="fc" id="L1961">  CANADA_EASTERN(&quot;Canada/Eastern&quot;),</span>
 
   /**
    * Canada mountain time zone id.
    */
-<span class="nc" id="L1953">  CANADA_MOUNTAIN(&quot;Canada/Mountain&quot;),</span>
+<span class="fc" id="L1966">  CANADA_MOUNTAIN(&quot;Canada/Mountain&quot;),</span>
 
   /**
    * Canada newfoundland time zone id.
    */
-<span class="nc" id="L1958">  CANADA_NEWFOUNDLAND(&quot;Canada/Newfoundland&quot;),</span>
+<span class="fc" id="L1971">  CANADA_NEWFOUNDLAND(&quot;Canada/Newfoundland&quot;),</span>
 
   /**
    * Canada pacific time zone id.
    */
-<span class="nc" id="L1963">  CANADA_PACIFIC(&quot;Canada/Pacific&quot;),</span>
+<span class="fc" id="L1976">  CANADA_PACIFIC(&quot;Canada/Pacific&quot;),</span>
 
   /**
    * Canada saskatchewan time zone id.
    */
-<span class="nc" id="L1968">  CANADA_SASKATCHEWAN(&quot;Canada/Saskatchewan&quot;),</span>
+<span class="fc" id="L1981">  CANADA_SASKATCHEWAN(&quot;Canada/Saskatchewan&quot;),</span>
 
   /**
    * Canada yukon time zone id.
    */
-<span class="nc" id="L1973">  CANADA_YUKON(&quot;Canada/Yukon&quot;),</span>
+<span class="fc" id="L1986">  CANADA_YUKON(&quot;Canada/Yukon&quot;),</span>
 
   /**
    * Chile continental time zone id.
    */
-<span class="nc" id="L1978">  CHILE_CONTINENTAL(&quot;Chile/Continental&quot;),</span>
+<span class="fc" id="L1991">  CHILE_CONTINENTAL(&quot;Chile/Continental&quot;),</span>
 
   /**
    * Chile easterisland time zone id.
    */
-<span class="nc" id="L1983">  CHILE_EASTERISLAND(&quot;Chile/EasterIsland&quot;),</span>
+<span class="fc" id="L1996">  CHILE_EASTERISLAND(&quot;Chile/EasterIsland&quot;),</span>
 
   /**
    * Cuba time zone id.
    */
-<span class="nc" id="L1988">  CUBA(&quot;Cuba&quot;),</span>
+<span class="fc" id="L2001">  CUBA(&quot;Cuba&quot;),</span>
 
   /**
    * Eat time zone id.
    */
-<span class="nc" id="L1993">  EAT(&quot;EAT&quot;),</span>
+<span class="fc" id="L2006">  EAT(&quot;EAT&quot;),</span>
 
   /**
    * Ect time zone id.
    */
-<span class="nc" id="L1998">  ECT(&quot;ECT&quot;),</span>
+<span class="fc" id="L2011">  ECT(&quot;ECT&quot;),</span>
 
   /**
    * Eet time zone id.
    */
-<span class="nc" id="L2003">  EET(&quot;EET&quot;),</span>
+<span class="fc" id="L2016">  EET(&quot;EET&quot;),</span>
 
   /**
    * Est time zone id.
    */
-<span class="nc" id="L2008">  EST(&quot;EST&quot;),</span>
+<span class="fc" id="L2021">  EST(&quot;EST&quot;),</span>
 
   /**
    * Est 5 edt time zone id.
    */
-<span class="nc" id="L2013">  EST5EDT(&quot;EST5EDT&quot;),</span>
+<span class="fc" id="L2026">  EST5EDT(&quot;EST5EDT&quot;),</span>
 
   /**
    * Egypt time zone id.
    */
-<span class="nc" id="L2018">  EGYPT(&quot;Egypt&quot;),</span>
+<span class="fc" id="L2031">  EGYPT(&quot;Egypt&quot;),</span>
 
   /**
    * Eire time zone id.
    */
-<span class="nc" id="L2023">  EIRE(&quot;Eire&quot;),</span>
+<span class="fc" id="L2036">  EIRE(&quot;Eire&quot;),</span>
 
   /**
    * Etc gmt time zone id.
    */
-<span class="nc" id="L2028">  ETC_GMT(&quot;Etc/GMT&quot;),</span>
+<span class="fc" id="L2041">  ETC_GMT(&quot;Etc/GMT&quot;),</span>
 
   /**
    * Etc gmt plus 0 time zone id.
    */
-<span class="nc" id="L2033">  ETC_GMT_PLUS0(&quot;Etc/GMT+0&quot;),</span>
+<span class="fc" id="L2046">  ETC_GMT_PLUS0(&quot;Etc/GMT+0&quot;),</span>
 
   /**
    * Etc gmt plus 1 time zone id.
    */
-<span class="nc" id="L2038">  ETC_GMT_PLUS1(&quot;Etc/GMT+1&quot;),</span>
+<span class="fc" id="L2051">  ETC_GMT_PLUS1(&quot;Etc/GMT+1&quot;),</span>
 
   /**
    * Etc gmt plus 10 time zone id.
    */
-<span class="nc" id="L2043">  ETC_GMT_PLUS10(&quot;Etc/GMT+10&quot;),</span>
+<span class="fc" id="L2056">  ETC_GMT_PLUS10(&quot;Etc/GMT+10&quot;),</span>
 
   /**
    * Etc gmt plus 11 time zone id.
    */
-<span class="nc" id="L2048">  ETC_GMT_PLUS11(&quot;Etc/GMT+11&quot;),</span>
+<span class="fc" id="L2061">  ETC_GMT_PLUS11(&quot;Etc/GMT+11&quot;),</span>
 
   /**
    * Etc gmt plus 12 time zone id.
    */
-<span class="nc" id="L2053">  ETC_GMT_PLUS12(&quot;Etc/GMT+12&quot;),</span>
+<span class="fc" id="L2066">  ETC_GMT_PLUS12(&quot;Etc/GMT+12&quot;),</span>
 
   /**
    * Etc gmt plus 2 time zone id.
    */
-<span class="nc" id="L2058">  ETC_GMT_PLUS2(&quot;Etc/GMT+2&quot;),</span>
+<span class="fc" id="L2071">  ETC_GMT_PLUS2(&quot;Etc/GMT+2&quot;),</span>
 
   /**
    * Etc gmt plus 3 time zone id.
    */
-<span class="nc" id="L2063">  ETC_GMT_PLUS3(&quot;Etc/GMT+3&quot;),</span>
+<span class="fc" id="L2076">  ETC_GMT_PLUS3(&quot;Etc/GMT+3&quot;),</span>
 
   /**
    * Etc gmt plus 4 time zone id.
    */
-<span class="nc" id="L2068">  ETC_GMT_PLUS4(&quot;Etc/GMT+4&quot;),</span>
+<span class="fc" id="L2081">  ETC_GMT_PLUS4(&quot;Etc/GMT+4&quot;),</span>
 
   /**
    * Etc gmt plus 5 time zone id.
    */
-<span class="nc" id="L2073">  ETC_GMT_PLUS5(&quot;Etc/GMT+5&quot;),</span>
+<span class="fc" id="L2086">  ETC_GMT_PLUS5(&quot;Etc/GMT+5&quot;),</span>
 
   /**
    * Etc gmt plus 6 time zone id.
    */
-<span class="nc" id="L2078">  ETC_GMT_PLUS6(&quot;Etc/GMT+6&quot;),</span>
+<span class="fc" id="L2091">  ETC_GMT_PLUS6(&quot;Etc/GMT+6&quot;),</span>
 
   /**
    * Etc gmt plus 7 time zone id.
    */
-<span class="nc" id="L2083">  ETC_GMT_PLUS7(&quot;Etc/GMT+7&quot;),</span>
+<span class="fc" id="L2096">  ETC_GMT_PLUS7(&quot;Etc/GMT+7&quot;),</span>
 
   /**
    * Etc gmt plus 8 time zone id.
    */
-<span class="nc" id="L2088">  ETC_GMT_PLUS8(&quot;Etc/GMT+8&quot;),</span>
+<span class="fc" id="L2101">  ETC_GMT_PLUS8(&quot;Etc/GMT+8&quot;),</span>
 
   /**
    * Etc gmt plus 9 time zone id.
    */
-<span class="nc" id="L2093">  ETC_GMT_PLUS9(&quot;Etc/GMT+9&quot;),</span>
+<span class="fc" id="L2106">  ETC_GMT_PLUS9(&quot;Etc/GMT+9&quot;),</span>
 
   /**
    * Etc gmt 0 time zone id.
    */
-<span class="nc" id="L2098">  ETC_GMT_0(&quot;Etc/GMT-0&quot;),</span>
+<span class="fc" id="L2111">  ETC_GMT_0(&quot;Etc/GMT-0&quot;),</span>
 
   /**
    * Etc gmt 1 time zone id.
    */
-<span class="nc" id="L2103">  ETC_GMT_1(&quot;Etc/GMT-1&quot;),</span>
+<span class="fc" id="L2116">  ETC_GMT_1(&quot;Etc/GMT-1&quot;),</span>
 
   /**
    * Etc gmt 10 time zone id.
    */
-<span class="nc" id="L2108">  ETC_GMT_10(&quot;Etc/GMT-10&quot;),</span>
+<span class="fc" id="L2121">  ETC_GMT_10(&quot;Etc/GMT-10&quot;),</span>
 
   /**
    * Etc gmt 11 time zone id.
    */
-<span class="nc" id="L2113">  ETC_GMT_11(&quot;Etc/GMT-11&quot;),</span>
+<span class="fc" id="L2126">  ETC_GMT_11(&quot;Etc/GMT-11&quot;),</span>
 
   /**
    * Etc gmt 12 time zone id.
    */
-<span class="nc" id="L2118">  ETC_GMT_12(&quot;Etc/GMT-12&quot;),</span>
+<span class="fc" id="L2131">  ETC_GMT_12(&quot;Etc/GMT-12&quot;),</span>
 
   /**
    * Etc gmt 13 time zone id.
    */
-<span class="nc" id="L2123">  ETC_GMT_13(&quot;Etc/GMT-13&quot;),</span>
+<span class="fc" id="L2136">  ETC_GMT_13(&quot;Etc/GMT-13&quot;),</span>
 
   /**
    * Etc gmt 14 time zone id.
    */
-<span class="nc" id="L2128">  ETC_GMT_14(&quot;Etc/GMT-14&quot;),</span>
+<span class="fc" id="L2141">  ETC_GMT_14(&quot;Etc/GMT-14&quot;),</span>
 
   /**
    * Etc gmt 2 time zone id.
    */
-<span class="nc" id="L2133">  ETC_GMT_2(&quot;Etc/GMT-2&quot;),</span>
+<span class="fc" id="L2146">  ETC_GMT_2(&quot;Etc/GMT-2&quot;),</span>
 
   /**
    * Etc gmt 3 time zone id.
    */
-<span class="nc" id="L2138">  ETC_GMT_3(&quot;Etc/GMT-3&quot;),</span>
+<span class="fc" id="L2151">  ETC_GMT_3(&quot;Etc/GMT-3&quot;),</span>
 
   /**
    * Etc gmt 4 time zone id.
    */
-<span class="nc" id="L2143">  ETC_GMT_4(&quot;Etc/GMT-4&quot;),</span>
+<span class="fc" id="L2156">  ETC_GMT_4(&quot;Etc/GMT-4&quot;),</span>
 
   /**
    * Etc gmt 5 time zone id.
    */
-<span class="nc" id="L2148">  ETC_GMT_5(&quot;Etc/GMT-5&quot;),</span>
+<span class="fc" id="L2161">  ETC_GMT_5(&quot;Etc/GMT-5&quot;),</span>
 
   /**
    * Etc gmt 6 time zone id.
    */
-<span class="nc" id="L2153">  ETC_GMT_6(&quot;Etc/GMT-6&quot;),</span>
+<span class="fc" id="L2166">  ETC_GMT_6(&quot;Etc/GMT-6&quot;),</span>
 
   /**
    * Etc gmt 7 time zone id.
    */
-<span class="nc" id="L2158">  ETC_GMT_7(&quot;Etc/GMT-7&quot;),</span>
+<span class="fc" id="L2171">  ETC_GMT_7(&quot;Etc/GMT-7&quot;),</span>
 
   /**
    * Etc gmt 8 time zone id.
    */
-<span class="nc" id="L2163">  ETC_GMT_8(&quot;Etc/GMT-8&quot;),</span>
+<span class="fc" id="L2176">  ETC_GMT_8(&quot;Etc/GMT-8&quot;),</span>
 
   /**
    * Etc gmt 9 time zone id.
    */
-<span class="nc" id="L2168">  ETC_GMT_9(&quot;Etc/GMT-9&quot;),</span>
+<span class="fc" id="L2181">  ETC_GMT_9(&quot;Etc/GMT-9&quot;),</span>
 
   /**
    * Etc gmt 0 time zone id.
    */
-<span class="nc" id="L2173">  ETC_GMT0(&quot;Etc/GMT0&quot;),</span>
+<span class="fc" id="L2186">  ETC_GMT0(&quot;Etc/GMT0&quot;),</span>
 
   /**
    * Etc greenwich time zone id.
    */
-<span class="nc" id="L2178">  ETC_GREENWICH(&quot;Etc/Greenwich&quot;),</span>
+<span class="fc" id="L2191">  ETC_GREENWICH(&quot;Etc/Greenwich&quot;),</span>
 
   /**
    * Etc uct time zone id.
    */
-<span class="nc" id="L2183">  ETC_UCT(&quot;Etc/UCT&quot;),</span>
+<span class="fc" id="L2196">  ETC_UCT(&quot;Etc/UCT&quot;),</span>
 
   /**
    * Etc utc time zone id.
    */
-<span class="nc" id="L2188">  ETC_UTC(&quot;Etc/UTC&quot;),</span>
+<span class="fc" id="L2201">  ETC_UTC(&quot;Etc/UTC&quot;),</span>
 
   /**
    * Etc universal time zone id.
    */
-<span class="nc" id="L2193">  ETC_UNIVERSAL(&quot;Etc/Universal&quot;),</span>
+<span class="fc" id="L2206">  ETC_UNIVERSAL(&quot;Etc/Universal&quot;),</span>
 
   /**
    * Etc zulu time zone id.
    */
-<span class="nc" id="L2198">  ETC_ZULU(&quot;Etc/Zulu&quot;),</span>
+<span class="fc" id="L2211">  ETC_ZULU(&quot;Etc/Zulu&quot;),</span>
 
   /**
    * Europe amsterdam time zone id.
    */
-<span class="nc" id="L2203">  EUROPE_AMSTERDAM(&quot;Europe/Amsterdam&quot;),</span>
+<span class="fc" id="L2216">  EUROPE_AMSTERDAM(&quot;Europe/Amsterdam&quot;),</span>
 
   /**
    * Europe andorra time zone id.
    */
-<span class="nc" id="L2208">  EUROPE_ANDORRA(&quot;Europe/Andorra&quot;),</span>
+<span class="fc" id="L2221">  EUROPE_ANDORRA(&quot;Europe/Andorra&quot;),</span>
 
   /**
    * Europe astrakhan time zone id.
    */
-<span class="nc" id="L2213">  EUROPE_ASTRAKHAN(&quot;Europe/Astrakhan&quot;),</span>
+<span class="fc" id="L2226">  EUROPE_ASTRAKHAN(&quot;Europe/Astrakhan&quot;),</span>
 
   /**
    * Europe athens time zone id.
    */
-<span class="nc" id="L2218">  EUROPE_ATHENS(&quot;Europe/Athens&quot;),</span>
+<span class="fc" id="L2231">  EUROPE_ATHENS(&quot;Europe/Athens&quot;),</span>
 
   /**
    * Europe belfast time zone id.
    */
-<span class="nc" id="L2223">  EUROPE_BELFAST(&quot;Europe/Belfast&quot;),</span>
+<span class="fc" id="L2236">  EUROPE_BELFAST(&quot;Europe/Belfast&quot;),</span>
 
   /**
    * Europe belgrade time zone id.
    */
-<span class="nc" id="L2228">  EUROPE_BELGRADE(&quot;Europe/Belgrade&quot;),</span>
+<span class="fc" id="L2241">  EUROPE_BELGRADE(&quot;Europe/Belgrade&quot;),</span>
 
   /**
    * Europe berlin time zone id.
    */
-<span class="nc" id="L2233">  EUROPE_BERLIN(&quot;Europe/Berlin&quot;),</span>
+<span class="fc" id="L2246">  EUROPE_BERLIN(&quot;Europe/Berlin&quot;),</span>
 
   /**
    * Europe bratislava time zone id.
    */
-<span class="nc" id="L2238">  EUROPE_BRATISLAVA(&quot;Europe/Bratislava&quot;),</span>
+<span class="fc" id="L2251">  EUROPE_BRATISLAVA(&quot;Europe/Bratislava&quot;),</span>
 
   /**
    * Europe brussels time zone id.
    */
-<span class="nc" id="L2243">  EUROPE_BRUSSELS(&quot;Europe/Brussels&quot;),</span>
+<span class="fc" id="L2256">  EUROPE_BRUSSELS(&quot;Europe/Brussels&quot;),</span>
 
   /**
    * Europe bucharest time zone id.
    */
-<span class="nc" id="L2248">  EUROPE_BUCHAREST(&quot;Europe/Bucharest&quot;),</span>
+<span class="fc" id="L2261">  EUROPE_BUCHAREST(&quot;Europe/Bucharest&quot;),</span>
 
   /**
    * Europe budapest time zone id.
    */
-<span class="nc" id="L2253">  EUROPE_BUDAPEST(&quot;Europe/Budapest&quot;),</span>
+<span class="fc" id="L2266">  EUROPE_BUDAPEST(&quot;Europe/Budapest&quot;),</span>
 
   /**
    * Europe busingen time zone id.
    */
-<span class="nc" id="L2258">  EUROPE_BUSINGEN(&quot;Europe/Busingen&quot;),</span>
+<span class="fc" id="L2271">  EUROPE_BUSINGEN(&quot;Europe/Busingen&quot;),</span>
 
   /**
    * Europe chisinau time zone id.
    */
-<span class="nc" id="L2263">  EUROPE_CHISINAU(&quot;Europe/Chisinau&quot;),</span>
+<span class="fc" id="L2276">  EUROPE_CHISINAU(&quot;Europe/Chisinau&quot;),</span>
 
   /**
    * Europe copenhagen time zone id.
    */
-<span class="nc" id="L2268">  EUROPE_COPENHAGEN(&quot;Europe/Copenhagen&quot;),</span>
+<span class="fc" id="L2281">  EUROPE_COPENHAGEN(&quot;Europe/Copenhagen&quot;),</span>
 
   /**
    * Europe dublin time zone id.
    */
-<span class="nc" id="L2273">  EUROPE_DUBLIN(&quot;Europe/Dublin&quot;),</span>
+<span class="fc" id="L2286">  EUROPE_DUBLIN(&quot;Europe/Dublin&quot;),</span>
 
   /**
    * Europe gibraltar time zone id.
    */
-<span class="nc" id="L2278">  EUROPE_GIBRALTAR(&quot;Europe/Gibraltar&quot;),</span>
+<span class="fc" id="L2291">  EUROPE_GIBRALTAR(&quot;Europe/Gibraltar&quot;),</span>
 
   /**
    * Europe guernsey time zone id.
    */
-<span class="nc" id="L2283">  EUROPE_GUERNSEY(&quot;Europe/Guernsey&quot;),</span>
+<span class="fc" id="L2296">  EUROPE_GUERNSEY(&quot;Europe/Guernsey&quot;),</span>
 
   /**
    * Europe helsinki time zone id.
    */
-<span class="nc" id="L2288">  EUROPE_HELSINKI(&quot;Europe/Helsinki&quot;),</span>
+<span class="fc" id="L2301">  EUROPE_HELSINKI(&quot;Europe/Helsinki&quot;),</span>
 
   /**
    * Europe isle of man time zone id.
    */
-<span class="nc" id="L2293">  EUROPE_ISLE_OF_MAN(&quot;Europe/Isle_of_Man&quot;),</span>
+<span class="fc" id="L2306">  EUROPE_ISLE_OF_MAN(&quot;Europe/Isle_of_Man&quot;),</span>
 
   /**
    * Europe istanbul time zone id.
    */
-<span class="nc" id="L2298">  EUROPE_ISTANBUL(&quot;Europe/Istanbul&quot;),</span>
+<span class="fc" id="L2311">  EUROPE_ISTANBUL(&quot;Europe/Istanbul&quot;),</span>
 
   /**
    * Europe jersey time zone id.
    */
-<span class="nc" id="L2303">  EUROPE_JERSEY(&quot;Europe/Jersey&quot;),</span>
+<span class="fc" id="L2316">  EUROPE_JERSEY(&quot;Europe/Jersey&quot;),</span>
 
   /**
    * Europe kaliningrad time zone id.
    */
-<span class="nc" id="L2308">  EUROPE_KALININGRAD(&quot;Europe/Kaliningrad&quot;),</span>
+<span class="fc" id="L2321">  EUROPE_KALININGRAD(&quot;Europe/Kaliningrad&quot;),</span>
 
   /**
    * Europe kiev time zone id.
    */
-<span class="nc" id="L2313">  EUROPE_KIEV(&quot;Europe/Kiev&quot;),</span>
+<span class="fc" id="L2326">  EUROPE_KIEV(&quot;Europe/Kiev&quot;),</span>
 
   /**
    * Europe kirov time zone id.
    */
-<span class="nc" id="L2318">  EUROPE_KIROV(&quot;Europe/Kirov&quot;),</span>
+<span class="fc" id="L2331">  EUROPE_KIROV(&quot;Europe/Kirov&quot;),</span>
 
   /**
    * Europe lisbon time zone id.
    */
-<span class="nc" id="L2323">  EUROPE_LISBON(&quot;Europe/Lisbon&quot;),</span>
+<span class="fc" id="L2336">  EUROPE_LISBON(&quot;Europe/Lisbon&quot;),</span>
 
   /**
    * Europe ljubljana time zone id.
    */
-<span class="nc" id="L2328">  EUROPE_LJUBLJANA(&quot;Europe/Ljubljana&quot;),</span>
+<span class="fc" id="L2341">  EUROPE_LJUBLJANA(&quot;Europe/Ljubljana&quot;),</span>
 
   /**
    * Europe london time zone id.
    */
-<span class="nc" id="L2333">  EUROPE_LONDON(&quot;Europe/London&quot;),</span>
+<span class="fc" id="L2346">  EUROPE_LONDON(&quot;Europe/London&quot;),</span>
 
   /**
    * Europe luxembourg time zone id.
    */
-<span class="nc" id="L2338">  EUROPE_LUXEMBOURG(&quot;Europe/Luxembourg&quot;),</span>
+<span class="fc" id="L2351">  EUROPE_LUXEMBOURG(&quot;Europe/Luxembourg&quot;),</span>
 
   /**
    * Europe madrid time zone id.
    */
-<span class="nc" id="L2343">  EUROPE_MADRID(&quot;Europe/Madrid&quot;),</span>
+<span class="fc" id="L2356">  EUROPE_MADRID(&quot;Europe/Madrid&quot;),</span>
 
   /**
    * Europe malta time zone id.
    */
-<span class="nc" id="L2348">  EUROPE_MALTA(&quot;Europe/Malta&quot;),</span>
+<span class="fc" id="L2361">  EUROPE_MALTA(&quot;Europe/Malta&quot;),</span>
 
   /**
    * Europe mariehamn time zone id.
    */
-<span class="nc" id="L2353">  EUROPE_MARIEHAMN(&quot;Europe/Mariehamn&quot;),</span>
+<span class="fc" id="L2366">  EUROPE_MARIEHAMN(&quot;Europe/Mariehamn&quot;),</span>
 
   /**
    * Europe minsk time zone id.
    */
-<span class="nc" id="L2358">  EUROPE_MINSK(&quot;Europe/Minsk&quot;),</span>
+<span class="fc" id="L2371">  EUROPE_MINSK(&quot;Europe/Minsk&quot;),</span>
 
   /**
    * Europe monaco time zone id.
    */
-<span class="nc" id="L2363">  EUROPE_MONACO(&quot;Europe/Monaco&quot;),</span>
+<span class="fc" id="L2376">  EUROPE_MONACO(&quot;Europe/Monaco&quot;),</span>
 
   /**
    * Europe moscow time zone id.
    */
-<span class="nc" id="L2368">  EUROPE_MOSCOW(&quot;Europe/Moscow&quot;),</span>
+<span class="fc" id="L2381">  EUROPE_MOSCOW(&quot;Europe/Moscow&quot;),</span>
 
   /**
    * Europe nicosia time zone id.
    */
-<span class="nc" id="L2373">  EUROPE_NICOSIA(&quot;Europe/Nicosia&quot;),</span>
+<span class="fc" id="L2386">  EUROPE_NICOSIA(&quot;Europe/Nicosia&quot;),</span>
 
   /**
    * Europe oslo time zone id.
    */
-<span class="nc" id="L2378">  EUROPE_OSLO(&quot;Europe/Oslo&quot;),</span>
+<span class="fc" id="L2391">  EUROPE_OSLO(&quot;Europe/Oslo&quot;),</span>
 
   /**
    * Europe paris time zone id.
    */
-<span class="nc" id="L2383">  EUROPE_PARIS(&quot;Europe/Paris&quot;),</span>
+<span class="fc" id="L2396">  EUROPE_PARIS(&quot;Europe/Paris&quot;),</span>
 
   /**
    * Europe podgorica time zone id.
    */
-<span class="nc" id="L2388">  EUROPE_PODGORICA(&quot;Europe/Podgorica&quot;),</span>
+<span class="fc" id="L2401">  EUROPE_PODGORICA(&quot;Europe/Podgorica&quot;),</span>
 
   /**
    * Europe prague time zone id.
    */
-<span class="nc" id="L2393">  EUROPE_PRAGUE(&quot;Europe/Prague&quot;),</span>
+<span class="fc" id="L2406">  EUROPE_PRAGUE(&quot;Europe/Prague&quot;),</span>
 
   /**
    * Europe riga time zone id.
    */
-<span class="nc" id="L2398">  EUROPE_RIGA(&quot;Europe/Riga&quot;),</span>
+<span class="fc" id="L2411">  EUROPE_RIGA(&quot;Europe/Riga&quot;),</span>
 
   /**
    * Europe rome time zone id.
    */
-<span class="nc" id="L2403">  EUROPE_ROME(&quot;Europe/Rome&quot;),</span>
+<span class="fc" id="L2416">  EUROPE_ROME(&quot;Europe/Rome&quot;),</span>
 
   /**
    * Europe samara time zone id.
    */
-<span class="nc" id="L2408">  EUROPE_SAMARA(&quot;Europe/Samara&quot;),</span>
+<span class="fc" id="L2421">  EUROPE_SAMARA(&quot;Europe/Samara&quot;),</span>
 
   /**
    * Europe san marino time zone id.
    */
-<span class="nc" id="L2413">  EUROPE_SAN_MARINO(&quot;Europe/San_Marino&quot;),</span>
+<span class="fc" id="L2426">  EUROPE_SAN_MARINO(&quot;Europe/San_Marino&quot;),</span>
 
   /**
    * Europe sarajevo time zone id.
    */
-<span class="nc" id="L2418">  EUROPE_SARAJEVO(&quot;Europe/Sarajevo&quot;),</span>
+<span class="fc" id="L2431">  EUROPE_SARAJEVO(&quot;Europe/Sarajevo&quot;),</span>
 
   /**
    * Europe saratov time zone id.
    */
-<span class="nc" id="L2423">  EUROPE_SARATOV(&quot;Europe/Saratov&quot;),</span>
+<span class="fc" id="L2436">  EUROPE_SARATOV(&quot;Europe/Saratov&quot;),</span>
 
   /**
    * Europe simferopol time zone id.
    */
-<span class="nc" id="L2428">  EUROPE_SIMFEROPOL(&quot;Europe/Simferopol&quot;),</span>
+<span class="fc" id="L2441">  EUROPE_SIMFEROPOL(&quot;Europe/Simferopol&quot;),</span>
 
   /**
    * Europe skopje time zone id.
    */
-<span class="nc" id="L2433">  EUROPE_SKOPJE(&quot;Europe/Skopje&quot;),</span>
+<span class="fc" id="L2446">  EUROPE_SKOPJE(&quot;Europe/Skopje&quot;),</span>
 
   /**
    * Europe sofia time zone id.
    */
-<span class="nc" id="L2438">  EUROPE_SOFIA(&quot;Europe/Sofia&quot;),</span>
+<span class="fc" id="L2451">  EUROPE_SOFIA(&quot;Europe/Sofia&quot;),</span>
 
   /**
    * Europe stockholm time zone id.
    */
-<span class="nc" id="L2443">  EUROPE_STOCKHOLM(&quot;Europe/Stockholm&quot;),</span>
+<span class="fc" id="L2456">  EUROPE_STOCKHOLM(&quot;Europe/Stockholm&quot;),</span>
 
   /**
    * Europe tallinn time zone id.
    */
-<span class="nc" id="L2448">  EUROPE_TALLINN(&quot;Europe/Tallinn&quot;),</span>
+<span class="fc" id="L2461">  EUROPE_TALLINN(&quot;Europe/Tallinn&quot;),</span>
 
   /**
    * Europe tirane time zone id.
    */
-<span class="nc" id="L2453">  EUROPE_TIRANE(&quot;Europe/Tirane&quot;),</span>
+<span class="fc" id="L2466">  EUROPE_TIRANE(&quot;Europe/Tirane&quot;),</span>
 
   /**
    * Europe tiraspol time zone id.
    */
-<span class="nc" id="L2458">  EUROPE_TIRASPOL(&quot;Europe/Tiraspol&quot;),</span>
+<span class="fc" id="L2471">  EUROPE_TIRASPOL(&quot;Europe/Tiraspol&quot;),</span>
 
   /**
    * Europe ulyanovsk time zone id.
    */
-<span class="nc" id="L2463">  EUROPE_ULYANOVSK(&quot;Europe/Ulyanovsk&quot;),</span>
+<span class="fc" id="L2476">  EUROPE_ULYANOVSK(&quot;Europe/Ulyanovsk&quot;),</span>
 
   /**
    * Europe uzhgorod time zone id.
    */
-<span class="nc" id="L2468">  EUROPE_UZHGOROD(&quot;Europe/Uzhgorod&quot;),</span>
+<span class="fc" id="L2481">  EUROPE_UZHGOROD(&quot;Europe/Uzhgorod&quot;),</span>
 
   /**
    * Europe vaduz time zone id.
    */
-<span class="nc" id="L2473">  EUROPE_VADUZ(&quot;Europe/Vaduz&quot;),</span>
+<span class="fc" id="L2486">  EUROPE_VADUZ(&quot;Europe/Vaduz&quot;),</span>
 
   /**
    * Europe vatican time zone id.
    */
-<span class="nc" id="L2478">  EUROPE_VATICAN(&quot;Europe/Vatican&quot;),</span>
+<span class="fc" id="L2491">  EUROPE_VATICAN(&quot;Europe/Vatican&quot;),</span>
 
   /**
    * Europe vienna time zone id.
    */
-<span class="nc" id="L2483">  EUROPE_VIENNA(&quot;Europe/Vienna&quot;),</span>
+<span class="fc" id="L2496">  EUROPE_VIENNA(&quot;Europe/Vienna&quot;),</span>
 
   /**
    * Europe vilnius time zone id.
    */
-<span class="nc" id="L2488">  EUROPE_VILNIUS(&quot;Europe/Vilnius&quot;),</span>
+<span class="fc" id="L2501">  EUROPE_VILNIUS(&quot;Europe/Vilnius&quot;),</span>
 
   /**
    * Europe volgograd time zone id.
    */
-<span class="nc" id="L2493">  EUROPE_VOLGOGRAD(&quot;Europe/Volgograd&quot;),</span>
+<span class="fc" id="L2506">  EUROPE_VOLGOGRAD(&quot;Europe/Volgograd&quot;),</span>
 
   /**
    * Europe warsaw time zone id.
    */
-<span class="nc" id="L2498">  EUROPE_WARSAW(&quot;Europe/Warsaw&quot;),</span>
+<span class="fc" id="L2511">  EUROPE_WARSAW(&quot;Europe/Warsaw&quot;),</span>
 
   /**
    * Europe zagreb time zone id.
    */
-<span class="nc" id="L2503">  EUROPE_ZAGREB(&quot;Europe/Zagreb&quot;),</span>
+<span class="fc" id="L2516">  EUROPE_ZAGREB(&quot;Europe/Zagreb&quot;),</span>
 
   /**
    * Europe zaporozhye time zone id.
    */
-<span class="nc" id="L2508">  EUROPE_ZAPOROZHYE(&quot;Europe/Zaporozhye&quot;),</span>
+<span class="fc" id="L2521">  EUROPE_ZAPOROZHYE(&quot;Europe/Zaporozhye&quot;),</span>
 
   /**
    * Europe zurich time zone id.
    */
-<span class="nc" id="L2513">  EUROPE_ZURICH(&quot;Europe/Zurich&quot;),</span>
+<span class="fc" id="L2526">  EUROPE_ZURICH(&quot;Europe/Zurich&quot;),</span>
 
   /**
    * Gb time zone id.
    */
-<span class="nc" id="L2518">  GB(&quot;GB&quot;),</span>
+<span class="fc" id="L2531">  GB(&quot;GB&quot;),</span>
 
   /**
    * Gb eire time zone id.
    */
-<span class="nc" id="L2523">  GB_EIRE(&quot;GB-Eire&quot;),</span>
+<span class="fc" id="L2536">  GB_EIRE(&quot;GB-Eire&quot;),</span>
 
   /**
    * Gmt time zone id.
    */
-<span class="nc" id="L2528">  GMT(&quot;GMT&quot;),</span>
+<span class="fc" id="L2541">  GMT(&quot;GMT&quot;),</span>
 
   /**
    * Gmt 0 time zone id.
    */
-<span class="nc" id="L2533">  GMT0(&quot;GMT0&quot;),</span>
+<span class="fc" id="L2546">  GMT0(&quot;GMT0&quot;),</span>
 
   /**
    * Greenwich time zone id.
    */
-<span class="nc" id="L2538">  GREENWICH(&quot;Greenwich&quot;),</span>
+<span class="fc" id="L2551">  GREENWICH(&quot;Greenwich&quot;),</span>
 
   /**
    * Hst time zone id.
    */
-<span class="nc" id="L2543">  HST(&quot;HST&quot;),</span>
+<span class="fc" id="L2556">  HST(&quot;HST&quot;),</span>
 
   /**
    * Hongkong time zone id.
    */
-<span class="nc" id="L2548">  HONGKONG(&quot;Hongkong&quot;),</span>
+<span class="fc" id="L2561">  HONGKONG(&quot;Hongkong&quot;),</span>
 
   /**
    * Iet time zone id.
    */
-<span class="nc" id="L2553">  IET(&quot;IET&quot;),</span>
+<span class="fc" id="L2566">  IET(&quot;IET&quot;),</span>
 
   /**
    * Ist time zone id.
    */
-<span class="nc" id="L2558">  IST(&quot;IST&quot;),</span>
+<span class="fc" id="L2571">  IST(&quot;IST&quot;),</span>
 
   /**
    * Iceland time zone id.
    */
-<span class="nc" id="L2563">  ICELAND(&quot;Iceland&quot;),</span>
+<span class="fc" id="L2576">  ICELAND(&quot;Iceland&quot;),</span>
 
   /**
    * Indian antananarivo time zone id.
    */
-<span class="nc" id="L2568">  INDIAN_ANTANANARIVO(&quot;Indian/Antananarivo&quot;),</span>
+<span class="fc" id="L2581">  INDIAN_ANTANANARIVO(&quot;Indian/Antananarivo&quot;),</span>
 
   /**
    * Indian chagos time zone id.
    */
-<span class="nc" id="L2573">  INDIAN_CHAGOS(&quot;Indian/Chagos&quot;),</span>
+<span class="fc" id="L2586">  INDIAN_CHAGOS(&quot;Indian/Chagos&quot;),</span>
 
   /**
    * Indian christmas time zone id.
    */
-<span class="nc" id="L2578">  INDIAN_CHRISTMAS(&quot;Indian/Christmas&quot;),</span>
+<span class="fc" id="L2591">  INDIAN_CHRISTMAS(&quot;Indian/Christmas&quot;),</span>
 
   /**
    * Indian cocos time zone id.
    */
-<span class="nc" id="L2583">  INDIAN_COCOS(&quot;Indian/Cocos&quot;),</span>
+<span class="fc" id="L2596">  INDIAN_COCOS(&quot;Indian/Cocos&quot;),</span>
 
   /**
    * Indian comoro time zone id.
    */
-<span class="nc" id="L2588">  INDIAN_COMORO(&quot;Indian/Comoro&quot;),</span>
+<span class="fc" id="L2601">  INDIAN_COMORO(&quot;Indian/Comoro&quot;),</span>
 
   /**
    * Indian kerguelen time zone id.
    */
-<span class="nc" id="L2593">  INDIAN_KERGUELEN(&quot;Indian/Kerguelen&quot;),</span>
+<span class="fc" id="L2606">  INDIAN_KERGUELEN(&quot;Indian/Kerguelen&quot;),</span>
 
   /**
    * Indian mahe time zone id.
    */
-<span class="nc" id="L2598">  INDIAN_MAHE(&quot;Indian/Mahe&quot;),</span>
+<span class="fc" id="L2611">  INDIAN_MAHE(&quot;Indian/Mahe&quot;),</span>
 
   /**
    * Indian maldives time zone id.
    */
-<span class="nc" id="L2603">  INDIAN_MALDIVES(&quot;Indian/Maldives&quot;),</span>
+<span class="fc" id="L2616">  INDIAN_MALDIVES(&quot;Indian/Maldives&quot;),</span>
 
   /**
    * Indian mauritius time zone id.
    */
-<span class="nc" id="L2608">  INDIAN_MAURITIUS(&quot;Indian/Mauritius&quot;),</span>
+<span class="fc" id="L2621">  INDIAN_MAURITIUS(&quot;Indian/Mauritius&quot;),</span>
 
   /**
    * Indian mayotte time zone id.
    */
-<span class="nc" id="L2613">  INDIAN_MAYOTTE(&quot;Indian/Mayotte&quot;),</span>
+<span class="fc" id="L2626">  INDIAN_MAYOTTE(&quot;Indian/Mayotte&quot;),</span>
 
   /**
    * Indian reunion time zone id.
    */
-<span class="nc" id="L2618">  INDIAN_REUNION(&quot;Indian/Reunion&quot;),</span>
+<span class="fc" id="L2631">  INDIAN_REUNION(&quot;Indian/Reunion&quot;),</span>
 
   /**
    * Iran time zone id.
    */
-<span class="nc" id="L2623">  IRAN(&quot;Iran&quot;),</span>
+<span class="fc" id="L2636">  IRAN(&quot;Iran&quot;),</span>
 
   /**
    * Israel time zone id.
    */
-<span class="nc" id="L2628">  ISRAEL(&quot;Israel&quot;),</span>
+<span class="fc" id="L2641">  ISRAEL(&quot;Israel&quot;),</span>
 
   /**
    * Jst time zone id.
    */
-<span class="nc" id="L2633">  JST(&quot;JST&quot;),</span>
+<span class="fc" id="L2646">  JST(&quot;JST&quot;),</span>
 
   /**
    * Jamaica time zone id.
    */
-<span class="nc" id="L2638">  JAMAICA(&quot;Jamaica&quot;),</span>
+<span class="fc" id="L2651">  JAMAICA(&quot;Jamaica&quot;),</span>
 
   /**
    * Japan time zone id.
    */
-<span class="nc" id="L2643">  JAPAN(&quot;Japan&quot;),</span>
+<span class="fc" id="L2656">  JAPAN(&quot;Japan&quot;),</span>
 
   /**
    * Kwajalein time zone id.
    */
-<span class="nc" id="L2648">  KWAJALEIN(&quot;Kwajalein&quot;),</span>
+<span class="fc" id="L2661">  KWAJALEIN(&quot;Kwajalein&quot;),</span>
 
   /**
    * Libya time zone id.
    */
-<span class="nc" id="L2653">  LIBYA(&quot;Libya&quot;),</span>
+<span class="fc" id="L2666">  LIBYA(&quot;Libya&quot;),</span>
 
   /**
    * Met time zone id.
    */
-<span class="nc" id="L2658">  MET(&quot;MET&quot;),</span>
+<span class="fc" id="L2671">  MET(&quot;MET&quot;),</span>
 
   /**
    * Mit time zone id.
    */
-<span class="nc" id="L2663">  MIT(&quot;MIT&quot;),</span>
+<span class="fc" id="L2676">  MIT(&quot;MIT&quot;),</span>
 
   /**
    * Mst time zone id.
    */
-<span class="nc" id="L2668">  MST(&quot;MST&quot;),</span>
+<span class="fc" id="L2681">  MST(&quot;MST&quot;),</span>
 
   /**
    * Mst 7 mdt time zone id.
    */
-<span class="nc" id="L2673">  MST7MDT(&quot;MST7MDT&quot;),</span>
+<span class="fc" id="L2686">  MST7MDT(&quot;MST7MDT&quot;),</span>
 
   /**
    * Mexico bajanorte time zone id.
    */
-<span class="nc" id="L2678">  MEXICO_BAJANORTE(&quot;Mexico/BajaNorte&quot;),</span>
+<span class="fc" id="L2691">  MEXICO_BAJANORTE(&quot;Mexico/BajaNorte&quot;),</span>
 
   /**
    * Mexico bajasur time zone id.
    */
-<span class="nc" id="L2683">  MEXICO_BAJASUR(&quot;Mexico/BajaSur&quot;),</span>
+<span class="fc" id="L2696">  MEXICO_BAJASUR(&quot;Mexico/BajaSur&quot;),</span>
 
   /**
    * Mexico general time zone id.
    */
-<span class="nc" id="L2688">  MEXICO_GENERAL(&quot;Mexico/General&quot;),</span>
+<span class="fc" id="L2701">  MEXICO_GENERAL(&quot;Mexico/General&quot;),</span>
 
   /**
    * Net time zone id.
    */
-<span class="nc" id="L2693">  NET(&quot;NET&quot;),</span>
+<span class="fc" id="L2706">  NET(&quot;NET&quot;),</span>
 
   /**
    * Nst time zone id.
    */
-<span class="nc" id="L2698">  NST(&quot;NST&quot;),</span>
+<span class="fc" id="L2711">  NST(&quot;NST&quot;),</span>
 
   /**
    * Nz time zone id.
    */
-<span class="nc" id="L2703">  NZ(&quot;NZ&quot;),</span>
+<span class="fc" id="L2716">  NZ(&quot;NZ&quot;),</span>
 
   /**
    * Nz chat time zone id.
    */
-<span class="nc" id="L2708">  NZ_CHAT(&quot;NZ-CHAT&quot;),</span>
+<span class="fc" id="L2721">  NZ_CHAT(&quot;NZ-CHAT&quot;),</span>
 
   /**
    * Navajo time zone id.
    */
-<span class="nc" id="L2713">  NAVAJO(&quot;Navajo&quot;),</span>
+<span class="fc" id="L2726">  NAVAJO(&quot;Navajo&quot;),</span>
 
   /**
    * Plt time zone id.
    */
-<span class="nc" id="L2718">  PLT(&quot;PLT&quot;),</span>
+<span class="fc" id="L2731">  PLT(&quot;PLT&quot;),</span>
 
   /**
    * Pnt time zone id.
    */
-<span class="nc" id="L2723">  PNT(&quot;PNT&quot;),</span>
+<span class="fc" id="L2736">  PNT(&quot;PNT&quot;),</span>
 
   /**
    * Prc time zone id.
    */
-<span class="nc" id="L2728">  PRC(&quot;PRC&quot;),</span>
+<span class="fc" id="L2741">  PRC(&quot;PRC&quot;),</span>
 
   /**
    * Prt time zone id.
    */
-<span class="nc" id="L2733">  PRT(&quot;PRT&quot;),</span>
+<span class="fc" id="L2746">  PRT(&quot;PRT&quot;),</span>
 
   /**
    * Pst time zone id.
    */
-<span class="nc" id="L2738">  PST(&quot;PST&quot;),</span>
+<span class="fc" id="L2751">  PST(&quot;PST&quot;),</span>
 
   /**
    * Pst 8 pdt time zone id.
    */
-<span class="nc" id="L2743">  PST8PDT(&quot;PST8PDT&quot;),</span>
+<span class="fc" id="L2756">  PST8PDT(&quot;PST8PDT&quot;),</span>
 
   /**
    * Pacific apia time zone id.
    */
-<span class="nc" id="L2748">  PACIFIC_APIA(&quot;Pacific/Apia&quot;),</span>
+<span class="fc" id="L2761">  PACIFIC_APIA(&quot;Pacific/Apia&quot;),</span>
 
   /**
    * Pacific auckland time zone id.
    */
-<span class="nc" id="L2753">  PACIFIC_AUCKLAND(&quot;Pacific/Auckland&quot;),</span>
+<span class="fc" id="L2766">  PACIFIC_AUCKLAND(&quot;Pacific/Auckland&quot;),</span>
 
   /**
    * Pacific bougainville time zone id.
    */
-<span class="nc" id="L2758">  PACIFIC_BOUGAINVILLE(&quot;Pacific/Bougainville&quot;),</span>
+<span class="fc" id="L2771">  PACIFIC_BOUGAINVILLE(&quot;Pacific/Bougainville&quot;),</span>
 
   /**
    * Pacific chatham time zone id.
    */
-<span class="nc" id="L2763">  PACIFIC_CHATHAM(&quot;Pacific/Chatham&quot;),</span>
+<span class="fc" id="L2776">  PACIFIC_CHATHAM(&quot;Pacific/Chatham&quot;),</span>
 
   /**
    * Pacific chuuk time zone id.
    */
-<span class="nc" id="L2768">  PACIFIC_CHUUK(&quot;Pacific/Chuuk&quot;),</span>
+<span class="fc" id="L2781">  PACIFIC_CHUUK(&quot;Pacific/Chuuk&quot;),</span>
 
   /**
    * Pacific easter time zone id.
    */
-<span class="nc" id="L2773">  PACIFIC_EASTER(&quot;Pacific/Easter&quot;),</span>
+<span class="fc" id="L2786">  PACIFIC_EASTER(&quot;Pacific/Easter&quot;),</span>
 
   /**
    * Pacific efate time zone id.
    */
-<span class="nc" id="L2778">  PACIFIC_EFATE(&quot;Pacific/Efate&quot;),</span>
+<span class="fc" id="L2791">  PACIFIC_EFATE(&quot;Pacific/Efate&quot;),</span>
 
   /**
    * Pacific enderbury time zone id.
    */
-<span class="nc" id="L2783">  PACIFIC_ENDERBURY(&quot;Pacific/Enderbury&quot;),</span>
+<span class="fc" id="L2796">  PACIFIC_ENDERBURY(&quot;Pacific/Enderbury&quot;),</span>
 
   /**
    * Pacific fakaofo time zone id.
    */
-<span class="nc" id="L2788">  PACIFIC_FAKAOFO(&quot;Pacific/Fakaofo&quot;),</span>
+<span class="fc" id="L2801">  PACIFIC_FAKAOFO(&quot;Pacific/Fakaofo&quot;),</span>
 
   /**
    * Pacific fiji time zone id.
    */
-<span class="nc" id="L2793">  PACIFIC_FIJI(&quot;Pacific/Fiji&quot;),</span>
+<span class="fc" id="L2806">  PACIFIC_FIJI(&quot;Pacific/Fiji&quot;),</span>
 
   /**
    * Pacific funafuti time zone id.
    */
-<span class="nc" id="L2798">  PACIFIC_FUNAFUTI(&quot;Pacific/Funafuti&quot;),</span>
+<span class="fc" id="L2811">  PACIFIC_FUNAFUTI(&quot;Pacific/Funafuti&quot;),</span>
 
   /**
    * Pacific galapagos time zone id.
    */
-<span class="nc" id="L2803">  PACIFIC_GALAPAGOS(&quot;Pacific/Galapagos&quot;),</span>
+<span class="fc" id="L2816">  PACIFIC_GALAPAGOS(&quot;Pacific/Galapagos&quot;),</span>
 
   /**
    * Pacific gambier time zone id.
    */
-<span class="nc" id="L2808">  PACIFIC_GAMBIER(&quot;Pacific/Gambier&quot;),</span>
+<span class="fc" id="L2821">  PACIFIC_GAMBIER(&quot;Pacific/Gambier&quot;),</span>
 
   /**
    * Pacific guadalcanal time zone id.
    */
-<span class="nc" id="L2813">  PACIFIC_GUADALCANAL(&quot;Pacific/Guadalcanal&quot;),</span>
+<span class="fc" id="L2826">  PACIFIC_GUADALCANAL(&quot;Pacific/Guadalcanal&quot;),</span>
 
   /**
    * Pacific guam time zone id.
    */
-<span class="nc" id="L2818">  PACIFIC_GUAM(&quot;Pacific/Guam&quot;),</span>
+<span class="fc" id="L2831">  PACIFIC_GUAM(&quot;Pacific/Guam&quot;),</span>
 
   /**
    * Pacific honolulu time zone id.
    */
-<span class="nc" id="L2823">  PACIFIC_HONOLULU(&quot;Pacific/Honolulu&quot;),</span>
+<span class="fc" id="L2836">  PACIFIC_HONOLULU(&quot;Pacific/Honolulu&quot;),</span>
 
   /**
    * Pacific johnston time zone id.
    */
-<span class="nc" id="L2828">  PACIFIC_JOHNSTON(&quot;Pacific/Johnston&quot;),</span>
+<span class="fc" id="L2841">  PACIFIC_JOHNSTON(&quot;Pacific/Johnston&quot;),</span>
 
   /**
    * Pacific kiritimati time zone id.
    */
-<span class="nc" id="L2833">  PACIFIC_KIRITIMATI(&quot;Pacific/Kiritimati&quot;),</span>
+<span class="fc" id="L2846">  PACIFIC_KIRITIMATI(&quot;Pacific/Kiritimati&quot;),</span>
 
   /**
    * Pacific kosrae time zone id.
    */
-<span class="nc" id="L2838">  PACIFIC_KOSRAE(&quot;Pacific/Kosrae&quot;),</span>
+<span class="fc" id="L2851">  PACIFIC_KOSRAE(&quot;Pacific/Kosrae&quot;),</span>
 
   /**
    * Pacific kwajalein time zone id.
    */
-<span class="nc" id="L2843">  PACIFIC_KWAJALEIN(&quot;Pacific/Kwajalein&quot;),</span>
+<span class="fc" id="L2856">  PACIFIC_KWAJALEIN(&quot;Pacific/Kwajalein&quot;),</span>
 
   /**
    * Pacific majuro time zone id.
    */
-<span class="nc" id="L2848">  PACIFIC_MAJURO(&quot;Pacific/Majuro&quot;),</span>
+<span class="fc" id="L2861">  PACIFIC_MAJURO(&quot;Pacific/Majuro&quot;),</span>
 
   /**
    * Pacific marquesas time zone id.
    */
-<span class="nc" id="L2853">  PACIFIC_MARQUESAS(&quot;Pacific/Marquesas&quot;),</span>
+<span class="fc" id="L2866">  PACIFIC_MARQUESAS(&quot;Pacific/Marquesas&quot;),</span>
 
   /**
    * Pacific midway time zone id.
    */
-<span class="nc" id="L2858">  PACIFIC_MIDWAY(&quot;Pacific/Midway&quot;),</span>
+<span class="fc" id="L2871">  PACIFIC_MIDWAY(&quot;Pacific/Midway&quot;),</span>
 
   /**
    * Pacific nauru time zone id.
    */
-<span class="nc" id="L2863">  PACIFIC_NAURU(&quot;Pacific/Nauru&quot;),</span>
+<span class="fc" id="L2876">  PACIFIC_NAURU(&quot;Pacific/Nauru&quot;),</span>
 
   /**
    * Pacific niue time zone id.
    */
-<span class="nc" id="L2868">  PACIFIC_NIUE(&quot;Pacific/Niue&quot;),</span>
+<span class="fc" id="L2881">  PACIFIC_NIUE(&quot;Pacific/Niue&quot;),</span>
 
   /**
    * Pacific norfolk time zone id.
    */
-<span class="nc" id="L2873">  PACIFIC_NORFOLK(&quot;Pacific/Norfolk&quot;),</span>
+<span class="fc" id="L2886">  PACIFIC_NORFOLK(&quot;Pacific/Norfolk&quot;),</span>
 
   /**
    * Pacific noumea time zone id.
    */
-<span class="nc" id="L2878">  PACIFIC_NOUMEA(&quot;Pacific/Noumea&quot;),</span>
+<span class="fc" id="L2891">  PACIFIC_NOUMEA(&quot;Pacific/Noumea&quot;),</span>
 
   /**
    * Pacific pago pago time zone id.
    */
-<span class="nc" id="L2883">  PACIFIC_PAGO_PAGO(&quot;Pacific/Pago_Pago&quot;),</span>
+<span class="fc" id="L2896">  PACIFIC_PAGO_PAGO(&quot;Pacific/Pago_Pago&quot;),</span>
 
   /**
    * Pacific palau time zone id.
    */
-<span class="nc" id="L2888">  PACIFIC_PALAU(&quot;Pacific/Palau&quot;),</span>
+<span class="fc" id="L2901">  PACIFIC_PALAU(&quot;Pacific/Palau&quot;),</span>
 
   /**
    * Pacific pitcairn time zone id.
    */
-<span class="nc" id="L2893">  PACIFIC_PITCAIRN(&quot;Pacific/Pitcairn&quot;),</span>
+<span class="fc" id="L2906">  PACIFIC_PITCAIRN(&quot;Pacific/Pitcairn&quot;),</span>
 
   /**
    * Pacific pohnpei time zone id.
    */
-<span class="nc" id="L2898">  PACIFIC_POHNPEI(&quot;Pacific/Pohnpei&quot;),</span>
+<span class="fc" id="L2911">  PACIFIC_POHNPEI(&quot;Pacific/Pohnpei&quot;),</span>
 
   /**
    * Pacific ponape time zone id.
    */
-<span class="nc" id="L2903">  PACIFIC_PONAPE(&quot;Pacific/Ponape&quot;),</span>
+<span class="fc" id="L2916">  PACIFIC_PONAPE(&quot;Pacific/Ponape&quot;),</span>
 
   /**
    * Pacific port moresby time zone id.
    */
-<span class="nc" id="L2908">  PACIFIC_PORT_MORESBY(&quot;Pacific/Port_Moresby&quot;),</span>
+<span class="fc" id="L2921">  PACIFIC_PORT_MORESBY(&quot;Pacific/Port_Moresby&quot;),</span>
 
   /**
    * Pacific rarotonga time zone id.
    */
-<span class="nc" id="L2913">  PACIFIC_RAROTONGA(&quot;Pacific/Rarotonga&quot;),</span>
+<span class="fc" id="L2926">  PACIFIC_RAROTONGA(&quot;Pacific/Rarotonga&quot;),</span>
 
   /**
    * Pacific saipan time zone id.
    */
-<span class="nc" id="L2918">  PACIFIC_SAIPAN(&quot;Pacific/Saipan&quot;),</span>
+<span class="fc" id="L2931">  PACIFIC_SAIPAN(&quot;Pacific/Saipan&quot;),</span>
 
   /**
    * Pacific samoa time zone id.
    */
-<span class="nc" id="L2923">  PACIFIC_SAMOA(&quot;Pacific/Samoa&quot;),</span>
+<span class="fc" id="L2936">  PACIFIC_SAMOA(&quot;Pacific/Samoa&quot;),</span>
 
   /**
    * Pacific tahiti time zone id.
    */
-<span class="nc" id="L2928">  PACIFIC_TAHITI(&quot;Pacific/Tahiti&quot;),</span>
+<span class="fc" id="L2941">  PACIFIC_TAHITI(&quot;Pacific/Tahiti&quot;),</span>
 
   /**
    * Pacific tarawa time zone id.
    */
-<span class="nc" id="L2933">  PACIFIC_TARAWA(&quot;Pacific/Tarawa&quot;),</span>
+<span class="fc" id="L2946">  PACIFIC_TARAWA(&quot;Pacific/Tarawa&quot;),</span>
 
   /**
    * Pacific tongatapu time zone id.
    */
-<span class="nc" id="L2938">  PACIFIC_TONGATAPU(&quot;Pacific/Tongatapu&quot;),</span>
+<span class="fc" id="L2951">  PACIFIC_TONGATAPU(&quot;Pacific/Tongatapu&quot;),</span>
 
   /**
    * Pacific truk time zone id.
    */
-<span class="nc" id="L2943">  PACIFIC_TRUK(&quot;Pacific/Truk&quot;),</span>
+<span class="fc" id="L2956">  PACIFIC_TRUK(&quot;Pacific/Truk&quot;),</span>
 
   /**
    * Pacific wake time zone id.
    */
-<span class="nc" id="L2948">  PACIFIC_WAKE(&quot;Pacific/Wake&quot;),</span>
+<span class="fc" id="L2961">  PACIFIC_WAKE(&quot;Pacific/Wake&quot;),</span>
 
   /**
    * Pacific wallis time zone id.
    */
-<span class="nc" id="L2953">  PACIFIC_WALLIS(&quot;Pacific/Wallis&quot;),</span>
+<span class="fc" id="L2966">  PACIFIC_WALLIS(&quot;Pacific/Wallis&quot;),</span>
 
   /**
    * Pacific yap time zone id.
    */
-<span class="nc" id="L2958">  PACIFIC_YAP(&quot;Pacific/Yap&quot;),</span>
+<span class="fc" id="L2971">  PACIFIC_YAP(&quot;Pacific/Yap&quot;),</span>
 
   /**
    * Poland time zone id.
    */
-<span class="nc" id="L2963">  POLAND(&quot;Poland&quot;),</span>
+<span class="fc" id="L2976">  POLAND(&quot;Poland&quot;),</span>
 
   /**
    * Portugal time zone id.
    */
-<span class="nc" id="L2968">  PORTUGAL(&quot;Portugal&quot;),</span>
+<span class="fc" id="L2981">  PORTUGAL(&quot;Portugal&quot;),</span>
 
   /**
    * Rok time zone id.
    */
-<span class="nc" id="L2973">  ROK(&quot;ROK&quot;),</span>
+<span class="fc" id="L2986">  ROK(&quot;ROK&quot;),</span>
 
   /**
    * Sst time zone id.
    */
-<span class="nc" id="L2978">  SST(&quot;SST&quot;),</span>
+<span class="fc" id="L2991">  SST(&quot;SST&quot;),</span>
 
   /**
    * Singapore time zone id.
    */
-<span class="nc" id="L2983">  SINGAPORE(&quot;Singapore&quot;),</span>
+<span class="fc" id="L2996">  SINGAPORE(&quot;Singapore&quot;),</span>
 
   /**
    * Systemv ast 4 time zone id.
    */
-<span class="nc" id="L2988">  SYSTEMV_AST4(&quot;SystemV/AST4&quot;),</span>
+<span class="fc" id="L3001">  SYSTEMV_AST4(&quot;SystemV/AST4&quot;),</span>
 
   /**
    * Systemv ast 4 adt time zone id.
    */
-<span class="nc" id="L2993">  SYSTEMV_AST4ADT(&quot;SystemV/AST4ADT&quot;),</span>
+<span class="fc" id="L3006">  SYSTEMV_AST4ADT(&quot;SystemV/AST4ADT&quot;),</span>
 
   /**
    * Systemv cst 6 time zone id.
    */
-<span class="nc" id="L2998">  SYSTEMV_CST6(&quot;SystemV/CST6&quot;),</span>
+<span class="fc" id="L3011">  SYSTEMV_CST6(&quot;SystemV/CST6&quot;),</span>
 
   /**
    * Systemv cst 6 cdt time zone id.
    */
-<span class="nc" id="L3003">  SYSTEMV_CST6CDT(&quot;SystemV/CST6CDT&quot;),</span>
+<span class="fc" id="L3016">  SYSTEMV_CST6CDT(&quot;SystemV/CST6CDT&quot;),</span>
 
   /**
    * Systemv est 5 time zone id.
    */
-<span class="nc" id="L3008">  SYSTEMV_EST5(&quot;SystemV/EST5&quot;),</span>
+<span class="fc" id="L3021">  SYSTEMV_EST5(&quot;SystemV/EST5&quot;),</span>
 
   /**
    * Systemv est 5 edt time zone id.
    */
-<span class="nc" id="L3013">  SYSTEMV_EST5EDT(&quot;SystemV/EST5EDT&quot;),</span>
+<span class="fc" id="L3026">  SYSTEMV_EST5EDT(&quot;SystemV/EST5EDT&quot;),</span>
 
   /**
    * Systemv hst 10 time zone id.
    */
-<span class="nc" id="L3018">  SYSTEMV_HST10(&quot;SystemV/HST10&quot;),</span>
+<span class="fc" id="L3031">  SYSTEMV_HST10(&quot;SystemV/HST10&quot;),</span>
 
   /**
    * Systemv mst 7 time zone id.
    */
-<span class="nc" id="L3023">  SYSTEMV_MST7(&quot;SystemV/MST7&quot;),</span>
+<span class="fc" id="L3036">  SYSTEMV_MST7(&quot;SystemV/MST7&quot;),</span>
 
   /**
    * Systemv mst 7 mdt time zone id.
    */
-<span class="nc" id="L3028">  SYSTEMV_MST7MDT(&quot;SystemV/MST7MDT&quot;),</span>
+<span class="fc" id="L3041">  SYSTEMV_MST7MDT(&quot;SystemV/MST7MDT&quot;),</span>
 
   /**
    * Systemv pst 8 time zone id.
    */
-<span class="nc" id="L3033">  SYSTEMV_PST8(&quot;SystemV/PST8&quot;),</span>
+<span class="fc" id="L3046">  SYSTEMV_PST8(&quot;SystemV/PST8&quot;),</span>
 
   /**
    * Systemv pst 8 pdt time zone id.
    */
-<span class="nc" id="L3038">  SYSTEMV_PST8PDT(&quot;SystemV/PST8PDT&quot;),</span>
+<span class="fc" id="L3051">  SYSTEMV_PST8PDT(&quot;SystemV/PST8PDT&quot;),</span>
 
   /**
    * Systemv yst 9 time zone id.
    */
-<span class="nc" id="L3043">  SYSTEMV_YST9(&quot;SystemV/YST9&quot;),</span>
+<span class="fc" id="L3056">  SYSTEMV_YST9(&quot;SystemV/YST9&quot;),</span>
 
   /**
    * Systemv yst 9 ydt time zone id.
    */
-<span class="nc" id="L3048">  SYSTEMV_YST9YDT(&quot;SystemV/YST9YDT&quot;),</span>
+<span class="fc" id="L3061">  SYSTEMV_YST9YDT(&quot;SystemV/YST9YDT&quot;),</span>
 
   /**
    * Turkey time zone id.
    */
-<span class="nc" id="L3053">  TURKEY(&quot;Turkey&quot;),</span>
+<span class="fc" id="L3066">  TURKEY(&quot;Turkey&quot;),</span>
 
   /**
    * Uct time zone id.
    */
-<span class="nc" id="L3058">  UCT(&quot;UCT&quot;),</span>
+<span class="fc" id="L3071">  UCT(&quot;UCT&quot;),</span>
 
   /**
    * Us alaska time zone id.
    */
-<span class="nc" id="L3063">  US_ALASKA(&quot;US/Alaska&quot;),</span>
+<span class="fc" id="L3076">  US_ALASKA(&quot;US/Alaska&quot;),</span>
 
   /**
    * Us aleutian time zone id.
    */
-<span class="nc" id="L3068">  US_ALEUTIAN(&quot;US/Aleutian&quot;),</span>
+<span class="fc" id="L3081">  US_ALEUTIAN(&quot;US/Aleutian&quot;),</span>
 
   /**
    * Us arizona time zone id.
    */
-<span class="nc" id="L3073">  US_ARIZONA(&quot;US/Arizona&quot;),</span>
+<span class="fc" id="L3086">  US_ARIZONA(&quot;US/Arizona&quot;),</span>
 
   /**
    * Us central time zone id.
    */
-<span class="nc" id="L3078">  US_CENTRAL(&quot;US/Central&quot;),</span>
+<span class="fc" id="L3091">  US_CENTRAL(&quot;US/Central&quot;),</span>
 
   /**
    * Us east indiana time zone id.
    */
-<span class="nc" id="L3083">  US_EAST_INDIANA(&quot;US/East-Indiana&quot;),</span>
+<span class="fc" id="L3096">  US_EAST_INDIANA(&quot;US/East-Indiana&quot;),</span>
 
   /**
    * Us eastern time zone id.
    */
-<span class="nc" id="L3088">  US_EASTERN(&quot;US/Eastern&quot;),</span>
+<span class="fc" id="L3101">  US_EASTERN(&quot;US/Eastern&quot;),</span>
 
   /**
    * Us hawaii time zone id.
    */
-<span class="nc" id="L3093">  US_HAWAII(&quot;US/Hawaii&quot;),</span>
+<span class="fc" id="L3106">  US_HAWAII(&quot;US/Hawaii&quot;),</span>
 
   /**
    * Us indiana starke time zone id.
    */
-<span class="nc" id="L3098">  US_INDIANA_STARKE(&quot;US/Indiana-Starke&quot;),</span>
+<span class="fc" id="L3111">  US_INDIANA_STARKE(&quot;US/Indiana-Starke&quot;),</span>
 
   /**
    * Us michigan time zone id.
    */
-<span class="nc" id="L3103">  US_MICHIGAN(&quot;US/Michigan&quot;),</span>
+<span class="fc" id="L3116">  US_MICHIGAN(&quot;US/Michigan&quot;),</span>
 
   /**
    * Us mountain time zone id.
    */
-<span class="nc" id="L3108">  US_MOUNTAIN(&quot;US/Mountain&quot;),</span>
+<span class="fc" id="L3121">  US_MOUNTAIN(&quot;US/Mountain&quot;),</span>
 
   /**
    * Us pacific time zone id.
    */
-<span class="nc" id="L3113">  US_PACIFIC(&quot;US/Pacific&quot;),</span>
+<span class="fc" id="L3126">  US_PACIFIC(&quot;US/Pacific&quot;),</span>
 
   /**
    * Us pacific new time zone id.
    */
-<span class="nc" id="L3118">  US_PACIFIC_NEW(&quot;US/Pacific-New&quot;),</span>
+<span class="fc" id="L3131">  US_PACIFIC_NEW(&quot;US/Pacific-New&quot;),</span>
 
   /**
    * Us samoa time zone id.
    */
-<span class="nc" id="L3123">  US_SAMOA(&quot;US/Samoa&quot;),</span>
+<span class="fc" id="L3136">  US_SAMOA(&quot;US/Samoa&quot;),</span>
 
   /**
    * Utc time zone id.
    */
-<span class="nc" id="L3128">  UTC(&quot;UTC&quot;),</span>
+<span class="fc" id="L3141">  UTC(&quot;UTC&quot;),</span>
 
   /**
    * Universal time zone id.
    */
-<span class="nc" id="L3133">  UNIVERSAL(&quot;Universal&quot;),</span>
+<span class="fc" id="L3146">  UNIVERSAL(&quot;Universal&quot;),</span>
 
   /**
    * Vst time zone id.
    */
-<span class="nc" id="L3138">  VST(&quot;VST&quot;),</span>
+<span class="fc" id="L3151">  VST(&quot;VST&quot;),</span>
 
   /**
    * W su time zone id.
    */
-<span class="nc" id="L3143">  W_SU(&quot;W-SU&quot;),</span>
+<span class="fc" id="L3156">  W_SU(&quot;W-SU&quot;),</span>
 
   /**
    * Wet time zone id.
    */
-<span class="nc" id="L3148">  WET(&quot;WET&quot;),</span>
+<span class="fc" id="L3161">  WET(&quot;WET&quot;),</span>
 
   /**
    * Zulu time zone id.
    */
-<span class="nc" id="L3153">  ZULU(&quot;Zulu&quot;);</span>
+<span class="fc" id="L3166">  ZULU(&quot;Zulu&quot;);</span>
 
   private String value;
 
-<span class="nc" id="L3157">  TimeZoneId(String value) {</span>
-<span class="nc" id="L3158">    this.value = value;</span>
-<span class="nc" id="L3159">  }</span>
+<span class="fc" id="L3170">  TimeZoneId(String value) {</span>
+<span class="fc" id="L3171">    this.value = value;</span>
+<span class="fc" id="L3172">  }</span>
 
   @Override
   @JsonValue
   public String toString() {
-<span class="nc" id="L3164">    return String.valueOf(value);</span>
+<span class="fc" id="L3177">    return toString(false);</span>
+  }
+
+  /**
+   * Returns the string representation of this time zone id.
+   *
+   * @param urlEncode specifies whether the return value should be url encoded or not
+   * @return the time zone id
+   */
+  public String toString(boolean urlEncode) {
+<span class="fc bfc" id="L3187" title="All 2 branches covered.">    return String.valueOf(urlEncode ? urlEncode(value) : value);</span>
   }
 
   /**
@@ -3170,7 +3193,7 @@ public enum TimeZoneId {
    * @return the time zone
    */
   public TimeZone toTimeZone() {
-<span class="nc" id="L3173">    return TimeZone.getTimeZone(value);</span>
+<span class="fc" id="L3196">    return TimeZone.getTimeZone(value);</span>
   }
 
   /**
@@ -3181,15 +3204,17 @@ public enum TimeZoneId {
    */
   @JsonCreator
   public static TimeZoneId fromValue(String text) {
-<span class="nc bnc" id="L3184" title="All 2 branches missed.">    if (!StringUtils.hasText(text)) {</span>
-<span class="nc" id="L3185">      return null;</span>
+<span class="fc bfc" id="L3207" title="All 2 branches covered.">    if (!StringUtils.hasText(text)) {</span>
+<span class="fc" id="L3208">      return null;</span>
     }
-<span class="nc bnc" id="L3187" title="All 2 branches missed.">    for (TimeZoneId b : TimeZoneId.values()) {</span>
-<span class="nc bnc" id="L3188" title="All 4 branches missed.">      if (String.valueOf(b.value).equalsIgnoreCase(text) || b.name().equalsIgnoreCase(text)) {</span>
-<span class="nc" id="L3189">        return b;</span>
+<span class="pc bpc" id="L3210" title="1 of 2 branches missed.">    for (TimeZoneId b : TimeZoneId.values()) {</span>
+<span class="fc bfc" id="L3211" title="All 2 branches covered.">      if (String.valueOf(b.value).equalsIgnoreCase(text)</span>
+<span class="pc bpc" id="L3212" title="1 of 2 branches missed.">          || b.name().equalsIgnoreCase(text)</span>
+<span class="fc bfc" id="L3213" title="All 2 branches covered.">          || String.valueOf(urlEncode(b.value)).equalsIgnoreCase(text)) {</span>
+<span class="fc" id="L3214">        return b;</span>
       }
     }
-<span class="nc" id="L3192">    return null;</span>
+<span class="nc" id="L3217">    return null;</span>
   }
 
   /**
@@ -3199,11 +3224,19 @@ public enum TimeZoneId {
    * @return the time zone id
    */
   public static TimeZoneId fromTimeZone(TimeZone timeZone) {
-<span class="nc bnc" id="L3202" title="All 2 branches missed.">    if (timeZone == null) {</span>
-<span class="nc" id="L3203">      return null;</span>
+<span class="fc bfc" id="L3227" title="All 2 branches covered.">    if (timeZone == null) {</span>
+<span class="fc" id="L3228">      return null;</span>
     }
-<span class="nc" id="L3205">    return fromValue(timeZone.getID());</span>
+<span class="fc" id="L3230">    return fromValue(timeZone.getID());</span>
+  }
+
+  private static String urlEncode(String value) {
+    try {
+<span class="fc" id="L3235">      return URLEncoder.encode(value, StandardCharsets.UTF_8.name());</span>
+<span class="nc" id="L3236">    } catch (Exception e) {</span>
+<span class="nc" id="L3237">      return value;</span>
+    }
   }
 }
 
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

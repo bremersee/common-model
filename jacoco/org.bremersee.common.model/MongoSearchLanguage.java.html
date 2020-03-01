@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MongoSearchLanguage.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">common-model</a> &gt; <a href="index.source.html" class="el_package">org.bremersee.common.model</a> &gt; <span class="el_source">MongoSearchLanguage.java</span></div><h1>MongoSearchLanguage.java</h1><pre class="source lang-java linenums">/*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.common.model;
@@ -14,102 +24,102 @@ import org.springframework.util.StringUtils;
 /**
  * Languages supported by MongoDB.
  *
+ * @author Christian Bremer
  * @see &lt;a href=&quot;https://docs.mongodb.com/manual/reference/text-search-languages/&quot;&gt;Reference&lt;/a&gt;
  */
-<span class="fc" id="L19">@SuppressWarnings(&quot;unused&quot;)</span>
-public enum MongoSearchLanguage {
+<span class="fc" id="L30">public enum MongoSearchLanguage {</span>
 
   /**
    * If you specify a language value of {@code none}, then the text search uses simple tokenization
    * with no list of stop words and no stemming.
    */
-<span class="fc" id="L26">  NONE(&quot;none&quot;),</span>
+<span class="fc" id="L36">  NONE(&quot;none&quot;),</span>
 
   /**
    * Danish.
    */
-<span class="fc" id="L31">  DA(&quot;da&quot;),</span>
+<span class="fc" id="L41">  DA(&quot;da&quot;),</span>
 
   /**
    * German.
    */
-<span class="fc" id="L36">  DE(&quot;de&quot;),</span>
+<span class="fc" id="L46">  DE(&quot;de&quot;),</span>
 
   /**
    * English.
    */
-<span class="fc" id="L41">  EN(&quot;en&quot;),</span>
+<span class="fc" id="L51">  EN(&quot;en&quot;),</span>
 
   /**
    * Spanish.
    */
-<span class="fc" id="L46">  ES(&quot;es&quot;),</span>
+<span class="fc" id="L56">  ES(&quot;es&quot;),</span>
 
   /**
    * Finnish.
    */
-<span class="fc" id="L51">  FI(&quot;fi&quot;),</span>
+<span class="fc" id="L61">  FI(&quot;fi&quot;),</span>
 
   /**
    * French.
    */
-<span class="fc" id="L56">  FR(&quot;fr&quot;),</span>
+<span class="fc" id="L66">  FR(&quot;fr&quot;),</span>
 
   /**
    * Hungarian.
    */
-<span class="fc" id="L61">  HU(&quot;hu&quot;),</span>
+<span class="fc" id="L71">  HU(&quot;hu&quot;),</span>
 
   /**
    * Italian.
    */
-<span class="fc" id="L66">  IT(&quot;it&quot;),</span>
+<span class="fc" id="L76">  IT(&quot;it&quot;),</span>
 
   /**
    * Dutch.
    */
-<span class="fc" id="L71">  NL(&quot;nl&quot;),</span>
+<span class="fc" id="L81">  NL(&quot;nl&quot;),</span>
 
   /**
    * Norwegian.
    */
-<span class="fc" id="L76">  NO(&quot;nb&quot;), // normally &quot;no&quot;, see https://jira.mongodb.org/browse/SERVER-14879</span>
+<span class="fc" id="L86">  NO(&quot;nb&quot;), // normally &quot;no&quot;, see https://jira.mongodb.org/browse/SERVER-14879</span>
 
   /**
    * Portuguese.
    */
-<span class="fc" id="L81">  PT(&quot;pt&quot;),</span>
+<span class="fc" id="L91">  PT(&quot;pt&quot;),</span>
 
   /**
    * Romanian.
    */
-<span class="fc" id="L86">  RO(&quot;ro&quot;),</span>
+<span class="fc" id="L96">  RO(&quot;ro&quot;),</span>
 
   /**
    * Russian.
    */
-<span class="fc" id="L91">  RU(&quot;ru&quot;),</span>
+<span class="fc" id="L101">  RU(&quot;ru&quot;),</span>
 
   /**
    * Swedish.
    */
-<span class="fc" id="L96">  SV(&quot;sv&quot;),</span>
+<span class="fc" id="L106">  SV(&quot;sv&quot;),</span>
 
   /**
    * Turkish.
    */
-<span class="fc" id="L101">  TR(&quot;tr&quot;);</span>
+<span class="fc" id="L111">  TR(&quot;tr&quot;);</span>
 
   private String value;
 
-<span class="fc" id="L105">  MongoSearchLanguage(String value) {</span>
-<span class="fc" id="L106">    this.value = value;</span>
-<span class="fc" id="L107">  }</span>
+<span class="fc" id="L115">  MongoSearchLanguage(String value) {</span>
+<span class="fc" id="L116">    this.value = value;</span>
+<span class="fc" id="L117">  }</span>
 
   @Override
   @JsonValue
   public String toString() {
-<span class="fc" id="L112">    return String.valueOf(value);</span>
+<span class="fc" id="L122">    return String.valueOf(value);</span>
   }
 
   /**
@@ -118,10 +128,10 @@ public enum MongoSearchLanguage {
    * @return the locale
    */
   public Locale toLocale() {
-<span class="fc bfc" id="L121" title="All 2 branches covered.">    if (NONE == this) {</span>
-<span class="fc" id="L122">      return null;</span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">    if (NONE == this) {</span>
+<span class="fc" id="L132">      return null;</span>
     }
-<span class="fc" id="L124">    return new Locale(name().toLowerCase());</span>
+<span class="fc" id="L134">    return new Locale(name().toLowerCase());</span>
   }
 
   /**
@@ -132,46 +142,46 @@ public enum MongoSearchLanguage {
    */
   @JsonCreator
   public static MongoSearchLanguage fromValue(String text) {
-<span class="fc" id="L135">    return fromValue(text, null);</span>
+<span class="fc" id="L145">    return fromValue(text, null);</span>
   }
 
   /**
    * From two letter language code.
    *
-   * @param text     the text
+   * @param text the text
    * @param fallback the fallback language
    * @return the two letter language code
    */
   public static MongoSearchLanguage fromValue(String text, MongoSearchLanguage fallback) {
-<span class="pc bpc" id="L146" title="1 of 2 branches missed.">    if (!StringUtils.hasText(text)) {</span>
-<span class="nc" id="L147">      return fallback;</span>
+<span class="pc bpc" id="L156" title="1 of 2 branches missed.">    if (!StringUtils.hasText(text)) {</span>
+<span class="nc" id="L157">      return fallback;</span>
     }
-<span class="fc bfc" id="L149" title="All 2 branches covered.">    if (NONE.value.equalsIgnoreCase(text)) {</span>
-<span class="fc" id="L150">      return NONE;</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">    if (NONE.value.equalsIgnoreCase(text)) {</span>
+<span class="fc" id="L160">      return NONE;</span>
     }
-<span class="fc" id="L152">    String source = text.substring(0, Math.min(text.length(), 2));</span>
-<span class="pc bpc" id="L153" title="1 of 2 branches missed.">    for (MongoSearchLanguage b : MongoSearchLanguage.values()) {</span>
-<span class="fc bfc" id="L154" title="All 4 branches covered.">      if (b.value.equalsIgnoreCase(source) || b.name().equalsIgnoreCase(source)) {</span>
-<span class="fc" id="L155">        return b;</span>
+<span class="fc" id="L162">    String source = text.substring(0, Math.min(text.length(), 2));</span>
+<span class="pc bpc" id="L163" title="1 of 2 branches missed.">    for (MongoSearchLanguage b : MongoSearchLanguage.values()) {</span>
+<span class="fc bfc" id="L164" title="All 4 branches covered.">      if (b.value.equalsIgnoreCase(source) || b.name().equalsIgnoreCase(source)) {</span>
+<span class="fc" id="L165">        return b;</span>
       }
     }
-<span class="nc" id="L158">    return fallback;</span>
+<span class="nc" id="L168">    return fallback;</span>
   }
 
   /**
    * From locale.
    *
-   * @param locale   the locale
+   * @param locale the locale
    * @param fallback the fallback language
    * @return the two letter language code
    */
   public static MongoSearchLanguage fromLocale(Locale locale, MongoSearchLanguage fallback) {
-<span class="nc bnc" id="L169" title="All 4 branches missed.">    if (locale == null || !StringUtils.hasText(locale.getLanguage())) {</span>
-<span class="nc" id="L170">      return fallback;</span>
+<span class="nc bnc" id="L179" title="All 4 branches missed.">    if (locale == null || !StringUtils.hasText(locale.getLanguage())) {</span>
+<span class="nc" id="L180">      return fallback;</span>
     }
-<span class="nc" id="L172">    return fromValue(locale.getLanguage(), fallback);</span>
+<span class="nc" id="L182">    return fromValue(locale.getLanguage(), fallback);</span>
   }
 
 }
 
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

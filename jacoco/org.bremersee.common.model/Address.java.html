@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Address.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">common-model</a> &gt; <a href="index.source.html" class="el_package">org.bremersee.common.model</a> &gt; <span class="el_source">Address.java</span></div><h1>Address.java</h1><pre class="source lang-java linenums">/*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -18,13 +27,14 @@ import lombok.ToString;
 
 /**
  * Address data.
+ *
+ * @author Christian Bremer
  */
-@ApiModel(description = &quot;Address data.&quot;)
+@Schema(description = &quot;Address data.&quot;)
 @JsonIgnoreProperties(ignoreUnknown = true)
-<span class="nc bnc" id="L24" title="All 78 branches missed.">@EqualsAndHashCode</span>
-<span class="nc" id="L25">@ToString</span>
-<span class="nc" id="L26">@NoArgsConstructor</span>
-@SuppressWarnings(&quot;unused&quot;)
+<span class="pc bpc" id="L35" title="37 of 78 branches missed.">@EqualsAndHashCode</span>
+<span class="fc" id="L36">@ToString</span>
+<span class="fc" id="L37">@NoArgsConstructor</span>
 public class Address implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -59,39 +69,40 @@ public class Address implements Serializable {
   /**
    * Instantiates a new address.
    *
-   * @param streetNumber     the street number
-   * @param street           the street
-   * @param postalCode       the postal code
-   * @param city             the city
-   * @param suburb           the suburb
-   * @param state            the state
-   * @param country          the country
-   * @param countryCode      the country code
+   * @param streetNumber the street number
+   * @param street the street
+   * @param postalCode the postal code
+   * @param city the city
+   * @param suburb the suburb
+   * @param state the state
+   * @param country the country
+   * @param countryCode the country code
    * @param formattedAddress the formatted address
    */
-<span class="nc" id="L72">  @Builder</span>
+<span class="pc" id="L82">  @Builder(toBuilder = true)</span>
+  @SuppressWarnings(&quot;unused&quot;)
   public Address(String streetNumber, String street, String postalCode, String city,
       String suburb, String state, String country,
-<span class="nc" id="L75">      TwoLetterCountryCode countryCode, String formattedAddress) {</span>
-<span class="nc" id="L76">    this.streetNumber = streetNumber;</span>
-<span class="nc" id="L77">    this.street = street;</span>
-<span class="nc" id="L78">    this.postalCode = postalCode;</span>
-<span class="nc" id="L79">    this.city = city;</span>
-<span class="nc" id="L80">    this.suburb = suburb;</span>
-<span class="nc" id="L81">    this.state = state;</span>
-<span class="nc" id="L82">    this.country = country;</span>
-<span class="nc" id="L83">    this.countryCode = countryCode;</span>
-<span class="nc" id="L84">    this.formattedAddress = formattedAddress;</span>
-<span class="nc" id="L85">  }</span>
+<span class="fc" id="L86">      TwoLetterCountryCode countryCode, String formattedAddress) {</span>
+<span class="fc" id="L87">    this.streetNumber = streetNumber;</span>
+<span class="fc" id="L88">    this.street = street;</span>
+<span class="fc" id="L89">    this.postalCode = postalCode;</span>
+<span class="fc" id="L90">    this.city = city;</span>
+<span class="fc" id="L91">    this.suburb = suburb;</span>
+<span class="fc" id="L92">    this.state = state;</span>
+<span class="fc" id="L93">    this.country = country;</span>
+<span class="fc" id="L94">    this.countryCode = countryCode;</span>
+<span class="fc" id="L95">    this.formattedAddress = formattedAddress;</span>
+<span class="fc" id="L96">  }</span>
 
   /**
    * The street number.
    *
    * @return streetNumber street number
    */
-  @ApiModelProperty(value = &quot;The street number.&quot;)
+  @Schema(description = &quot;The street number.&quot;, example = &quot;100&quot;)
   public String getStreetNumber() {
-<span class="nc" id="L94">    return streetNumber;</span>
+<span class="fc" id="L105">    return streetNumber;</span>
   }
 
   /**
@@ -100,17 +111,17 @@ public class Address implements Serializable {
    * @param streetNumber the street number
    */
   public void setStreetNumber(String streetNumber) {
-<span class="nc" id="L103">    this.streetNumber = streetNumber;</span>
-<span class="nc" id="L104">  }</span>
+<span class="fc" id="L114">    this.streetNumber = streetNumber;</span>
+<span class="fc" id="L115">  }</span>
 
   /**
    * The street name.
    *
    * @return street street
    */
-  @ApiModelProperty(value = &quot;The street name.&quot;)
+  @Schema(description = &quot;The street name.&quot;, example = &quot;Kurfürstendamm&quot;)
   public String getStreet() {
-<span class="nc" id="L113">    return street;</span>
+<span class="fc" id="L124">    return street;</span>
   }
 
   /**
@@ -119,17 +130,17 @@ public class Address implements Serializable {
    * @param street the street
    */
   public void setStreet(String street) {
-<span class="nc" id="L122">    this.street = street;</span>
-<span class="nc" id="L123">  }</span>
+<span class="fc" id="L133">    this.street = street;</span>
+<span class="fc" id="L134">  }</span>
 
   /**
    * The postal code.
    *
    * @return postalCode postal code
    */
-  @ApiModelProperty(value = &quot;The postal code.&quot;)
+  @Schema(description = &quot;The postal code.&quot;, example = &quot;10709&quot;)
   public String getPostalCode() {
-<span class="nc" id="L132">    return postalCode;</span>
+<span class="fc" id="L143">    return postalCode;</span>
   }
 
   /**
@@ -138,17 +149,17 @@ public class Address implements Serializable {
    * @param postalCode the postal code
    */
   public void setPostalCode(String postalCode) {
-<span class="nc" id="L141">    this.postalCode = postalCode;</span>
-<span class="nc" id="L142">  }</span>
+<span class="fc" id="L152">    this.postalCode = postalCode;</span>
+<span class="fc" id="L153">  }</span>
 
   /**
    * The city name.
    *
    * @return city city
    */
-  @ApiModelProperty(value = &quot;The city name.&quot;)
+  @Schema(description = &quot;The city name.&quot;, example = &quot;Berlin&quot;)
   public String getCity() {
-<span class="nc" id="L151">    return city;</span>
+<span class="fc" id="L162">    return city;</span>
   }
 
   /**
@@ -157,17 +168,17 @@ public class Address implements Serializable {
    * @param city the city
    */
   public void setCity(String city) {
-<span class="nc" id="L160">    this.city = city;</span>
-<span class="nc" id="L161">  }</span>
+<span class="fc" id="L171">    this.city = city;</span>
+<span class="fc" id="L172">  }</span>
 
   /**
    * The suburb name.
    *
    * @return suburb suburb
    */
-  @ApiModelProperty(value = &quot;The suburb name.&quot;)
+  @Schema(description = &quot;The suburb name.&quot;)
   public String getSuburb() {
-<span class="nc" id="L170">    return suburb;</span>
+<span class="fc" id="L181">    return suburb;</span>
   }
 
   /**
@@ -176,17 +187,17 @@ public class Address implements Serializable {
    * @param suburb the suburb
    */
   public void setSuburb(String suburb) {
-<span class="nc" id="L179">    this.suburb = suburb;</span>
-<span class="nc" id="L180">  }</span>
+<span class="fc" id="L190">    this.suburb = suburb;</span>
+<span class="fc" id="L191">  }</span>
 
   /**
    * The state name.
    *
    * @return state state
    */
-  @ApiModelProperty(value = &quot;The state name.&quot;)
+  @Schema(description = &quot;The state name.&quot;)
   public String getState() {
-<span class="nc" id="L189">    return state;</span>
+<span class="fc" id="L200">    return state;</span>
   }
 
   /**
@@ -195,17 +206,17 @@ public class Address implements Serializable {
    * @param state the state
    */
   public void setState(String state) {
-<span class="nc" id="L198">    this.state = state;</span>
-<span class="nc" id="L199">  }</span>
+<span class="fc" id="L209">    this.state = state;</span>
+<span class="fc" id="L210">  }</span>
 
   /**
    * The country name.
    *
    * @return country country
    */
-  @ApiModelProperty(value = &quot;The country name.&quot;)
+  @Schema(description = &quot;The country name.&quot;, example = &quot;Germany&quot;)
   public String getCountry() {
-<span class="nc" id="L208">    return country;</span>
+<span class="fc" id="L219">    return country;</span>
   }
 
   /**
@@ -214,17 +225,17 @@ public class Address implements Serializable {
    * @param country the country
    */
   public void setCountry(String country) {
-<span class="nc" id="L217">    this.country = country;</span>
-<span class="nc" id="L218">  }</span>
+<span class="fc" id="L228">    this.country = country;</span>
+<span class="fc" id="L229">  }</span>
 
   /**
    * The country code.
    *
    * @return countryCode country code
    */
-  @ApiModelProperty(value = &quot;The country code.&quot;)
+  @Schema(description = &quot;The country code.&quot;, example = &quot;DE&quot;)
   public TwoLetterCountryCode getCountryCode() {
-<span class="nc" id="L227">    return countryCode;</span>
+<span class="fc" id="L238">    return countryCode;</span>
   }
 
   /**
@@ -233,17 +244,17 @@ public class Address implements Serializable {
    * @param countryCode the country code
    */
   public void setCountryCode(TwoLetterCountryCode countryCode) {
-<span class="nc" id="L236">    this.countryCode = countryCode;</span>
-<span class="nc" id="L237">  }</span>
+<span class="fc" id="L247">    this.countryCode = countryCode;</span>
+<span class="fc" id="L248">  }</span>
 
   /**
    * The street number.
    *
    * @return formattedAddress formatted address
    */
-  @ApiModelProperty(value = &quot;The street number.&quot;)
+  @Schema(description = &quot;The street number.&quot;, example = &quot;Kurfürstendamm 100, 10709 Berlin&quot;)
   public String getFormattedAddress() {
-<span class="nc" id="L246">    return formattedAddress;</span>
+<span class="fc" id="L257">    return formattedAddress;</span>
   }
 
   /**
@@ -252,9 +263,9 @@ public class Address implements Serializable {
    * @param formattedAddress the formatted address
    */
   public void setFormattedAddress(String formattedAddress) {
-<span class="nc" id="L255">    this.formattedAddress = formattedAddress;</span>
-<span class="nc" id="L256">  }</span>
+<span class="fc" id="L266">    this.formattedAddress = formattedAddress;</span>
+<span class="fc" id="L267">  }</span>
 
 }
 
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

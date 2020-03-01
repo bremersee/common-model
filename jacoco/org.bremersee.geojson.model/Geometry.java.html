@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Geometry.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">common-model</a> &gt; <a href="index.source.html" class="el_package">org.bremersee.geojson.model</a> &gt; <span class="el_source">Geometry.java</span></div><h1>Geometry.java</h1><pre class="source lang-java linenums">/*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.geojson.model;
@@ -12,8 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import javax.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
@@ -23,8 +32,10 @@ import org.springframework.validation.annotation.Validated;
 
 /**
  * GeoJSON Geometry.
+ *
+ * @author Christian Bremer
  */
-@ApiModel(description = &quot;GeoJSON Geometry.&quot;)
+@Schema(description = &quot;GeoJSON Geometry.&quot;)
 @Validated
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = &quot;type&quot;, visible = true)
 @JsonSubTypes({
@@ -37,38 +48,37 @@ import org.springframework.validation.annotation.Validated;
     @JsonSubTypes.Type(value = Polygon.class, name = &quot;Polygon&quot;),
 })
 @JsonIgnoreProperties(ignoreUnknown = true)
-<span class="nc bnc" id="L40" title="All 22 branches missed.">@EqualsAndHashCode</span>
-<span class="nc" id="L41">@ToString</span>
-<span class="nc" id="L42">@NoArgsConstructor</span>
-@SuppressWarnings(&quot;unused&quot;)
+<span class="pc bpc" id="L51" title="13 of 22 branches missed.">@EqualsAndHashCode</span>
+<span class="fc" id="L52">@ToString</span>
+<span class="fc" id="L53">@NoArgsConstructor</span>
 public abstract class Geometry implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-<span class="nc" id="L48">  @JsonProperty(&quot;type&quot;)</span>
-  private TypeEnum type = null;
+<span class="fc" id="L58">  @JsonProperty(&quot;type&quot;)</span>
+  TypeEnum type = null;
 
-<span class="nc" id="L51">  @JsonProperty(&quot;bbox&quot;)</span>
-  private BoundingBox bbox = null;
+<span class="fc" id="L61">  @JsonProperty(&quot;bbox&quot;)</span>
+  BoundingBox bbox = null;
 
   /**
    * Instantiates a new geometry.
    *
    * @param bbox the bbox
    */
-<span class="nc" id="L59">  public Geometry(BoundingBox bbox) {</span>
-<span class="nc" id="L60">    this.bbox = bbox;</span>
-<span class="nc" id="L61">  }</span>
+<span class="fc" id="L69">  public Geometry(BoundingBox bbox) {</span>
+<span class="fc" id="L70">    this.bbox = bbox;</span>
+<span class="fc" id="L71">  }</span>
 
   /**
    * The geometry type.
    *
    * @return type type
    */
-  @ApiModelProperty(required = true, value = &quot;The geometry type.&quot;)
+  @Schema(description = &quot;The geometry type.&quot;, required = true)
   @NotNull
   public TypeEnum getType() {
-<span class="nc" id="L71">    return type;</span>
+<span class="fc" id="L81">    return type;</span>
   }
 
   /**
@@ -77,17 +87,17 @@ public abstract class Geometry implements Serializable {
    * @param type the type
    */
   public void setType(TypeEnum type) {
-<span class="nc" id="L80">    this.type = type;</span>
-<span class="nc" id="L81">  }</span>
+<span class="fc" id="L90">    this.type = type;</span>
+<span class="fc" id="L91">  }</span>
 
   /**
    * Get bounding box.
    *
    * @return bbox bbox
    */
-  @ApiModelProperty(value = &quot;The boundling box.&quot;)
+  @Schema(description = &quot;The boundling box.&quot;)
   public BoundingBox getBbox() {
-<span class="nc" id="L90">    return bbox;</span>
+<span class="fc" id="L100">    return bbox;</span>
   }
 
   /**
@@ -96,59 +106,59 @@ public abstract class Geometry implements Serializable {
    * @param bbox the bbox
    */
   public void setBbox(BoundingBox bbox) {
-<span class="nc" id="L99">    this.bbox = bbox;</span>
-<span class="nc" id="L100">  }</span>
+<span class="fc" id="L109">    this.bbox = bbox;</span>
+<span class="fc" id="L110">  }</span>
 
   /**
    * The geometry type.
    */
-<span class="nc" id="L105">  public enum TypeEnum {</span>
+<span class="fc" id="L115">  public enum TypeEnum {</span>
 
     /**
      * Point type enum.
      */
-<span class="nc" id="L110">    POINT(&quot;Point&quot;),</span>
+<span class="fc" id="L120">    POINT(&quot;Point&quot;),</span>
 
     /**
      * Multipoint type enum.
      */
-<span class="nc" id="L115">    MULTIPOINT(&quot;MultiPoint&quot;),</span>
+<span class="fc" id="L125">    MULTIPOINT(&quot;MultiPoint&quot;),</span>
 
     /**
      * Linestring type enum.
      */
-<span class="nc" id="L120">    LINESTRING(&quot;LineString&quot;),</span>
+<span class="fc" id="L130">    LINESTRING(&quot;LineString&quot;),</span>
 
     /**
      * Multilinestring type enum.
      */
-<span class="nc" id="L125">    MULTILINESTRING(&quot;MultiLineString&quot;),</span>
+<span class="fc" id="L135">    MULTILINESTRING(&quot;MultiLineString&quot;),</span>
 
     /**
      * Polygon type enum.
      */
-<span class="nc" id="L130">    POLYGON(&quot;Polygon&quot;),</span>
+<span class="fc" id="L140">    POLYGON(&quot;Polygon&quot;),</span>
 
     /**
      * Multipolygon type enum.
      */
-<span class="nc" id="L135">    MULTIPOLYGON(&quot;MultiPolygon&quot;),</span>
+<span class="fc" id="L145">    MULTIPOLYGON(&quot;MultiPolygon&quot;),</span>
 
     /**
      * Geometrycollection type enum.
      */
-<span class="nc" id="L140">    GEOMETRYCOLLECTION(&quot;GeometryCollection&quot;);</span>
+<span class="fc" id="L150">    GEOMETRYCOLLECTION(&quot;GeometryCollection&quot;);</span>
 
     private String value;
 
-<span class="nc" id="L144">    TypeEnum(String value) {</span>
-<span class="nc" id="L145">      this.value = value;</span>
-<span class="nc" id="L146">    }</span>
+<span class="fc" id="L154">    TypeEnum(String value) {</span>
+<span class="fc" id="L155">      this.value = value;</span>
+<span class="fc" id="L156">    }</span>
 
     @Override
     @JsonValue
     public String toString() {
-<span class="nc" id="L151">      return String.valueOf(value);</span>
+<span class="fc" id="L161">      return String.valueOf(value);</span>
     }
 
     /**
@@ -159,14 +169,14 @@ public abstract class Geometry implements Serializable {
      */
     @JsonCreator
     public static TypeEnum fromValue(String text) {
-<span class="nc bnc" id="L162" title="All 2 branches missed.">      for (TypeEnum b : TypeEnum.values()) {</span>
-<span class="nc bnc" id="L163" title="All 2 branches missed.">        if (String.valueOf(b.value).equals(text)) {</span>
-<span class="nc" id="L164">          return b;</span>
+<span class="fc bfc" id="L172" title="All 2 branches covered.">      for (TypeEnum b : TypeEnum.values()) {</span>
+<span class="fc bfc" id="L173" title="All 2 branches covered.">        if (String.valueOf(b.value).equals(text)) {</span>
+<span class="fc" id="L174">          return b;</span>
         }
       }
-<span class="nc" id="L167">      return null;</span>
+<span class="fc" id="L177">      return null;</span>
     }
   }
 }
 
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

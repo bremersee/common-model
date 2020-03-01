@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AccessControlEntryModifications.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">common-model</a> &gt; <a href="index.source.html" class="el_package">org.bremersee.common.model</a> &gt; <span class="el_source">AccessControlEntryModifications.java</span></div><h1>AccessControlEntryModifications.java</h1><pre class="source lang-java linenums">/*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.List;
 import javax.validation.constraints.NotNull;
@@ -22,14 +31,15 @@ import org.springframework.validation.annotation.Validated;
 
 /**
  * Specifies modifications of an access control entry.
+ *
+ * @author Christian Bremer
  */
-@ApiModel(description = &quot;Specifies modifications of an access control entry.&quot;)
+@Schema(description = &quot;Specifies modifications of an access control entry.&quot;)
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
-<span class="nc bnc" id="L29" title="All 70 branches missed.">@EqualsAndHashCode</span>
-<span class="nc" id="L30">@ToString</span>
-<span class="nc" id="L31">@NoArgsConstructor</span>
-@SuppressWarnings(&quot;unused&quot;)
+<span class="pc bpc" id="L40" title="35 of 70 branches missed.">@EqualsAndHashCode</span>
+<span class="fc" id="L41">@ToString</span>
+<span class="fc" id="L42">@NoArgsConstructor</span>
 public class AccessControlEntryModifications implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -37,7 +47,7 @@ public class AccessControlEntryModifications implements Serializable {
   @JsonProperty(value = &quot;permission&quot;, required = true)
   private String permission;
 
-<span class="nc" id="L40">  @JsonProperty(&quot;guest&quot;)</span>
+<span class="fc" id="L50">  @JsonProperty(&quot;guest&quot;)</span>
   private Boolean guest = Boolean.FALSE;
 
   @JsonProperty(&quot;addUsers&quot;)
@@ -61,16 +71,17 @@ public class AccessControlEntryModifications implements Serializable {
   /**
    * Instantiates new access control entry modifications.
    *
-   * @param permission   the permission
-   * @param guest        the guest
-   * @param addUsers     the add users
-   * @param removeUsers  the remove users
-   * @param addRoles     the add roles
-   * @param removeRoles  the remove roles
-   * @param addGroups    the add groups
+   * @param permission the permission
+   * @param guest the guest
+   * @param addUsers the add users
+   * @param removeUsers the remove users
+   * @param addRoles the add roles
+   * @param removeRoles the remove roles
+   * @param addGroups the add groups
    * @param removeGroups the remove groups
    */
-<span class="nc" id="L73">  @Builder</span>
+<span class="pc" id="L83">  @Builder(toBuilder = true)</span>
+  @SuppressWarnings(&quot;unused&quot;)
   public AccessControlEntryModifications(
       String permission,
       Boolean guest,
@@ -79,28 +90,28 @@ public class AccessControlEntryModifications implements Serializable {
       List&lt;String&gt; addRoles,
       List&lt;String&gt; removeRoles,
       List&lt;String&gt; addGroups,
-<span class="nc" id="L82">      List&lt;String&gt; removeGroups) {</span>
+<span class="fc" id="L93">      List&lt;String&gt; removeGroups) {</span>
 
-<span class="nc" id="L84">    this.permission = permission;</span>
-<span class="nc" id="L85">    this.guest = Boolean.TRUE.equals(guest);</span>
-<span class="nc" id="L86">    this.addUsers = addUsers;</span>
-<span class="nc" id="L87">    this.removeUsers = removeUsers;</span>
-<span class="nc" id="L88">    this.addRoles = addRoles;</span>
-<span class="nc" id="L89">    this.removeRoles = removeRoles;</span>
-<span class="nc" id="L90">    this.addGroups = addGroups;</span>
-<span class="nc" id="L91">    this.removeGroups = removeGroups;</span>
-<span class="nc" id="L92">  }</span>
+<span class="fc" id="L95">    this.permission = permission;</span>
+<span class="fc" id="L96">    this.guest = Boolean.TRUE.equals(guest);</span>
+<span class="fc" id="L97">    this.addUsers = addUsers;</span>
+<span class="fc" id="L98">    this.removeUsers = removeUsers;</span>
+<span class="fc" id="L99">    this.addRoles = addRoles;</span>
+<span class="fc" id="L100">    this.removeRoles = removeRoles;</span>
+<span class="fc" id="L101">    this.addGroups = addGroups;</span>
+<span class="fc" id="L102">    this.removeGroups = removeGroups;</span>
+<span class="fc" id="L103">  }</span>
 
   /**
    * Specifies the permission.
    *
    * @return permission permission
    */
-  @ApiModelProperty(required = true, value = &quot;Specifies the permission.&quot;)
+  @Schema(description = &quot;Specifies the permission.&quot;, required = true, example = &quot;read&quot;)
   @NotNull
   @Pattern(regexp = &quot;^[a-z_]+$&quot;)
   public String getPermission() {
-<span class="nc" id="L103">    return permission;</span>
+<span class="fc" id="L114">    return permission;</span>
   }
 
   /**
@@ -109,20 +120,17 @@ public class AccessControlEntryModifications implements Serializable {
    * @param permission the permission
    */
   public void setPermission(String permission) {
-<span class="nc" id="L112">    this.permission = permission;</span>
-<span class="nc" id="L113">  }</span>
+<span class="fc" id="L123">    this.permission = permission;</span>
+<span class="fc" id="L124">  }</span>
 
   /**
    * Specifies whether anybody is granted.
    *
    * @return guest guest
    */
-  @ApiModelProperty(value = &quot;Specifies whether anybody is granted.&quot;)
+  @Schema(description = &quot;Specifies whether anybody is granted.&quot;)
   public Boolean getGuest() {
-<span class="nc bnc" id="L122" title="All 2 branches missed.">    if (guest == null) {</span>
-<span class="nc" id="L123">      guest = Boolean.FALSE;</span>
-    }
-<span class="nc" id="L125">    return guest;</span>
+<span class="fc" id="L133">    return guest;</span>
   }
 
   /**
@@ -131,17 +139,17 @@ public class AccessControlEntryModifications implements Serializable {
    * @param guest the guest
    */
   public void setGuest(Boolean guest) {
-<span class="nc" id="L134">    this.guest = Boolean.TRUE.equals(guest);</span>
-<span class="nc" id="L135">  }</span>
+<span class="fc" id="L142">    this.guest = Boolean.TRUE.equals(guest);</span>
+<span class="fc" id="L143">  }</span>
 
   /**
    * Users to be added.
    *
    * @return addUsers add users
    */
-  @ApiModelProperty(value = &quot;Users to be added.&quot;)
+  @Schema(description = &quot;Users to be added.&quot;)
   public List&lt;String&gt; getAddUsers() {
-<span class="nc" id="L144">    return addUsers;</span>
+<span class="fc" id="L152">    return addUsers;</span>
   }
 
   /**
@@ -150,17 +158,17 @@ public class AccessControlEntryModifications implements Serializable {
    * @param addUsers the add users
    */
   public void setAddUsers(List&lt;String&gt; addUsers) {
-<span class="nc" id="L153">    this.addUsers = addUsers;</span>
-<span class="nc" id="L154">  }</span>
+<span class="fc" id="L161">    this.addUsers = addUsers;</span>
+<span class="fc" id="L162">  }</span>
 
   /**
    * Users to be removed.
    *
    * @return removeUsers remove users
    */
-  @ApiModelProperty(value = &quot;Users to be removed.&quot;)
+  @Schema(description = &quot;Users to be removed.&quot;)
   public List&lt;String&gt; getRemoveUsers() {
-<span class="nc" id="L163">    return removeUsers;</span>
+<span class="fc" id="L171">    return removeUsers;</span>
   }
 
   /**
@@ -169,17 +177,17 @@ public class AccessControlEntryModifications implements Serializable {
    * @param removeUsers the remove users
    */
   public void setRemoveUsers(List&lt;String&gt; removeUsers) {
-<span class="nc" id="L172">    this.removeUsers = removeUsers;</span>
-<span class="nc" id="L173">  }</span>
+<span class="fc" id="L180">    this.removeUsers = removeUsers;</span>
+<span class="fc" id="L181">  }</span>
 
   /**
    * Roles to be added.
    *
    * @return addRoles add roles
    */
-  @ApiModelProperty(value = &quot;Roles to be added.&quot;)
+  @Schema(description = &quot;Roles to be added.&quot;)
   public List&lt;String&gt; getAddRoles() {
-<span class="nc" id="L182">    return addRoles;</span>
+<span class="fc" id="L190">    return addRoles;</span>
   }
 
   /**
@@ -188,17 +196,17 @@ public class AccessControlEntryModifications implements Serializable {
    * @param addRoles the add roles
    */
   public void setAddRoles(List&lt;String&gt; addRoles) {
-<span class="nc" id="L191">    this.addRoles = addRoles;</span>
-<span class="nc" id="L192">  }</span>
+<span class="fc" id="L199">    this.addRoles = addRoles;</span>
+<span class="fc" id="L200">  }</span>
 
   /**
    * Roles to be removed.
    *
    * @return removeRoles remove roles
    */
-  @ApiModelProperty(value = &quot;Roles to be removed.&quot;)
+  @Schema(description = &quot;Roles to be removed.&quot;)
   public List&lt;String&gt; getRemoveRoles() {
-<span class="nc" id="L201">    return removeRoles;</span>
+<span class="fc" id="L209">    return removeRoles;</span>
   }
 
   /**
@@ -207,17 +215,17 @@ public class AccessControlEntryModifications implements Serializable {
    * @param removeRoles the remove roles
    */
   public void setRemoveRoles(List&lt;String&gt; removeRoles) {
-<span class="nc" id="L210">    this.removeRoles = removeRoles;</span>
-<span class="nc" id="L211">  }</span>
+<span class="fc" id="L218">    this.removeRoles = removeRoles;</span>
+<span class="fc" id="L219">  }</span>
 
   /**
    * Groups to be added.
    *
    * @return addGroups add groups
    */
-  @ApiModelProperty(value = &quot;Groups to be added.&quot;)
+  @Schema(description = &quot;Groups to be added.&quot;)
   public List&lt;String&gt; getAddGroups() {
-<span class="nc" id="L220">    return addGroups;</span>
+<span class="fc" id="L228">    return addGroups;</span>
   }
 
   /**
@@ -226,17 +234,17 @@ public class AccessControlEntryModifications implements Serializable {
    * @param addGroups the add groups
    */
   public void setAddGroups(List&lt;String&gt; addGroups) {
-<span class="nc" id="L229">    this.addGroups = addGroups;</span>
-<span class="nc" id="L230">  }</span>
+<span class="fc" id="L237">    this.addGroups = addGroups;</span>
+<span class="fc" id="L238">  }</span>
 
   /**
    * Groups to be removed.
    *
    * @return removeGroups remove groups
    */
-  @ApiModelProperty(value = &quot;Groups to be removed.&quot;)
+  @Schema(description = &quot;Groups to be removed.&quot;)
   public List&lt;String&gt; getRemoveGroups() {
-<span class="nc" id="L239">    return removeGroups;</span>
+<span class="fc" id="L247">    return removeGroups;</span>
   }
 
   /**
@@ -245,9 +253,9 @@ public class AccessControlEntryModifications implements Serializable {
    * @param removeGroups the remove groups
    */
   public void setRemoveGroups(List&lt;String&gt; removeGroups) {
-<span class="nc" id="L248">    this.removeGroups = removeGroups;</span>
-<span class="nc" id="L249">  }</span>
+<span class="fc" id="L256">    this.removeGroups = removeGroups;</span>
+<span class="fc" id="L257">  }</span>
 
 }
 
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JavaLocaleDescription.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">common-model</a> &gt; <a href="index.source.html" class="el_package">org.bremersee.common.model</a> &gt; <span class="el_source">JavaLocaleDescription.java</span></div><h1>JavaLocaleDescription.java</h1><pre class="source lang-java linenums">/*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import javax.validation.constraints.NotNull;
 import lombok.Builder;
@@ -21,14 +29,15 @@ import org.springframework.validation.annotation.Validated;
 
 /**
  * A java locale and it&amp;#39;s description.
+ *
+ * @author Christian Bremer
  */
-@ApiModel(description = &quot;A java locale and it's description.&quot;)
+@Schema(description = &quot;A java locale and it's description.&quot;)
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
-<span class="nc bnc" id="L28" title="All 22 branches missed.">@EqualsAndHashCode</span>
-<span class="nc" id="L29">@ToString</span>
-<span class="nc" id="L30">@NoArgsConstructor</span>
-@SuppressWarnings(&quot;unused&quot;)
+<span class="pc bpc" id="L38" title="9 of 22 branches missed.">@EqualsAndHashCode</span>
+<span class="fc" id="L39">@ToString</span>
+<span class="fc" id="L40">@NoArgsConstructor</span>
 public class JavaLocaleDescription implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -37,30 +46,30 @@ public class JavaLocaleDescription implements Serializable {
   private String locale;
 
   @JsonProperty(value = &quot;description&quot;, required = true)
-  @JacksonXmlProperty(localName = &quot;description&quot;)
   private String description;
 
   /**
    * Instantiates a new java locale description.
    *
-   * @param locale      the locale
+   * @param locale the locale
    * @param description the description
    */
-<span class="nc" id="L49">  @Builder</span>
-<span class="nc" id="L50">  public JavaLocaleDescription(String locale, String description) {</span>
-<span class="nc" id="L51">    this.locale = locale;</span>
-<span class="nc" id="L52">    this.description = description;</span>
-<span class="nc" id="L53">  }</span>
+<span class="pc" id="L57">  @Builder(toBuilder = true)</span>
+  @SuppressWarnings(&quot;unused&quot;)
+<span class="fc" id="L59">  public JavaLocaleDescription(String locale, String description) {</span>
+<span class="fc" id="L60">    this.locale = locale;</span>
+<span class="fc" id="L61">    this.description = description;</span>
+<span class="fc" id="L62">  }</span>
 
   /**
    * Get the locale.
    *
    * @return the locale
    */
-  @ApiModelProperty(required = true, value = &quot;The locale.&quot;)
+  @Schema(description = &quot;The locale.&quot;, required = true, example = &quot;de&quot;)
   @NotNull
   public String getLocale() {
-<span class="nc" id="L63">    return locale;</span>
+<span class="fc" id="L72">    return locale;</span>
   }
 
   /**
@@ -69,18 +78,18 @@ public class JavaLocaleDescription implements Serializable {
    * @param locale the locale
    */
   public void setLocale(String locale) {
-<span class="nc" id="L72">    this.locale = locale;</span>
-<span class="nc" id="L73">  }</span>
+<span class="fc" id="L81">    this.locale = locale;</span>
+<span class="fc" id="L82">  }</span>
 
   /**
    * The description of the locale.
    *
    * @return description description
    */
-  @ApiModelProperty(required = true, value = &quot;The description of the locale.&quot;)
+  @Schema(description = &quot;The description of the locale.&quot;, required = true, example = &quot;German&quot;)
   @NotNull
   public String getDescription() {
-<span class="nc" id="L83">    return description;</span>
+<span class="fc" id="L92">    return description;</span>
   }
 
   /**
@@ -89,9 +98,9 @@ public class JavaLocaleDescription implements Serializable {
    * @param description the description
    */
   public void setDescription(String description) {
-<span class="nc" id="L92">    this.description = description;</span>
-<span class="nc" id="L93">  }</span>
+<span class="fc" id="L101">    this.description = description;</span>
+<span class="fc" id="L102">  }</span>
 
 }
 
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
