@@ -1,21 +1,33 @@
 /*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.exception.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -24,17 +36,20 @@ import org.springframework.validation.annotation.Validated;
 
 /**
  * A stack trace element of an exception.
+ *
+ * @author Christian Bremer
  */
-@ApiModel(description = "A stack trace element of an exception.")
+@Schema(description = "A stack trace element of an exception.")
 @Validated
 @JacksonXmlRootElement(localName = "StackTraceItem")
 @XmlRootElement(name = "StackTraceItem")
+@XmlType(name = "stackTraceItemType")
 @XmlAccessorType(XmlAccessType.FIELD)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(Include.NON_EMPTY)
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
-@SuppressWarnings("unused")
 public class StackTraceItem implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -59,11 +74,12 @@ public class StackTraceItem implements Serializable {
    * Instantiates a new stack trace item.
    *
    * @param declaringClass the declaring class
-   * @param methodName     the method name
-   * @param fileName       the file name
-   * @param lineNumber     the line number
+   * @param methodName the method name
+   * @param fileName the file name
+   * @param lineNumber the line number
    */
-  @Builder
+  @Builder(toBuilder = true)
+  @SuppressWarnings("unused")
   public StackTraceItem(
       String declaringClass,
       String methodName,
@@ -80,7 +96,7 @@ public class StackTraceItem implements Serializable {
    *
    * @return declaringClass declaring class
    */
-  @ApiModelProperty(value = "The declaring class.")
+  @Schema(description = "The declaring class.")
   public String getDeclaringClass() {
     return declaringClass;
   }
@@ -99,7 +115,7 @@ public class StackTraceItem implements Serializable {
    *
    * @return methodName method name
    */
-  @ApiModelProperty(value = "The method name.")
+  @Schema(description = "The method name.")
   public String getMethodName() {
     return methodName;
   }
@@ -118,7 +134,7 @@ public class StackTraceItem implements Serializable {
    *
    * @return fileName file name
    */
-  @ApiModelProperty(value = "The file name.")
+  @Schema(description = "The file name.")
   public String getFileName() {
     return fileName;
   }
@@ -137,7 +153,7 @@ public class StackTraceItem implements Serializable {
    *
    * @return lineNumber line number
    */
-  @ApiModelProperty(value = "The line number.")
+  @Schema(description = "The line number.")
   public Integer getLineNumber() {
     return lineNumber;
   }

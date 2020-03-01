@@ -1,15 +1,24 @@
 /*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.List;
 import javax.validation.constraints.NotNull;
@@ -22,14 +31,15 @@ import org.springframework.validation.annotation.Validated;
 
 /**
  * Specifies a permission and who is granted.
+ *
+ * @author Christian Bremer
  */
-@ApiModel(description = "Specifies a permission and who is granted.")
+@Schema(description = "Specifies a permission and who is granted.")
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
-@SuppressWarnings({"unused", "WeakerAccess"})
 public class AccessControlEntry implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -53,12 +63,13 @@ public class AccessControlEntry implements Serializable {
    * Instantiates a new access control entry.
    *
    * @param permission the permission
-   * @param guest      the guest
-   * @param users      the users
-   * @param roles      the roles
-   * @param groups     the groups
+   * @param guest the guest
+   * @param users the users
+   * @param roles the roles
+   * @param groups the groups
    */
-  @Builder
+  @Builder(toBuilder = true)
+  @SuppressWarnings("unused")
   public AccessControlEntry(
       String permission,
       Boolean guest,
@@ -77,7 +88,7 @@ public class AccessControlEntry implements Serializable {
    *
    * @return permission permission
    */
-  @ApiModelProperty(required = true, value = "Specifies the permission.")
+  @Schema(description = "Specifies the permission.", required = true, example = "read")
   @NotNull
   @Pattern(regexp = "^[a-z_]+$")
   public String getPermission() {
@@ -98,11 +109,8 @@ public class AccessControlEntry implements Serializable {
    *
    * @return guest boolean
    */
-  @ApiModelProperty(value = "Specifies whether anybody is granted.")
+  @Schema(description = "Specifies whether anybody is granted.")
   public Boolean getGuest() {
-    if (guest == null) {
-      guest = Boolean.FALSE;
-    }
     return guest;
   }
 
@@ -120,7 +128,7 @@ public class AccessControlEntry implements Serializable {
    *
    * @return users users
    */
-  @ApiModelProperty(value = "Specifies the granted users.")
+  @Schema(description = "Specifies the granted users.")
   public List<String> getUsers() {
     return users;
   }
@@ -139,7 +147,7 @@ public class AccessControlEntry implements Serializable {
    *
    * @return roles roles
    */
-  @ApiModelProperty(value = "Specifies the granted roles.")
+  @Schema(description = "Specifies the granted roles.")
   public List<String> getRoles() {
     return roles;
   }
@@ -158,7 +166,7 @@ public class AccessControlEntry implements Serializable {
    *
    * @return groups groups
    */
-  @ApiModelProperty(value = "Specifies the granted groups.")
+  @Schema(description = "Specifies the granted groups.")
   public List<String> getGroups() {
     return groups;
   }

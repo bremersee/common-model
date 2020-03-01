@@ -1,7 +1,17 @@
 /*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.common.model;
@@ -10,1267 +20,1287 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.MissingResourceException;
+import java.util.regex.Pattern;
 import org.springframework.util.StringUtils;
 
 /**
  * ISO 3166-1 ALPHA-3 country codes from Java Locale.
+ *
+ * @author Christian Bremer
  */
 public enum ThreeLetterCountryCode {
 
   /**
-   * Andorra (AND)
+   * Aruba (ABW).
    */
-  AND("AND"),
+  ABW("ABW", TwoLetterCountryCode.AW),
 
   /**
-   * United Arab Emirates (ARE)
+   * Afghanistan (AFG).
    */
-  ARE("ARE"),
+  AFG("AFG", TwoLetterCountryCode.AF),
 
   /**
-   * Afghanistan (AFG)
+   * Angola (AGO).
    */
-  AFG("AFG"),
+  AGO("AGO", TwoLetterCountryCode.AO),
 
   /**
-   * Antigua and Barbuda (ATG)
+   * Anguilla (AIA).
    */
-  ATG("ATG"),
+  AIA("AIA", TwoLetterCountryCode.AI),
 
   /**
-   * Anguilla (AIA)
+   * Ålandinseln (ALA).
    */
-  AIA("AIA"),
+  ALA("ALA", TwoLetterCountryCode.AX),
 
   /**
-   * Albania (ALB)
+   * Albanien (ALB).
    */
-  ALB("ALB"),
+  ALB("ALB", TwoLetterCountryCode.AL),
 
   /**
-   * Armenia (ARM)
+   * Andorra (AND).
    */
-  ARM("ARM"),
+  AND("AND", TwoLetterCountryCode.AD),
 
   /**
-   * Netherlands Antilles (ANT)
+   * Vereinigte Arabische Emirate (ARE).
    */
-  ANT("ANT"),
+  ARE("ARE", TwoLetterCountryCode.AE),
 
   /**
-   * Angola (AGO)
+   * Argentinien (ARG).
    */
-  AGO("AGO"),
+  ARG("ARG", TwoLetterCountryCode.AR),
 
   /**
-   * Antarctica (ATA)
+   * Armenien (ARM).
    */
-  ATA("ATA"),
+  ARM("ARM", TwoLetterCountryCode.AM),
 
   /**
-   * Argentina (ARG)
+   * Amerikanisch-Samoa (ASM).
    */
-  ARG("ARG"),
+  ASM("ASM", TwoLetterCountryCode.AS),
 
   /**
-   * American Samoa (ASM)
+   * Antarktis (ATA).
    */
-  ASM("ASM"),
+  ATA("ATA", TwoLetterCountryCode.AQ),
 
   /**
-   * Austria (AUT)
+   * Französische Süd- und Antarktisgebiete (ATF).
    */
-  AUT("AUT"),
+  ATF("ATF", TwoLetterCountryCode.TF),
 
   /**
-   * Australia (AUS)
+   * Antigua und Barbuda (ATG).
    */
-  AUS("AUS"),
+  ATG("ATG", TwoLetterCountryCode.AG),
 
   /**
-   * Aruba (ABW)
+   * Australien (AUS).
    */
-  ABW("ABW"),
+  AUS("AUS", TwoLetterCountryCode.AU),
 
   /**
-   * Åland Islands (ALA)
+   * Österreich (AUT).
    */
-  ALA("ALA"),
+  AUT("AUT", TwoLetterCountryCode.AT),
 
   /**
-   * Azerbaijan (AZE)
+   * Aserbaidschan (AZE).
    */
-  AZE("AZE"),
+  AZE("AZE", TwoLetterCountryCode.AZ),
 
   /**
-   * Bosnia and Herzegovina (BIH)
+   * Burundi (BDI).
    */
-  BIH("BIH"),
+  BDI("BDI", TwoLetterCountryCode.BI),
 
   /**
-   * Barbados (BRB)
+   * Belgien (BEL).
    */
-  BRB("BRB"),
+  BEL("BEL", TwoLetterCountryCode.BE),
 
   /**
-   * Bangladesh (BGD)
+   * Benin (BEN).
    */
-  BGD("BGD"),
+  BEN("BEN", TwoLetterCountryCode.BJ),
 
   /**
-   * Belgium (BEL)
+   * Bonaire, Sint Eustatius und Saba (BES).
    */
-  BEL("BEL"),
+  BES("BES", TwoLetterCountryCode.BQ),
 
   /**
-   * Burkina Faso (BFA)
+   * Burkina Faso (BFA).
    */
-  BFA("BFA"),
+  BFA("BFA", TwoLetterCountryCode.BF),
 
   /**
-   * Bulgaria (BGR)
+   * Bangladesch (BGD).
    */
-  BGR("BGR"),
+  BGD("BGD", TwoLetterCountryCode.BD),
 
   /**
-   * Bahrain (BHR)
+   * Bulgarien (BGR).
    */
-  BHR("BHR"),
+  BGR("BGR", TwoLetterCountryCode.BG),
 
   /**
-   * Burundi (BDI)
+   * Bahrain (BHR).
    */
-  BDI("BDI"),
+  BHR("BHR", TwoLetterCountryCode.BH),
 
   /**
-   * Benin (BEN)
+   * Bahamas (BHS).
    */
-  BEN("BEN"),
+  BHS("BHS", TwoLetterCountryCode.BS),
 
   /**
-   * Saint Barthélemy (BLM)
+   * Bosnien und Herzegowina (BIH).
    */
-  BLM("BLM"),
+  BIH("BIH", TwoLetterCountryCode.BA),
 
   /**
-   * Bermuda (BMU)
+   * St. Barthélemy (BLM).
    */
-  BMU("BMU"),
+  BLM("BLM", TwoLetterCountryCode.BL),
 
   /**
-   * Brunei (BRN)
+   * Belarus (BLR).
    */
-  BRN("BRN"),
+  BLR("BLR", TwoLetterCountryCode.BY),
 
   /**
-   * Bolivia (BOL)
+   * Belize (BLZ).
    */
-  BOL("BOL"),
+  BLZ("BLZ", TwoLetterCountryCode.BZ),
 
   /**
-   * Bonaire, Sint Eustatius and Saba (BES)
+   * Bermuda (BMU).
    */
-  BES("BES"),
+  BMU("BMU", TwoLetterCountryCode.BM),
 
   /**
-   * Brazil (BRA)
+   * Bolivien (BOL).
    */
-  BRA("BRA"),
+  BOL("BOL", TwoLetterCountryCode.BO),
 
   /**
-   * Bahamas (BHS)
+   * Brasilien (BRA).
    */
-  BHS("BHS"),
+  BRA("BRA", TwoLetterCountryCode.BR),
 
   /**
-   * Bhutan (BTN)
+   * Barbados (BRB).
    */
-  BTN("BTN"),
+  BRB("BRB", TwoLetterCountryCode.BB),
 
   /**
-   * Bouvet Island (BVT)
+   * Brunei Darussalam (BRN).
    */
-  BVT("BVT"),
+  BRN("BRN", TwoLetterCountryCode.BN),
 
   /**
-   * Botswana (BWA)
+   * Bhutan (BTN).
    */
-  BWA("BWA"),
+  BTN("BTN", TwoLetterCountryCode.BT),
 
   /**
-   * Belarus (BLR)
+   * Bouvetinsel (BVT).
    */
-  BLR("BLR"),
+  BVT("BVT", TwoLetterCountryCode.BV),
 
   /**
-   * Belize (BLZ)
+   * Botsuana (BWA).
    */
-  BLZ("BLZ"),
+  BWA("BWA", TwoLetterCountryCode.BW),
 
   /**
-   * Canada (CAN)
+   * Zentralafrikanische Republik (CAF).
    */
-  CAN("CAN"),
+  CAF("CAF", TwoLetterCountryCode.CF),
 
   /**
-   * Cocos Islands (CCK)
+   * Kanada (CAN).
    */
-  CCK("CCK"),
+  CAN("CAN", TwoLetterCountryCode.CA),
 
   /**
-   * The Democratic Republic Of Congo (COD)
+   * Kokosinseln (CCK).
    */
-  COD("COD"),
+  CCK("CCK", TwoLetterCountryCode.CC),
 
   /**
-   * Central African Republic (CAF)
+   * Schweiz (CHE).
    */
-  CAF("CAF"),
+  CHE("CHE", TwoLetterCountryCode.CH),
 
   /**
-   * Congo (COG)
+   * Chile (CHL).
    */
-  COG("COG"),
+  CHL("CHL", TwoLetterCountryCode.CL),
 
   /**
-   * Switzerland (CHE)
+   * China (CHN).
    */
-  CHE("CHE"),
+  CHN("CHN", TwoLetterCountryCode.CN),
 
   /**
-   * Côte d'Ivoire (CIV)
+   * Côte d’Ivoire (CIV).
    */
-  CIV("CIV"),
+  CIV("CIV", TwoLetterCountryCode.CI),
 
   /**
-   * Cook Islands (COK)
+   * Kamerun (CMR).
    */
-  COK("COK"),
+  CMR("CMR", TwoLetterCountryCode.CM),
 
   /**
-   * Chile (CHL)
+   * Kongo-Kinshasa (COD).
    */
-  CHL("CHL"),
+  COD("COD", TwoLetterCountryCode.CD),
 
   /**
-   * Cameroon (CMR)
+   * Kongo-Brazzaville (COG).
    */
-  CMR("CMR"),
+  COG("COG", TwoLetterCountryCode.CG),
 
   /**
-   * China (CHN)
+   * Cookinseln (COK).
    */
-  CHN("CHN"),
+  COK("COK", TwoLetterCountryCode.CK),
 
   /**
-   * Colombia (COL)
+   * Kolumbien (COL).
    */
-  COL("COL"),
+  COL("COL", TwoLetterCountryCode.CO),
 
   /**
-   * Costa Rica (CRI)
+   * Komoren (COM).
    */
-  CRI("CRI"),
+  COM("COM", TwoLetterCountryCode.KM),
 
   /**
-   * Cuba (CUB)
+   * Cabo Verde (CPV).
    */
-  CUB("CUB"),
+  CPV("CPV", TwoLetterCountryCode.CV),
 
   /**
-   * Cape Verde (CPV)
+   * Costa Rica (CRI).
    */
-  CPV("CPV"),
+  CRI("CRI", TwoLetterCountryCode.CR),
 
   /**
-   * Curaçao (CUW)
+   * Kuba (CUB).
    */
-  CUW("CUW"),
+  CUB("CUB", TwoLetterCountryCode.CU),
 
   /**
-   * Christmas Island (CXR)
+   * Curaçao (CUW).
    */
-  CXR("CXR"),
+  CUW("CUW", TwoLetterCountryCode.CW),
 
   /**
-   * Cyprus (CYP)
+   * Weihnachtsinsel (CXR).
    */
-  CYP("CYP"),
+  CXR("CXR", TwoLetterCountryCode.CX),
 
   /**
-   * Czech Republic (CZE)
+   * Kaimaninseln (CYM).
    */
-  CZE("CZE"),
+  CYM("CYM", TwoLetterCountryCode.KY),
 
   /**
-   * Germany (DEU)
+   * Zypern (CYP).
    */
-  DEU("DEU"),
+  CYP("CYP", TwoLetterCountryCode.CY),
 
   /**
-   * Djibouti (DJI)
+   * Tschechien (CZE).
    */
-  DJI("DJI"),
+  CZE("CZE", TwoLetterCountryCode.CZ),
 
   /**
-   * Denmark (DNK)
+   * Deutschland (DEU).
    */
-  DNK("DNK"),
+  DEU("DEU", TwoLetterCountryCode.DE),
 
   /**
-   * Dominica (DMA)
+   * Dschibuti (DJI).
    */
-  DMA("DMA"),
+  DJI("DJI", TwoLetterCountryCode.DJ),
 
   /**
-   * Dominican Republic (DOM)
+   * Dominica (DMA).
    */
-  DOM("DOM"),
+  DMA("DMA", TwoLetterCountryCode.DM),
 
   /**
-   * Algeria (DZA)
+   * Dänemark (DNK).
    */
-  DZA("DZA"),
+  DNK("DNK", TwoLetterCountryCode.DK),
 
   /**
-   * Ecuador (ECU)
+   * Dominikanische Republik (DOM).
    */
-  ECU("ECU"),
+  DOM("DOM", TwoLetterCountryCode.DO),
 
   /**
-   * Estonia (EST)
+   * Algerien (DZA).
    */
-  EST("EST"),
+  DZA("DZA", TwoLetterCountryCode.DZ),
 
   /**
-   * Egypt (EGY)
+   * Ecuador (ECU).
    */
-  EGY("EGY"),
+  ECU("ECU", TwoLetterCountryCode.EC),
 
   /**
-   * Western Sahara (ESH)
+   * Ägypten (EGY).
    */
-  ESH("ESH"),
+  EGY("EGY", TwoLetterCountryCode.EG),
 
   /**
-   * Eritrea (ERI)
+   * Eritrea (ERI).
    */
-  ERI("ERI"),
+  ERI("ERI", TwoLetterCountryCode.ER),
 
   /**
-   * Spain (ESP)
+   * Westsahara (ESH).
    */
-  ESP("ESP"),
+  ESH("ESH", TwoLetterCountryCode.EH),
 
   /**
-   * Ethiopia (ETH)
+   * Spanien (ESP).
    */
-  ETH("ETH"),
+  ESP("ESP", TwoLetterCountryCode.ES),
 
   /**
-   * Finland (FIN)
+   * Estland (EST).
    */
-  FIN("FIN"),
+  EST("EST", TwoLetterCountryCode.EE),
 
   /**
-   * Fiji (FJI)
+   * Äthiopien (ETH).
    */
-  FJI("FJI"),
+  ETH("ETH", TwoLetterCountryCode.ET),
 
   /**
-   * Falkland Islands (FLK)
+   * Finnland (FIN).
    */
-  FLK("FLK"),
+  FIN("FIN", TwoLetterCountryCode.FI),
 
   /**
-   * Micronesia (FSM)
+   * Fidschi (FJI).
    */
-  FSM("FSM"),
+  FJI("FJI", TwoLetterCountryCode.FJ),
 
   /**
-   * Faroe Islands (FRO)
+   * Falklandinseln (FLK).
    */
-  FRO("FRO"),
+  FLK("FLK", TwoLetterCountryCode.FK),
 
   /**
-   * France (FRA)
+   * Frankreich (FRA).
    */
-  FRA("FRA"),
+  FRA("FRA", TwoLetterCountryCode.FR),
 
   /**
-   * Gabon (GAB)
+   * Färöer (FRO).
    */
-  GAB("GAB"),
+  FRO("FRO", TwoLetterCountryCode.FO),
 
   /**
-   * United Kingdom (GBR)
+   * Mikronesien (FSM).
    */
-  GBR("GBR"),
+  FSM("FSM", TwoLetterCountryCode.FM),
 
   /**
-   * Grenada (GRD)
+   * Gabun (GAB).
    */
-  GRD("GRD"),
+  GAB("GAB", TwoLetterCountryCode.GA),
 
   /**
-   * Georgia (GEO)
+   * Vereinigtes Königreich (GBR).
    */
-  GEO("GEO"),
+  GBR("GBR", TwoLetterCountryCode.GB),
 
   /**
-   * French Guiana (GUF)
+   * Georgien (GEO).
    */
-  GUF("GUF"),
+  GEO("GEO", TwoLetterCountryCode.GE),
 
   /**
-   * Guernsey (GGY)
+   * Guernsey (GGY).
    */
-  GGY("GGY"),
+  GGY("GGY", TwoLetterCountryCode.GG),
 
   /**
-   * Ghana (GHA)
+   * Ghana (GHA).
    */
-  GHA("GHA"),
+  GHA("GHA", TwoLetterCountryCode.GH),
 
   /**
-   * Gibraltar (GIB)
+   * Gibraltar (GIB).
    */
-  GIB("GIB"),
+  GIB("GIB", TwoLetterCountryCode.GI),
 
   /**
-   * Greenland (GRL)
+   * Guinea (GIN).
    */
-  GRL("GRL"),
+  GIN("GIN", TwoLetterCountryCode.GN),
 
   /**
-   * Gambia (GMB)
+   * Guadeloupe (GLP).
    */
-  GMB("GMB"),
+  GLP("GLP", TwoLetterCountryCode.GP),
 
   /**
-   * Guinea (GIN)
+   * Gambia (GMB).
    */
-  GIN("GIN"),
+  GMB("GMB", TwoLetterCountryCode.GM),
 
   /**
-   * Guadeloupe (GLP)
+   * Guinea-Bissau (GNB).
    */
-  GLP("GLP"),
+  GNB("GNB", TwoLetterCountryCode.GW),
 
   /**
-   * Equatorial Guinea (GNQ)
+   * Äquatorialguinea (GNQ).
    */
-  GNQ("GNQ"),
+  GNQ("GNQ", TwoLetterCountryCode.GQ),
 
   /**
-   * Greece (GRC)
+   * Griechenland (GRC).
    */
-  GRC("GRC"),
+  GRC("GRC", TwoLetterCountryCode.GR),
 
   /**
-   * South Georgia And The South Sandwich Islands (SGS)
+   * Grenada (GRD).
    */
-  SGS("SGS"),
+  GRD("GRD", TwoLetterCountryCode.GD),
 
   /**
-   * Guatemala (GTM)
+   * Grönland (GRL).
    */
-  GTM("GTM"),
+  GRL("GRL", TwoLetterCountryCode.GL),
 
   /**
-   * Guam (GUM)
+   * Guatemala (GTM).
    */
-  GUM("GUM"),
+  GTM("GTM", TwoLetterCountryCode.GT),
 
   /**
-   * Guinea-Bissau (GNB)
+   * Französisch-Guayana (GUF).
    */
-  GNB("GNB"),
+  GUF("GUF", TwoLetterCountryCode.GF),
 
   /**
-   * Guyana (GUY)
+   * Guam (GUM).
    */
-  GUY("GUY"),
+  GUM("GUM", TwoLetterCountryCode.GU),
 
   /**
-   * Hong Kong (HKG)
+   * Guyana (GUY).
    */
-  HKG("HKG"),
+  GUY("GUY", TwoLetterCountryCode.GY),
 
   /**
-   * Heard Island And McDonald Islands (HMD)
+   * Sonderverwaltungsregion Hongkong (HKG).
    */
-  HMD("HMD"),
+  HKG("HKG", TwoLetterCountryCode.HK),
 
   /**
-   * Honduras (HND)
+   * Heard und McDonaldinseln (HMD).
    */
-  HND("HND"),
+  HMD("HMD", TwoLetterCountryCode.HM),
 
   /**
-   * Croatia (HRV)
+   * Honduras (HND).
    */
-  HRV("HRV"),
+  HND("HND", TwoLetterCountryCode.HN),
 
   /**
-   * Haiti (HTI)
+   * Kroatien (HRV).
    */
-  HTI("HTI"),
+  HRV("HRV", TwoLetterCountryCode.HR),
 
   /**
-   * Hungary (HUN)
+   * Haiti (HTI).
    */
-  HUN("HUN"),
+  HTI("HTI", TwoLetterCountryCode.HT),
 
   /**
-   * Indonesia (IDN)
+   * Ungarn (HUN).
    */
-  IDN("IDN"),
+  HUN("HUN", TwoLetterCountryCode.HU),
 
   /**
-   * Ireland (IRL)
+   * Indonesien (IDN).
    */
-  IRL("IRL"),
+  IDN("IDN", TwoLetterCountryCode.ID),
 
   /**
-   * Israel (ISR)
+   * Isle of Man (IMN).
    */
-  ISR("ISR"),
+  IMN("IMN", TwoLetterCountryCode.IM),
 
   /**
-   * Isle Of Man (IMN)
+   * Indien (IND).
    */
-  IMN("IMN"),
+  IND("IND", TwoLetterCountryCode.IN),
 
   /**
-   * India (IND)
+   * Britisches Territorium im Indischen Ozean (IOT).
    */
-  IND("IND"),
+  IOT("IOT", TwoLetterCountryCode.IO),
 
   /**
-   * British Indian Ocean Territory (IOT)
+   * Irland (IRL).
    */
-  IOT("IOT"),
+  IRL("IRL", TwoLetterCountryCode.IE),
 
   /**
-   * Iraq (IRQ)
+   * Iran (IRN).
    */
-  IRQ("IRQ"),
+  IRN("IRN", TwoLetterCountryCode.IR),
 
   /**
-   * Iran (IRN)
+   * Irak (IRQ).
    */
-  IRN("IRN"),
+  IRQ("IRQ", TwoLetterCountryCode.IQ),
 
   /**
-   * Iceland (ISL)
+   * Island (ISL).
    */
-  ISL("ISL"),
+  ISL("ISL", TwoLetterCountryCode.IS),
 
   /**
-   * Italy (ITA)
+   * Israel (ISR).
    */
-  ITA("ITA"),
+  ISR("ISR", TwoLetterCountryCode.IL),
 
   /**
-   * Jersey (JEY)
+   * Italien (ITA).
    */
-  JEY("JEY"),
+  ITA("ITA", TwoLetterCountryCode.IT),
 
   /**
-   * Jamaica (JAM)
+   * Jamaika (JAM).
    */
-  JAM("JAM"),
+  JAM("JAM", TwoLetterCountryCode.JM),
 
   /**
-   * Jordan (JOR)
+   * Jersey (JEY).
    */
-  JOR("JOR"),
+  JEY("JEY", TwoLetterCountryCode.JE),
 
   /**
-   * Japan (JPN)
+   * Jordanien (JOR).
    */
-  JPN("JPN"),
+  JOR("JOR", TwoLetterCountryCode.JO),
 
   /**
-   * Kenya (KEN)
+   * Japan (JPN).
    */
-  KEN("KEN"),
+  JPN("JPN", TwoLetterCountryCode.JP),
 
   /**
-   * Kyrgyzstan (KGZ)
+   * Kasachstan (KAZ).
    */
-  KGZ("KGZ"),
+  KAZ("KAZ", TwoLetterCountryCode.KZ),
 
   /**
-   * Cambodia (KHM)
+   * Kenia (KEN).
    */
-  KHM("KHM"),
+  KEN("KEN", TwoLetterCountryCode.KE),
 
   /**
-   * Kiribati (KIR)
+   * Kirgisistan (KGZ).
    */
-  KIR("KIR"),
+  KGZ("KGZ", TwoLetterCountryCode.KG),
 
   /**
-   * Comoros (COM)
+   * Kambodscha (KHM).
    */
-  COM("COM"),
+  KHM("KHM", TwoLetterCountryCode.KH),
 
   /**
-   * Saint Kitts And Nevis (KNA)
+   * Kiribati (KIR).
    */
-  KNA("KNA"),
+  KIR("KIR", TwoLetterCountryCode.KI),
 
   /**
-   * North Korea (PRK)
+   * St. Kitts und Nevis (KNA).
    */
-  PRK("PRK"),
+  KNA("KNA", TwoLetterCountryCode.KN),
 
   /**
-   * South Korea (KOR)
+   * Südkorea (KOR).
    */
-  KOR("KOR"),
+  KOR("KOR", TwoLetterCountryCode.KR),
 
   /**
-   * Kuwait (KWT)
+   * Kuwait (KWT).
    */
-  KWT("KWT"),
+  KWT("KWT", TwoLetterCountryCode.KW),
 
   /**
-   * Cayman Islands (CYM)
+   * Laos (LAO).
    */
-  CYM("CYM"),
+  LAO("LAO", TwoLetterCountryCode.LA),
 
   /**
-   * Kazakhstan (KAZ)
+   * Libanon (LBN).
    */
-  KAZ("KAZ"),
+  LBN("LBN", TwoLetterCountryCode.LB),
 
   /**
-   * Laos (LAO)
+   * Liberia (LBR).
    */
-  LAO("LAO"),
+  LBR("LBR", TwoLetterCountryCode.LR),
 
   /**
-   * Lebanon (LBN)
+   * Libyen (LBY).
    */
-  LBN("LBN"),
+  LBY("LBY", TwoLetterCountryCode.LY),
 
   /**
-   * Saint Lucia (LCA)
+   * St. Lucia (LCA).
    */
-  LCA("LCA"),
+  LCA("LCA", TwoLetterCountryCode.LC),
 
   /**
-   * Liechtenstein (LIE)
+   * Liechtenstein (LIE).
    */
-  LIE("LIE"),
+  LIE("LIE", TwoLetterCountryCode.LI),
 
   /**
-   * Sri Lanka (LKA)
+   * Sri Lanka (LKA).
    */
-  LKA("LKA"),
+  LKA("LKA", TwoLetterCountryCode.LK),
 
   /**
-   * Liberia (LBR)
+   * Lesotho (LSO).
    */
-  LBR("LBR"),
+  LSO("LSO", TwoLetterCountryCode.LS),
 
   /**
-   * Lesotho (LSO)
+   * Litauen (LTU).
    */
-  LSO("LSO"),
+  LTU("LTU", TwoLetterCountryCode.LT),
 
   /**
-   * Lithuania (LTU)
+   * Luxemburg (LUX).
    */
-  LTU("LTU"),
+  LUX("LUX", TwoLetterCountryCode.LU),
 
   /**
-   * Luxembourg (LUX)
+   * Lettland (LVA).
    */
-  LUX("LUX"),
+  LVA("LVA", TwoLetterCountryCode.LV),
 
   /**
-   * Latvia (LVA)
+   * Sonderverwaltungsregion Macau (MAC).
    */
-  LVA("LVA"),
+  MAC("MAC", TwoLetterCountryCode.MO),
 
   /**
-   * Libya (LBY)
+   * St. Martin (MAF).
    */
-  LBY("LBY"),
+  MAF("MAF", TwoLetterCountryCode.MF),
 
   /**
-   * Morocco (MAR)
+   * Marokko (MAR).
    */
-  MAR("MAR"),
+  MAR("MAR", TwoLetterCountryCode.MA),
 
   /**
-   * Monaco (MCO)
+   * Monaco (MCO).
    */
-  MCO("MCO"),
+  MCO("MCO", TwoLetterCountryCode.MC),
 
   /**
-   * Moldova (MDA)
+   * Republik Moldau (MDA).
    */
-  MDA("MDA"),
+  MDA("MDA", TwoLetterCountryCode.MD),
 
   /**
-   * Montenegro (MNE)
+   * Madagaskar (MDG).
    */
-  MNE("MNE"),
+  MDG("MDG", TwoLetterCountryCode.MG),
 
   /**
-   * Saint Martin (MAF)
+   * Malediven (MDV).
    */
-  MAF("MAF"),
+  MDV("MDV", TwoLetterCountryCode.MV),
 
   /**
-   * Madagascar (MDG)
+   * Mexiko (MEX).
    */
-  MDG("MDG"),
+  MEX("MEX", TwoLetterCountryCode.MX),
 
   /**
-   * Marshall Islands (MHL)
+   * Marshallinseln (MHL).
    */
-  MHL("MHL"),
+  MHL("MHL", TwoLetterCountryCode.MH),
 
   /**
-   * Macedonia (MKD)
+   * Nordmazedonien (MKD).
    */
-  MKD("MKD"),
+  MKD("MKD", TwoLetterCountryCode.MK),
 
   /**
-   * Mali (MLI)
+   * Mali (MLI).
    */
-  MLI("MLI"),
+  MLI("MLI", TwoLetterCountryCode.ML),
 
   /**
-   * Myanmar (MMR)
+   * Malta (MLT).
    */
-  MMR("MMR"),
+  MLT("MLT", TwoLetterCountryCode.MT),
 
   /**
-   * Mongolia (MNG)
+   * Myanmar (MMR).
    */
-  MNG("MNG"),
+  MMR("MMR", TwoLetterCountryCode.MM),
 
   /**
-   * Macao (MAC)
+   * Montenegro (MNE).
    */
-  MAC("MAC"),
+  MNE("MNE", TwoLetterCountryCode.ME),
 
   /**
-   * Northern Mariana Islands (MNP)
+   * Mongolei (MNG).
    */
-  MNP("MNP"),
+  MNG("MNG", TwoLetterCountryCode.MN),
 
   /**
-   * Martinique (MTQ)
+   * Nördliche Marianen (MNP).
    */
-  MTQ("MTQ"),
+  MNP("MNP", TwoLetterCountryCode.MP),
 
   /**
-   * Mauritania (MRT)
+   * Mosambik (MOZ).
    */
-  MRT("MRT"),
+  MOZ("MOZ", TwoLetterCountryCode.MZ),
 
   /**
-   * Montserrat (MSR)
+   * Mauretanien (MRT).
    */
-  MSR("MSR"),
+  MRT("MRT", TwoLetterCountryCode.MR),
 
   /**
-   * Malta (MLT)
+   * Montserrat (MSR).
    */
-  MLT("MLT"),
+  MSR("MSR", TwoLetterCountryCode.MS),
 
   /**
-   * Mauritius (MUS)
+   * Martinique (MTQ).
    */
-  MUS("MUS"),
+  MTQ("MTQ", TwoLetterCountryCode.MQ),
 
   /**
-   * Maldives (MDV)
+   * Mauritius (MUS).
    */
-  MDV("MDV"),
+  MUS("MUS", TwoLetterCountryCode.MU),
 
   /**
-   * Malawi (MWI)
+   * Malawi (MWI).
    */
-  MWI("MWI"),
+  MWI("MWI", TwoLetterCountryCode.MW),
 
   /**
-   * Mexico (MEX)
+   * Malaysia (MYS).
    */
-  MEX("MEX"),
+  MYS("MYS", TwoLetterCountryCode.MY),
 
   /**
-   * Malaysia (MYS)
+   * Mayotte (MYT).
    */
-  MYS("MYS"),
+  MYT("MYT", TwoLetterCountryCode.YT),
 
   /**
-   * Mozambique (MOZ)
+   * Namibia (NAM).
    */
-  MOZ("MOZ"),
+  NAM("NAM", TwoLetterCountryCode.NA),
 
   /**
-   * Namibia (NAM)
+   * Neukaledonien (NCL).
    */
-  NAM("NAM"),
+  NCL("NCL", TwoLetterCountryCode.NC),
 
   /**
-   * New Caledonia (NCL)
+   * Niger (NER).
    */
-  NCL("NCL"),
+  NER("NER", TwoLetterCountryCode.NE),
 
   /**
-   * Niger (NER)
+   * Norfolkinsel (NFK).
    */
-  NER("NER"),
+  NFK("NFK", TwoLetterCountryCode.NF),
 
   /**
-   * Norfolk Island (NFK)
+   * Nigeria (NGA).
    */
-  NFK("NFK"),
+  NGA("NGA", TwoLetterCountryCode.NG),
 
   /**
-   * Nigeria (NGA)
+   * Nicaragua (NIC).
    */
-  NGA("NGA"),
+  NIC("NIC", TwoLetterCountryCode.NI),
 
   /**
-   * Nicaragua (NIC)
+   * Niue (NIU).
    */
-  NIC("NIC"),
+  NIU("NIU", TwoLetterCountryCode.NU),
 
   /**
-   * Netherlands (NLD)
+   * Niederlande (NLD).
    */
-  NLD("NLD"),
+  NLD("NLD", TwoLetterCountryCode.NL),
 
   /**
-   * Norway (NOR)
+   * Norwegen (NOR).
    */
-  NOR("NOR"),
+  NOR("NOR", TwoLetterCountryCode.NO),
 
   /**
-   * Nepal (NPL)
+   * Nepal (NPL).
    */
-  NPL("NPL"),
+  NPL("NPL", TwoLetterCountryCode.NP),
 
   /**
-   * Nauru (NRU)
+   * Nauru (NRU).
    */
-  NRU("NRU"),
+  NRU("NRU", TwoLetterCountryCode.NR),
 
   /**
-   * Niue (NIU)
+   * Neuseeland (NZL).
    */
-  NIU("NIU"),
+  NZL("NZL", TwoLetterCountryCode.NZ),
 
   /**
-   * New Zealand (NZL)
+   * Oman (OMN).
    */
-  NZL("NZL"),
+  OMN("OMN", TwoLetterCountryCode.OM),
 
   /**
-   * Oman (OMN)
+   * Pakistan (PAK).
    */
-  OMN("OMN"),
+  PAK("PAK", TwoLetterCountryCode.PK),
 
   /**
-   * Panama (PAN)
+   * Panama (PAN).
    */
-  PAN("PAN"),
+  PAN("PAN", TwoLetterCountryCode.PA),
 
   /**
-   * Peru (PER)
+   * Pitcairninseln (PCN).
    */
-  PER("PER"),
+  PCN("PCN", TwoLetterCountryCode.PN),
 
   /**
-   * French Polynesia (PYF)
+   * Peru (PER).
    */
-  PYF("PYF"),
+  PER("PER", TwoLetterCountryCode.PE),
 
   /**
-   * Papua New Guinea (PNG)
+   * Philippinen (PHL).
    */
-  PNG("PNG"),
+  PHL("PHL", TwoLetterCountryCode.PH),
 
   /**
-   * Philippines (PHL)
+   * Palau (PLW).
    */
-  PHL("PHL"),
+  PLW("PLW", TwoLetterCountryCode.PW),
 
   /**
-   * Pakistan (PAK)
+   * Papua-Neuguinea (PNG).
    */
-  PAK("PAK"),
+  PNG("PNG", TwoLetterCountryCode.PG),
 
   /**
-   * Poland (POL)
+   * Polen (POL).
    */
-  POL("POL"),
+  POL("POL", TwoLetterCountryCode.PL),
 
   /**
-   * Saint Pierre And Miquelon (SPM)
+   * Puerto Rico (PRI).
    */
-  SPM("SPM"),
+  PRI("PRI", TwoLetterCountryCode.PR),
 
   /**
-   * Pitcairn (PCN)
+   * Nordkorea (PRK).
    */
-  PCN("PCN"),
+  PRK("PRK", TwoLetterCountryCode.KP),
 
   /**
-   * Puerto Rico (PRI)
+   * Portugal (PRT).
    */
-  PRI("PRI"),
+  PRT("PRT", TwoLetterCountryCode.PT),
 
   /**
-   * Palestine (PSE)
+   * Paraguay (PRY).
    */
-  PSE("PSE"),
+  PRY("PRY", TwoLetterCountryCode.PY),
 
   /**
-   * Portugal (PRT)
+   * Palästinensische Autonomiegebiete (PSE).
    */
-  PRT("PRT"),
+  PSE("PSE", TwoLetterCountryCode.PS),
 
   /**
-   * Palau (PLW)
+   * Französisch-Polynesien (PYF).
    */
-  PLW("PLW"),
+  PYF("PYF", TwoLetterCountryCode.PF),
 
   /**
-   * Paraguay (PRY)
+   * Katar (QAT).
    */
-  PRY("PRY"),
+  QAT("QAT", TwoLetterCountryCode.QA),
 
   /**
-   * Qatar (QAT)
+   * Réunion (REU).
    */
-  QAT("QAT"),
+  REU("REU", TwoLetterCountryCode.RE),
 
   /**
-   * Reunion (REU)
+   * Rumänien (ROU).
    */
-  REU("REU"),
+  ROU("ROU", TwoLetterCountryCode.RO),
 
   /**
-   * Romania (ROU)
+   * Russland (RUS).
    */
-  ROU("ROU"),
+  RUS("RUS", TwoLetterCountryCode.RU),
 
   /**
-   * Serbia (SRB)
+   * Ruanda (RWA).
    */
-  SRB("SRB"),
+  RWA("RWA", TwoLetterCountryCode.RW),
 
   /**
-   * Russia (RUS)
+   * Saudi-Arabien (SAU).
    */
-  RUS("RUS"),
+  SAU("SAU", TwoLetterCountryCode.SA),
 
   /**
-   * Rwanda (RWA)
+   * Sudan (SDN).
    */
-  RWA("RWA"),
+  SDN("SDN", TwoLetterCountryCode.SD),
 
   /**
-   * Saudi Arabia (SAU)
+   * Senegal (SEN).
    */
-  SAU("SAU"),
+  SEN("SEN", TwoLetterCountryCode.SN),
 
   /**
-   * Solomon Islands (SLB)
+   * Singapur (SGP).
    */
-  SLB("SLB"),
+  SGP("SGP", TwoLetterCountryCode.SG),
 
   /**
-   * Seychelles (SYC)
+   * Südgeorgien und die Südlichen Sandwichinseln (SGS).
    */
-  SYC("SYC"),
+  SGS("SGS", TwoLetterCountryCode.GS),
 
   /**
-   * Sudan (SDN)
+   * St. Helena (SHN).
    */
-  SDN("SDN"),
+  SHN("SHN", TwoLetterCountryCode.SH),
 
   /**
-   * Sweden (SWE)
+   * Spitzbergen und Jan Mayen (SJM).
    */
-  SWE("SWE"),
+  SJM("SJM", TwoLetterCountryCode.SJ),
 
   /**
-   * Singapore (SGP)
+   * Salomonen (SLB).
    */
-  SGP("SGP"),
+  SLB("SLB", TwoLetterCountryCode.SB),
 
   /**
-   * Saint Helena (SHN)
+   * Sierra Leone (SLE).
    */
-  SHN("SHN"),
+  SLE("SLE", TwoLetterCountryCode.SL),
 
   /**
-   * Slovenia (SVN)
+   * El Salvador (SLV).
    */
-  SVN("SVN"),
+  SLV("SLV", TwoLetterCountryCode.SV),
 
   /**
-   * Svalbard And Jan Mayen (SJM)
+   * San Marino (SMR).
    */
-  SJM("SJM"),
+  SMR("SMR", TwoLetterCountryCode.SM),
 
   /**
-   * Slovakia (SVK)
+   * Somalia (SOM).
    */
-  SVK("SVK"),
+  SOM("SOM", TwoLetterCountryCode.SO),
 
   /**
-   * Sierra Leone (SLE)
+   * St. Pierre und Miquelon (SPM).
    */
-  SLE("SLE"),
+  SPM("SPM", TwoLetterCountryCode.PM),
 
   /**
-   * San Marino (SMR)
+   * Serbien (SRB).
    */
-  SMR("SMR"),
+  SRB("SRB", TwoLetterCountryCode.RS),
 
   /**
-   * Senegal (SEN)
+   * Südsudan (SSD).
    */
-  SEN("SEN"),
+  SSD("SSD", TwoLetterCountryCode.SS),
 
   /**
-   * Somalia (SOM)
+   * São Tomé und Príncipe (STP).
    */
-  SOM("SOM"),
+  STP("STP", TwoLetterCountryCode.ST),
 
   /**
-   * Suriname (SUR)
+   * Suriname (SUR).
    */
-  SUR("SUR"),
+  SUR("SUR", TwoLetterCountryCode.SR),
 
   /**
-   * South Sudan (SSD)
+   * Slowakei (SVK).
    */
-  SSD("SSD"),
+  SVK("SVK", TwoLetterCountryCode.SK),
 
   /**
-   * Sao Tome And Principe (STP)
+   * Slowenien (SVN).
    */
-  STP("STP"),
+  SVN("SVN", TwoLetterCountryCode.SI),
 
   /**
-   * El Salvador (SLV)
+   * Schweden (SWE).
    */
-  SLV("SLV"),
+  SWE("SWE", TwoLetterCountryCode.SE),
 
   /**
-   * Sint Maarten (Dutch part) (SXM)
+   * Swasiland (SWZ).
    */
-  SXM("SXM"),
+  SWZ("SWZ", TwoLetterCountryCode.SZ),
 
   /**
-   * Syria (SYR)
+   * Sint Maarten (SXM).
    */
-  SYR("SYR"),
+  SXM("SXM", TwoLetterCountryCode.SX),
 
   /**
-   * Swaziland (SWZ)
+   * Seychellen (SYC).
    */
-  SWZ("SWZ"),
+  SYC("SYC", TwoLetterCountryCode.SC),
 
   /**
-   * Turks And Caicos Islands (TCA)
+   * Syrien (SYR).
    */
-  TCA("TCA"),
+  SYR("SYR", TwoLetterCountryCode.SY),
 
   /**
-   * Chad (TCD)
+   * Turks- und Caicosinseln (TCA).
    */
-  TCD("TCD"),
+  TCA("TCA", TwoLetterCountryCode.TC),
 
   /**
-   * French Southern Territories (ATF)
+   * Tschad (TCD).
    */
-  ATF("ATF"),
+  TCD("TCD", TwoLetterCountryCode.TD),
 
   /**
-   * Togo (TGO)
+   * Togo (TGO).
    */
-  TGO("TGO"),
+  TGO("TGO", TwoLetterCountryCode.TG),
 
   /**
-   * Thailand (THA)
+   * Thailand (THA).
    */
-  THA("THA"),
+  THA("THA", TwoLetterCountryCode.TH),
 
   /**
-   * Tajikistan (TJK)
+   * Tadschikistan (TJK).
    */
-  TJK("TJK"),
+  TJK("TJK", TwoLetterCountryCode.TJ),
 
   /**
-   * Tokelau (TKL)
+   * Tokelau (TKL).
    */
-  TKL("TKL"),
+  TKL("TKL", TwoLetterCountryCode.TK),
 
   /**
-   * Timor-Leste (TLS)
+   * Turkmenistan (TKM).
    */
-  TLS("TLS"),
+  TKM("TKM", TwoLetterCountryCode.TM),
 
   /**
-   * Turkmenistan (TKM)
+   * Timor-Leste (TLS).
    */
-  TKM("TKM"),
+  TLS("TLS", TwoLetterCountryCode.TL),
 
   /**
-   * Tunisia (TUN)
+   * Tonga (TON).
    */
-  TUN("TUN"),
+  TON("TON", TwoLetterCountryCode.TO),
 
   /**
-   * Tonga (TON)
+   * Trinidad und Tobago (TTO).
    */
-  TON("TON"),
+  TTO("TTO", TwoLetterCountryCode.TT),
 
   /**
-   * Turkey (TUR)
+   * Tunesien (TUN).
    */
-  TUR("TUR"),
+  TUN("TUN", TwoLetterCountryCode.TN),
 
   /**
-   * Trinidad and Tobago (TTO)
+   * Türkei (TUR).
    */
-  TTO("TTO"),
+  TUR("TUR", TwoLetterCountryCode.TR),
 
   /**
-   * Tuvalu (TUV)
+   * Tuvalu (TUV).
    */
-  TUV("TUV"),
+  TUV("TUV", TwoLetterCountryCode.TV),
 
   /**
-   * Taiwan (TWN)
+   * Taiwan (TWN).
    */
-  TWN("TWN"),
+  TWN("TWN", TwoLetterCountryCode.TW),
 
   /**
-   * Tanzania (TZA)
+   * Tansania (TZA).
    */
-  TZA("TZA"),
+  TZA("TZA", TwoLetterCountryCode.TZ),
 
   /**
-   * Ukraine (UKR)
+   * Uganda (UGA).
    */
-  UKR("UKR"),
+  UGA("UGA", TwoLetterCountryCode.UG),
 
   /**
-   * Uganda (UGA)
+   * Ukraine (UKR).
    */
-  UGA("UGA"),
+  UKR("UKR", TwoLetterCountryCode.UA),
 
   /**
-   * United States Minor Outlying Islands (UMI)
+   * Amerikanische Überseeinseln (UMI).
    */
-  UMI("UMI"),
+  UMI("UMI", TwoLetterCountryCode.UM),
 
   /**
-   * United States (USA)
+   * Uruguay (URY).
    */
-  USA("USA"),
+  URY("URY", TwoLetterCountryCode.UY),
 
   /**
-   * Uruguay (URY)
+   * Vereinigte Staaten (USA).
    */
-  URY("URY"),
+  USA("USA", TwoLetterCountryCode.US),
 
   /**
-   * Uzbekistan (UZB)
+   * Usbekistan (UZB).
    */
-  UZB("UZB"),
+  UZB("UZB", TwoLetterCountryCode.UZ),
 
   /**
-   * Vatican (VAT)
+   * Vatikanstadt (VAT).
    */
-  VAT("VAT"),
+  VAT("VAT", TwoLetterCountryCode.VA),
 
   /**
-   * Saint Vincent And The Grenadines (VCT)
+   * St. Vincent und die Grenadinen (VCT).
    */
-  VCT("VCT"),
+  VCT("VCT", TwoLetterCountryCode.VC),
 
   /**
-   * Venezuela (VEN)
+   * Venezuela (VEN).
    */
-  VEN("VEN"),
+  VEN("VEN", TwoLetterCountryCode.VE),
 
   /**
-   * British Virgin Islands (VGB)
+   * Britische Jungferninseln (VGB).
    */
-  VGB("VGB"),
+  VGB("VGB", TwoLetterCountryCode.VG),
 
   /**
-   * U.S. Virgin Islands (VIR)
+   * Amerikanische Jungferninseln (VIR).
    */
-  VIR("VIR"),
+  VIR("VIR", TwoLetterCountryCode.VI),
 
   /**
-   * Vietnam (VNM)
+   * Vietnam (VNM).
    */
-  VNM("VNM"),
+  VNM("VNM", TwoLetterCountryCode.VN),
 
   /**
-   * Vanuatu (VUT)
+   * Vanuatu (VUT).
    */
-  VUT("VUT"),
+  VUT("VUT", TwoLetterCountryCode.VU),
 
   /**
-   * Wallis And Futuna (WLF)
+   * Wallis und Futuna (WLF).
    */
-  WLF("WLF"),
+  WLF("WLF", TwoLetterCountryCode.WF),
 
   /**
-   * Samoa (WSM)
+   * Samoa (WSM).
    */
-  WSM("WSM"),
+  WSM("WSM", TwoLetterCountryCode.WS),
 
   /**
-   * Yemen (YEM)
+   * Jemen (YEM).
    */
-  YEM("YEM"),
+  YEM("YEM", TwoLetterCountryCode.YE),
 
   /**
-   * Mayotte (MYT)
+   * Südafrika (ZAF).
    */
-  MYT("MYT"),
+  ZAF("ZAF", TwoLetterCountryCode.ZA),
 
   /**
-   * South Africa (ZAF)
+   * Sambia (ZMB).
    */
-  ZAF("ZAF"),
+  ZMB("ZMB", TwoLetterCountryCode.ZM),
 
   /**
-   * Zambia (ZMB)
+   * Simbabwe (ZWE).
    */
-  ZMB("ZMB"),
+  ZWE("ZWE", TwoLetterCountryCode.ZW);
 
-  /**
-   * Zimbabwe (ZWE)
-   */
-  ZWE("ZWE");
+  private final String value;
 
-  private String value;
+  private final TwoLetterCountryCode twoLetterCountryCode;
 
-  ThreeLetterCountryCode(String value) {
+  ThreeLetterCountryCode(final String value, final TwoLetterCountryCode twoLetterCountryCode) {
     this.value = value;
+    this.twoLetterCountryCode = twoLetterCountryCode;
+  }
+
+  /**
+   * Gets two letter country code.
+   *
+   * @return the two letter country code
+   */
+  public TwoLetterCountryCode getTwoLetterCountryCode() {
+    return twoLetterCountryCode;
+  }
+
+  /**
+   * Has two letter country code boolean.
+   *
+   * @return the boolean
+   */
+  public boolean hasTwoLetterCountryCode() {
+    return twoLetterCountryCode != null;
   }
 
   @Override
@@ -1286,11 +1316,26 @@ public enum ThreeLetterCountryCode {
    */
   public Locale toLocale() {
     return Arrays
-        .stream(Locale.getISOCountries())
-        .filter(iso -> value.equalsIgnoreCase(new Locale("", iso).getISO3Country()))
+        .stream(Locale.getAvailableLocales())
+        .filter(this::hasIsoCountry)
+        .filter(locale -> value.equalsIgnoreCase(locale.getISO3Country()))
         .findAny()
-        .map(iso -> new Locale("", iso))
-        .orElse(null);
+        .map(locale -> new Locale("", locale.getCountry()))
+        .orElseGet(() -> Arrays.stream(Locale.getISOCountries())
+            .map(iso -> new Locale("", iso))
+            .filter(this::hasIsoCountry)
+            .filter(locale -> value.equalsIgnoreCase(locale.getISO3Country()))
+            .findAny()
+            .map(locale -> new Locale("", locale.getCountry()))
+            .orElse(null));
+  }
+
+  private boolean hasIsoCountry(final Locale locale) {
+    try {
+      return StringUtils.hasText(locale.getISO3Country());
+    } catch (MissingResourceException e) {
+      return false;
+    }
   }
 
   /**
@@ -1300,22 +1345,36 @@ public enum ThreeLetterCountryCode {
    * @return the three letter country code
    */
   @JsonCreator
-  public static ThreeLetterCountryCode fromValue(String text) {
-    String source = text != null ? text.trim() : null;
+  public static ThreeLetterCountryCode fromValue(final String text) {
+    return fromValue(text, null);
+  }
+
+  /**
+   * From value three letter country code.
+   *
+   * @param text the text
+   * @param defaultCode the default code
+   * @return the three letter country code
+   */
+  @SuppressWarnings("DuplicatedCode")
+  public static ThreeLetterCountryCode fromValue(
+      final String text,
+      final ThreeLetterCountryCode defaultCode) {
+
+    String source = text != null ? text.trim().toUpperCase() : null;
     if (source == null || source.length() < 2) {
-      return null;
+      return defaultCode;
     }
-    if (source.length() != 3) {
-      TwoLetterCountryCode code = TwoLetterCountryCode.fromValue(source);
-      return code != null ? fromLocale(code.toLocale()) : null;
-    }
-    source = text.substring(0, 3).toUpperCase();
+    source = source.replace("-", "_");
+    String[] parts = source.split(Pattern.quote("_"));
+    source = parts.length > 1 ? parts[1].trim() : parts[0].trim();
     for (ThreeLetterCountryCode b : ThreeLetterCountryCode.values()) {
-      if (b.value.equals(source)) {
+      if (b.value.equals(source)
+          || (b.twoLetterCountryCode != null && b.twoLetterCountryCode.toString().equals(source))) {
         return b;
       }
     }
-    return null;
+    return defaultCode;
   }
 
   /**
@@ -1324,11 +1383,24 @@ public enum ThreeLetterCountryCode {
    * @param locale the locale
    * @return the three letter country code
    */
-  public static ThreeLetterCountryCode fromLocale(Locale locale) {
+  public static ThreeLetterCountryCode fromLocale(final Locale locale) {
+    return fromLocale(locale, null);
+  }
+
+  /**
+   * From locale three letter country code.
+   *
+   * @param locale the locale
+   * @param defaultCode the default code
+   * @return the three letter country code
+   */
+  public static ThreeLetterCountryCode fromLocale(
+      final Locale locale,
+      final ThreeLetterCountryCode defaultCode) {
     if (locale == null || !StringUtils.hasText(locale.getISO3Country())) {
-      return null;
+      return defaultCode;
     }
-    return fromValue(locale.getISO3Country());
+    return fromValue(locale.getISO3Country(), defaultCode);
   }
 
 }

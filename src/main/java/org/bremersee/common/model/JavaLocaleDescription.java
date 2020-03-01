@@ -1,16 +1,24 @@
 /*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import javax.validation.constraints.NotNull;
 import lombok.Builder;
@@ -21,14 +29,15 @@ import org.springframework.validation.annotation.Validated;
 
 /**
  * A java locale and it&#39;s description.
+ *
+ * @author Christian Bremer
  */
-@ApiModel(description = "A java locale and it's description.")
+@Schema(description = "A java locale and it's description.")
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
-@SuppressWarnings("unused")
 public class JavaLocaleDescription implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -37,16 +46,16 @@ public class JavaLocaleDescription implements Serializable {
   private String locale;
 
   @JsonProperty(value = "description", required = true)
-  @JacksonXmlProperty(localName = "description")
   private String description;
 
   /**
    * Instantiates a new java locale description.
    *
-   * @param locale      the locale
+   * @param locale the locale
    * @param description the description
    */
-  @Builder
+  @Builder(toBuilder = true)
+  @SuppressWarnings("unused")
   public JavaLocaleDescription(String locale, String description) {
     this.locale = locale;
     this.description = description;
@@ -57,7 +66,7 @@ public class JavaLocaleDescription implements Serializable {
    *
    * @return the locale
    */
-  @ApiModelProperty(required = true, value = "The locale.")
+  @Schema(description = "The locale.", required = true, example = "de")
   @NotNull
   public String getLocale() {
     return locale;
@@ -77,7 +86,7 @@ public class JavaLocaleDescription implements Serializable {
    *
    * @return description description
    */
-  @ApiModelProperty(required = true, value = "The description of the locale.")
+  @Schema(description = "The description of the locale.", required = true, example = "German")
   @NotNull
   public String getDescription() {
     return description;

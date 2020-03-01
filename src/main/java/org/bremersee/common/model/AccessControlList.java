@@ -1,7 +1,17 @@
 /*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.common.model;
@@ -10,8 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,15 +32,16 @@ import org.springframework.validation.annotation.Validated;
 
 /**
  * Specifies permissions and who is granted.
+ *
+ * @author Christian Bremer
  */
-@ApiModel(description = "Specifies permissions and who is granted.")
+@Schema(description = "Specifies permissions and who is granted.")
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_EMPTY)
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
-@SuppressWarnings("unused")
 public class AccessControlList implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -45,10 +55,11 @@ public class AccessControlList implements Serializable {
   /**
    * Instantiates a new access control list.
    *
-   * @param owner   the owner
+   * @param owner the owner
    * @param entries the entries
    */
-  @Builder
+  @Builder(toBuilder = true)
+  @SuppressWarnings("unused")
   public AccessControlList(
       String owner,
       List<AccessControlEntry> entries) {
@@ -61,7 +72,7 @@ public class AccessControlList implements Serializable {
    *
    * @return owner owner
    */
-  @ApiModelProperty(value = "The owner is always granted and can only be changed by the owner.")
+  @Schema(description = "The owner is always granted and can only be changed by the owner.")
   public String getOwner() {
     return owner;
   }
@@ -80,7 +91,7 @@ public class AccessControlList implements Serializable {
    *
    * @return entries entries
    */
-  @ApiModelProperty(value = "The access control entries.")
+  @Schema(description = "The access control entries.")
   public List<AccessControlEntry> getEntries() {
     if (entries == null) {
       entries = new ArrayList<>();

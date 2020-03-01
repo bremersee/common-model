@@ -1,13 +1,26 @@
+/*
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.bremersee.common.model;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Locale;
-import java.util.MissingResourceException;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.util.StringUtils;
 
 /**
@@ -15,41 +28,15 @@ import org.springframework.util.StringUtils;
  *
  * @author Christian Bremer
  */
-public class TwoLetterCountryCodeTest {
-
-  /**
-   * Source code creator.
-   */
-  @Ignore
-  @Test
-  public void sourceCodeCreator() {
-    String[] isos = Locale.getISOCountries();
-    StringBuilder sb = new StringBuilder();
-    for (int i = 0; i < isos.length; i++) {
-      String iso = isos[i];
-      Locale locale = new Locale("", iso);
-      sb.append("  /**\n");
-      sb.append("   * ").append(locale.getDisplayCountry(Locale.ENGLISH)).append(" (").append(iso)
-          .append(")\n");
-      sb.append("   */\n");
-      sb.append("  ").append(iso.toUpperCase()).append("(\"").append(iso).append("\")");
-      if (i < isos.length - 1) {
-        sb.append(",\n\n");
-      } else {
-        sb.append(";\n");
-      }
-    }
-    assertTrue(sb.length() > 0);
-    System.out.println(sb);
-  }
+class TwoLetterCountryCodeTest {
 
   /**
    * From locale.
    */
   @Test
-  public void fromLocale() {
+  void fromLocale() {
     for (Locale locale : Locale.getAvailableLocales()) {
-      if (StringUtils.hasText(locale.getCountry())) {
+      if (StringUtils.hasText(locale.getCountry()) && locale.getCountry().length() == 2) {
         TwoLetterCountryCode code = TwoLetterCountryCode.fromLocale(locale);
         assertNotNull(code);
         assertEquals(locale.getCountry(), code.toString());
@@ -62,7 +49,7 @@ public class TwoLetterCountryCodeTest {
    * From two letter value.
    */
   @Test
-  public void fromTwoLetterValue() {
+  void fromTwoLetterValue() {
     for (String text : Locale.getISOCountries()) {
       TwoLetterCountryCode code = TwoLetterCountryCode.fromValue(text);
       assertNotNull(code);
@@ -74,7 +61,7 @@ public class TwoLetterCountryCodeTest {
    * From three letter value.
    */
   @Test
-  public void fromThreeLetterValue() {
+  void fromThreeLetterValue() {
     for (String iso : Locale.getISOCountries()) {
       Locale locale = new Locale("", iso);
       if (locale.getISO3Country() != null) {
@@ -89,9 +76,9 @@ public class TwoLetterCountryCodeTest {
    * From locale value.
    */
   @Test
-  public void fromLocaleValue() {
+  void fromLocaleValue() {
     for (Locale locale : Locale.getAvailableLocales()) {
-      if (StringUtils.hasText(locale.getCountry())) {
+      if (StringUtils.hasText(locale.getCountry()) && locale.getCountry().length() == 2) {
         TwoLetterCountryCode code = TwoLetterCountryCode.fromValue(locale.toString());
         assertNotNull(code);
         assertEquals(locale.getCountry(), code.toString());

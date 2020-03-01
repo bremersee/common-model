@@ -1,7 +1,17 @@
 /*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.common.model;
@@ -10,942 +20,1341 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.MissingResourceException;
 import org.springframework.util.StringUtils;
 
 /**
  * ISO 639-2 language codes from Java Locale.
+ *
+ * @author Christian Bremer
  */
 public enum ThreeLetterLanguageCode {
 
   /**
-   * Afar (aar)
+   * Afar (aar).
    */
-  AAR("aar"),
+  AAR("aar", TwoLetterLanguageCode.AA),
 
   /**
-   * Abkhazian (abk)
+   * Abchasisch (abk).
    */
-  ABK("abk"),
+  ABK("abk", TwoLetterLanguageCode.AB),
 
   /**
-   * Avestan (ave)
+   * Afrikaans (afr).
    */
-  AVE("ave"),
+  AFR("afr", TwoLetterLanguageCode.AF),
 
   /**
-   * Afrikaans (afr)
+   * Aghem (Kamerun) (agq).
    */
-  AFR("afr"),
+  AGQ("agq"),
 
   /**
-   * Akan (aka)
+   * Akan (Ghana) (aka).
    */
-  AKA("aka"),
+  AKA("aka", TwoLetterLanguageCode.AK),
 
   /**
-   * Amharic (amh)
+   * Amharisch (amh).
    */
-  AMH("amh"),
+  AMH("amh", TwoLetterLanguageCode.AM),
 
   /**
-   * Aragonese (arg)
+   * Arabisch (Tschad) (ara).
    */
-  ARG("arg"),
+  ARA("ara", TwoLetterLanguageCode.AR),
 
   /**
-   * Arabic (ara)
+   * Aragonesisch (arg).
    */
-  ARA("ara"),
+  ARG("arg", TwoLetterLanguageCode.AN),
 
   /**
-   * Assamese (asm)
+   * Asu (Tansania) (asa).
    */
-  ASM("asm"),
+  ASA("asa"),
 
   /**
-   * Avaric (ava)
+   * Assamesisch (asm).
    */
-  AVA("ava"),
+  ASM("asm", TwoLetterLanguageCode.AS),
 
   /**
-   * Aymara (aym)
+   * Asturianisch (ast).
    */
-  AYM("aym"),
+  AST("ast"),
 
   /**
-   * Azerbaijani (aze)
+   * Awarisch (ava).
    */
-  AZE("aze"),
+  AVA("ava", TwoLetterLanguageCode.AV),
 
   /**
-   * Bashkir (bak)
+   * Avestisch (ave).
    */
-  BAK("bak"),
+  AVE("ave", TwoLetterLanguageCode.AE),
 
   /**
-   * Belarusian (bel)
+   * Aymara (aym).
    */
-  BEL("bel"),
+  AYM("aym", TwoLetterLanguageCode.AY),
 
   /**
-   * Bulgarian (bul)
+   * Aserbaidschanisch (aze).
    */
-  BUL("bul"),
+  AZE("aze", TwoLetterLanguageCode.AZ),
 
   /**
-   * Bihari (bih)
+   * Baschkirisch (bak).
    */
-  BIH("bih"),
+  BAK("bak", TwoLetterLanguageCode.BA),
 
   /**
-   * Bislama (bis)
+   * Bambara (Mali) (bam).
    */
-  BIS("bis"),
+  BAM("bam", TwoLetterLanguageCode.BM),
 
   /**
-   * Bambara (bam)
+   * Basaa (Kamerun) (bas).
    */
-  BAM("bam"),
+  BAS("bas"),
 
   /**
-   * Bengali (ben)
+   * Weißrussisch (bel).
    */
-  BEN("ben"),
+  BEL("bel", TwoLetterLanguageCode.BE),
 
   /**
-   * Tibetan (bod)
+   * Bemba (bem).
    */
-  BOD("bod"),
+  BEM("bem"),
 
   /**
-   * Breton (bre)
+   * Bengalisch (ben).
    */
-  BRE("bre"),
+  BEN("ben", TwoLetterLanguageCode.BN),
 
   /**
-   * Bosnian (bos)
+   * Bena (Tansania) (bez).
    */
-  BOS("bos"),
+  BEZ("bez"),
 
   /**
-   * Catalan (cat)
+   * Biharisch (bih).
    */
-  CAT("cat"),
+  BIH("bih", TwoLetterLanguageCode.BH),
 
   /**
-   * Chechen (che)
+   * Bislama (bis).
    */
-  CHE("che"),
+  BIS("bis", TwoLetterLanguageCode.BI),
 
   /**
-   * Chamorro (cha)
+   * Tibetisch (bod).
    */
-  CHA("cha"),
+  BOD("bod", TwoLetterLanguageCode.BO),
 
   /**
-   * Corsican (cos)
+   * Bosnisch (Lateinisch, Bosnien und Herzegowina) (bos).
    */
-  COS("cos"),
+  BOS("bos", TwoLetterLanguageCode.BS),
 
   /**
-   * Cree (cre)
+   * Bretonisch (bre).
    */
-  CRE("cre"),
+  BRE("bre", TwoLetterLanguageCode.BR),
 
   /**
-   * Czech (ces)
+   * Bodo (Indien) (brx).
    */
-  CES("ces"),
+  BRX("brx"),
 
   /**
-   * Church Slavic (chu)
+   * Bulgarisch (bul).
    */
-  CHU("chu"),
+  BUL("bul", TwoLetterLanguageCode.BG),
 
   /**
-   * Chuvash (chv)
+   * Katalanisch (Frankreich) (cat).
    */
-  CHV("chv"),
+  CAT("cat", TwoLetterLanguageCode.CA),
 
   /**
-   * Welsh (cym)
+   * ccp (ccp).
    */
-  CYM("cym"),
+  CCP("ccp"),
 
   /**
-   * Danish (dan)
+   * Cebuano (ceb).
    */
-  DAN("dan"),
+  CEB("ceb"),
 
   /**
-   * German (deu)
+   * Tschechisch (ces).
    */
-  DEU("deu"),
+  CES("ces", TwoLetterLanguageCode.CS),
 
   /**
-   * Divehi (div)
+   * Rukiga (cgg).
    */
-  DIV("div"),
+  CGG("cgg"),
 
   /**
-   * Dzongkha (dzo)
+   * Chamorro (cha).
    */
-  DZO("dzo"),
+  CHA("cha", TwoLetterLanguageCode.CH),
 
   /**
-   * Ewe (ewe)
+   * Tschetschenisch (Russland) (che).
    */
-  EWE("ewe"),
+  CHE("che", TwoLetterLanguageCode.CE),
 
   /**
-   * Greek (ell)
+   * Cherokee (chr).
    */
-  ELL("ell"),
+  CHR("chr"),
 
   /**
-   * English (eng)
+   * Kirchenslawisch (Russland) (chu).
    */
-  ENG("eng"),
+  CHU("chu", TwoLetterLanguageCode.CU),
 
   /**
-   * Esperanto (epo)
+   * Tschuwaschisch (chv).
    */
-  EPO("epo"),
+  CHV("chv", TwoLetterLanguageCode.CV),
 
   /**
-   * Spanish (spa)
+   * Zentralkurdisch (ckb).
    */
-  SPA("spa"),
+  CKB("ckb"),
 
   /**
-   * Estonian (est)
+   * Kornisch (Vereinigtes Königreich) (cor).
    */
-  EST("est"),
+  COR("cor", TwoLetterLanguageCode.KW),
 
   /**
-   * Basque (eus)
+   * Korsisch (cos).
    */
-  EUS("eus"),
+  COS("cos", TwoLetterLanguageCode.CO),
 
   /**
-   * Persian (fas)
+   * Cree (cre).
    */
-  FAS("fas"),
+  CRE("cre", TwoLetterLanguageCode.CR),
 
   /**
-   * Fulah (ful)
+   * Walisisch (cym).
    */
-  FUL("ful"),
+  CYM("cym", TwoLetterLanguageCode.CY),
 
   /**
-   * Finnish (fin)
+   * Dänisch (Dänemark) (dan).
    */
-  FIN("fin"),
+  DAN("dan", TwoLetterLanguageCode.DA),
 
   /**
-   * Fijian (fij)
+   * Taita (dav).
    */
-  FIJ("fij"),
+  DAV("dav"),
 
   /**
-   * Faroese (fao)
+   * Deutsch (Italien) (deu).
    */
-  FAO("fao"),
+  DEU("deu", TwoLetterLanguageCode.DE),
 
   /**
-   * French (fra)
+   * Dhivehi (div).
    */
-  FRA("fra"),
+  DIV("div", TwoLetterLanguageCode.DV),
 
   /**
-   * Frisian (fry)
+   * Zarma (Niger) (dje).
    */
-  FRY("fry"),
+  DJE("dje"),
 
   /**
-   * Irish (gle)
+   * Niedersorbisch (Deutschland) (dsb).
    */
-  GLE("gle"),
+  DSB("dsb"),
 
   /**
-   * Scottish Gaelic (gla)
+   * Duala (Kamerun) (dua).
    */
-  GLA("gla"),
+  DUA("dua"),
 
   /**
-   * Gallegan (glg)
+   * Diola (Senegal) (dyo).
    */
-  GLG("glg"),
+  DYO("dyo"),
 
   /**
-   * Guarani (grn)
+   * Dzongkha (Bhutan) (dzo).
    */
-  GRN("grn"),
+  DZO("dzo", TwoLetterLanguageCode.DZ),
 
   /**
-   * Gujarati (guj)
+   * Embu (ebu).
    */
-  GUJ("guj"),
+  EBU("ebu"),
 
   /**
-   * Manx (glv)
+   * Griechisch (ell).
    */
-  GLV("glv"),
+  ELL("ell", TwoLetterLanguageCode.EL),
 
   /**
-   * Hausa (hau)
+   * Englisch (Niue) (eng).
    */
-  HAU("hau"),
+  ENG("eng", TwoLetterLanguageCode.EN),
 
   /**
-   * Hebrew (heb)
+   * Esperanto (Welt) (epo).
    */
-  HEB("heb"),
+  EPO("epo", TwoLetterLanguageCode.EO),
 
   /**
-   * Hindi (hin)
+   * Estnisch (Estland) (est).
    */
-  HIN("hin"),
+  EST("est", TwoLetterLanguageCode.ET),
 
   /**
-   * Hiri Motu (hmo)
+   * Baskisch (eus).
    */
-  HMO("hmo"),
+  EUS("eus", TwoLetterLanguageCode.EU),
 
   /**
-   * Croatian (hrv)
+   * Ewe (ewe).
    */
-  HRV("hrv"),
+  EWE("ewe", TwoLetterLanguageCode.EE),
 
   /**
-   * Haitian (hat)
+   * Ewondo (ewo).
    */
-  HAT("hat"),
+  EWO("ewo"),
 
   /**
-   * Hungarian (hun)
+   * Färöisch (Dänemark) (fao).
    */
-  HUN("hun"),
+  FAO("fao", TwoLetterLanguageCode.FO),
 
   /**
-   * Armenian (hye)
+   * Persisch (fas).
    */
-  HYE("hye"),
+  FAS("fas", TwoLetterLanguageCode.FA),
 
   /**
-   * Herero (her)
+   * Fidschi (fij).
    */
-  HER("her"),
+  FIJ("fij", TwoLetterLanguageCode.FJ),
 
   /**
-   * Interlingua (ina)
+   * Filipino (Philippinen) (fil).
    */
-  INA("ina"),
+  FIL("fil"),
 
   /**
-   * Indonesian (ind)
+   * Finnisch (Finnland) (fin).
    */
-  IND("ind"),
+  FIN("fin", TwoLetterLanguageCode.FI),
 
   /**
-   * Interlingue (ile)
+   * Französisch (St. Pierre und Miquelon) (fra).
    */
-  ILE("ile"),
+  FRA("fra", TwoLetterLanguageCode.FR),
 
   /**
-   * Igbo (ibo)
+   * Westfriesisch (Niederlande) (fry).
    */
-  IBO("ibo"),
+  FRY("fry", TwoLetterLanguageCode.FY),
 
   /**
-   * Sichuan Yi (iii)
+   * Ful (Lateinisch, Mauretanien) (ful).
    */
-  III("iii"),
+  FUL("ful", TwoLetterLanguageCode.FF),
 
   /**
-   * Inupiaq (ipk)
+   * Friaulisch (fur).
    */
-  IPK("ipk"),
+  FUR("fur"),
 
   /**
-   * Ido (ido)
+   * Schottisches Gälisch (Vereinigtes Königreich) (gla).
    */
-  IDO("ido"),
+  GLA("gla", TwoLetterLanguageCode.GD),
 
   /**
-   * Icelandic (isl)
+   * Irisch (gle).
    */
-  ISL("isl"),
+  GLE("gle", TwoLetterLanguageCode.GA),
 
   /**
-   * Italian (ita)
+   * Galicisch (glg).
    */
-  ITA("ita"),
+  GLG("glg", TwoLetterLanguageCode.GL),
 
   /**
-   * Inuktitut (iku)
+   * Manx (Isle of Man) (glv).
    */
-  IKU("iku"),
+  GLV("glv", TwoLetterLanguageCode.GV),
 
   /**
-   * Japanese (jpn)
+   * Guaraní (grn).
    */
-  JPN("jpn"),
+  GRN("grn", TwoLetterLanguageCode.GN),
 
   /**
-   * Yiddish (yid)
+   * Schweizerdeutsch (gsw).
    */
-  YID("yid"),
+  GSW("gsw"),
 
   /**
-   * Javanese (jav)
+   * Gujarati (guj).
    */
-  JAV("jav"),
+  GUJ("guj", TwoLetterLanguageCode.GU),
 
   /**
-   * Georgian (kat)
+   * Gusii (Kenia) (guz).
    */
-  KAT("kat"),
+  GUZ("guz"),
 
   /**
-   * Kongo (kon)
+   * Haiti-Kreolisch (hat).
    */
-  KON("kon"),
+  HAT("hat", TwoLetterLanguageCode.HT),
 
   /**
-   * Kikuyu (kik)
+   * Haussa (hau).
    */
-  KIK("kik"),
+  HAU("hau", TwoLetterLanguageCode.HA),
 
   /**
-   * Kwanyama (kua)
+   * Hawaiisch (Vereinigte Staaten) (haw).
    */
-  KUA("kua"),
+  HAW("haw"),
 
   /**
-   * Kazakh (kaz)
+   * Hebräisch (heb).
    */
-  KAZ("kaz"),
+  HEB("heb", TwoLetterLanguageCode.IW, TwoLetterLanguageCode.HE),
 
   /**
-   * Greenlandic (kal)
+   * Herero (her).
    */
-  KAL("kal"),
+  HER("her", TwoLetterLanguageCode.HZ),
 
   /**
-   * Khmer (khm)
+   * Hindi (hin).
    */
-  KHM("khm"),
+  HIN("hin", TwoLetterLanguageCode.HI),
 
   /**
-   * Kannada (kan)
+   * Hiri-Motu (hmo).
    */
-  KAN("kan"),
+  HMO("hmo", TwoLetterLanguageCode.HO),
 
   /**
-   * Korean (kor)
+   * Kroatisch (Kroatien) (hrv).
    */
-  KOR("kor"),
+  HRV("hrv", TwoLetterLanguageCode.HR),
 
   /**
-   * Kanuri (kau)
+   * Obersorbisch (hsb).
    */
-  KAU("kau"),
+  HSB("hsb"),
 
   /**
-   * Kashmiri (kas)
+   * Ungarisch (Ungarn) (hun).
    */
-  KAS("kas"),
+  HUN("hun", TwoLetterLanguageCode.HU),
 
   /**
-   * Kurdish (kur)
+   * Armenisch (hye).
    */
-  KUR("kur"),
+  HYE("hye", TwoLetterLanguageCode.HY),
 
   /**
-   * Komi (kom)
+   * Igbo (ibo).
    */
-  KOM("kom"),
+  IBO("ibo", TwoLetterLanguageCode.IG),
 
   /**
-   * Cornish (cor)
+   * Ido (ido).
    */
-  COR("cor"),
+  IDO("ido", TwoLetterLanguageCode.IO),
 
   /**
-   * Kirghiz (kir)
+   * Yi (iii).
    */
-  KIR("kir"),
+  III("iii", TwoLetterLanguageCode.II),
 
   /**
-   * Latin (lat)
+   * Inuktitut (iku).
    */
-  LAT("lat"),
+  IKU("iku", TwoLetterLanguageCode.IU),
 
   /**
-   * Luxembourgish (ltz)
+   * Interlingue (ile).
    */
-  LTZ("ltz"),
+  ILE("ile", TwoLetterLanguageCode.IE),
 
   /**
-   * Ganda (lug)
+   * Interlingua (Welt) (ina).
    */
-  LUG("lug"),
+  INA("ina", TwoLetterLanguageCode.IA),
 
   /**
-   * Limburgish (lim)
+   * Indonesisch (ind).
    */
-  LIM("lim"),
+  IND("ind", TwoLetterLanguageCode.IN, TwoLetterLanguageCode.ID),
 
   /**
-   * Lingala (lin)
+   * Inupiak (ipk).
    */
-  LIN("lin"),
+  IPK("ipk", TwoLetterLanguageCode.IK),
 
   /**
-   * Lao (lao)
+   * Isländisch (Island) (isl).
    */
-  LAO("lao"),
+  ISL("isl", TwoLetterLanguageCode.IS),
 
   /**
-   * Lithuanian (lit)
+   * Italienisch (San Marino) (ita).
    */
-  LIT("lit"),
+  ITA("ita", TwoLetterLanguageCode.IT),
 
   /**
-   * Luba-Katanga (lub)
+   * Javanisch (jav).
    */
-  LUB("lub"),
+  JAV("jav", TwoLetterLanguageCode.JV),
 
   /**
-   * Latvian (lav)
+   * Ngomba (jgo).
    */
-  LAV("lav"),
+  JGO("jgo"),
 
   /**
-   * Malagasy (mlg)
+   * Machame (Tansania) (jmc).
    */
-  MLG("mlg"),
+  JMC("jmc"),
 
   /**
-   * Marshallese (mah)
+   * Japanisch (Japan, JP, Japanischer Kalender) (jpn).
    */
-  MAH("mah"),
+  JPN("jpn", TwoLetterLanguageCode.JA),
 
   /**
-   * Maori (mri)
+   * Kabylisch (kab).
    */
-  MRI("mri"),
+  KAB("kab"),
 
   /**
-   * Macedonian (mkd)
+   * Grönländisch (Grönland) (kal).
    */
-  MKD("mkd"),
+  KAL("kal", TwoLetterLanguageCode.KL),
 
   /**
-   * Malayalam (mal)
+   * Kamba (kam).
    */
-  MAL("mal"),
+  KAM("kam"),
 
   /**
-   * Mongolian (mon)
+   * Kannada (Indien) (kan).
    */
-  MON("mon"),
+  KAN("kan", TwoLetterLanguageCode.KN),
 
   /**
-   * Moldavian (mol)
+   * Kaschmiri (Indien) (kas).
    */
-  MOL("mol"),
+  KAS("kas", TwoLetterLanguageCode.KS),
 
   /**
-   * Marathi (mar)
+   * Georgisch (Georgien) (kat).
    */
-  MAR("mar"),
+  KAT("kat", TwoLetterLanguageCode.KA),
 
   /**
-   * Malay (msa)
+   * Kanuri (kau).
    */
-  MSA("msa"),
+  KAU("kau", TwoLetterLanguageCode.KR),
 
   /**
-   * Maltese (mlt)
+   * Kasachisch (kaz).
    */
-  MLT("mlt"),
+  KAZ("kaz", TwoLetterLanguageCode.KK),
 
   /**
-   * Burmese (mya)
+   * Makonde (Tansania) (kde).
    */
-  MYA("mya"),
+  KDE("kde"),
 
   /**
-   * Nauru (nau)
+   * Kabuverdianu (Cabo Verde) (kea).
    */
-  NAU("nau"),
+  KEA("kea"),
 
   /**
-   * Norwegian Bokmål (nob)
+   * Khmer (khm).
    */
-  NOB("nob"),
+  KHM("khm", TwoLetterLanguageCode.KM),
 
   /**
-   * North Ndebele (nde)
+   * Koyra Chiini (khq).
    */
-  NDE("nde"),
+  KHQ("khq"),
 
   /**
-   * Nepali (nep)
+   * Kikuyu (Kenia) (kik).
    */
-  NEP("nep"),
+  KIK("kik", TwoLetterLanguageCode.KI),
 
   /**
-   * Ndonga (ndo)
+   * Kinyarwanda (kin).
    */
-  NDO("ndo"),
+  KIN("kin", TwoLetterLanguageCode.RW),
 
   /**
-   * Dutch (nld)
+   * Kirgisisch (Kirgisistan) (kir).
    */
-  NLD("nld"),
+  KIR("kir", TwoLetterLanguageCode.KY),
 
   /**
-   * Norwegian Nynorsk (nno)
+   * Kako (kkj).
    */
-  NNO("nno"),
+  KKJ("kkj"),
 
   /**
-   * Norwegian (nor)
+   * Kalenjin (kln).
    */
-  NOR("nor"),
+  KLN("kln"),
 
   /**
-   * South Ndebele (nbl)
+   * Konkani (kok).
    */
-  NBL("nbl"),
+  KOK("kok"),
 
   /**
-   * Navajo (nav)
+   * Komi (kom).
    */
-  NAV("nav"),
+  KOM("kom", TwoLetterLanguageCode.KV),
 
   /**
-   * Nyanja (nya)
+   * Kongolesisch (kon).
    */
-  NYA("nya"),
+  KON("kon", TwoLetterLanguageCode.KG),
 
   /**
-   * Occitan (oci)
+   * Koreanisch (Nordkorea) (kor).
    */
-  OCI("oci"),
+  KOR("kor", TwoLetterLanguageCode.KO),
 
   /**
-   * Ojibwa (oji)
+   * Shambala (ksb).
    */
-  OJI("oji"),
+  KSB("ksb"),
 
   /**
-   * Oromo (orm)
+   * Bafia (Kamerun) (ksf).
    */
-  ORM("orm"),
+  KSF("ksf"),
 
   /**
-   * Oriya (ori)
+   * Kölsch (Deutschland) (ksh).
    */
-  ORI("ori"),
+  KSH("ksh"),
 
   /**
-   * Ossetian (oss)
+   * Kwanyama (kua).
    */
-  OSS("oss"),
+  KUA("kua", TwoLetterLanguageCode.KJ),
 
   /**
-   * Panjabi (pan)
+   * Kurdisch (Türkei) (kur).
    */
-  PAN("pan"),
+  KUR("kur", TwoLetterLanguageCode.KU),
 
   /**
-   * Pali (pli)
+   * Langi (lag).
    */
-  PLI("pli"),
+  LAG("lag"),
 
   /**
-   * Polish (pol)
+   * Laotisch (lao).
    */
-  POL("pol"),
+  LAO("lao", TwoLetterLanguageCode.LO),
 
   /**
-   * Pushto (pus)
+   * Latein (lat).
    */
-  PUS("pus"),
+  LAT("lat", TwoLetterLanguageCode.LA),
 
   /**
-   * Portuguese (por)
+   * Lettisch (lav).
    */
-  POR("por"),
+  LAV("lav", TwoLetterLanguageCode.LV),
 
   /**
-   * Quechua (que)
+   * Limburgisch (lim).
    */
-  QUE("que"),
+  LIM("lim", TwoLetterLanguageCode.LI),
 
   /**
-   * Raeto-Romance (roh)
+   * Lingala (Kongo-Kinshasa) (lin).
    */
-  ROH("roh"),
+  LIN("lin", TwoLetterLanguageCode.LN),
 
   /**
-   * Rundi (run)
+   * Litauisch (Litauen) (lit).
    */
-  RUN("run"),
+  LIT("lit", TwoLetterLanguageCode.LT),
 
   /**
-   * Romanian (ron)
+   * Lakota (Vereinigte Staaten) (lkt).
    */
-  RON("ron"),
+  LKT("lkt"),
 
   /**
-   * Russian (rus)
+   * Nördliches Luri (Iran) (lrc).
    */
-  RUS("rus"),
+  LRC("lrc"),
 
   /**
-   * Kinyarwanda (kin)
+   * Luxemburgisch (Luxemburg) (ltz).
    */
-  KIN("kin"),
+  LTZ("ltz", TwoLetterLanguageCode.LB),
 
   /**
-   * Sanskrit (san)
+   * Luba-Katanga (Kongo-Kinshasa) (lub).
    */
-  SAN("san"),
+  LUB("lub", TwoLetterLanguageCode.LU),
 
   /**
-   * Sardinian (srd)
+   * Ganda (Uganda) (lug).
    */
-  SRD("srd"),
+  LUG("lug", TwoLetterLanguageCode.LG),
 
   /**
-   * Sindhi (snd)
+   * Luo (luo).
    */
-  SND("snd"),
+  LUO("luo"),
 
   /**
-   * Northern Sami (sme)
+   * Luhya (Kenia) (luy).
    */
-  SME("sme"),
+  LUY("luy"),
 
   /**
-   * Sango (sag)
+   * Marschallesisch (mah).
    */
-  SAG("sag"),
+  MAH("mah", TwoLetterLanguageCode.MH),
 
   /**
-   * Sinhalese (sin)
+   * Malayalam (Indien) (mal).
    */
-  SIN("sin"),
+  MAL("mal", TwoLetterLanguageCode.ML),
 
   /**
-   * Slovak (slk)
+   * Marathi (Indien) (mar).
    */
-  SLK("slk"),
+  MAR("mar", TwoLetterLanguageCode.MR),
 
   /**
-   * Slovenian (slv)
+   * Massai (Kenia) (mas).
    */
-  SLV("slv"),
+  MAS("mas"),
 
   /**
-   * Samoan (smo)
+   * Meru (Kenia) (mer).
    */
-  SMO("smo"),
+  MER("mer"),
 
   /**
-   * Shona (sna)
+   * Morisyen (Mauritius) (mfe).
    */
-  SNA("sna"),
+  MFE("mfe"),
 
   /**
-   * Somali (som)
+   * Makhuwa-Meetto (mgh).
    */
-  SOM("som"),
+  MGH("mgh"),
 
   /**
-   * Albanian (sqi)
+   * Meta’ (mgo).
    */
-  SQI("sqi"),
+  MGO("mgo"),
 
   /**
-   * Serbian (srp)
+   * Mazedonisch (Nordmazedonien) (mkd).
    */
-  SRP("srp"),
+  MKD("mkd", TwoLetterLanguageCode.MK),
 
   /**
-   * Swati (ssw)
+   * Madagassisch (mlg).
    */
-  SSW("ssw"),
+  MLG("mlg", TwoLetterLanguageCode.MG),
 
   /**
-   * Southern Sotho (sot)
+   * Maltesisch (mlt).
    */
-  SOT("sot"),
+  MLT("mlt", TwoLetterLanguageCode.MT),
 
   /**
-   * Sundanese (sun)
+   * Moldavisch (mol).
    */
-  SUN("sun"),
+  MOL("mol", TwoLetterLanguageCode.MO),
 
   /**
-   * Swedish (swe)
+   * Mongolisch (Mongolei) (mon).
    */
-  SWE("swe"),
+  MON("mon", TwoLetterLanguageCode.MN),
 
   /**
-   * Swahili (swa)
+   * Maori (Neuseeland) (mri).
    */
-  SWA("swa"),
+  MRI("mri", TwoLetterLanguageCode.MI),
 
   /**
-   * Tamil (tam)
+   * Malaiisch (Malaysia) (msa).
    */
-  TAM("tam"),
+  MSA("msa", TwoLetterLanguageCode.MS),
 
   /**
-   * Telugu (tel)
+   * Mundang (mua).
    */
-  TEL("tel"),
+  MUA("mua"),
 
   /**
-   * Tajik (tgk)
+   * Birmanisch (Myanmar) (mya).
    */
-  TGK("tgk"),
+  MYA("mya", TwoLetterLanguageCode.MY),
 
   /**
-   * Thai (tha)
+   * Masanderanisch (Iran) (mzn).
    */
-  THA("tha"),
+  MZN("mzn"),
 
   /**
-   * Tigrinya (tir)
+   * Nama (naq).
    */
-  TIR("tir"),
+  NAQ("naq"),
 
   /**
-   * Turkmen (tuk)
+   * Nauruisch (nau).
    */
-  TUK("tuk"),
+  NAU("nau", TwoLetterLanguageCode.NA),
 
   /**
-   * Tagalog (tgl)
+   * Navajo (nav).
    */
-  TGL("tgl"),
+  NAV("nav", TwoLetterLanguageCode.NV),
 
   /**
-   * Tswana (tsn)
+   * Süd-Ndebele (nbl).
    */
-  TSN("tsn"),
+  NBL("nbl", TwoLetterLanguageCode.NR),
 
   /**
-   * Tonga (ton)
+   * Nord-Ndebele (nde).
    */
-  TON("ton"),
+  NDE("nde", TwoLetterLanguageCode.ND),
 
   /**
-   * Turkish (tur)
+   * Ndonga (ndo).
    */
-  TUR("tur"),
+  NDO("ndo", TwoLetterLanguageCode.NG),
 
   /**
-   * Tsonga (tso)
+   * Niederdeutsch (nds).
    */
-  TSO("tso"),
+  NDS("nds"),
 
   /**
-   * Tatar (tat)
+   * Nepalesisch (Indien) (nep).
    */
-  TAT("tat"),
+  NEP("nep", TwoLetterLanguageCode.NE),
 
   /**
-   * Twi (twi)
+   * Niederländisch (Niederlande) (nld).
    */
-  TWI("twi"),
+  NLD("nld", TwoLetterLanguageCode.NL),
 
   /**
-   * Tahitian (tah)
+   * Kwasio (nmg).
    */
-  TAH("tah"),
+  NMG("nmg"),
 
   /**
-   * Uighur (uig)
+   * Ngiemboon (Kamerun) (nnh).
    */
-  UIG("uig"),
+  NNH("nnh"),
 
   /**
-   * Ukrainian (ukr)
+   * Norwegisch Nynorsk (nno).
    */
-  UKR("ukr"),
+  NNO("nno", TwoLetterLanguageCode.NN),
 
   /**
-   * Urdu (urd)
+   * Norwegisch Bokmål (Spitzbergen und Jan Mayen) (nob).
    */
-  URD("urd"),
+  NOB("nob", TwoLetterLanguageCode.NB),
 
   /**
-   * Uzbek (uzb)
+   * Norwegisch (Norwegen, Nynorsk) (nor).
    */
-  UZB("uzb"),
+  NOR("nor", TwoLetterLanguageCode.NO),
 
   /**
-   * Venda (ven)
+   * Nuer (Südsudan) (nus).
    */
-  VEN("ven"),
+  NUS("nus"),
 
   /**
-   * Vietnamese (vie)
+   * Nyanja (nya).
    */
-  VIE("vie"),
+  NYA("nya", TwoLetterLanguageCode.NY),
 
   /**
-   * Volapük (vol)
+   * Nyankole (Uganda) (nyn).
    */
-  VOL("vol"),
+  NYN("nyn"),
 
   /**
-   * Walloon (wln)
+   * Okzitanisch (oci).
    */
-  WLN("wln"),
+  OCI("oci", TwoLetterLanguageCode.OC),
 
   /**
-   * Wolof (wol)
+   * Ojibwa (oji).
    */
-  WOL("wol"),
+  OJI("oji", TwoLetterLanguageCode.OJ),
 
   /**
-   * Xhosa (xho)
+   * Oriya (Indien) (ori).
    */
-  XHO("xho"),
+  ORI("ori", TwoLetterLanguageCode.OR),
 
   /**
-   * Yoruba (yor)
+   * Oromo (Kenia) (orm).
    */
-  YOR("yor"),
+  ORM("orm", TwoLetterLanguageCode.OM),
 
   /**
-   * Zhuang (zha)
+   * Ossetisch (oss).
    */
-  ZHA("zha"),
+  OSS("oss", TwoLetterLanguageCode.OS),
 
   /**
-   * Chinese (zho)
+   * Punjabi (Gurmukhi, Indien) (pan).
    */
-  ZHO("zho"),
+  PAN("pan", TwoLetterLanguageCode.PA),
 
   /**
-   * Zulu (zul)
+   * Pali (pli).
    */
-  ZUL("zul");
+  PLI("pli", TwoLetterLanguageCode.PI),
 
-  private String value;
+  /**
+   * Polnisch (Polen) (pol).
+   */
+  POL("pol", TwoLetterLanguageCode.PL),
+
+  /**
+   * Portugiesisch (Sonderverwaltungsregion Macau) (por).
+   */
+  POR("por", TwoLetterLanguageCode.PT),
+
+  /**
+   * Altpreußisch (prg).
+   */
+  PRG("prg"),
+
+  /**
+   * Paschtu (pus).
+   */
+  PUS("pus", TwoLetterLanguageCode.PS),
+
+  /**
+   * Quechua (que).
+   */
+  QUE("que", TwoLetterLanguageCode.QU),
+
+  /**
+   * Rombo (Tansania) (rof).
+   */
+  ROF("rof"),
+
+  /**
+   * Rätoromanisch (roh).
+   */
+  ROH("roh", TwoLetterLanguageCode.RM),
+
+  /**
+   * Rumänisch (ron).
+   */
+  RON("ron", TwoLetterLanguageCode.RO),
+
+  /**
+   * Rundi (run).
+   */
+  RUN("run", TwoLetterLanguageCode.RN),
+
+  /**
+   * Russisch (rus).
+   */
+  RUS("rus", TwoLetterLanguageCode.RU),
+
+  /**
+   * Rwa (Tansania) (rwk).
+   */
+  RWK("rwk"),
+
+  /**
+   * Sango (Zentralafrikanische Republik) (sag).
+   */
+  SAG("sag", TwoLetterLanguageCode.SG),
+
+  /**
+   * Jakutisch (sah).
+   */
+  SAH("sah"),
+
+  /**
+   * Sanskrit (san).
+   */
+  SAN("san", TwoLetterLanguageCode.SA),
+
+  /**
+   * Samburu (saq).
+   */
+  SAQ("saq"),
+
+  /**
+   * Sangu (sbp).
+   */
+  SBP("sbp"),
+
+  /**
+   * Sena (seh).
+   */
+  SEH("seh"),
+
+  /**
+   * Koyra Senni (ses).
+   */
+  SES("ses"),
+
+  /**
+   * Taschelhit (Tifinagh, Marokko) (shi).
+   */
+  SHI("shi"),
+
+  /**
+   * Singhalesisch (Sri Lanka) (sin).
+   */
+  SIN("sin", TwoLetterLanguageCode.SI),
+
+  /**
+   * Slowakisch (slk).
+   */
+  SLK("slk", TwoLetterLanguageCode.SK),
+
+  /**
+   * Slowenisch (slv).
+   */
+  SLV("slv", TwoLetterLanguageCode.SL),
+
+  /**
+   * Nordsamisch (Norwegen) (sme).
+   */
+  SME("sme", TwoLetterLanguageCode.SE),
+
+  /**
+   * Inari-Samisch (smn).
+   */
+  SMN("smn"),
+
+  /**
+   * Samoanisch (smo).
+   */
+  SMO("smo", TwoLetterLanguageCode.SM),
+
+  /**
+   * Shona (sna).
+   */
+  SNA("sna", TwoLetterLanguageCode.SN),
+
+  /**
+   * Sindhi (snd).
+   */
+  SND("snd", TwoLetterLanguageCode.SD),
+
+  /**
+   * Somali (Kenia) (som).
+   */
+  SOM("som", TwoLetterLanguageCode.SO),
+
+  /**
+   * Süd-Sotho (sot).
+   */
+  SOT("sot", TwoLetterLanguageCode.ST),
+
+  /**
+   * Spanisch (Bolivien) (spa).
+   */
+  SPA("spa", TwoLetterLanguageCode.ES),
+
+  /**
+   * Albanisch (Nordmazedonien) (sqi).
+   */
+  SQI("sqi", TwoLetterLanguageCode.SQ),
+
+  /**
+   * Sardisch (srd).
+   */
+  SRD("srd", TwoLetterLanguageCode.SC),
+
+  /**
+   * Serbisch (Kyrillisch, Montenegro) (srp).
+   */
+  SRP("srp", TwoLetterLanguageCode.SR),
+
+  /**
+   * Swazi (ssw).
+   */
+  SSW("ssw", TwoLetterLanguageCode.SS),
+
+  /**
+   * Sundanesisch (sun).
+   */
+  SUN("sun", TwoLetterLanguageCode.SU),
+
+  /**
+   * Suaheli (Uganda) (swa).
+   */
+  SWA("swa", TwoLetterLanguageCode.SW),
+
+  /**
+   * Schwedisch (Schweden) (swe).
+   */
+  SWE("swe", TwoLetterLanguageCode.SV),
+
+  /**
+   * Tahitisch (tah).
+   */
+  TAH("tah", TwoLetterLanguageCode.TY),
+
+  /**
+   * Tamil (Singapur) (tam).
+   */
+  TAM("tam", TwoLetterLanguageCode.TA),
+
+  /**
+   * Tatarisch (Russland) (tat).
+   */
+  TAT("tat", TwoLetterLanguageCode.TT),
+
+  /**
+   * Telugu (tel).
+   */
+  TEL("tel", TwoLetterLanguageCode.TE),
+
+  /**
+   * Teso (teo).
+   */
+  TEO("teo"),
+
+  /**
+   * Tadschikisch (Tadschikistan) (tgk).
+   */
+  TGK("tgk", TwoLetterLanguageCode.TG),
+
+  /**
+   * Tagalog (tgl).
+   */
+  TGL("tgl", TwoLetterLanguageCode.TL),
+
+  /**
+   * Thailändisch (Thailand, TH, Thai-Ziffern) (tha).
+   */
+  THA("tha", TwoLetterLanguageCode.TH),
+
+  /**
+   * Tigrinya (Äthiopien) (tir).
+   */
+  TIR("tir", TwoLetterLanguageCode.TI),
+
+  /**
+   * Tongaisch (ton).
+   */
+  TON("ton", TwoLetterLanguageCode.TO),
+
+  /**
+   * Tswana (tsn).
+   */
+  TSN("tsn", TwoLetterLanguageCode.TN),
+
+  /**
+   * Tsonga (tso).
+   */
+  TSO("tso", TwoLetterLanguageCode.TS),
+
+  /**
+   * Turkmenisch (Turkmenistan) (tuk).
+   */
+  TUK("tuk", TwoLetterLanguageCode.TK),
+
+  /**
+   * Türkisch (Türkei) (tur).
+   */
+  TUR("tur", TwoLetterLanguageCode.TR),
+
+  /**
+   * Twi (twi).
+   */
+  TWI("twi", TwoLetterLanguageCode.TW),
+
+  /**
+   * Tasawaq (Niger) (twq).
+   */
+  TWQ("twq"),
+
+  /**
+   * Zentralatlas-Tamazight (tzm).
+   */
+  TZM("tzm"),
+
+  /**
+   * Uigurisch (China) (uig).
+   */
+  UIG("uig", TwoLetterLanguageCode.UG),
+
+  /**
+   * Ukrainisch (Ukraine) (ukr).
+   */
+  UKR("ukr", TwoLetterLanguageCode.UK),
+
+  /**
+   * Urdu (Pakistan) (urd).
+   */
+  URD("urd", TwoLetterLanguageCode.UR),
+
+  /**
+   * Usbekisch (Lateinisch, Usbekistan) (uzb).
+   */
+  UZB("uzb", TwoLetterLanguageCode.UZ),
+
+  /**
+   * Vai (Vai) (vai).
+   */
+  VAI("vai"),
+
+  /**
+   * Venda (ven).
+   */
+  VEN("ven", TwoLetterLanguageCode.VE),
+
+  /**
+   * Vietnamesisch (Vietnam) (vie).
+   */
+  VIE("vie", TwoLetterLanguageCode.VI),
+
+  /**
+   * Volapük (Welt) (vol).
+   */
+  VOL("vol", TwoLetterLanguageCode.VO),
+
+  /**
+   * Vunjo (Tansania) (vun).
+   */
+  VUN("vun"),
+
+  /**
+   * Walliserdeutsch (wae).
+   */
+  WAE("wae"),
+
+  /**
+   * Wallonisch (wln).
+   */
+  WLN("wln", TwoLetterLanguageCode.WA),
+
+  /**
+   * Wolof (wol).
+   */
+  WOL("wol", TwoLetterLanguageCode.WO),
+
+  /**
+   * Xhosa (Südafrika) (xho).
+   */
+  XHO("xho", TwoLetterLanguageCode.XH),
+
+  /**
+   * Soga (Uganda) (xog).
+   */
+  XOG("xog"),
+
+  /**
+   * Yangben (yav).
+   */
+  YAV("yav"),
+
+  /**
+   * Jiddish (yid).
+   */
+  YID("yid", TwoLetterLanguageCode.JI, TwoLetterLanguageCode.YI),
+
+  /**
+   * Yoruba (Nigeria) (yor).
+   */
+  YOR("yor", TwoLetterLanguageCode.YO),
+
+  /**
+   * Kantonesisch (Vereinfacht, China) (yue).
+   */
+  YUE("yue"),
+
+  /**
+   * Tamazight (zgh).
+   */
+  ZGH("zgh"),
+
+  /**
+   * Zhuang (zha).
+   */
+  ZHA("zha", TwoLetterLanguageCode.ZA),
+
+  /**
+   * Chinesisch (Vereinfacht, Singapur) (zho).
+   */
+  ZHO("zho", TwoLetterLanguageCode.ZH),
+
+  /**
+   * Zulu (Südafrika) (zul).
+   */
+  ZUL("zul", TwoLetterLanguageCode.ZU);
+
+  private final String value;
+
+  private final TwoLetterLanguageCode[] twoLetterLanguageCodes;
+
+  ThreeLetterLanguageCode(
+      final String value,
+      final TwoLetterLanguageCode... twoLetterLanguageCodes) {
 
-  ThreeLetterLanguageCode(String value) {
     this.value = value;
+    this.twoLetterLanguageCodes = twoLetterLanguageCodes;
+  }
+
+  /**
+   * Gets two letter language code.
+   *
+   * @return the two letter language code
+   */
+  public TwoLetterLanguageCode getTwoLetterLanguageCode() {
+    return twoLetterLanguageCodes != null
+        && twoLetterLanguageCodes.length > 0 ? twoLetterLanguageCodes[0] : null;
   }
 
   @Override
@@ -955,17 +1364,41 @@ public enum ThreeLetterLanguageCode {
   }
 
   /**
+   * Has two letter code boolean.
+   *
+   * @return the boolean
+   */
+  public boolean hasTwoLetterCode() {
+    return getTwoLetterLanguageCode() != null;
+  }
+
+  /**
    * To locale.
    *
    * @return the locale
    */
   public Locale toLocale() {
     return Arrays
-        .stream(Locale.getISOLanguages())
-        .filter(iso -> value.equalsIgnoreCase(new Locale(iso).getISO3Language()))
+        .stream(Locale.getAvailableLocales())
+        .filter(this::hasIsoLanguage)
+        .filter(locale -> value.equalsIgnoreCase(locale.getISO3Language()))
         .findAny()
-        .map(Locale::new)
-        .orElse(null);
+        .map(locale -> new Locale(locale.getLanguage()))
+        .orElseGet(() -> Arrays.stream(Locale.getISOLanguages())
+            .map(Locale::new)
+            .filter(this::hasIsoLanguage)
+            .filter(locale -> value.equalsIgnoreCase(locale.getISO3Language()))
+            .findAny()
+            .map(locale -> new Locale(locale.getLanguage()))
+            .orElse(null));
+  }
+
+  private boolean hasIsoLanguage(final Locale locale) {
+    try {
+      return StringUtils.hasText(locale.getISO3Language());
+    } catch (MissingResourceException e) {
+      return false;
+    }
   }
 
   /**
@@ -975,22 +1408,45 @@ public enum ThreeLetterLanguageCode {
    * @return the three letter language code
    */
   @JsonCreator
-  public static ThreeLetterLanguageCode fromValue(String text) {
-    String source = text != null ? text.trim() : null;
+  public static ThreeLetterLanguageCode fromValue(final String text) {
+    return fromValue(text, null);
+  }
+
+  /**
+   * From value three letter language code.
+   *
+   * @param text the text
+   * @param defaultCode the default code
+   * @return the three letter language code
+   */
+  @SuppressWarnings("DuplicatedCode")
+  public static ThreeLetterLanguageCode fromValue(
+      final String text,
+      final ThreeLetterLanguageCode defaultCode) {
+
+    String source = text != null ? text.trim().toLowerCase() : null;
     if (source == null || source.length() < 2) {
-      return null;
+      return defaultCode;
     }
-    if (source.length() != 3) {
-      TwoLetterLanguageCode code = TwoLetterLanguageCode.fromValue(source);
-      return code != null ? fromLocale(code.toLocale()) : null;
+    source = source.replace("-", "_");
+    int index = source.indexOf('_');
+    if (index > -1) {
+      source = source.substring(0, index).trim();
     }
-    source = text.substring(0, 3).toLowerCase();
+    if (source.length() < 2 || source.length() > 3) {
+      return defaultCode;
+    }
     for (ThreeLetterLanguageCode b : ThreeLetterLanguageCode.values()) {
-      if (b.value.equals(source)) {
+      if (b.value.equals(source) || contains(b.twoLetterLanguageCodes, source)) {
         return b;
       }
     }
-    return null;
+    return defaultCode;
+  }
+
+  private static boolean contains(TwoLetterLanguageCode[] codes, String text) {
+    return codes != null && Arrays.stream(codes)
+        .map(TwoLetterLanguageCode::toString).anyMatch(code -> code.equals(text));
   }
 
   /**
@@ -999,11 +1455,24 @@ public enum ThreeLetterLanguageCode {
    * @param locale the locale
    * @return the three letter language code
    */
-  public static ThreeLetterLanguageCode fromLocale(Locale locale) {
+  public static ThreeLetterLanguageCode fromLocale(final Locale locale) {
+    return fromLocale(locale, null);
+  }
+
+  /**
+   * From locale three letter language code.
+   *
+   * @param locale the locale
+   * @param defaultCode the default code
+   * @return the three letter language code
+   */
+  public static ThreeLetterLanguageCode fromLocale(
+      final Locale locale,
+      final ThreeLetterLanguageCode defaultCode) {
     if (locale == null || !StringUtils.hasText(locale.getISO3Language())) {
-      return null;
+      return defaultCode;
     }
-    return fromValue(locale.getISO3Language());
+    return fromValue(locale.getISO3Language(), defaultCode);
   }
 
 }

@@ -1,15 +1,24 @@
 /*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.common.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -18,13 +27,14 @@ import lombok.ToString;
 
 /**
  * Address data.
+ *
+ * @author Christian Bremer
  */
-@ApiModel(description = "Address data.")
+@Schema(description = "Address data.")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
-@SuppressWarnings("unused")
 public class Address implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -59,17 +69,18 @@ public class Address implements Serializable {
   /**
    * Instantiates a new address.
    *
-   * @param streetNumber     the street number
-   * @param street           the street
-   * @param postalCode       the postal code
-   * @param city             the city
-   * @param suburb           the suburb
-   * @param state            the state
-   * @param country          the country
-   * @param countryCode      the country code
+   * @param streetNumber the street number
+   * @param street the street
+   * @param postalCode the postal code
+   * @param city the city
+   * @param suburb the suburb
+   * @param state the state
+   * @param country the country
+   * @param countryCode the country code
    * @param formattedAddress the formatted address
    */
-  @Builder
+  @Builder(toBuilder = true)
+  @SuppressWarnings("unused")
   public Address(String streetNumber, String street, String postalCode, String city,
       String suburb, String state, String country,
       TwoLetterCountryCode countryCode, String formattedAddress) {
@@ -89,7 +100,7 @@ public class Address implements Serializable {
    *
    * @return streetNumber street number
    */
-  @ApiModelProperty(value = "The street number.")
+  @Schema(description = "The street number.", example = "100")
   public String getStreetNumber() {
     return streetNumber;
   }
@@ -108,7 +119,7 @@ public class Address implements Serializable {
    *
    * @return street street
    */
-  @ApiModelProperty(value = "The street name.")
+  @Schema(description = "The street name.", example = "Kurfürstendamm")
   public String getStreet() {
     return street;
   }
@@ -127,7 +138,7 @@ public class Address implements Serializable {
    *
    * @return postalCode postal code
    */
-  @ApiModelProperty(value = "The postal code.")
+  @Schema(description = "The postal code.", example = "10709")
   public String getPostalCode() {
     return postalCode;
   }
@@ -146,7 +157,7 @@ public class Address implements Serializable {
    *
    * @return city city
    */
-  @ApiModelProperty(value = "The city name.")
+  @Schema(description = "The city name.", example = "Berlin")
   public String getCity() {
     return city;
   }
@@ -165,7 +176,7 @@ public class Address implements Serializable {
    *
    * @return suburb suburb
    */
-  @ApiModelProperty(value = "The suburb name.")
+  @Schema(description = "The suburb name.")
   public String getSuburb() {
     return suburb;
   }
@@ -184,7 +195,7 @@ public class Address implements Serializable {
    *
    * @return state state
    */
-  @ApiModelProperty(value = "The state name.")
+  @Schema(description = "The state name.")
   public String getState() {
     return state;
   }
@@ -203,7 +214,7 @@ public class Address implements Serializable {
    *
    * @return country country
    */
-  @ApiModelProperty(value = "The country name.")
+  @Schema(description = "The country name.", example = "Germany")
   public String getCountry() {
     return country;
   }
@@ -222,7 +233,7 @@ public class Address implements Serializable {
    *
    * @return countryCode country code
    */
-  @ApiModelProperty(value = "The country code.")
+  @Schema(description = "The country code.", example = "DE")
   public TwoLetterCountryCode getCountryCode() {
     return countryCode;
   }
@@ -241,7 +252,7 @@ public class Address implements Serializable {
    *
    * @return formattedAddress formatted address
    */
-  @ApiModelProperty(value = "The street number.")
+  @Schema(description = "The street number.", example = "Kurfürstendamm 100, 10709 Berlin")
   public String getFormattedAddress() {
     return formattedAddress;
   }

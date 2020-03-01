@@ -1,50 +1,84 @@
 /*
- * The template was taken from
- * https://github.com/swagger-api/swagger-codegen/blob/v2.3.1/modules/swagger-codegen/src/main/resources/JavaSpring/model.mustache
- * to add @JsonIgnoreProperties(ignoreUnknown = true)
+ * Copyright 2018-2020 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package org.bremersee.exception.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.bremersee.xml.adapter.OffsetDateTimeXmlAdapter;
 import org.springframework.validation.annotation.Validated;
 
 /**
  * The serialized exception.
+ *
+ * @author Christian Bremer
  */
-@ApiModel(description = "The serialized exception.")
+@Schema(description = "The serialized exception.")
 @Validated
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "_type", visible = true)
+@JsonTypeInfo(include = As.EXISTING_PROPERTY, use = Id.NAME, property = "_type", visible = true)
 @JsonSubTypes({
+    @JsonSubTypes.Type(value = RestApiException.class, name = "restApiExceptionType")
 })
 @JacksonXmlRootElement(localName = "RestApiException")
 @XmlRootElement(name = "RestApiException")
+@XmlType(name = "restApiExceptionType")
 @XmlAccessorType(XmlAccessType.FIELD)
+@XmlSeeAlso({Handler.class, StackTraceItem.class})
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(Include.NON_EMPTY)
 @EqualsAndHashCode
 @ToString
 @NoArgsConstructor
-@SuppressWarnings("unused")
 public class RestApiException implements Serializable {
 
   private static final long serialVersionUID = 1L;
+
+  @Schema(
+      name = "_type",
+      description = "The type specifier, must always be 'restApiExceptionType'.")
+  @JsonProperty("_type")
+  @JacksonXmlProperty(localName = "_type", isAttribute = true)
+  @XmlAttribute(name = "_type")
+  private String type = "restApiExceptionType";
 
   @JsonProperty("id")
   @JacksonXmlProperty(localName = "id")
@@ -52,6 +86,7 @@ public class RestApiException implements Serializable {
 
   @JsonProperty("timestamp")
   @JacksonXmlProperty(localName = "timestamp")
+  @XmlJavaTypeAdapter(OffsetDateTimeXmlAdapter.class)
   private OffsetDateTime timestamp;
 
   @JsonProperty("message")
@@ -83,7 +118,10 @@ public class RestApiException implements Serializable {
   private Handler handler = null;
 
   @JsonProperty("stackTrace")
-  @JacksonXmlProperty(localName = "stackTrace")
+  @JacksonXmlElementWrapper(localName = "stackTrace")
+  @JacksonXmlProperty(localName = "stackTraceItem")
+  @XmlElementWrapper(name = "stackTrace")
+  @XmlElement(name = "stackTraceItem")
   private List<StackTraceItem> stackTrace = null;
 
   @JsonProperty("cause")
@@ -93,19 +131,20 @@ public class RestApiException implements Serializable {
   /**
    * Instantiates a new rest api exception.
    *
-   * @param id                 the id
-   * @param timestamp          the timestamp
-   * @param message            the message
-   * @param errorCode          the error code
+   * @param id the id
+   * @param timestamp the timestamp
+   * @param message the message
+   * @param errorCode the error code
    * @param errorCodeInherited the error code inherited
-   * @param className          the class name
-   * @param application        the application
-   * @param path               the path
-   * @param handler            the handler
-   * @param stackTrace         the stack trace
-   * @param cause              the cause
+   * @param className the class name
+   * @param application the application
+   * @param path the path
+   * @param handler the handler
+   * @param stackTrace the stack trace
+   * @param cause the cause
    */
-  @Builder
+  @Builder(toBuilder = true)
+  @SuppressWarnings("unused")
   public RestApiException(
       String id,
       OffsetDateTime timestamp,
@@ -136,7 +175,7 @@ public class RestApiException implements Serializable {
    *
    * @return id id
    */
-  @ApiModelProperty(value = "The id of the exception.")
+  @Schema(description = "The id of the exception.")
   public String getId() {
     return id;
   }
@@ -155,7 +194,7 @@ public class RestApiException implements Serializable {
    *
    * @return timestamp timestamp
    */
-  @ApiModelProperty(value = "The timestamp.")
+  @Schema(description = "The timestamp.")
   public OffsetDateTime getTimestamp() {
     return timestamp;
   }
@@ -174,7 +213,7 @@ public class RestApiException implements Serializable {
    *
    * @return message message
    */
-  @ApiModelProperty(value = "A human readable exception message.")
+  @Schema(description = "A human readable exception message.")
   public String getMessage() {
     return message;
   }
@@ -193,7 +232,7 @@ public class RestApiException implements Serializable {
    *
    * @return errorCode error code
    */
-  @ApiModelProperty(value = "A service specific error code.")
+  @Schema(description = "A service specific error code.")
   public String getErrorCode() {
     return errorCode;
   }
@@ -212,11 +251,8 @@ public class RestApiException implements Serializable {
    *
    * @return errorCodeInherited error code inherited
    */
-  @ApiModelProperty(value = "Is the error code inherited from the cause?")
+  @Schema(description = "Is the error code inherited from the cause?")
   public Boolean getErrorCodeInherited() {
-    if (errorCodeInherited == null) {
-      errorCodeInherited = Boolean.FALSE;
-    }
     return errorCodeInherited;
   }
 
@@ -234,7 +270,7 @@ public class RestApiException implements Serializable {
    *
    * @return className class name
    */
-  @ApiModelProperty(value = "The class name of the exception.")
+  @Schema(description = "The class name of the exception.")
   public String getClassName() {
     return className;
   }
@@ -253,7 +289,7 @@ public class RestApiException implements Serializable {
    *
    * @return application application
    */
-  @ApiModelProperty(value = "The name of the application.")
+  @Schema(description = "The name of the application.")
   public String getApplication() {
     return application;
   }
@@ -272,7 +308,7 @@ public class RestApiException implements Serializable {
    *
    * @return path path
    */
-  @ApiModelProperty(value = "The request path.")
+  @Schema(description = "The request path.")
   public String getPath() {
     return path;
   }
@@ -291,7 +327,7 @@ public class RestApiException implements Serializable {
    *
    * @return handler handler
    */
-  @ApiModelProperty(value = "The handler.")
+  @Schema(description = "The handler.")
   public Handler getHandler() {
     return handler;
   }
@@ -310,7 +346,7 @@ public class RestApiException implements Serializable {
    *
    * @return stackTrace stack trace
    */
-  @ApiModelProperty(value = "The stack trace.")
+  @Schema(description = "The stack trace.")
   public List<StackTraceItem> getStackTrace() {
     return stackTrace;
   }
@@ -329,7 +365,7 @@ public class RestApiException implements Serializable {
    *
    * @return cause cause
    */
-  @ApiModelProperty(value = "The cause.")
+  @Schema(description = "The cause.")
   public RestApiException getCause() {
     return cause;
   }
