@@ -7,12 +7,12 @@
   <parent>
     <groupId>org.bremersee</groupId>
     <artifactId>common-parent</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.3</version>
     <relativePath/>
   </parent>
 
   <artifactId>common-model</artifactId>
-  <version>2.0.0</version>
+  <version>2.0.1</version>
   <packaging>jar</packaging>
 
   <name>common-model</name>
@@ -23,7 +23,7 @@
     <github.repo>common-model</github.repo>
     <gh-pages-staging-dir>${project.build.directory}/staging</gh-pages-staging-dir>
 
-    <common-xml.version>1.0.3</common-xml.version>
+    <common-xml.version>2.0.0</common-xml.version>
   </properties>
 
   <scm>
