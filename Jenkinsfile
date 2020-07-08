@@ -4,10 +4,10 @@ pipeline {
   }
   environment {
     CODECOV_TOKEN = credentials('common-model-codecov-token')
-    DEPLOY = true
-    SNAPSHOT_SITE = true
+    DEPLOY = false
+    SNAPSHOT_SITE = false
     RELEASE_SITE = true
-    DEPLOY_FEATURE = false
+    DEPLOY_FEATURE = true
   }
   tools {
     jdk 'jdk11'
