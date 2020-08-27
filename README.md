@@ -1,6 +1,6 @@
 # Common Model
 
-[![codecov](https://codecov.io/gh/bremersee/common-model/branch/develop/graph/badge.svg)](https://codecov.io/gh/bremersee/common-model)
+[![codecov](https://codecov.io/gh/bremersee/common-model/branch/master/graph/badge.svg)](https://codecov.io/gh/bremersee/common-model)
 
 Library of the common model.
 
