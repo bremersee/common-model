@@ -141,4 +141,16 @@ class JavaLocaleTest {
     assertTrue(model.toString().contains("de-DE"));
   }
 
+  /**
+   * From null.
+   */
+  @Test
+  void fromNull() {
+    JavaLocale javaLocale = JavaLocale.fromValue(null);
+    assertNotNull(javaLocale);
+    assertNull(javaLocale.getLanguage());
+    assertNull(javaLocale.getCountry());
+    assertNull(javaLocale.toLocale());
+  }
+
 }
