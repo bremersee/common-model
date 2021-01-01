@@ -1,6 +1,6 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
 common-model,org.bremersee.common.model,AccessControlEntryModifications.AccessControlEntryModificationsBuilder,18,63,0,0,0,1,1,10,1,10
-common-model,org.bremersee.common.model,JavaLocale,51,355,23,51,1,68,22,37,1,21
+common-model,org.bremersee.common.model,JavaLocale,51,355,22,52,1,68,21,38,1,21
 common-model,org.bremersee.common.model,Address.AddressBuilder,20,70,0,0,0,1,1,11,1,11
 common-model,org.bremersee.common.model,JavaLocale.Separator,2,41,1,1,0,8,1,4,0,4
 common-model,org.bremersee.common.model,JavaLocales,9,37,2,6,0,5,3,7,1,5
