@@ -1,6 +1,6 @@
 # Common Model
 
-[![codecov](https://codecov.io/gh/bremersee/common-model/branch/develop/graph/badge.svg)](https://codecov.io/gh/bremersee/common-model)
+[![codecov](https://codecov.io/gh/bremersee/common-model/branch/master/graph/badge.svg)](https://codecov.io/gh/bremersee/common-model)
 
 Library of the common model.
 
@@ -8,4 +8,4 @@ Library of the common model.
 
 - [Release](https://bremersee.github.io/common-model/index.html)
 
-- [Snapshot](https://nexus.bremersee.org/repository/maven-sites/common-model/2.2.1-SNAPSHOT/index.html)
+- [Snapshot](https://nexus.bremersee.org/repository/maven-sites/common-model/2.2.2-SNAPSHOT/index.html)
