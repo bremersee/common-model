@@ -35,9 +35,9 @@ import org.springframework.validation.annotation.Validated;
 @Schema(description = &quot;A phone number.&quot;)
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
-<span class="pc bpc" id="L38" title="9 of 22 branches missed.">@EqualsAndHashCode</span>
-<span class="fc" id="L39">@ToString</span>
-<span class="fc" id="L40">@NoArgsConstructor</span>
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
 public class PhoneNumber implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -48,7 +48,7 @@ public class PhoneNumber implements Serializable {
   @JsonProperty(&quot;category&quot;)
   private String category;
 
-<span class="pc" id="L51">  @Builder(toBuilder = true)</span>
+  @Builder(toBuilder = true)
   @SuppressWarnings(&quot;unused&quot;)
 <span class="fc" id="L53">  public PhoneNumber(String value, String category) {</span>
 <span class="fc" id="L54">    this.value = value;</span>

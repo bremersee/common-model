@@ -30,9 +30,9 @@ import lombok.ToString;
  * @author Christian Bremer
  */
 @Schema(description = &quot;A list of ISO 3166-1 ALPHA-2 country codes.&quot;)
-<span class="pc bpc" id="L33" title="2 of 8 branches missed.">@EqualsAndHashCode(callSuper = true)</span>
-<span class="fc" id="L34">@ToString(callSuper = true)</span>
-<span class="fc" id="L35">@NoArgsConstructor</span>
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+@NoArgsConstructor
 public class TwoLetterCountryCodes extends ArrayList&lt;TwoLetterCountryCode&gt; implements Serializable {
 
   private static final long serialVersionUID = 1L;

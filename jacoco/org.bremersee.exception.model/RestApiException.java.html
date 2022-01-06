@@ -65,9 +65,9 @@ import org.springframework.validation.annotation.Validated;
 @XmlSeeAlso({Handler.class, StackTraceItem.class})
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_EMPTY)
-<span class="pc bpc" id="L68" title="53 of 102 branches missed.">@EqualsAndHashCode</span>
-<span class="fc" id="L69">@ToString</span>
-<span class="fc" id="L70">@NoArgsConstructor</span>
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
 public class RestApiException implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -143,7 +143,7 @@ public class RestApiException implements Serializable {
    * @param stackTrace the stack trace
    * @param cause the cause
    */
-<span class="pc" id="L146">  @Builder(toBuilder = true)</span>
+  @Builder(toBuilder = true)
   @SuppressWarnings(&quot;unused&quot;)
   public RestApiException(
       String id,

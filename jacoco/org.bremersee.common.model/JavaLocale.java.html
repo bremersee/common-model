@@ -35,8 +35,8 @@ import org.springframework.util.StringUtils;
  * @author Christian Bremer
  */
 @Schema(description = &quot;A locale representation.&quot;)
-<span class="pc bpc" id="L38" title="9 of 22 branches missed.">@EqualsAndHashCode</span>
-<span class="fc" id="L39">@NoArgsConstructor</span>
+@EqualsAndHashCode
+@NoArgsConstructor
 public class JavaLocale implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -72,7 +72,7 @@ public class JavaLocale implements Serializable {
    * @param language the language
    * @param country the country
    */
-<span class="pc" id="L75">  @Builder(toBuilder = true)</span>
+  @Builder(toBuilder = true)
 <span class="fc" id="L76">  public JavaLocale(String language, String country) {</span>
 <span class="fc" id="L77">    setLanguage(language);</span>
 <span class="fc" id="L78">    setCountry(country);</span>

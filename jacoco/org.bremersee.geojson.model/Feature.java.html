@@ -37,9 +37,9 @@ import org.springframework.validation.annotation.Validated;
 @Schema(description = &quot;A Feature object represents a spatially bounded thing.&quot;)
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
-<span class="pc bpc" id="L40" title="23 of 46 branches missed.">@EqualsAndHashCode</span>
-<span class="fc" id="L41">@ToString</span>
-<span class="fc" id="L42">@NoArgsConstructor</span>
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
 public class Feature implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -67,7 +67,7 @@ public class Feature implements Serializable {
    * @param geometry the geometry
    * @param properties the properties
    */
-<span class="pc" id="L70">  @Builder(toBuilder = true)</span>
+  @Builder(toBuilder = true)
   public Feature(
       String id,
       BoundingBox bbox,

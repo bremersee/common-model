@@ -33,9 +33,9 @@ import org.springframework.validation.annotation.Validated;
  */
 @Schema(description = &quot;The bounding box of a geometry, feature or feature collection.&quot;)
 @Validated
-<span class="pc bpc" id="L36" title="2 of 8 branches missed.">@EqualsAndHashCode(callSuper = true)</span>
-<span class="fc" id="L37">@ToString(callSuper = true)</span>
-<span class="fc" id="L38">@NoArgsConstructor</span>
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+@NoArgsConstructor
 public class BoundingBox extends ArrayList&lt;BigDecimal&gt; implements Serializable {
 
   private static final long serialVersionUID = 1L;

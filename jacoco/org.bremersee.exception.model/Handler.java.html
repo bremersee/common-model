@@ -51,9 +51,9 @@ import org.springframework.validation.annotation.Validated;
 @XmlAccessorType(XmlAccessType.FIELD)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_EMPTY)
-<span class="pc bpc" id="L54" title="13 of 30 branches missed.">@EqualsAndHashCode</span>
-<span class="fc" id="L55">@ToString</span>
-<span class="fc" id="L56">@NoArgsConstructor</span>
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
 public class Handler implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -80,7 +80,7 @@ public class Handler implements Serializable {
    * @param methodName the method name
    * @param methodParameterTypes the method parameter types
    */
-<span class="pc" id="L83">  @Builder(toBuilder = true)</span>
+  @Builder(toBuilder = true)
   @SuppressWarnings(&quot;unused&quot;)
   public Handler(
       String className,

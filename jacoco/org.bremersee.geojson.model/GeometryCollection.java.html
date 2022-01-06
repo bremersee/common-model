@@ -34,8 +34,8 @@ import org.springframework.validation.annotation.Validated;
 @Schema(description = &quot;GeoJSON GeometryCollection.&quot;)
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
-<span class="pc bpc" id="L37" title="6 of 16 branches missed.">@EqualsAndHashCode(callSuper = true)</span>
-<span class="fc" id="L38">@ToString(callSuper = true)</span>
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public class GeometryCollection extends Geometry implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -56,7 +56,7 @@ public class GeometryCollection extends Geometry implements Serializable {
    * @param bbox the bbox
    * @param geometries the geometries
    */
-<span class="pc" id="L59">  @Builder(toBuilder = true)</span>
+  @Builder(toBuilder = true)
   public GeometryCollection(BoundingBox bbox, List&lt;Geometry&gt; geometries) {
 <span class="fc" id="L61">    super(bbox);</span>
 <span class="fc" id="L62">    setType(TypeEnum.GEOMETRYCOLLECTION);</span>

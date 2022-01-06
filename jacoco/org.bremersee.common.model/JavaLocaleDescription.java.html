@@ -35,9 +35,9 @@ import org.springframework.validation.annotation.Validated;
 @Schema(description = &quot;A java locale and it's description.&quot;)
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
-<span class="pc bpc" id="L38" title="9 of 22 branches missed.">@EqualsAndHashCode</span>
-<span class="fc" id="L39">@ToString</span>
-<span class="fc" id="L40">@NoArgsConstructor</span>
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
 public class JavaLocaleDescription implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -54,7 +54,7 @@ public class JavaLocaleDescription implements Serializable {
    * @param locale the locale
    * @param description the description
    */
-<span class="pc" id="L57">  @Builder(toBuilder = true)</span>
+  @Builder(toBuilder = true)
   @SuppressWarnings(&quot;unused&quot;)
 <span class="fc" id="L59">  public JavaLocaleDescription(String locale, String description) {</span>
 <span class="fc" id="L60">    this.locale = locale;</span>

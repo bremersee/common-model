@@ -32,9 +32,9 @@ import lombok.ToString;
  */
 @Schema(description = &quot;Address data.&quot;)
 @JsonIgnoreProperties(ignoreUnknown = true)
-<span class="pc bpc" id="L35" title="37 of 78 branches missed.">@EqualsAndHashCode</span>
-<span class="fc" id="L36">@ToString</span>
-<span class="fc" id="L37">@NoArgsConstructor</span>
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
 public class Address implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -79,7 +79,7 @@ public class Address implements Serializable {
    * @param countryCode the country code
    * @param formattedAddress the formatted address
    */
-<span class="pc" id="L82">  @Builder(toBuilder = true)</span>
+  @Builder(toBuilder = true)
   @SuppressWarnings(&quot;unused&quot;)
   public Address(String streetNumber, String street, String postalCode, String city,
       String suburb, String state, String country,

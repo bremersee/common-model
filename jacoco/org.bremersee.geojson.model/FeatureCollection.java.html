@@ -38,9 +38,9 @@ import org.springframework.validation.annotation.Validated;
 @Schema(description = &quot;A collection of features.&quot;)
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
-<span class="pc bpc" id="L41" title="15 of 30 branches missed.">@EqualsAndHashCode</span>
-<span class="fc" id="L42">@ToString</span>
-<span class="fc" id="L43">@NoArgsConstructor</span>
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
 public class FeatureCollection implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -54,7 +54,7 @@ public class FeatureCollection implements Serializable {
 <span class="fc" id="L54">  @JsonProperty(&quot;features&quot;)</span>
   private List&lt;Feature&gt; features = null;
 
-<span class="pc" id="L57">  @Builder(toBuilder = true)</span>
+  @Builder(toBuilder = true)
   @SuppressWarnings(&quot;unused&quot;)
   public FeatureCollection(
       BoundingBox bbox,

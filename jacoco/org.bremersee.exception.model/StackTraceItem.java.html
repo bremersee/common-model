@@ -47,9 +47,9 @@ import org.springframework.validation.annotation.Validated;
 @XmlAccessorType(XmlAccessType.FIELD)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(Include.NON_EMPTY)
-<span class="pc bpc" id="L50" title="17 of 38 branches missed.">@EqualsAndHashCode</span>
-<span class="fc" id="L51">@ToString</span>
-<span class="fc" id="L52">@NoArgsConstructor</span>
+@EqualsAndHashCode
+@ToString
+@NoArgsConstructor
 public class StackTraceItem implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -78,7 +78,7 @@ public class StackTraceItem implements Serializable {
    * @param fileName the file name
    * @param lineNumber the line number
    */
-<span class="pc" id="L81">  @Builder(toBuilder = true)</span>
+  @Builder(toBuilder = true)
   @SuppressWarnings(&quot;unused&quot;)
   public StackTraceItem(
       String declaringClass,
