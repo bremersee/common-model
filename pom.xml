@@ -17,6 +17,7 @@
 
   <name>common-model</name>
   <description>Bremersee's common model</description>
+  <inceptionYear>2019</inceptionYear>
   <url>https://github.com/bremersee/common-model</url>
 
   <properties>
