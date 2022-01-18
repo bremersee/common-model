@@ -63,9 +63,6 @@ class PositionTest {
   void testConstructors() {
     assertThrows(IllegalArgumentException.class, () -> new Position(BigDecimal.ONE, null));
     assertThrows(IllegalArgumentException.class, () -> new Position(null, BigDecimal.ONE));
-    assertThrows(
-        IllegalArgumentException.class,
-        () -> new Position(BigDecimal.ZERO, BigDecimal.ONE, null));
     assertDoesNotThrow(() -> new Position(BigDecimal.ZERO, BigDecimal.ONE, BigDecimal.TEN));
   }
 }

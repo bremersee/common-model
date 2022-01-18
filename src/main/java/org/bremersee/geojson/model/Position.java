@@ -20,8 +20,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Objects;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.util.Assert;
 import org.springframework.validation.annotation.Validated;
@@ -35,35 +35,43 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-@NoArgsConstructor
 public class Position extends ArrayList<BigDecimal> implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
   /**
-   * Instantiates a new position.
-   *
-   * @param x the x
-   * @param y the y
+   * Instantiates a new empty (illegal) position.
    */
-  public Position(BigDecimal x, BigDecimal y) {
-    Assert.notNull(x, "X must not be null.");
-    Assert.notNull(y, "Y must not be null.");
-    add(x);
-    add(y);
+  public Position() {
+    super(3);
   }
 
   /**
    * Instantiates a new position.
    *
-   * @param x the x
-   * @param y the y
-   * @param z the z
+   * @param x the x (aka longitude)
+   * @param y the y (aka latitude)
+   */
+  public Position(BigDecimal x, BigDecimal y) {
+    this(x, y, null);
+  }
+
+  /**
+   * Instantiates a new position.
+   *
+   * @param x the x (aka longitude)
+   * @param y the y (aka latitude)
+   * @param z the z (the z coordinate)
    */
   public Position(BigDecimal x, BigDecimal y, BigDecimal z) {
-    this(x, y);
-    Assert.notNull(z, "Z must not be null.");
-    add(z);
+    super(Objects.isNull(z) ? 2 : 3);
+    Assert.notNull(x, "X (longitude) must not be null.");
+    Assert.notNull(y, "Y (latitude) must not be null.");
+    add(x);
+    add(y);
+    if (!Objects.isNull(z)) {
+      add(z);
+    }
   }
 
 }
