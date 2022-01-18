@@ -16,42 +16,42 @@
 
 package org.bremersee.geojson.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.math.BigDecimal;
 import java.util.Collections;
+import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
  * The bounding box test.
  *
  * @author Christian Bremer
  */
+@ExtendWith(SoftAssertionsExtension.class)
 class BoundingBoxTest {
 
   /**
    * Test model.
+   *
+   * @param softly the softly
    */
   @Test
-  void testModel() {
+  void testModel(SoftAssertions softly) {
     BoundingBox model = new BoundingBox();
-    assertNotEquals(model, null);
-    assertNotEquals(model, new Object());
-    assertEquals(model, model);
-    assertEquals(model, new BoundingBox());
-    assertTrue(model.toString().length() > 0);
+    softly.assertThat(model).isNotEqualTo(null);
+    softly.assertThat(model).isNotEqualTo(new Object());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(new BoundingBox());
+    softly.assertThat(model.toString()).hasSizeGreaterThan(0);
 
     BigDecimal value = new BigDecimal("123.4");
     model = new BoundingBox(Collections.singleton(value));
-    assertNotEquals(model, null);
-    assertNotEquals(model, new Object());
-    assertEquals(model, model);
-    assertEquals(
-        model,
-        new BoundingBox(Collections.singleton(value)));
-    assertTrue(model.toString().contains(value.toString()));
+    softly.assertThat(model).isNotEqualTo(null);
+    softly.assertThat(model).isNotEqualTo(new Object());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(new BoundingBox(Collections.singleton(value)));
+    softly.assertThat(model.toString()).contains(value.toString());
   }
 
 }
