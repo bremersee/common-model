@@ -26,7 +26,7 @@
 
     <inceptionYear>2020</inceptionYear>
 
-    <common-xml.version>2.3.1</common-xml.version>
+    <common-xml.version>2.4.0-SNAPSHOT</common-xml.version>
   </properties>
 
   <developers>
