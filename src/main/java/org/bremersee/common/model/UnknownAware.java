@@ -26,7 +26,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.StringTokenizer;
-import java.util.function.Function;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -115,7 +114,7 @@ public abstract class UnknownAware {
       if (value == null) {
         break;
       }
-      if ((value instanceof Map) && tokenizer.hasMoreTokens()) {
+      if (value instanceof Map && tokenizer.hasMoreTokens()) {
         try {
           //noinspection unchecked,rawtypes
           tmpUnknown = (Map) value;
@@ -147,9 +146,9 @@ public abstract class UnknownAware {
       return Optional.empty();
     }
     try {
-      //noinspection Convert2MethodRef,unchecked,rawtypes
+      //noinspection unchecked,Convert2MethodRef
       return findUnknown(jsonPath, List.class).map(
-          (Function<List, List<E>>) list -> Collections.unmodifiableList(list));
+          list -> Collections.unmodifiableList(list));
 
     } catch (RuntimeException ignored) {
       return Optional.empty();
@@ -165,9 +164,9 @@ public abstract class UnknownAware {
    */
   public Optional<Map<String, Object>> findUnknownMap(final String jsonPath) {
     try {
-      //noinspection Convert2MethodRef,unchecked,rawtypes
+      //noinspection unchecked,Convert2MethodRef
       return findUnknown(jsonPath, Map.class)
-          .map((Function<Map, Map<String, Object>>) map -> Collections.unmodifiableMap(map));
+          .map(map -> Collections.unmodifiableMap(map));
 
     } catch (RuntimeException ignored) {
       return Optional.empty();

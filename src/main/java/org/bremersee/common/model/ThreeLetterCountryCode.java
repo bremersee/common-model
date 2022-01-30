@@ -1370,7 +1370,8 @@ public enum ThreeLetterCountryCode {
     source = parts.length > 1 ? parts[1].trim() : parts[0].trim();
     for (ThreeLetterCountryCode b : ThreeLetterCountryCode.values()) {
       if (b.value.equals(source)
-          || (b.twoLetterCountryCode != null && b.twoLetterCountryCode.toString().equals(source))) {
+          || b.twoLetterCountryCode != null
+          && b.twoLetterCountryCode.toString().equals(source)) {
         return b;
       }
     }
