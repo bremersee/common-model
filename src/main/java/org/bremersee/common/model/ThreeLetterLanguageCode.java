@@ -1340,8 +1340,8 @@ public enum ThreeLetterLanguageCode {
   private final TwoLetterLanguageCode[] twoLetterLanguageCodes;
 
   ThreeLetterLanguageCode(
-      final String value,
-      final TwoLetterLanguageCode... twoLetterLanguageCodes) {
+      String value,
+      TwoLetterLanguageCode... twoLetterLanguageCodes) {
 
     this.value = value;
     this.twoLetterLanguageCodes = twoLetterLanguageCodes;
@@ -1393,7 +1393,7 @@ public enum ThreeLetterLanguageCode {
             .orElse(null));
   }
 
-  private boolean hasIsoLanguage(final Locale locale) {
+  private boolean hasIsoLanguage(Locale locale) {
     try {
       return StringUtils.hasText(locale.getISO3Language());
     } catch (MissingResourceException e) {
@@ -1408,7 +1408,7 @@ public enum ThreeLetterLanguageCode {
    * @return the three letter language code
    */
   @JsonCreator
-  public static ThreeLetterLanguageCode fromValue(final String text) {
+  public static ThreeLetterLanguageCode fromValue(String text) {
     return fromValue(text, null);
   }
 
@@ -1421,8 +1421,8 @@ public enum ThreeLetterLanguageCode {
    */
   @SuppressWarnings("DuplicatedCode")
   public static ThreeLetterLanguageCode fromValue(
-      final String text,
-      final ThreeLetterLanguageCode defaultCode) {
+      String text,
+      ThreeLetterLanguageCode defaultCode) {
 
     String source = text != null ? text.trim().toLowerCase() : null;
     if (source == null || source.length() < 2) {
@@ -1455,7 +1455,7 @@ public enum ThreeLetterLanguageCode {
    * @param locale the locale
    * @return the three letter language code
    */
-  public static ThreeLetterLanguageCode fromLocale(final Locale locale) {
+  public static ThreeLetterLanguageCode fromLocale(Locale locale) {
     return fromLocale(locale, null);
   }
 
@@ -1467,8 +1467,8 @@ public enum ThreeLetterLanguageCode {
    * @return the three letter language code
    */
   public static ThreeLetterLanguageCode fromLocale(
-      final Locale locale,
-      final ThreeLetterLanguageCode defaultCode) {
+      Locale locale,
+      ThreeLetterLanguageCode defaultCode) {
     if (locale == null || !StringUtils.hasText(locale.getISO3Language())) {
       return defaultCode;
     }

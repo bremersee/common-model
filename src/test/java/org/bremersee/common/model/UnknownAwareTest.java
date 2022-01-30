@@ -93,7 +93,7 @@ class UnknownAwareTest {
    */
   @Test
   void findFromRoot() {
-    final ConcreteUnknown unknown = new ConcreteUnknown();
+    ConcreteUnknown unknown = new ConcreteUnknown();
     unknown.unknown("test", "expected");
     Optional<String> actual = unknown.findUnknown("$.test", String.class);
     assertTrue(actual.isPresent());
@@ -105,7 +105,7 @@ class UnknownAwareTest {
    */
   @Test
   void findNotFromRoot() {
-    final ConcreteUnknown unknown = new ConcreteUnknown();
+    ConcreteUnknown unknown = new ConcreteUnknown();
     unknown.unknown("test", "expected");
     Optional<String> actual = unknown.findUnknown("$.foo", String.class);
     assertFalse(actual.isPresent());
@@ -116,7 +116,7 @@ class UnknownAwareTest {
    */
   @Test
   void findNotFromRootClassCastException() {
-    final ConcreteUnknown unknown = new ConcreteUnknown();
+    ConcreteUnknown unknown = new ConcreteUnknown();
     unknown.unknown("test", "expected");
     Optional<Integer> actual = unknown.findUnknown("$.test", Integer.class);
     assertFalse(actual.isPresent());
@@ -127,10 +127,10 @@ class UnknownAwareTest {
    */
   @Test
   void findMapFromRoot() {
-    final Map<String, Object> expected = new LinkedHashMap<>();
+    Map<String, Object> expected = new LinkedHashMap<>();
     expected.put("sub", "expected");
 
-    final ConcreteUnknown unknown = new ConcreteUnknown();
+    ConcreteUnknown unknown = new ConcreteUnknown();
     unknown.unknown("test", expected);
 
     Optional<Map<String, Object>> actualMap = unknown.findUnknownMap("$.test");
@@ -153,9 +153,9 @@ class UnknownAwareTest {
    */
   @Test
   void findListFromRoot() {
-    final List<String> expected = Arrays.asList("one", "two");
+    List<String> expected = Arrays.asList("one", "two");
 
-    final ConcreteUnknown unknown = new ConcreteUnknown();
+    ConcreteUnknown unknown = new ConcreteUnknown();
     unknown.unknown("test", expected);
 
     Optional<List<String>> actualList = unknown.findUnknownList("$.test", String.class);
@@ -171,9 +171,9 @@ class UnknownAwareTest {
   @Test
   void findBadListFromRoot() {
     assertThrows(ClassCastException.class, () -> {
-      final List<String> expected = Arrays.asList("one", "two");
+      List<String> expected = Arrays.asList("one", "two");
 
-      final ConcreteUnknown unknown = new ConcreteUnknown();
+      ConcreteUnknown unknown = new ConcreteUnknown();
       unknown.unknown("test", expected);
 
       Optional<List<Integer>> actualList = unknown.findUnknownList("$.test", Integer.class);

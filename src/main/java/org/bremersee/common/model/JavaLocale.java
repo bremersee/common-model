@@ -122,7 +122,7 @@ public class JavaLocale implements Serializable {
       for (Locale l : Locale.getAvailableLocales()) {
         try {
           if (l.getLanguage().equalsIgnoreCase(language)
-              || (l.getISO3Language() != null && l.getISO3Language().equalsIgnoreCase(language))) {
+              || l.getISO3Language() != null && l.getISO3Language().equalsIgnoreCase(language)) {
             this.language = l.getLanguage();
             return;
           }
@@ -160,7 +160,7 @@ public class JavaLocale implements Serializable {
       for (Locale l : Locale.getAvailableLocales()) {
         try {
           if (l.getCountry().equalsIgnoreCase(country)
-              || (l.getISO3Country() != null && l.getISO3Country().equalsIgnoreCase(country))) {
+              || l.getISO3Country() != null && l.getISO3Country().equalsIgnoreCase(country)) {
             this.country = l.getCountry();
             return;
           }
@@ -258,7 +258,7 @@ public class JavaLocale implements Serializable {
      */
     UNDERSCORE("_");
 
-    private String value;
+    private final String value;
 
     Separator(String value) {
       this.value = value;

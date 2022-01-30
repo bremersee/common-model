@@ -65,7 +65,7 @@ class JavaLocaleTest {
 
         assertEquals(text, javaLocale0.toString(Separator.HYPHEN));
         assertEquals(
-            languageCode.toString() + "_" + countryCode.toString(),
+            languageCode + "_" + countryCode,
             javaLocale0.toString(Separator.UNDERSCORE));
       }
     }
@@ -95,7 +95,7 @@ class JavaLocaleTest {
     assertEquals("DE", model.getCountry());
 
     //noinspection RedundantCast
-    model = new JavaLocale((ThreeLetterLanguageCode)null, (ThreeLetterCountryCode)null);
+    model = new JavaLocale((ThreeLetterLanguageCode) null, (ThreeLetterCountryCode) null);
     assertNull(model.getLanguage());
     assertNull(model.getCountry());
 

@@ -970,7 +970,7 @@ public enum TwoLetterLanguageCode {
 
   private final String value;
 
-  TwoLetterLanguageCode(final String value) {
+  TwoLetterLanguageCode(String value) {
     this.value = value;
   }
 
@@ -996,7 +996,7 @@ public enum TwoLetterLanguageCode {
    * @return the two letter language code
    */
   @JsonCreator
-  public static TwoLetterLanguageCode fromValue(final String text) {
+  public static TwoLetterLanguageCode fromValue(String text) {
     return fromValue(text, null);
   }
 
@@ -1009,8 +1009,8 @@ public enum TwoLetterLanguageCode {
    */
   @SuppressWarnings("DuplicatedCode")
   public static TwoLetterLanguageCode fromValue(
-      final String text,
-      final TwoLetterLanguageCode defaultCode) {
+      String text,
+      TwoLetterLanguageCode defaultCode) {
 
     String source = text != null ? text.trim().toLowerCase() : null;
     if (source == null || source.length() < 2) {
@@ -1046,7 +1046,7 @@ public enum TwoLetterLanguageCode {
    * @param locale the locale
    * @return the two letter language code
    */
-  public static TwoLetterLanguageCode fromLocale(final Locale locale) {
+  public static TwoLetterLanguageCode fromLocale(Locale locale) {
     return fromLocale(locale, null);
   }
 
@@ -1058,8 +1058,8 @@ public enum TwoLetterLanguageCode {
    * @return the two letter language code
    */
   public static TwoLetterLanguageCode fromLocale(
-      final Locale locale,
-      final TwoLetterLanguageCode defaultCode) {
+      Locale locale,
+      TwoLetterLanguageCode defaultCode) {
     if (locale == null || !StringUtils.hasText(locale.getLanguage())) {
       return defaultCode;
     }

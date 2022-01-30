@@ -1299,7 +1299,7 @@ public enum TwoLetterCountryCode {
    */
   ZW("ZW");
 
-  private String value;
+  private final String value;
 
   TwoLetterCountryCode(String value) {
     this.value = value;
@@ -1327,7 +1327,7 @@ public enum TwoLetterCountryCode {
    * @return the two letter country code
    */
   @JsonCreator
-  public static TwoLetterCountryCode fromValue(final String text) {
+  public static TwoLetterCountryCode fromValue(String text) {
     return fromValue(text, null);
   }
 
@@ -1340,8 +1340,8 @@ public enum TwoLetterCountryCode {
    */
   @SuppressWarnings("DuplicatedCode")
   public static TwoLetterCountryCode fromValue(
-      final String text,
-      final TwoLetterCountryCode defaultCode) {
+      String text,
+      TwoLetterCountryCode defaultCode) {
 
     String source = text != null ? text.trim().toUpperCase() : null;
     if (source == null || source.length() < 2) {
@@ -1375,7 +1375,7 @@ public enum TwoLetterCountryCode {
    * @param locale the locale
    * @return the two letter country code
    */
-  public static TwoLetterCountryCode fromLocale(final Locale locale) {
+  public static TwoLetterCountryCode fromLocale(Locale locale) {
     return fromLocale(locale, null);
   }
 
@@ -1387,8 +1387,8 @@ public enum TwoLetterCountryCode {
    * @return the two letter country code
    */
   public static TwoLetterCountryCode fromLocale(
-      final Locale locale,
-      final TwoLetterCountryCode defaultCode) {
+      Locale locale,
+      TwoLetterCountryCode defaultCode) {
 
     if (locale == null || !StringUtils.hasText(locale.getCountry())) {
       return defaultCode;

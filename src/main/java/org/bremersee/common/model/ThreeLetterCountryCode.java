@@ -1280,7 +1280,7 @@ public enum ThreeLetterCountryCode {
 
   private final TwoLetterCountryCode twoLetterCountryCode;
 
-  ThreeLetterCountryCode(final String value, final TwoLetterCountryCode twoLetterCountryCode) {
+  ThreeLetterCountryCode(String value, TwoLetterCountryCode twoLetterCountryCode) {
     this.value = value;
     this.twoLetterCountryCode = twoLetterCountryCode;
   }
@@ -1330,7 +1330,7 @@ public enum ThreeLetterCountryCode {
             .orElse(null));
   }
 
-  private boolean hasIsoCountry(final Locale locale) {
+  private boolean hasIsoCountry(Locale locale) {
     try {
       return StringUtils.hasText(locale.getISO3Country());
     } catch (MissingResourceException e) {
@@ -1345,7 +1345,7 @@ public enum ThreeLetterCountryCode {
    * @return the three letter country code
    */
   @JsonCreator
-  public static ThreeLetterCountryCode fromValue(final String text) {
+  public static ThreeLetterCountryCode fromValue(String text) {
     return fromValue(text, null);
   }
 
@@ -1358,8 +1358,8 @@ public enum ThreeLetterCountryCode {
    */
   @SuppressWarnings("DuplicatedCode")
   public static ThreeLetterCountryCode fromValue(
-      final String text,
-      final ThreeLetterCountryCode defaultCode) {
+      String text,
+      ThreeLetterCountryCode defaultCode) {
 
     String source = text != null ? text.trim().toUpperCase() : null;
     if (source == null || source.length() < 2) {
@@ -1384,7 +1384,7 @@ public enum ThreeLetterCountryCode {
    * @param locale the locale
    * @return the three letter country code
    */
-  public static ThreeLetterCountryCode fromLocale(final Locale locale) {
+  public static ThreeLetterCountryCode fromLocale(Locale locale) {
     return fromLocale(locale, null);
   }
 
@@ -1396,8 +1396,8 @@ public enum ThreeLetterCountryCode {
    * @return the three letter country code
    */
   public static ThreeLetterCountryCode fromLocale(
-      final Locale locale,
-      final ThreeLetterCountryCode defaultCode) {
+      Locale locale,
+      ThreeLetterCountryCode defaultCode) {
     if (locale == null || !StringUtils.hasText(locale.getISO3Country())) {
       return defaultCode;
     }

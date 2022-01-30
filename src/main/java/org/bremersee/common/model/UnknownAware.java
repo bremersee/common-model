@@ -101,15 +101,15 @@ public abstract class UnknownAware {
    * @param clazz the expected result class
    * @return an empty optional if the value was not found or can not be casted, otherwise the value
    */
-  public <T> Optional<T> findUnknown(final String jsonPath, final Class<T> clazz) {
+  public <T> Optional<T> findUnknown(String jsonPath, Class<T> clazz) {
     if (!hasUnknown() || !isJsonPath(jsonPath) || clazz == null) {
       return Optional.empty();
     }
     Object value = null;
     Map<String, Object> tmpUnknown = unknown;
-    final StringTokenizer tokenizer = new StringTokenizer(jsonPath.substring(2), ".");
+    StringTokenizer tokenizer = new StringTokenizer(jsonPath.substring(2), ".");
     while (tokenizer.hasMoreTokens()) {
-      final String token = tokenizer.nextToken();
+      String token = tokenizer.nextToken();
       value = tmpUnknown.get(token);
       if (value == null) {
         break;
@@ -141,7 +141,7 @@ public abstract class UnknownAware {
    * @param clazz he list element type
    * @return an empty optional if the list was not found or can not be casted, otherwise the list
    */
-  public <E> Optional<List<E>> findUnknownList(final String jsonPath, final Class<E> clazz) {
+  public <E> Optional<List<E>> findUnknownList(String jsonPath, Class<E> clazz) {
     if (clazz == null) {
       return Optional.empty();
     }
@@ -162,7 +162,7 @@ public abstract class UnknownAware {
    * @return an empty optional if the map / json object was not found or can not be casted,
    *     otherwise the map / json object
    */
-  public Optional<Map<String, Object>> findUnknownMap(final String jsonPath) {
+  public Optional<Map<String, Object>> findUnknownMap(String jsonPath) {
     try {
       //noinspection unchecked,Convert2MethodRef
       return findUnknown(jsonPath, Map.class)
@@ -173,7 +173,7 @@ public abstract class UnknownAware {
     }
   }
 
-  private boolean isJsonPath(final String jsonPath) {
+  private boolean isJsonPath(String jsonPath) {
     return jsonPath != null && jsonPath.startsWith("$.") && jsonPath.length() > 2;
   }
 
