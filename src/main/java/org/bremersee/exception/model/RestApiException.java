@@ -20,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
@@ -54,10 +53,7 @@ import org.springframework.validation.annotation.Validated;
  */
 @Schema(description = "The serialized exception.")
 @Validated
-@JsonTypeInfo(include = As.EXISTING_PROPERTY, use = Id.NAME, property = "_type", visible = true)
-@JsonSubTypes({
-    @JsonSubTypes.Type(value = RestApiException.class, name = "restApiExceptionType")
-})
+@JsonTypeInfo(include = As.EXISTING_PROPERTY, use = Id.CLASS, property = "_type", visible = true)
 @JacksonXmlRootElement(localName = "RestApiException")
 @XmlRootElement(name = "RestApiException")
 @XmlType(name = "restApiExceptionType")
@@ -74,11 +70,12 @@ public class RestApiException implements Serializable {
 
   @Schema(
       name = "_type",
-      description = "The type specifier, must always be 'restApiExceptionType'.")
+      description = "The type specifier, must always be "
+          + "'org.bremersee.exception.model.RestApiException'.")
   @JsonProperty("_type")
   @JacksonXmlProperty(localName = "_type", isAttribute = true)
   @XmlAttribute(name = "_type")
-  private String type = "restApiExceptionType";
+  private String type = RestApiException.class.getName();
 
   @JsonProperty("id")
   @JacksonXmlProperty(localName = "id")
