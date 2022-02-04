@@ -16,100 +16,108 @@
 
 package org.bremersee.exception.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
+import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
- * The type Stack trace item test.
+ * The stack trace item test.
  *
  * @author Christian Bremer
  */
+@ExtendWith(SoftAssertionsExtension.class)
 class StackTraceItemTest {
 
   /**
    * Gets declaring class.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getDeclaringClass() {
+  void getDeclaringClass(SoftAssertions softly) {
     String value = "value";
     StackTraceItem model = new StackTraceItem();
     model.setDeclaringClass(value);
-    assertEquals(value, model.getDeclaringClass());
+    softly.assertThat(model.getDeclaringClass()).isEqualTo(value);
 
     model = StackTraceItem.builder().declaringClass(value).build();
-    assertEquals(value, model.getDeclaringClass());
+    softly.assertThat(model.getDeclaringClass()).isEqualTo(value);
 
-    assertNotEquals(model, null);
-    assertNotEquals(model, new Object());
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().declaringClass(value).build());
+    softly.assertThat(model).isNotEqualTo(null);
+    softly.assertThat(model).isNotEqualTo(new Object());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().declaringClass(value).build());
 
-    assertTrue(model.toString().contains(value));
+    softly.assertThat(model.toString()).contains(value);
   }
 
   /**
    * Gets method name.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getMethodName() {
+  void getMethodName(SoftAssertions softly) {
     String value = "value";
     StackTraceItem model = new StackTraceItem();
     model.setMethodName(value);
-    assertEquals(value, model.getMethodName());
+    softly.assertThat(model.getMethodName()).isEqualTo(value);
 
     model = StackTraceItem.builder().methodName(value).build();
-    assertEquals(value, model.getMethodName());
+    softly.assertThat(model.getMethodName()).isEqualTo(value);
 
-    assertNotEquals(model, null);
-    assertNotEquals(model, new Object());
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().methodName(value).build());
+    softly.assertThat(model).isNotEqualTo(null);
+    softly.assertThat(model).isNotEqualTo(new Object());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().methodName(value).build());
 
-    assertTrue(model.toString().contains(value));
+    softly.assertThat(model.toString()).contains(value);
   }
 
   /**
    * Gets file name.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getFileName() {
+  void getFileName(SoftAssertions softly) {
     String value = "value";
     StackTraceItem model = new StackTraceItem();
     model.setFileName(value);
-    assertEquals(value, model.getFileName());
+    softly.assertThat(model.getFileName()).isEqualTo(value);
 
     model = StackTraceItem.builder().fileName(value).build();
-    assertEquals(value, model.getFileName());
+    softly.assertThat(model.getFileName()).isEqualTo(value);
 
-    assertNotEquals(model, null);
-    assertNotEquals(model, new Object());
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().fileName(value).build());
+    softly.assertThat(model).isNotEqualTo(null);
+    softly.assertThat(model).isNotEqualTo(new Object());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().fileName(value).build());
 
-    assertTrue(model.toString().contains(value));
+    softly.assertThat(model.toString()).contains(value);
   }
 
   /**
    * Gets line number.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getLineNumber() {
+  void getLineNumber(SoftAssertions softly) {
     Integer value = 1234;
     StackTraceItem model = new StackTraceItem();
     model.setLineNumber(value);
-    assertEquals(value, model.getLineNumber());
+    softly.assertThat(model.getLineNumber()).isEqualTo(value);
 
     model = StackTraceItem.builder().lineNumber(value).build();
-    assertEquals(value, model.getLineNumber());
+    softly.assertThat(model.getLineNumber()).isEqualTo(value);
 
-    assertNotEquals(model, null);
-    assertNotEquals(model, new Object());
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().lineNumber(value).build());
+    softly.assertThat(model).isNotEqualTo(null);
+    softly.assertThat(model).isNotEqualTo(new Object());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().lineNumber(value).build());
 
-    assertTrue(model.toString().contains(value.toString()));
+    softly.assertThat(model.toString()).contains(value.toString());
   }
 }

@@ -17,9 +17,6 @@
 package org.bremersee.exception.model;
 
 import static java.time.format.DateTimeFormatter.ISO_OFFSET_DATE_TIME;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -35,173 +32,194 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
+import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 import org.bremersee.xml.JaxbContextBuilder;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
  * The rest api exception test.
  *
  * @author Christian Bremer
  */
+@ExtendWith(SoftAssertionsExtension.class)
 class RestApiExceptionTest {
 
   /**
    * Gets id.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getId() {
+  void getId(SoftAssertions softly) {
     RestApiException model = new RestApiException();
     model.setId("value");
-    assertEquals("value", model.getId());
+    softly.assertThat(model.getId()).isEqualTo("value");
 
     model = RestApiException.builder().id("value").build();
-    assertEquals("value", model.getId());
+    softly.assertThat(model.getId()).isEqualTo("value");
 
-    assertNotEquals(model, null);
-    assertNotEquals(model, new Object());
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().id("value").build());
+    softly.assertThat(model).isNotEqualTo(null);
+    softly.assertThat(model).isNotEqualTo(new Object());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().id("value").build());
 
-    assertTrue(model.toString().contains("value"));
+    softly.assertThat(model.toString()).contains("value");
   }
 
   /**
    * Gets timestamp.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getTimestamp() {
+  void getTimestamp(SoftAssertions softly) {
     OffsetDateTime value = OffsetDateTime.now();
     RestApiException model = new RestApiException();
     model.setTimestamp(value);
-    assertEquals(value, model.getTimestamp());
+    softly.assertThat(model.getTimestamp()).isEqualTo(value);
 
     model = RestApiException.builder().timestamp(value).build();
-    assertEquals(value, model.getTimestamp());
+    softly.assertThat(model.getTimestamp()).isEqualTo(value);
 
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().timestamp(value).build());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().timestamp(value).build());
 
-    assertTrue(model.toString().contains(value.toString()));
+    softly.assertThat(model.toString()).contains(value.toString());
   }
 
   /**
    * Gets message.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getMessage() {
+  void getMessage(SoftAssertions softly) {
     RestApiException model = new RestApiException();
     model.setMessage("value");
-    assertEquals("value", model.getMessage());
+    softly.assertThat(model.getMessage()).isEqualTo("value");
 
     model = RestApiException.builder().message("value").build();
-    assertEquals("value", model.getMessage());
+    softly.assertThat(model.getMessage()).isEqualTo("value");
 
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().message("value").build());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().message("value").build());
 
-    assertTrue(model.toString().contains("value"));
+    softly.assertThat(model.toString()).contains("value");
   }
 
   /**
    * Gets error code.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getErrorCode() {
+  void getErrorCode(SoftAssertions softly) {
     RestApiException model = new RestApiException();
     model.setErrorCode("value");
-    assertEquals("value", model.getErrorCode());
+    softly.assertThat(model.getErrorCode()).isEqualTo("value");
 
     model = RestApiException.builder().errorCode("value").build();
-    assertEquals("value", model.getErrorCode());
+    softly.assertThat(model.getErrorCode()).isEqualTo("value");
 
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().errorCode("value").build());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().errorCode("value").build());
 
-    assertTrue(model.toString().contains("value"));
+    softly.assertThat(model.toString()).contains("value");
   }
 
   /**
    * Gets error code inherited.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getErrorCodeInherited() {
-    Boolean value = Boolean.TRUE;
+  void getErrorCodeInherited(SoftAssertions softly) {
     RestApiException model = new RestApiException();
 
     model.setErrorCodeInherited(null);
-    assertEquals(Boolean.FALSE, model.getErrorCodeInherited());
+    softly.assertThat(model.getErrorCodeInherited()).isFalse();
 
-    model.setErrorCodeInherited(value);
-    assertEquals(value, model.getErrorCodeInherited());
+    model.setErrorCodeInherited(Boolean.TRUE);
+    softly.assertThat(model.getErrorCodeInherited()).isTrue();
 
-    model = RestApiException.builder().errorCodeInherited(value).build();
-    assertEquals(value, model.getErrorCodeInherited());
+    model = RestApiException.builder().errorCodeInherited(Boolean.TRUE).build();
+    softly.assertThat(model.getErrorCodeInherited()).isTrue();
 
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().errorCodeInherited(value).build());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().errorCodeInherited(Boolean.TRUE).build());
 
-    assertTrue(model.toString().contains(value.toString()));
+    softly.assertThat(model.toString()).contains(Boolean.TRUE.toString());
   }
 
   /**
    * Gets class name.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getClassName() {
+  void getClassName(SoftAssertions softly) {
     RestApiException model = new RestApiException();
     model.setClassName("value");
-    assertEquals("value", model.getClassName());
+    softly.assertThat(model.getClassName()).isEqualTo("value");
 
     model = RestApiException.builder().className("value").build();
-    assertEquals("value", model.getClassName());
+    softly.assertThat(model.getClassName()).isEqualTo("value");
 
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().className("value").build());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().className("value").build());
 
-    assertTrue(model.toString().contains("value"));
+    softly.assertThat(model.toString()).contains("value");
   }
 
   /**
    * Gets application.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getApplication() {
+  void getApplication(SoftAssertions softly) {
     RestApiException model = new RestApiException();
     model.setApplication("value");
-    assertEquals("value", model.getApplication());
+    softly.assertThat(model.getApplication()).isEqualTo("value");
 
     model = RestApiException.builder().application("value").build();
-    assertEquals("value", model.getApplication());
+    softly.assertThat(model.getApplication()).isEqualTo("value");
 
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().application("value").build());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().application("value").build());
 
-    assertTrue(model.toString().contains("value"));
+    softly.assertThat(model.toString()).contains("value");
   }
 
   /**
    * Gets path.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getPath() {
+  void getPath(SoftAssertions softly) {
     RestApiException model = new RestApiException();
     model.setPath("value");
-    assertEquals("value", model.getPath());
+    softly.assertThat(model.getPath()).isEqualTo("value");
 
     model = RestApiException.builder().path("value").build();
-    assertEquals("value", model.getPath());
+    softly.assertThat(model.getPath()).isEqualTo("value");
 
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().path("value").build());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().path("value").build());
 
-    assertTrue(model.toString().contains("value"));
+    softly.assertThat(model.toString()).contains("value");
   }
 
   /**
    * Gets stack trace.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getStackTrace() {
+  void getStackTrace(SoftAssertions softly) {
     List<StackTraceItem> value = Collections.singletonList(StackTraceItem.builder()
         .fileName("filename")
         .lineNumber(123)
@@ -209,22 +227,24 @@ class RestApiExceptionTest {
         .build());
     RestApiException model = new RestApiException();
     model.setStackTrace(value);
-    assertEquals(value, model.getStackTrace());
+    softly.assertThat(model.getStackTrace()).isEqualTo(value);
 
     model = RestApiException.builder().stackTrace(value).build();
-    assertEquals(value, model.getStackTrace());
+    softly.assertThat(model.getStackTrace()).isEqualTo(value);
 
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().stackTrace(value).build());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().stackTrace(value).build());
 
-    assertTrue(model.toString().contains(value.toString()));
+    softly.assertThat(model.toString()).contains(value.toString());
   }
 
   /**
    * Gets cause.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getCause() {
+  void getCause(SoftAssertions softly) {
     RestApiException value = RestApiException.builder()
         .id(UUID.randomUUID().toString())
         .application("test")
@@ -235,46 +255,49 @@ class RestApiExceptionTest {
         .build();
     RestApiException model = new RestApiException();
     model.setCause(value);
-    assertEquals(value, model.getCause());
+    softly.assertThat(model.getCause()).isEqualTo(value);
 
     model = RestApiException.builder().cause(value).build();
-    assertEquals(value, model.getCause());
+    softly.assertThat(model.getCause()).isEqualTo(value);
 
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().cause(value).build());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().cause(value).build());
 
-    assertTrue(model.toString().contains(value.toString()));
+    softly.assertThat(model.toString()).contains(value.toString());
   }
 
   /**
    * Gets handler.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getHandler() {
+  void getHandler(SoftAssertions softly) {
     Handler value = Handler.builder()
         .className("org.example.FooBar")
         .methodName("getFooBar")
         .build();
     RestApiException model = new RestApiException();
     model.setHandler(value);
-    assertEquals(value, model.getHandler());
+    softly.assertThat(model.getHandler()).isEqualTo(value);
 
     model = RestApiException.builder().handler(value).build();
-    assertEquals(value, model.getHandler());
+    softly.assertThat(model.getHandler()).isEqualTo(value);
 
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().handler(value).build());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().handler(value).build());
 
-    assertTrue(model.toString().contains(value.toString()));
+    softly.assertThat(model.toString()).contains(value.toString());
   }
 
   /**
    * Json.
    *
+   * @param softly the soft assertions
    * @throws Exception the exception
    */
   @Test
-  void json() throws Exception {
+  void json(SoftAssertions softly) throws Exception {
     RestApiException cause = RestApiException.builder()
         .id(UUID.randomUUID().toString())
         .application("test")
@@ -322,24 +345,25 @@ class RestApiExceptionTest {
     // System.out.println(json);
 
     RestApiException actualModel = objectMapper.readValue(json, RestApiException.class);
-    assertEquals(model, actualModel);
+    softly.assertThat(actualModel).isEqualTo(model);
 
     // now with jaxb annotation module
     objectMapper.registerModule(new JaxbAnnotationModule());
     actualModel = objectMapper.readValue(json, RestApiException.class);
-    assertEquals(model, actualModel);
+    softly.assertThat(actualModel).isEqualTo(model);
 
     String anotherJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(model);
-    assertEquals(json, anotherJson);
+    softly.assertThat(anotherJson).isEqualTo(json);
   }
 
   /**
    * Xml.
    *
+   * @param softly the soft assertions
    * @throws Exception the exception
    */
   @Test
-  void xml() throws Exception {
+  void xml(SoftAssertions softly) throws Exception {
     RestApiException cause = RestApiException.builder()
         .id(UUID.randomUUID().toString())
         .application("test")
@@ -390,7 +414,7 @@ class RestApiExceptionTest {
 
     RestApiException actualModel = xmlMapper
         .readValue(new StringReader(xml), RestApiException.class);
-    assertEquals(model, actualModel);
+    softly.assertThat(actualModel).isEqualTo(model);
 
     xmlMapper.registerModule(new JaxbAnnotationModule());
 
@@ -399,17 +423,17 @@ class RestApiExceptionTest {
         .writeValueAsString(model);
     actualModel = xmlMapper
         .readValue(new StringReader(xml), RestApiException.class);
-    assertEquals(model, actualModel);
-    assertEquals(xml, xmlWithJaxbModule);
+    softly.assertThat(actualModel).isEqualTo(model);
+    softly.assertThat(xmlWithJaxbModule).isEqualTo(xml);
 
     JaxbContextBuilder jaxbContextBuilder = JaxbContextBuilder
-        .builder()
+        .newInstance()
         .withFormattedOutput(true);
 
     actualModel = (RestApiException) jaxbContextBuilder
         .buildUnmarshaller(RestApiException.class)
         .unmarshal(new StringReader(xml));
-    assertEquals(model, actualModel);
+    softly.assertThat(actualModel).isEqualTo(model);
 
     StringWriter sw = new StringWriter();
     jaxbContextBuilder.buildMarshaller(model).marshal(model, sw);
@@ -418,7 +442,7 @@ class RestApiExceptionTest {
 
     actualModel = xmlMapper
         .readValue(new StringReader(jaxbXml), RestApiException.class);
-    assertEquals(model, actualModel);
+    softly.assertThat(actualModel).isEqualTo(model);
   }
 
 }

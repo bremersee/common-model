@@ -16,75 +16,81 @@
 
 package org.bremersee.exception.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.util.Collections;
 import java.util.List;
+import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
  * The handler test.
  *
  * @author Christian Bremer
  */
+@ExtendWith(SoftAssertionsExtension.class)
 class HandlerTest {
 
   /**
    * Gets class name.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getClassName() {
+  void getClassName(SoftAssertions softly) {
     Handler model = new Handler();
     model.setClassName("value");
-    assertEquals("value", model.getClassName());
+    softly.assertThat(model.getClassName()).isEqualTo("value");
 
     model = Handler.builder().className("value").build();
-    assertEquals("value", model.getClassName());
+    softly.assertThat(model.getClassName()).isEqualTo("value");
 
-    assertNotEquals(model, null);
-    assertNotEquals(model, new Object());
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().className("value").build());
+    softly.assertThat(model).isNotEqualTo(null);
+    softly.assertThat(model).isNotEqualTo(new Object());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().className("value").build());
 
-    assertTrue(model.toString().contains("value"));
+    softly.assertThat(model.toString()).contains("value");
   }
 
   /**
    * Gets method name.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getMethodName() {
+  void getMethodName(SoftAssertions softly) {
     Handler model = new Handler();
     model.setMethodName("value");
-    assertEquals("value", model.getMethodName());
+    softly.assertThat(model.getMethodName()).isEqualTo("value");
 
     model = Handler.builder().methodName("value").build();
-    assertEquals("value", model.getMethodName());
+    softly.assertThat(model.getMethodName()).isEqualTo("value");
 
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().methodName("value").build());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().methodName("value").build());
 
-    assertTrue(model.toString().contains("value"));
+    softly.assertThat(model.toString()).contains("value");
   }
 
   /**
    * Gets method parameter types.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getMethodParameterTypes() {
+  void getMethodParameterTypes(SoftAssertions softly) {
     List<String> value = Collections.singletonList("value");
     Handler model = new Handler();
     model.setMethodParameterTypes(value);
-    assertEquals(value, model.getMethodParameterTypes());
+    softly.assertThat(model.getMethodParameterTypes()).isEqualTo(value);
 
     model = Handler.builder().methodParameterTypes(value).build();
-    assertEquals(value, model.getMethodParameterTypes());
+    softly.assertThat(model.getMethodParameterTypes()).isEqualTo(value);
 
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().methodParameterTypes(value).build());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(model.toBuilder().methodParameterTypes(value).build());
 
-    assertTrue(model.toString().contains("value"));
+    softly.assertThat(model.toString()).contains("value");
   }
 }
