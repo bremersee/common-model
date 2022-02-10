@@ -1,5 +1,5 @@
 /*
- * Copyright 2018-2020 the original author or authors.
+ * Copyright 2020 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,13 @@
 
 package org.bremersee.common.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.Serializable;
-import javax.validation.constraints.NotNull;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import org.springframework.validation.annotation.Validated;
+import javax.annotation.Nullable;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import org.immutables.value.Value;
 
 /**
  * A phone number.
@@ -33,66 +30,37 @@ import org.springframework.validation.annotation.Validated;
  * @author Christian Bremer
  */
 @Schema(description = "A phone number.")
-@Validated
-@JsonIgnoreProperties(ignoreUnknown = true)
-@EqualsAndHashCode
-@ToString
-@NoArgsConstructor
-public class PhoneNumber implements Serializable {
+@Valid
+@Value.Immutable
+@JsonDeserialize(builder = ImmutablePhoneNumber.Builder.class)
+public interface PhoneNumber {
 
-  private static final long serialVersionUID = 1L;
-
-  @JsonProperty(value = "value", required = true)
-  private String value;
-
-  @JsonProperty("category")
-  private String category;
-
-  @Builder(toBuilder = true)
-  @SuppressWarnings("unused")
-  public PhoneNumber(String value, String category) {
-    this.value = value;
-    this.category = category;
+  /**
+   * Creates new phone number builder.
+   *
+   * @return the phone number builder
+   */
+  static ImmutablePhoneNumber.Builder builder() {
+    return ImmutablePhoneNumber.builder();
   }
 
   /**
    * The phone number.
    *
-   * @return value value
+   * @return the phone number
    */
   @Schema(description = "The phone number", required = true, example = "00490325092901")
-  @NotNull
-  public String getValue() {
-    return value;
-  }
-
-  /**
-   * Sets value.
-   *
-   * @param value the value
-   */
-  public void setValue(String value) {
-    this.value = value;
-  }
+  @JsonProperty(required = true)
+  @NotBlank
+  String getValue();
 
   /**
    * The category.
    *
-   * @return category category
+   * @return the category
    */
   @Schema(description = "The category.")
-  public String getCategory() {
-    return category;
-  }
-
-  /**
-   * Sets category.
-   *
-   * @param category the category
-   */
-  public void setCategory(String category) {
-    this.category = category;
-  }
+  @Nullable
+  String getCategory();
 
 }
-

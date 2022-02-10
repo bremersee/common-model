@@ -32,10 +32,11 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * This base class allows to keep unknown json properties.
+ * This base class stores unknown json properties.
  *
  * @author Christian Bremer
  */
+@SuppressWarnings("SameNameButDifferent")
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor

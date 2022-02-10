@@ -31,6 +31,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
+@SuppressWarnings("SameNameButDifferent")
 @Schema(description = "The first two elements are longitude and latitude.")
 @Validated
 @EqualsAndHashCode(callSuper = true)

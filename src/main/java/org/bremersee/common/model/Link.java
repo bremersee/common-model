@@ -1,5 +1,5 @@
 /*
- * Copyright 2018-2020 the original author or authors.
+ * Copyright 2020 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,70 +16,34 @@
 
 package org.bremersee.common.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.media.Schema.AccessMode;
-import java.io.Serializable;
+import javax.annotation.Nullable;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import org.springframework.validation.annotation.Validated;
+import javax.validation.constraints.NotNull;
+import org.immutables.value.Value;
 
 /**
- * A link description.
+ * The interface Link.
  *
  * @author Christian Bremer
  */
 @Schema(description = "A link description.")
-@Validated
-@JsonIgnoreProperties(ignoreUnknown = true)
-@EqualsAndHashCode
-@ToString
-@NoArgsConstructor
-public class Link implements Serializable {
-
-  private static final long serialVersionUID = 2L;
-
-  @JsonProperty("id")
-  private String id;
-
-  @JsonProperty(value = "href", required = true)
-  private String href;
-
-  @JsonProperty("type")
-  private String type;
-
-  @JsonProperty("blank")
-  private Boolean blank = Boolean.FALSE;
-
-  @JsonProperty("text")
-  private String text;
-
-  @JsonProperty("description")
-  private String description;
+@Valid
+@Value.Immutable
+@JsonDeserialize(builder = ImmutableLink.Builder.class)
+public interface Link {
 
   /**
-   * Instantiates a new link.
+   * Builder immutable link . builder.
    *
-   * @param id the id
-   * @param href the href
-   * @param type the type
-   * @param blank specified whether to open the link in a blank target (default is false)
-   * @param text the text
-   * @param description the description
+   * @return the immutable link . builder
    */
-  @Builder(toBuilder = true)
-  @SuppressWarnings("unused")
-  public Link(String id, String href, String type, Boolean blank, String text, String description) {
-    this.id = id;
-    this.href = href;
-    this.type = type;
-    this.blank = Boolean.TRUE.equals(blank);
-    this.text = text;
-    this.description = description;
+  static ImmutableLink.Builder builder() {
+    return ImmutableLink.builder();
   }
 
   /**
@@ -88,116 +52,59 @@ public class Link implements Serializable {
    * @return the id
    */
   @Schema(description = "The ID.", accessMode = AccessMode.READ_ONLY)
-  public String getId() {
-    return id;
-  }
-
-  /**
-   * Sets id.
-   *
-   * @param id the id
-   */
-  public void setId(String id) {
-    this.id = id;
-  }
+  @Nullable
+  String getId();
 
   /**
    * The URI.
    *
-   * @return href href
+   * @return the href
    */
   @Schema(description = "The URI.", required = true)
+  @JsonProperty(required = true)
   @NotBlank
-  public String getHref() {
-    return href;
-  }
-
-  /**
-   * Sets href.
-   *
-   * @param href the href
-   */
-  public void setHref(String href) {
-    this.href = href;
-  }
+  String getHref();
 
   /**
    * The type.
    *
-   * @return type type
+   * @return the type
    */
   @Schema(description = "The type.")
-  public String getType() {
-    return type;
-  }
-
-  /**
-   * Sets type.
-   *
-   * @param type the type
-   */
-  public void setType(String type) {
-    this.type = type;
-  }
+  @Nullable
+  String getType();
 
   /**
    * Specified whether to open the link in a blank target (default is {@code false}).
    *
-   * @return the blank
+   * @return whether to open the link in a blank target
    */
   @Schema(
       description = "Specified whether to open the link in a blank target (default is false).",
       defaultValue = "false")
-  public Boolean getBlank() {
-    return blank;
-  }
-
-  /**
-   * Specified whether to open the link in a blank target (default is {@code false}).
-   *
-   * @param blank the blank
-   */
-  public void setBlank(Boolean blank) {
-    this.blank = Boolean.TRUE.equals(blank);
+  @JsonProperty(value = "blank", defaultValue = "false")
+  @Value.Default
+  @NotNull
+  default boolean isBlank() {
+    return false;
   }
 
   /**
    * The link text.
    *
-   * @return text text
+   * @return the text
    */
   @Schema(description = "The link text.")
-  public String getText() {
-    return text;
-  }
-
-  /**
-   * Sets text.
-   *
-   * @param text the text
-   */
-  public void setText(String text) {
-    this.text = text;
-  }
+  @Nullable
+  String getText();
 
   /**
    * A short description.
    *
-   * @return description description
+   * @return the description
    */
   @Schema(description = "A short description.")
-  public String getDescription() {
-    return description;
-  }
-
-  /**
-   * Sets description.
-   *
-   * @param description the description
-   */
-  public void setDescription(String description) {
-    this.description = description;
-  }
+  @Nullable
+  String getDescription();
 
 }
-

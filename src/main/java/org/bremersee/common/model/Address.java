@@ -1,5 +1,5 @@
 /*
- * Copyright 2018-2020 the original author or authors.
+ * Copyright 2020 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,83 +16,30 @@
 
 package org.bremersee.common.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.Serializable;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import javax.annotation.Nullable;
+import javax.validation.Valid;
+import org.immutables.value.Value;
 
 /**
  * Address data.
  *
  * @author Christian Bremer
  */
+@Value.Immutable
+@Valid
 @Schema(description = "Address data.")
-@JsonIgnoreProperties(ignoreUnknown = true)
-@EqualsAndHashCode
-@ToString
-@NoArgsConstructor
-public class Address implements Serializable {
-
-  private static final long serialVersionUID = 1L;
-
-  @JsonProperty("streetNumber")
-  private String streetNumber;
-
-  @JsonProperty("street")
-  private String street;
-
-  @JsonProperty("postalCode")
-  private String postalCode;
-
-  @JsonProperty("city")
-  private String city;
-
-  @JsonProperty("suburb")
-  private String suburb;
-
-  @JsonProperty("state")
-  private String state;
-
-  @JsonProperty("country")
-  private String country;
-
-  @JsonProperty("countryCode")
-  private TwoLetterCountryCode countryCode;
-
-  @JsonProperty("formattedAddress")
-  private String formattedAddress;
+@JsonDeserialize(builder = ImmutableAddress.Builder.class)
+public interface Address {
 
   /**
-   * Instantiates a new address.
+   * Creates new builder.
    *
-   * @param streetNumber the street number
-   * @param street the street
-   * @param postalCode the postal code
-   * @param city the city
-   * @param suburb the suburb
-   * @param state the state
-   * @param country the country
-   * @param countryCode the country code
-   * @param formattedAddress the formatted address
+   * @return the address builder
    */
-  @Builder(toBuilder = true)
-  @SuppressWarnings("unused")
-  public Address(String streetNumber, String street, String postalCode, String city,
-      String suburb, String state, String country,
-      TwoLetterCountryCode countryCode, String formattedAddress) {
-    this.streetNumber = streetNumber;
-    this.street = street;
-    this.postalCode = postalCode;
-    this.city = city;
-    this.suburb = suburb;
-    this.state = state;
-    this.country = country;
-    this.countryCode = countryCode;
-    this.formattedAddress = formattedAddress;
+  static ImmutableAddress.Builder builder() {
+    return ImmutableAddress.builder();
   }
 
   /**
@@ -101,170 +48,79 @@ public class Address implements Serializable {
    * @return streetNumber street number
    */
   @Schema(description = "The street number.", example = "100")
-  public String getStreetNumber() {
-    return streetNumber;
-  }
-
-  /**
-   * Sets street number.
-   *
-   * @param streetNumber the street number
-   */
-  public void setStreetNumber(String streetNumber) {
-    this.streetNumber = streetNumber;
-  }
+  @Nullable
+  String getStreetNumber();
 
   /**
    * The street name.
    *
-   * @return street street
+   * @return the street
    */
   @Schema(description = "The street name.", example = "Kurfürstendamm")
-  public String getStreet() {
-    return street;
-  }
-
-  /**
-   * Sets street.
-   *
-   * @param street the street
-   */
-  public void setStreet(String street) {
-    this.street = street;
-  }
+  @Nullable
+  String getStreet();
 
   /**
    * The postal code.
    *
-   * @return postalCode postal code
+   * @return the postal code
    */
   @Schema(description = "The postal code.", example = "10709")
-  public String getPostalCode() {
-    return postalCode;
-  }
-
-  /**
-   * Sets postal code.
-   *
-   * @param postalCode the postal code
-   */
-  public void setPostalCode(String postalCode) {
-    this.postalCode = postalCode;
-  }
+  @Nullable
+  String getPostalCode();
 
   /**
    * The city name.
    *
-   * @return city city
+   * @return the city
    */
   @Schema(description = "The city name.", example = "Berlin")
-  public String getCity() {
-    return city;
-  }
-
-  /**
-   * Sets city.
-   *
-   * @param city the city
-   */
-  public void setCity(String city) {
-    this.city = city;
-  }
+  @Nullable
+  String getCity();
 
   /**
    * The suburb name.
    *
-   * @return suburb suburb
+   * @return the suburb
    */
   @Schema(description = "The suburb name.")
-  public String getSuburb() {
-    return suburb;
-  }
-
-  /**
-   * Sets suburb.
-   *
-   * @param suburb the suburb
-   */
-  public void setSuburb(String suburb) {
-    this.suburb = suburb;
-  }
+  @Nullable
+  String getSuburb();
 
   /**
    * The state name.
    *
-   * @return state state
+   * @return the state
    */
   @Schema(description = "The state name.")
-  public String getState() {
-    return state;
-  }
-
-  /**
-   * Sets state.
-   *
-   * @param state the state
-   */
-  public void setState(String state) {
-    this.state = state;
-  }
+  @Nullable
+  String getState();
 
   /**
    * The country name.
    *
-   * @return country country
+   * @return the country
    */
   @Schema(description = "The country name.", example = "Germany")
-  public String getCountry() {
-    return country;
-  }
-
-  /**
-   * Sets country.
-   *
-   * @param country the country
-   */
-  public void setCountry(String country) {
-    this.country = country;
-  }
+  @Nullable
+  String getCountry();
 
   /**
    * The country code.
    *
-   * @return countryCode country code
+   * @return the country code
    */
   @Schema(description = "The country code.", example = "DE")
-  public TwoLetterCountryCode getCountryCode() {
-    return countryCode;
-  }
-
-  /**
-   * Sets country code.
-   *
-   * @param countryCode the country code
-   */
-  public void setCountryCode(TwoLetterCountryCode countryCode) {
-    this.countryCode = countryCode;
-  }
+  @Nullable
+  String getCountryCode();
 
   /**
    * The street number.
    *
-   * @return formattedAddress formatted address
+   * @return the formatted address
    */
   @Schema(description = "The street number.", example = "Kurfürstendamm 100, 10709 Berlin")
-  public String getFormattedAddress() {
-    return formattedAddress;
-  }
-
-  /**
-   * Sets formatted address.
-   *
-   * @param formattedAddress the formatted address
-   */
-  public void setFormattedAddress(String formattedAddress) {
-    this.formattedAddress = formattedAddress;
-  }
+  @Nullable
+  String getFormattedAddress();
 
 }
-

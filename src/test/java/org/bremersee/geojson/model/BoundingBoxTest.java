@@ -34,7 +34,7 @@ class BoundingBoxTest {
   /**
    * Test model.
    *
-   * @param softly the softly
+   * @param softly the soft assertions
    */
   @Test
   void testModel(SoftAssertions softly) {

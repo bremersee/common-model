@@ -16,126 +16,134 @@
 
 package org.bremersee.geojson.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.math.BigDecimal;
-import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
+import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 import org.bremersee.geojson.model.Feature.TypeEnum;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
  * The feature test.
  *
  * @author Christian Bremer
  */
+@ExtendWith(SoftAssertionsExtension.class)
 class FeatureTest {
 
   /**
    * Gets type.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getType() {
+  void getType(SoftAssertions softly) {
     Feature model = new Feature();
     model.setType(TypeEnum.FEATURE);
-    assertEquals(TypeEnum.FEATURE, model.getType());
+    softly.assertThat(model.getType())
+        .isEqualTo(TypeEnum.FEATURE);
 
-    assertNotEquals(model, null);
-    assertNotEquals(model, new Object());
-    assertEquals(model, model);
-    assertEquals(model, new Feature());
+    softly.assertThat(model).isNotEqualTo(null);
+    softly.assertThat(model).isNotEqualTo(new Object());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(new Feature());
+    softly.assertThat(model.hashCode()).isEqualTo(new Feature().hashCode());
 
-    assertTrue(model.toString().contains(TypeEnum.FEATURE.toString()));
+    softly.assertThat(model.toString()).contains(TypeEnum.FEATURE.toString());
   }
 
   /**
    * Gets id.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getId() {
+  void getId(SoftAssertions softly) {
     Feature model = new Feature();
     model.setId("value");
-    assertEquals("value", model.getId());
+    softly.assertThat(model.getId()).isEqualTo("value");
 
     model = Feature.builder().id("value").build();
-    assertEquals("value", model.getId());
+    softly.assertThat(model.getId()).isEqualTo("value");
 
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().id("value").build());
+    softly.assertThat(model.toBuilder().id("value").build()).isEqualTo(model);
 
-    assertTrue(model.toString().contains("value"));
+    softly.assertThat(model.toString()).contains("value");
   }
 
   /**
    * Gets bbox.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getBbox() {
+  void getBbox(SoftAssertions softly) {
     BoundingBox value = new BoundingBox(
-        Arrays.asList(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO));
+        List.of(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO));
     Feature model = new Feature();
     model.setBbox(value);
-    assertEquals(value, model.getBbox());
+    softly.assertThat(model.getBbox()).isEqualTo(value);
 
     model = Feature.builder().bbox(value).build();
-    assertEquals(value, model.getBbox());
+    softly.assertThat(model.getBbox()).isEqualTo(value);
 
-    assertEquals(model, model.toBuilder().bbox(value).build());
+    softly.assertThat(model.toBuilder().bbox(value).build()).isEqualTo(model);
   }
 
   /**
    * Gets geometry.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getGeometry() {
+  void getGeometry(SoftAssertions softly) {
     Geometry value = Point.builder()
         .coordinates(new Position(BigDecimal.ONE, BigDecimal.ZERO))
         .build();
     Feature model = new Feature();
     model.setGeometry(value);
-    assertEquals(value, model.getGeometry());
+    softly.assertThat(model.getGeometry()).isEqualTo(value);
 
     model = Feature.builder().geometry(value).build();
-    assertEquals(value, model.getGeometry());
+    softly.assertThat(model.getGeometry()).isEqualTo(value);
 
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().geometry(value).build());
+    softly.assertThat(model.toBuilder().geometry(value).build()).isEqualTo(model);
 
-    assertTrue(model.toString().contains(value.toString()));
+    softly.assertThat(model.toString()).contains(value.toString());
   }
 
   /**
    * Gets properties.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getProperties() {
+  void getProperties(SoftAssertions softly) {
     Feature model = new Feature();
     model.setProperties("value");
-    assertEquals("value", model.getProperties());
+    softly.assertThat(model.getProperties()).isEqualTo("value");
 
     model = Feature.builder().properties("value").build();
-    assertEquals("value", model.getProperties());
+    softly.assertThat(model.getProperties()).isEqualTo("value");
 
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().properties("value").build());
+    softly.assertThat(model.toBuilder().properties("value").build()).isEqualTo(model);
 
-    assertTrue(model.toString().contains("value"));
+    softly.assertThat(model.toString()).contains("value");
   }
 
   /**
    * Test type.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void testType() {
+  void testType(SoftAssertions softly) {
     for (TypeEnum t : TypeEnum.values()) {
       TypeEnum a = TypeEnum.fromValue(t.toString());
-      assertNotNull(a);
-      assertEquals(t, a);
+      softly.assertThat(a).isEqualTo(t);
     }
-    assertNull(TypeEnum.fromValue(UUID.randomUUID().toString()));
+    softly.assertThat(TypeEnum.fromValue(UUID.randomUUID().toString())).isNull();
   }
 }

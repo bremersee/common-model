@@ -16,43 +16,48 @@
 
 package org.bremersee.geojson.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
+import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
  * The geometry collection test.
  *
  * @author Christian Bremer
  */
+@ExtendWith(SoftAssertionsExtension.class)
 class GeometryCollectionTest {
 
   /**
    * Gets geometries.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getGeometries() {
+  void getGeometries(SoftAssertions softly) {
     List<Geometry> value = Arrays.asList(
         Point.builder().coordinates(new Position(BigDecimal.ONE, BigDecimal.ONE)).build(),
         Point.builder().coordinates(new Position(BigDecimal.TEN, BigDecimal.ZERO)).build());
     GeometryCollection model = new GeometryCollection();
     model.setGeometries(value);
-    assertEquals(value, model.getGeometries());
+    softly.assertThat(model.getGeometries()).isEqualTo(value);
 
     model = GeometryCollection.builder().geometries(value).build();
-    assertEquals(value, model.getGeometries());
+    softly.assertThat(model.getGeometries()).isEqualTo(value);
 
-    assertNotEquals(model, null);
-    assertNotEquals(model, new Object());
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().geometries(value).build());
+    softly.assertThat(model.toBuilder().geometries(value).build()).isEqualTo(model);
 
-    assertTrue(model.toString().contains(value.toString()));
+    softly.assertThat(model).isNotEqualTo(null);
+    softly.assertThat(model).isNotEqualTo(new Object());
+    softly.assertThat(model).isEqualTo(model);
+
+    softly.assertThat(model.toString()).contains(value.toString());
   }
 
   /**
@@ -61,25 +66,27 @@ class GeometryCollectionTest {
   @Test
   void getType() {
     GeometryCollection model = new GeometryCollection();
-    assertEquals("GeometryCollection", model.getType().toString());
+    assertThat(model.getType().toString()).isEqualTo("GeometryCollection");
   }
 
   /**
    * Gets bbox.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getBbox() {
+  void getBbox(SoftAssertions softly) {
     BoundingBox value = new BoundingBox(
         Arrays.asList(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ONE, BigDecimal.ONE));
     GeometryCollection model = new GeometryCollection();
     model.setBbox(value);
-    assertEquals(value, model.getBbox());
+    softly.assertThat(model.getBbox()).isEqualTo(value);
 
     model = GeometryCollection.builder().bbox(value).build();
-    assertEquals(value, model.getBbox());
+    softly.assertThat(model.getBbox()).isEqualTo(value);
 
-    assertEquals(model, model.toBuilder().bbox(value).build());
-    assertEquals(model, new GeometryCollection(value, null));
+    softly.assertThat(model.toBuilder().bbox(value).build()).isEqualTo(model);
+    softly.assertThat(new GeometryCollection(value, null)).isEqualTo(model);
   }
 
 }

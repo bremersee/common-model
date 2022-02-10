@@ -31,6 +31,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
+@SuppressWarnings("SameNameButDifferent")
 @Schema(description = "The bounding box of a geometry, feature or feature collection.")
 @Validated
 @EqualsAndHashCode(callSuper = true)

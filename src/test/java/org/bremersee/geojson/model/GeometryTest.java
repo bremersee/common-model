@@ -16,30 +16,31 @@
 
 package org.bremersee.geojson.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
 import java.util.UUID;
+import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
  * The geometry test.
  *
  * @author Christian Bremer
  */
+@ExtendWith(SoftAssertionsExtension.class)
 class GeometryTest {
 
   /**
    * Test type.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void testType() {
+  void testType(SoftAssertions softly) {
     for (Geometry.TypeEnum t : Geometry.TypeEnum.values()) {
       Geometry.TypeEnum a = Geometry.TypeEnum.fromValue(t.toString());
-      assertNotNull(a);
-      assertEquals(t, a);
+      softly.assertThat(a).isEqualTo(t);
     }
-    assertNull(Geometry.TypeEnum.fromValue(UUID.randomUUID().toString()));
+    softly.assertThat(Geometry.TypeEnum.fromValue(UUID.randomUUID().toString())).isNull();
   }
 }

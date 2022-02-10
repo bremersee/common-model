@@ -16,10 +16,11 @@
 
 package org.bremersee.common.model;
 
+import static org.springframework.util.ObjectUtils.isEmpty;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.Locale;
-import org.springframework.util.StringUtils;
 
 /**
  * Languages supported by MongoDB.
@@ -110,7 +111,7 @@ public enum MongoSearchLanguage {
    */
   TR("tr");
 
-  private String value;
+  private final String value;
 
   MongoSearchLanguage(String value) {
     this.value = value;
@@ -119,7 +120,7 @@ public enum MongoSearchLanguage {
   @Override
   @JsonValue
   public String toString() {
-    return String.valueOf(value);
+    return value;
   }
 
   /**
@@ -135,10 +136,10 @@ public enum MongoSearchLanguage {
   }
 
   /**
-   * From two letter language code.
+   * From language tag (two-letter code).
    *
-   * @param text the text
-   * @return the two letter language code
+   * @param text the language tag (two-letter code)
+   * @return the mongo search language
    */
   @JsonCreator
   public static MongoSearchLanguage fromValue(String text) {
@@ -146,14 +147,14 @@ public enum MongoSearchLanguage {
   }
 
   /**
-   * From two letter language code.
+   * From language tag (two-letter code).
    *
-   * @param text the text
+   * @param text the language tag (two-letter code)
    * @param fallback the fallback language
-   * @return the two letter language code
+   * @return the mongo search language
    */
   public static MongoSearchLanguage fromValue(String text, MongoSearchLanguage fallback) {
-    if (!StringUtils.hasText(text)) {
+    if (isEmpty(text)) {
       return fallback;
     }
     if (NONE.value.equalsIgnoreCase(text)) {
@@ -173,10 +174,10 @@ public enum MongoSearchLanguage {
    *
    * @param locale the locale
    * @param fallback the fallback language
-   * @return the two letter language code
+   * @return the mongo search language
    */
   public static MongoSearchLanguage fromLocale(Locale locale, MongoSearchLanguage fallback) {
-    if (locale == null || !StringUtils.hasText(locale.getLanguage())) {
+    if (isEmpty(locale) || isEmpty(locale.getLanguage())) {
       return fallback;
     }
     return fromValue(locale.getLanguage(), fallback);

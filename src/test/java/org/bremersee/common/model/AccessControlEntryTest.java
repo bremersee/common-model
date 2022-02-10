@@ -16,14 +16,9 @@
 
 package org.bremersee.common.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Collections;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -38,21 +33,12 @@ class AccessControlEntryTest {
    */
   @Test
   void getPermission() {
-    AccessControlEntry ace = new AccessControlEntry();
-    ace.setPermission("read");
-    assertEquals("read", ace.getPermission());
-
-    ace = AccessControlEntry.builder()
-        .permission("write")
-        .build();
-    assertEquals("write", ace.getPermission());
-
-    assertNotEquals(ace, null);
-    assertNotEquals(ace, new Object());
-    assertEquals(ace, ace);
-    assertEquals(ace, AccessControlEntry.builder().permission("write").build());
-
-    assertTrue(ace.toString().contains("write"));
+    assertThat(
+        AccessControlEntry.builder()
+            .permission("read")
+            .build()
+            .getPermission())
+        .isEqualTo("read");
   }
 
   /**
@@ -60,22 +46,12 @@ class AccessControlEntryTest {
    */
   @Test
   void getGuest() {
-    AccessControlEntry ace = new AccessControlEntry();
-    ace.setGuest(Boolean.TRUE);
-    assertEquals(Boolean.TRUE, ace.getGuest());
-    ace.setGuest(Boolean.FALSE);
-    assertEquals(Boolean.FALSE, ace.getGuest());
-    ace.setGuest(null);
-    assertEquals(Boolean.FALSE, ace.getGuest());
-
-    ace = AccessControlEntry.builder()
-        .guest(Boolean.TRUE)
-        .build();
-    assertEquals(Boolean.TRUE, ace.getGuest());
-
-    assertEquals(ace, AccessControlEntry.builder().guest(Boolean.TRUE).build());
-
-    assertTrue(ace.toString().contains("true"));
+    assertThat(
+        AccessControlEntry.builder()
+            .permission("write")
+            .build()
+            .isGuest())
+        .isFalse();
   }
 
   /**
@@ -83,25 +59,14 @@ class AccessControlEntryTest {
    */
   @Test
   void getUsers() {
-    AccessControlEntry ace = new AccessControlEntry();
-    assertNull(ace.getUsers());
-    ace.setUsers(Collections.singletonList("anna"));
-    assertNotNull(ace.getUsers());
-    assertFalse(ace.getUsers().isEmpty());
-    assertEquals("anna", ace.getUsers().get(0));
-
-    ace = AccessControlEntry.builder()
-        .users(Collections.singletonList("anna"))
-        .build();
-    assertNotNull(ace.getUsers());
-    assertFalse(ace.getUsers().isEmpty());
-    assertEquals("anna", ace.getUsers().get(0));
-
-    assertEquals(
-        ace,
-        AccessControlEntry.builder().users(Collections.singletonList("anna")).build());
-
-    assertTrue(ace.toString().contains("anna"));
+    List<String> expected = List.of("a", "b", "c");
+    assertThat(
+        AccessControlEntry.builder()
+            .permission("write")
+            .users(expected)
+            .build()
+            .getUsers())
+        .containsExactlyElementsOf(expected);
   }
 
   /**
@@ -109,25 +74,14 @@ class AccessControlEntryTest {
    */
   @Test
   void getRoles() {
-    AccessControlEntry ace = new AccessControlEntry();
-    assertNull(ace.getRoles());
-    ace.setRoles(Collections.singletonList("ROLE_USER"));
-    assertNotNull(ace.getRoles());
-    assertFalse(ace.getRoles().isEmpty());
-    assertEquals("ROLE_USER", ace.getRoles().get(0));
-
-    ace = AccessControlEntry.builder()
-        .roles(Collections.singletonList("ROLE_USER"))
-        .build();
-    assertNotNull(ace.getRoles());
-    assertFalse(ace.getRoles().isEmpty());
-    assertEquals("ROLE_USER", ace.getRoles().get(0));
-
-    assertEquals(
-        ace,
-        ace.toBuilder().roles(Collections.singletonList("ROLE_USER")).build());
-
-    assertTrue(ace.toString().contains("ROLE_USER"));
+    List<String> expected = List.of("a", "b", "c");
+    assertThat(
+        AccessControlEntry.builder()
+            .permission("write")
+            .roles(expected)
+            .build()
+            .getRoles())
+        .containsExactlyElementsOf(expected);
   }
 
   /**
@@ -135,25 +89,14 @@ class AccessControlEntryTest {
    */
   @Test
   void getGroups() {
-    AccessControlEntry ace = new AccessControlEntry();
-    assertNull(ace.getGroups());
-    ace.setGroups(Collections.singletonList("developers"));
-    assertNotNull(ace.getGroups());
-    assertFalse(ace.getGroups().isEmpty());
-    assertEquals("developers", ace.getGroups().get(0));
-
-    ace = AccessControlEntry.builder()
-        .groups(Collections.singletonList("developers"))
-        .build();
-    assertNotNull(ace.getGroups());
-    assertFalse(ace.getGroups().isEmpty());
-    assertEquals("developers", ace.getGroups().get(0));
-
-    assertEquals(
-        ace,
-        ace.toBuilder().groups(Collections.singletonList("developers")).build());
-
-    assertTrue(ace.toString().contains("developers"));
+    List<String> expected = List.of("a", "b", "c");
+    assertThat(
+        AccessControlEntry.builder()
+            .permission("write")
+            .groups(expected)
+            .build()
+            .getGroups())
+        .containsExactlyElementsOf(expected);
   }
 
 }

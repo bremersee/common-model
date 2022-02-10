@@ -16,76 +16,74 @@
 
 package org.bremersee.common.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
  * Test unknown aware class.
  *
  * @author Christian Bremer
  */
+@ExtendWith({SoftAssertionsExtension.class})
 class UnknownAwareTest {
 
   /**
    * Test model.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void testModel() {
+  void testModel(SoftAssertions softly) {
     ConcreteUnknown model = new ConcreteUnknown();
-    assertNull(model.unknown());
-    assertFalse(model.hasUnknown());
-    assertFalse(model.findUnknown("something", Object.class).isPresent());
-    assertFalse(model.findUnknownList("something", Object.class).isPresent());
-    assertFalse(model.findUnknownMap("something").isPresent());
+    softly.assertThat(model.unknown()).isNull();
+    softly.assertThat(model.hasUnknown()).isFalse();
+    softly.assertThat(model.findUnknown("something", Object.class)).isEmpty();
+    softly.assertThat(model.findUnknownList("something", Object.class)).isEmpty();
+    softly.assertThat(model.findUnknownMap("something")).isEmpty();
 
-    assertTrue(model.toString().length() > 0);
+    softly.assertThat(model.toString()).isNotEmpty();
 
     model.unknown(null);
-    assertNull(model.unknown());
-    assertFalse(model.hasUnknown());
+    softly.assertThat(model.unknown()).isNull();
+    softly.assertThat(model.hasUnknown()).isFalse();
 
     model.unknown(Collections.emptyMap());
-    assertNull(model.unknown());
-    assertFalse(model.hasUnknown());
+    softly.assertThat(model.unknown()).isNull();
+    softly.assertThat(model.hasUnknown()).isFalse();
 
-    assertNotEquals(model, null);
-    assertNotEquals(model, new Object());
-    assertEquals(model, model);
-    assertEquals(model, new ConcreteUnknown());
+    softly.assertThat(model).isNotEqualTo(null);
+    softly.assertThat(model).isNotEqualTo(new Object());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(new ConcreteUnknown());
+    softly.assertThat(model.hashCode()).isEqualTo(new ConcreteUnknown().hashCode());
 
     model.unknown(Collections.singletonMap("something", "value"));
-    assertNotNull(model.unknown());
-    assertTrue(model.hasUnknown());
+    softly.assertThat(model.unknown()).isNotNull();
+    softly.assertThat(model.hasUnknown()).isTrue();
 
     model = new ConcreteUnknown();
     model.unknown(null, "value");
-    assertNull(model.unknown());
-    assertFalse(model.hasUnknown());
+    softly.assertThat(model.unknown()).isNull();
+    softly.assertThat(model.hasUnknown()).isFalse();
 
     model.unknown("", "value");
-    assertNull(model.unknown());
-    assertFalse(model.hasUnknown());
+    softly.assertThat(model.unknown()).isNull();
+    softly.assertThat(model.hasUnknown()).isFalse();
 
     model.unknown("something", "value");
-    assertNotNull(model.unknown());
-    assertTrue(model.hasUnknown());
-
-    assertEquals(model, new ConcreteUnknown(Collections.singletonMap("something", "value")));
-
-    assertTrue(model.toString().contains("something"));
+    softly.assertThat(model).isEqualTo(new ConcreteUnknown(Map.of("something", "value")));
+    softly.assertThat(model.toString()).contains("something");
   }
 
   /**
@@ -96,8 +94,8 @@ class UnknownAwareTest {
     ConcreteUnknown unknown = new ConcreteUnknown();
     unknown.unknown("test", "expected");
     Optional<String> actual = unknown.findUnknown("$.test", String.class);
-    assertTrue(actual.isPresent());
-    assertEquals("expected", actual.get());
+    assertThat(actual)
+        .hasValue("expected");
   }
 
   /**
@@ -108,7 +106,8 @@ class UnknownAwareTest {
     ConcreteUnknown unknown = new ConcreteUnknown();
     unknown.unknown("test", "expected");
     Optional<String> actual = unknown.findUnknown("$.foo", String.class);
-    assertFalse(actual.isPresent());
+    assertThat(actual)
+        .isEmpty();
   }
 
   /**
@@ -119,14 +118,17 @@ class UnknownAwareTest {
     ConcreteUnknown unknown = new ConcreteUnknown();
     unknown.unknown("test", "expected");
     Optional<Integer> actual = unknown.findUnknown("$.test", Integer.class);
-    assertFalse(actual.isPresent());
+    assertThat(actual)
+        .isEmpty();
   }
 
   /**
    * Find map from root.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void findMapFromRoot() {
+  void findMapFromRoot(SoftAssertions softly) {
     Map<String, Object> expected = new LinkedHashMap<>();
     expected.put("sub", "expected");
 
@@ -134,18 +136,16 @@ class UnknownAwareTest {
     unknown.unknown("test", expected);
 
     Optional<Map<String, Object>> actualMap = unknown.findUnknownMap("$.test");
-    assertTrue(actualMap.isPresent());
-    assertEquals(expected, actualMap.get());
-    assertEquals("expected", actualMap.get().get("sub"));
+    softly.assertThat(actualMap)
+        .hasValue(expected);
 
     Optional<String> actual = unknown.findUnknown("$.test.sub", String.class);
-    assertTrue(actual.isPresent());
-    assertEquals("expected", actual.get());
+    softly.assertThat(actual)
+        .hasValue("expected");
 
-    assertFalse(unknown.findUnknown("$.test.foo", Map.class).isPresent());
-    assertFalse(unknown.findUnknown("$.test.sub.foo", Map.class).isPresent());
-
-    assertFalse(unknown.findUnknown("$.test", String.class).isPresent());
+    softly.assertThat(unknown.findUnknown("$.test.foo", Map.class)).isEmpty();
+    softly.assertThat(unknown.findUnknown("$.test.sub.foo", Map.class)).isEmpty();
+    softly.assertThat(unknown.findUnknown("$.test", String.class)).isEmpty();
   }
 
   /**
@@ -153,16 +153,14 @@ class UnknownAwareTest {
    */
   @Test
   void findListFromRoot() {
-    List<String> expected = Arrays.asList("one", "two");
+    List<String> expected = List.of("one", "two");
 
     ConcreteUnknown unknown = new ConcreteUnknown();
     unknown.unknown("test", expected);
 
     Optional<List<String>> actualList = unknown.findUnknownList("$.test", String.class);
-    assertTrue(actualList.isPresent());
-    assertEquals(expected, actualList.get());
-    assertEquals("one", actualList.get().get(0));
-    assertEquals("two", actualList.get().get(1));
+    assertThat(actualList)
+        .hasValue(expected);
   }
 
   /**
@@ -170,16 +168,18 @@ class UnknownAwareTest {
    */
   @Test
   void findBadListFromRoot() {
-    assertThrows(ClassCastException.class, () -> {
-      List<String> expected = Arrays.asList("one", "two");
+    assertThatExceptionOfType(ClassCastException.class)
+        .isThrownBy(() -> {
+          List<String> expected = List.of("one", "two");
 
-      ConcreteUnknown unknown = new ConcreteUnknown();
-      unknown.unknown("test", expected);
+          ConcreteUnknown unknown = new ConcreteUnknown();
+          unknown.unknown("test", expected);
 
-      Optional<List<Integer>> actualList = unknown.findUnknownList("$.test", Integer.class);
-      assertTrue(actualList.isPresent());
-      System.out.println(actualList.get().get(0).getClass().getName());
-    });
+          unknown.findUnknownList("$.test", Integer.class)
+              .stream()
+              .flatMap(Collection::stream)
+              .forEach(System.out::println);
+        });
   }
 
   private static class ConcreteUnknown extends UnknownAware {

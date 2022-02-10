@@ -1,5 +1,5 @@
 /*
- * Copyright 2018-2020 the original author or authors.
+ * Copyright 2020 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,245 +16,142 @@
 
 package org.bremersee.common.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import static org.bremersee.common.model.AccessControlEntry.GUEST;
+import static org.bremersee.common.model.AccessControlEntry.PERMISSION;
+import static org.bremersee.common.model.AccessControlEntry.PERMISSION_PATTERN;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.Serializable;
 import java.util.List;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import org.springframework.validation.annotation.Validated;
+import org.immutables.value.Value;
 
 /**
  * Specifies modifications of an access control entry.
  *
  * @author Christian Bremer
  */
+@Value.Immutable
+@Valid
 @Schema(description = "Specifies modifications of an access control entry.")
-@Validated
-@JsonIgnoreProperties(ignoreUnknown = true)
-@EqualsAndHashCode
-@ToString
-@NoArgsConstructor
-public class AccessControlEntryModifications implements Serializable {
-
-  private static final long serialVersionUID = 1L;
-
-  @JsonProperty(value = "permission", required = true)
-  private String permission;
-
-  @JsonProperty("guest")
-  private Boolean guest = Boolean.FALSE;
-
-  @JsonProperty("addUsers")
-  private List<String> addUsers;
-
-  @JsonProperty("removeUsers")
-  private List<String> removeUsers;
-
-  @JsonProperty("addRoles")
-  private List<String> addRoles;
-
-  @JsonProperty("removeRoles")
-  private List<String> removeRoles;
-
-  @JsonProperty("addGroups")
-  private List<String> addGroups;
-
-  @JsonProperty("removeGroups")
-  private List<String> removeGroups;
+@JsonDeserialize(builder = ImmutableAccessControlEntryModifications.Builder.class)
+public interface AccessControlEntryModifications {
 
   /**
-   * Instantiates new access control entry modifications.
+   * Creates new builder.
    *
-   * @param permission the permission
-   * @param guest the guest
-   * @param addUsers the add users
-   * @param removeUsers the remove users
-   * @param addRoles the add roles
-   * @param removeRoles the remove roles
-   * @param addGroups the add groups
-   * @param removeGroups the remove groups
+   * @return the access control entry modifications builder
    */
-  @Builder(toBuilder = true)
-  @SuppressWarnings("unused")
-  public AccessControlEntryModifications(
-      String permission,
-      Boolean guest,
-      List<String> addUsers,
-      List<String> removeUsers,
-      List<String> addRoles,
-      List<String> removeRoles,
-      List<String> addGroups,
-      List<String> removeGroups) {
+  static ImmutableAccessControlEntryModifications.Builder builder() {
+    return ImmutableAccessControlEntryModifications.builder();
+  }
 
-    this.permission = permission;
-    this.guest = Boolean.TRUE.equals(guest);
-    this.addUsers = addUsers;
-    this.removeUsers = removeUsers;
-    this.addRoles = addRoles;
-    this.removeRoles = removeRoles;
-    this.addGroups = addGroups;
-    this.removeGroups = removeGroups;
+  /**
+   * Creates new builder from the given access control entry.
+   *
+   * @param ace the access control entry
+   * @return the access control entry modifications builder
+   */
+  static ImmutableAccessControlEntryModifications.Builder from(@NotNull AccessControlEntry ace) {
+    return builder()
+        .permission(ace.getPermission())
+        .isGuest(ace.isGuest());
   }
 
   /**
    * Specifies the permission.
    *
-   * @return permission permission
+   * @return the permission
    */
-  @Schema(description = "Specifies the permission.", required = true, example = "read")
+  @Schema(
+      description = "Specifies the permission.",
+      required = true,
+      pattern = PERMISSION_PATTERN,
+      example = "read")
+  @JsonProperty(value = PERMISSION, required = true)
   @NotNull
-  @Pattern(regexp = "^[a-z_]+$")
-  public String getPermission() {
-    return permission;
-  }
+  @Pattern(regexp = PERMISSION_PATTERN)
+  String getPermission();
 
   /**
-   * Sets permission.
+   * Specifies whether anybody is granted or not.
    *
-   * @param permission the permission
+   * @return whether anybody is granted (true) or not (false)
    */
-  public void setPermission(String permission) {
-    this.permission = permission;
-  }
-
-  /**
-   * Specifies whether anybody is granted.
-   *
-   * @return guest guest
-   */
-  @Schema(description = "Specifies whether anybody is granted.")
-  public Boolean getGuest() {
-    return guest;
-  }
-
-  /**
-   * Sets guest.
-   *
-   * @param guest the guest
-   */
-  public void setGuest(Boolean guest) {
-    this.guest = Boolean.TRUE.equals(guest);
+  @Schema(description = "Specifies whether anybody is granted.", defaultValue = "false")
+  @JsonProperty(value = GUEST, defaultValue = "false")
+  @Value.Default
+  default boolean isGuest() {
+    return false;
   }
 
   /**
    * Users to be added.
    *
-   * @return addUsers add users
+   * @return the users to add
    */
   @Schema(description = "Users to be added.")
-  public List<String> getAddUsers() {
-    return addUsers;
-  }
-
-  /**
-   * Sets add users.
-   *
-   * @param addUsers the add users
-   */
-  public void setAddUsers(List<String> addUsers) {
-    this.addUsers = addUsers;
+  @Value.Default
+  default List<String> getAddUsers() {
+    return List.of();
   }
 
   /**
    * Users to be removed.
    *
-   * @return removeUsers remove users
+   * @return the users to remove
    */
   @Schema(description = "Users to be removed.")
-  public List<String> getRemoveUsers() {
-    return removeUsers;
-  }
-
-  /**
-   * Sets remove users.
-   *
-   * @param removeUsers the remove users
-   */
-  public void setRemoveUsers(List<String> removeUsers) {
-    this.removeUsers = removeUsers;
+  @Value.Default
+  default List<String> getRemoveUsers() {
+    return List.of();
   }
 
   /**
    * Roles to be added.
    *
-   * @return addRoles add roles
+   * @return the roles to add
    */
   @Schema(description = "Roles to be added.")
-  public List<String> getAddRoles() {
-    return addRoles;
-  }
-
-  /**
-   * Sets add roles.
-   *
-   * @param addRoles the add roles
-   */
-  public void setAddRoles(List<String> addRoles) {
-    this.addRoles = addRoles;
+  @Value.Default
+  default List<String> getAddRoles() {
+    return List.of();
   }
 
   /**
    * Roles to be removed.
    *
-   * @return removeRoles remove roles
+   * @return the roles to remove
    */
   @Schema(description = "Roles to be removed.")
-  public List<String> getRemoveRoles() {
-    return removeRoles;
-  }
-
-  /**
-   * Sets remove roles.
-   *
-   * @param removeRoles the remove roles
-   */
-  public void setRemoveRoles(List<String> removeRoles) {
-    this.removeRoles = removeRoles;
+  @Value.Default
+  default List<String> getRemoveRoles() {
+    return List.of();
   }
 
   /**
    * Groups to be added.
    *
-   * @return addGroups add groups
+   * @return the groups to add
    */
   @Schema(description = "Groups to be added.")
-  public List<String> getAddGroups() {
-    return addGroups;
-  }
-
-  /**
-   * Sets add groups.
-   *
-   * @param addGroups the add groups
-   */
-  public void setAddGroups(List<String> addGroups) {
-    this.addGroups = addGroups;
+  @Value.Default
+  default List<String> getAddGroups() {
+    return List.of();
   }
 
   /**
    * Groups to be removed.
    *
-   * @return removeGroups remove groups
+   * @return the groups to remove
    */
   @Schema(description = "Groups to be removed.")
-  public List<String> getRemoveGroups() {
-    return removeGroups;
-  }
-
-  /**
-   * Sets remove groups.
-   *
-   * @param removeGroups the remove groups
-   */
-  public void setRemoveGroups(List<String> removeGroups) {
-    this.removeGroups = removeGroups;
+  @Value.Default
+  default List<String> getRemoveGroups() {
+    return List.of();
   }
 
 }
-

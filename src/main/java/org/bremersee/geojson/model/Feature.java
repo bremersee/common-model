@@ -34,6 +34,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
+@SuppressWarnings("SameNameButDifferent")
 @Schema(description = "A Feature object represents a spatially bounded thing.")
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -185,7 +186,7 @@ public class Feature implements Serializable {
      */
     FEATURE("Feature");
 
-    private String value;
+    private final String value;
 
     TypeEnum(String value) {
       this.value = value;

@@ -31,6 +31,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
+@SuppressWarnings("SameNameButDifferent")
 @Schema(description = "GeoJSON MultiPoint.")
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)

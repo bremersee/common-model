@@ -35,6 +35,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
+@SuppressWarnings("SameNameButDifferent")
 @Schema(description = "A collection of features.")
 @Validated
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -133,7 +134,7 @@ public class FeatureCollection implements Serializable {
      */
     FEATURECOLLECTION("FeatureCollection");
 
-    private String value;
+    private final String value;
 
     TypeEnum(String value) {
       this.value = value;

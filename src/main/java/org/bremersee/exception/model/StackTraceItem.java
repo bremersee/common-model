@@ -39,6 +39,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
+@SuppressWarnings("SameNameButDifferent")
 @Schema(description = "A stack trace element of an exception.")
 @Validated
 @JacksonXmlRootElement(localName = "StackTraceItem")

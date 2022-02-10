@@ -16,66 +16,64 @@
 
 package org.bremersee.common.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Collections;
+import java.util.List;
+import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
  * The access control list modifications test.
  *
  * @author Christian Bremer
  */
+@ExtendWith(SoftAssertionsExtension.class)
 class AccessControlListModificationsTest {
 
   /**
    * Gets new new owner.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getNewNewOwner() {
-    AccessControlListModifications model = new AccessControlListModifications();
-    assertNull(model.getNewOwner());
-    model.setNewOwner("value");
-    assertEquals("value", model.getNewOwner());
+  void getNewNewOwner(SoftAssertions softly) {
+    softly
+        .assertThat(AccessControlListModifications
+            .builder()
+            .newOwner("someone")
+            .build()
+            .getNewOwner())
+        .isEqualTo("someone");
 
-    model = AccessControlListModifications.builder().newOwner("value").build();
-    assertEquals("value", model.getNewOwner());
-
-    assertNotEquals(model, null);
-    assertNotEquals(model, new Object());
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().newOwner("value").build());
-
-    assertTrue(model.toString().contains("value"));
+    softly
+        .assertThat(AccessControlListModifications
+            .from(AccessControlList.builder()
+                .owner("someone")
+                .build())
+            .build()
+            .getNewOwner())
+        .isEqualTo("someone");
   }
 
   /**
-   * Gets entries.
+   * Gets modifications.
    */
   @Test
-  void getEntries() {
-    AccessControlListModifications model = new AccessControlListModifications();
-    assertNotNull(model.getEntries());
-    assertTrue(model.getEntries().isEmpty());
-
-    AccessControlEntryModifications ace = AccessControlEntryModifications.builder()
-        .permission("read")
-        .guest(Boolean.TRUE)
-        .build();
-    model.setEntries(Collections.singletonList(ace));
-    assertEquals(ace, model.getEntries().get(0));
-
-    model = AccessControlListModifications.builder()
-        .entries(Collections.singletonList(ace))
-        .build();
-    assertEquals(ace, model.getEntries().get(0));
-
-    assertEquals(model, model.toBuilder().entries(Collections.singletonList(ace)).build());
-
-    assertTrue(model.toString().contains(ace.toString()));
+  void getModifications() {
+    List<AccessControlEntryModifications> expected = List.of(
+        AccessControlEntryModifications.builder()
+            .permission("write")
+            .addAddUsers("someone-else")
+            .build()
+    );
+    assertThat(
+        AccessControlListModifications.builder()
+            .newOwner("someone")
+            .modifications(expected)
+            .build()
+            .getModifications())
+        .containsExactlyElementsOf(expected);
   }
 }

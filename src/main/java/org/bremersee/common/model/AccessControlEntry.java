@@ -1,5 +1,5 @@
 /*
- * Copyright 2018-2020 the original author or authors.
+ * Copyright 2020 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,169 +16,126 @@
 
 package org.bremersee.common.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.Serializable;
 import java.util.List;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import org.springframework.validation.annotation.Validated;
+import org.immutables.value.Value;
 
 /**
  * Specifies a permission and who is granted.
  *
  * @author Christian Bremer
  */
+@Value.Immutable
+@Valid
 @Schema(description = "Specifies a permission and who is granted.")
-@Validated
-@JsonIgnoreProperties(ignoreUnknown = true)
-@EqualsAndHashCode
-@ToString
-@NoArgsConstructor
-public class AccessControlEntry implements Serializable {
-
-  private static final long serialVersionUID = 1L;
-
-  @JsonProperty(value = "permission", required = true)
-  private String permission;
-
-  @JsonProperty("guest")
-  private Boolean guest = Boolean.FALSE;
-
-  @JsonProperty("users")
-  private List<String> users;
-
-  @JsonProperty("roles")
-  private List<String> roles;
-
-  @JsonProperty("groups")
-  private List<String> groups;
+@JsonDeserialize(builder = ImmutableAccessControlEntry.Builder.class)
+public interface AccessControlEntry {
 
   /**
-   * Instantiates a new access control entry.
-   *
-   * @param permission the permission
-   * @param guest the guest
-   * @param users the users
-   * @param roles the roles
-   * @param groups the groups
+   * The constant PERMISSION_PATTERN.
    */
-  @Builder(toBuilder = true)
-  @SuppressWarnings("unused")
-  public AccessControlEntry(
-      String permission,
-      Boolean guest,
-      List<String> users,
-      List<String> roles,
-      List<String> groups) {
-    setPermission(permission);
-    setGuest(guest);
-    setUsers(users);
-    setRoles(roles);
-    setGroups(groups);
+  String PERMISSION_PATTERN = "^[a-z_]+$";
+
+  /**
+   * The constant PERMISSION.
+   */
+  String PERMISSION = "permission";
+
+  /**
+   * The constant GUEST.
+   */
+  String GUEST = "guest";
+
+  /**
+   * The constant USERS.
+   */
+  String USERS = "users";
+
+  /**
+   * The constant ROLES.
+   */
+  String ROLES = "roles";
+
+  /**
+   * The constant GROUPS.
+   */
+  String GROUPS = "groups";
+
+  /**
+   * Creates new builder.
+   *
+   * @return the access control entry builder
+   */
+  static ImmutableAccessControlEntry.Builder builder() {
+    return ImmutableAccessControlEntry.builder();
   }
 
   /**
    * Specifies the permission.
    *
-   * @return permission permission
+   * @return the permission
    */
-  @Schema(description = "Specifies the permission.", required = true, example = "read")
+  @Schema(
+      description = "Specifies the permission.",
+      required = true,
+      pattern = PERMISSION_PATTERN,
+      example = "read")
+  @JsonProperty(value = PERMISSION, required = true)
   @NotNull
-  @Pattern(regexp = "^[a-z_]+$")
-  public String getPermission() {
-    return permission;
-  }
+  @Pattern(regexp = PERMISSION_PATTERN)
+  String getPermission();
 
   /**
-   * Sets permission.
+   * Specifies whether anybody is granted or not.
    *
-   * @param permission the permission
+   * @return whether anybody is granted (true) or not (false)
    */
-  public void setPermission(String permission) {
-    this.permission = permission;
-  }
-
-  /**
-   * Specifies whether anybody is granted.
-   *
-   * @return guest boolean
-   */
-  @Schema(description = "Specifies whether anybody is granted.")
-  public Boolean getGuest() {
-    return guest;
-  }
-
-  /**
-   * Sets guest.
-   *
-   * @param guest the guest
-   */
-  public void setGuest(Boolean guest) {
-    this.guest = Boolean.TRUE.equals(guest);
+  @Schema(description = "Specifies whether anybody is granted.", defaultValue = "false")
+  @JsonProperty(value = GUEST, defaultValue = "false")
+  @Value.Default
+  default boolean isGuest() {
+    return false;
   }
 
   /**
    * Specifies the granted users.
    *
-   * @return users users
+   * @return the users
    */
   @Schema(description = "Specifies the granted users.")
-  public List<String> getUsers() {
-    return users;
-  }
-
-  /**
-   * Sets users.
-   *
-   * @param users the users
-   */
-  public void setUsers(List<String> users) {
-    this.users = users;
+  @JsonProperty(USERS)
+  @Value.Default
+  default List<String> getUsers() {
+    return List.of();
   }
 
   /**
    * Specifies the granted roles.
    *
-   * @return roles roles
+   * @return the roles
    */
   @Schema(description = "Specifies the granted roles.")
-  public List<String> getRoles() {
-    return roles;
-  }
-
-  /**
-   * Sets roles.
-   *
-   * @param roles the roles
-   */
-  public void setRoles(List<String> roles) {
-    this.roles = roles;
+  @JsonProperty(ROLES)
+  @Value.Default
+  default List<String> getRoles() {
+    return List.of();
   }
 
   /**
    * Specifies the granted groups.
    *
-   * @return groups groups
+   * @return the groups
    */
   @Schema(description = "Specifies the granted groups.")
-  public List<String> getGroups() {
-    return groups;
-  }
-
-  /**
-   * Sets groups.
-   *
-   * @param groups the groups
-   */
-  public void setGroups(List<String> groups) {
-    this.groups = groups;
+  @JsonProperty(GROUPS)
+  @Value.Default
+  default List<String> getGroups() {
+    return List.of();
   }
 
 }
-

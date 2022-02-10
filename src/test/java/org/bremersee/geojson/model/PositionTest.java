@@ -16,53 +16,69 @@
 
 package org.bremersee.geojson.model;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatNoException;
 
 import java.math.BigDecimal;
+import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
  * The position test.
  *
  * @author Christian Bremer
  */
+@ExtendWith(SoftAssertionsExtension.class)
 class PositionTest {
 
   /**
    * Test model.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void testModel() {
+  void testModel(SoftAssertions softly) {
     Position model = new Position();
-    assertNotEquals(model, null);
-    assertNotEquals(model, new Object());
-    assertEquals(model, model);
-    assertEquals(model, new Position());
-    assertTrue(model.toString().length() > 0);
+    softly.assertThat(model).isNotEqualTo(null);
+    softly.assertThat(model).isNotEqualTo(new Object());
+    softly.assertThat(model).isEqualTo(model);
+    softly.assertThat(model).isEqualTo(new Position());
+    softly.assertThat(model.toString()).isNotEmpty();
 
     BigDecimal x = new BigDecimal("123.4");
     BigDecimal y = new BigDecimal("567.8");
     model = new Position(x, y);
-    assertNotEquals(model, null);
-    assertNotEquals(model, new Object());
-    assertEquals(model, model);
-    assertEquals(
-        model,
-        new Position(x, y));
-    assertTrue(model.toString().contains(x.toString()));
+    softly.assertThat(model).isEqualTo(new Position(x, y));
+    softly.assertThat(model.toString()).contains(x.toString());
   }
 
   /**
-   * Test constructors.
+   * Test constructor with illegal y.
    */
   @Test
-  void testConstructors() {
-    assertThrows(IllegalArgumentException.class, () -> new Position(BigDecimal.ONE, null));
-    assertThrows(IllegalArgumentException.class, () -> new Position(null, BigDecimal.ONE));
-    assertDoesNotThrow(() -> new Position(BigDecimal.ZERO, BigDecimal.ONE, BigDecimal.TEN));
+  void testConstructorWithIllegalY() {
+    assertThatExceptionOfType(IllegalArgumentException.class)
+        .isThrownBy(() -> new Position(BigDecimal.ONE, null));
   }
+
+  /**
+   * Test constructor with illegal x.
+   */
+  @Test
+  void testConstructorWithIllegalX() {
+    assertThatExceptionOfType(IllegalArgumentException.class)
+        .isThrownBy(() -> new Position(null, BigDecimal.ONE));
+  }
+
+  /**
+   * Test constructor with xyz.
+   */
+  @Test
+  void testConstructorWithXyz() {
+    assertThatNoException()
+        .isThrownBy(() -> new Position(BigDecimal.ZERO, BigDecimal.ONE, BigDecimal.TEN));
+  }
+
 }

@@ -16,27 +16,31 @@
 
 package org.bremersee.geojson.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
+import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
  * The polygon test.
  *
  * @author Christian Bremer
  */
+@ExtendWith(SoftAssertionsExtension.class)
 class PolygonTest {
 
   /**
    * Gets coordinates.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getCoordinates() {
+  void getCoordinates(SoftAssertions softly) {
     List<Position> e0 = Arrays.asList(
         new Position(BigDecimal.ZERO, BigDecimal.ZERO),
         new Position(BigDecimal.ONE, BigDecimal.ONE));
@@ -46,17 +50,18 @@ class PolygonTest {
     List<List<Position>> value = Arrays.asList(e0, e1);
     Polygon model = new Polygon();
     model.setCoordinates(value);
-    assertEquals(value, model.getCoordinates());
+    softly.assertThat(model.getCoordinates()).isEqualTo(value);
 
     model = Polygon.builder().coordinates(value).build();
-    assertEquals(value, model.getCoordinates());
+    softly.assertThat(model.getCoordinates()).isEqualTo(value);
 
-    assertNotEquals(model, null);
-    assertNotEquals(model, new Object());
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().coordinates(value).build());
+    softly.assertThat(model.toBuilder().coordinates(value).build()).isEqualTo(model);
 
-    assertTrue(model.toString().contains(value.toString()));
+    softly.assertThat(model).isNotEqualTo(null);
+    softly.assertThat(model).isNotEqualTo(new Object());
+    softly.assertThat(model).isEqualTo(model);
+
+    softly.assertThat(model.toString()).contains(value.toString());
   }
 
   /**
@@ -65,25 +70,27 @@ class PolygonTest {
   @Test
   void getType() {
     Polygon model = new Polygon();
-    assertEquals("Polygon", model.getType().toString());
+    assertThat(model.getType().toString()).isEqualTo("Polygon");
   }
 
   /**
    * Gets bbox.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getBbox() {
+  void getBbox(SoftAssertions softly) {
     BoundingBox value = new BoundingBox(
         Arrays.asList(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.TEN, BigDecimal.TEN));
     Polygon model = new Polygon();
     model.setBbox(value);
-    assertEquals(value, model.getBbox());
+    softly.assertThat(model.getBbox()).isEqualTo(value);
 
     model = Polygon.builder().bbox(value).build();
-    assertEquals(value, model.getBbox());
+    softly.assertThat(model.getBbox()).isEqualTo(value);
 
-    assertEquals(model, model.toBuilder().bbox(value).build());
-    assertEquals(model, new Polygon(value, null));
+    softly.assertThat(model.toBuilder().bbox(value).build()).isEqualTo(model);
+    softly.assertThat(new Polygon(value, null)).isEqualTo(model);
   }
 
 }

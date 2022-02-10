@@ -1,5 +1,5 @@
 /*
- * Copyright 2018-2020 the original author or authors.
+ * Copyright 2020 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,94 +16,63 @@
 
 package org.bremersee.common.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import io.swagger.v3.oas.annotations.media.Schema;
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-import org.springframework.validation.annotation.Validated;
+import javax.annotation.Nullable;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import org.immutables.value.Value;
 
 /**
  * Specifies modifications of an access control list.
  *
  * @author Christian Bremer
  */
+@Value.Immutable
+@Valid
 @Schema(description = "Specifies modifications of an access control list.")
-@Validated
-@JsonIgnoreProperties(ignoreUnknown = true)
-@EqualsAndHashCode
-@ToString
-@NoArgsConstructor
-public class AccessControlListModifications implements Serializable {
-
-  private static final long serialVersionUID = 1L;
-
-  @JsonProperty("newOwner")
-  private String newOwner;
-
-  @JsonProperty("entries")
-  private List<AccessControlEntryModifications> entries;
+@JsonDeserialize(builder = ImmutableAccessControlListModifications.Builder.class)
+public interface AccessControlListModifications {
 
   /**
-   * Instantiates new access control list modifications.
+   * Creates new builder.
    *
-   * @param newOwner the new owner
-   * @param entries the modification entries
+   * @return the access control list modifications builder
    */
-  @Builder(toBuilder = true)
-  @SuppressWarnings("unused")
-  public AccessControlListModifications(
-      String newOwner,
-      List<AccessControlEntryModifications> entries) {
-    this.newOwner = newOwner;
-    this.entries = entries;
+  static ImmutableAccessControlListModifications.Builder builder() {
+    return ImmutableAccessControlListModifications.builder();
+  }
+
+  /**
+   * Creates new builder from the given access control list.
+   *
+   * @param acl the acl
+   * @return the access control list modifications builder
+   */
+  static ImmutableAccessControlListModifications.Builder from(@NotNull AccessControlList acl) {
+    return builder()
+        .newOwner(acl.getOwner());
   }
 
   /**
    * The owner is always granted and can only be changed by the owner.
    *
-   * @return newOwner new owner
+   * @return the new owner
    */
   @Schema(description = "The owner is always granted and can only be changed by the owner.")
-  public String getNewOwner() {
-    return newOwner;
-  }
+  @Nullable
+  String getNewOwner();
 
   /**
-   * Sets new owner.
+   * Get modifications.
    *
-   * @param newOwner the new owner
+   * @return the modifications
    */
-  public void setNewOwner(String newOwner) {
-    this.newOwner = newOwner;
-  }
-
-  /**
-   * Get modification entries.
-   *
-   * @return the modification entries
-   */
-  @Schema(description = "The access control entries.")
-  public List<AccessControlEntryModifications> getEntries() {
-    if (entries == null) {
-      entries = new ArrayList<>();
-    }
-    return entries;
-  }
-
-  /**
-   * Sets modification entries.
-   *
-   * @param entries the modification entries
-   */
-  public void setEntries(List<AccessControlEntryModifications> entries) {
-    this.entries = entries;
+  @Schema(description = "The access control entry modifications.")
+  @Value.Default
+  default List<AccessControlEntryModifications> getModifications() {
+    return List.of();
   }
 
 }
-

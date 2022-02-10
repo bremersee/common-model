@@ -16,40 +16,45 @@
 
 package org.bremersee.geojson.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
  * The point test.
  *
  * @author Christian Bremer
  */
+@ExtendWith(SoftAssertionsExtension.class)
 class PointTest {
 
   /**
    * Gets coordinates.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getCoordinates() {
+  void getCoordinates(SoftAssertions softly) {
     Position value = new Position(BigDecimal.ZERO, BigDecimal.ZERO);
     Point model = new Point();
     model.setCoordinates(value);
-    assertEquals(value, model.getCoordinates());
+    softly.assertThat(model.getCoordinates()).isEqualTo(value);
 
     model = Point.builder().coordinates(value).build();
-    assertEquals(value, model.getCoordinates());
+    softly.assertThat(model.getCoordinates()).isEqualTo(value);
 
-    assertNotEquals(model, null);
-    assertNotEquals(model, new Object());
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().coordinates(value).build());
+    softly.assertThat(model.toBuilder().coordinates(value).build()).isEqualTo(model);
 
-    assertTrue(model.toString().contains(value.toString()));
+    softly.assertThat(model).isNotEqualTo(null);
+    softly.assertThat(model).isNotEqualTo(new Object());
+    softly.assertThat(model).isEqualTo(model);
+
+    softly.assertThat(model.toString()).contains(value.toString());
   }
 
   /**
@@ -58,25 +63,27 @@ class PointTest {
   @Test
   void getType() {
     Point model = new Point();
-    assertEquals("Point", model.getType().toString());
+    assertThat(model.getType().toString()).isEqualTo("Point");
   }
 
   /**
    * Gets bbox.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void getBbox() {
+  void getBbox(SoftAssertions softly) {
     BoundingBox value = new BoundingBox(
         Arrays.asList(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO));
     Point model = new Point();
     model.setBbox(value);
-    assertEquals(value, model.getBbox());
+    softly.assertThat(model.getBbox()).isEqualTo(value);
 
     model = Point.builder().bbox(value).build();
-    assertEquals(value, model.getBbox());
+    softly.assertThat(model.getBbox()).isEqualTo(value);
 
-    assertEquals(model, model.toBuilder().bbox(value).build());
-    assertEquals(model, new Point(value, null));
+    softly.assertThat(model.toBuilder().bbox(value).build()).isEqualTo(model);
+    softly.assertThat(new Point(value, null)).isEqualTo(model);
   }
 
 }

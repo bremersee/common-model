@@ -35,6 +35,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
+@SuppressWarnings("SameNameButDifferent")
 @Schema(description = "GeoJSON Geometry.")
 @Validated
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type", visible = true)
@@ -149,7 +150,7 @@ public abstract class Geometry implements Serializable {
      */
     GEOMETRYCOLLECTION("GeometryCollection");
 
-    private String value;
+    private final String value;
 
     TypeEnum(String value) {
       this.value = value;

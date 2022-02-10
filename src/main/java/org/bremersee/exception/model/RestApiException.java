@@ -51,6 +51,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
+@SuppressWarnings("SameNameButDifferent")
 @Schema(description = "The serialized exception.")
 @Validated
 @JsonTypeInfo(include = As.EXISTING_PROPERTY, use = Id.CLASS, property = "_type", visible = true)
@@ -71,7 +72,8 @@ public class RestApiException implements Serializable {
   @Schema(
       name = "_type",
       description = "The type specifier, must always be "
-          + "'org.bremersee.exception.model.RestApiException'.")
+          + "'org.bremersee.exception.model.RestApiException'.",
+      example = "org.bremersee.exception.model.RestApiException")
   @JsonProperty("_type")
   @JacksonXmlProperty(localName = "_type", isAttribute = true)
   @XmlAttribute(name = "_type")

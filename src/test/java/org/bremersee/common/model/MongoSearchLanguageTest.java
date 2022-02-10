@@ -16,44 +16,71 @@
 
 package org.bremersee.common.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
 import java.util.Locale;
+import org.assertj.core.api.SoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 /**
  * The mongo search language test.
  *
  * @author Christian Bremer
  */
+@ExtendWith(SoftAssertionsExtension.class)
 class MongoSearchLanguageTest {
 
   /**
    * From value.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void fromValue() {
+  void fromValue(SoftAssertions softly) {
     for (MongoSearchLanguage language : MongoSearchLanguage.values()) {
-      assertEquals(language, MongoSearchLanguage.fromValue(language.name()));
-      assertEquals(language, MongoSearchLanguage.fromValue(language.toString()));
+      MongoSearchLanguage actual = MongoSearchLanguage.fromValue(language.name());
+      softly.assertThat(actual)
+          .isEqualTo(language)
+          .extracting(Object::toString)
+          .isEqualTo(language.toString());
     }
+    softly.assertThat(MongoSearchLanguage.fromValue("", MongoSearchLanguage.NO))
+        .isEqualTo(MongoSearchLanguage.NO);
+    softly.assertThat(MongoSearchLanguage.fromValue("xxx", MongoSearchLanguage.NO))
+        .isEqualTo(MongoSearchLanguage.NO);
+  }
+
+  /**
+   * From locale.
+   *
+   * @param softly the soft assertions
+   */
+  @Test
+  void fromLocale(SoftAssertions softly) {
+    softly.assertThat(MongoSearchLanguage.fromLocale(null, MongoSearchLanguage.NO))
+        .isEqualTo(MongoSearchLanguage.NO);
+    softly.assertThat(MongoSearchLanguage.fromLocale(new Locale(""), MongoSearchLanguage.NO))
+        .isEqualTo(MongoSearchLanguage.NO);
+    softly.assertThat(MongoSearchLanguage.fromLocale(Locale.GERMANY, MongoSearchLanguage.NO))
+        .isEqualTo(MongoSearchLanguage.DE);
   }
 
   /**
    * To locale.
+   *
+   * @param softly the soft assertions
    */
   @Test
-  void toLocale() {
+  void toLocale(SoftAssertions softly) {
     for (MongoSearchLanguage language : MongoSearchLanguage.values()) {
       Locale locale = language.toLocale();
       if (MongoSearchLanguage.NONE == language) {
-        assertNull(locale);
+        softly.assertThat(locale).isNull();
       } else {
-        assertNotNull(locale);
-        assertEquals(language.name().toLowerCase(), locale.getLanguage());
-        assertNotNull(TwoLetterLanguageCode.fromValue(locale.getLanguage()));
+        softly.assertThat(locale)
+            .isNotNull()
+            .extracting(Locale::getLanguage)
+            .isEqualTo(language.name().toLowerCase());
       }
     }
   }

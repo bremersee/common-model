@@ -43,6 +43,7 @@ import org.springframework.validation.annotation.Validated;
  *
  * @author Christian Bremer
  */
+@SuppressWarnings("SameNameButDifferent")
 @Schema(description = "The handler where the exception occurred.")
 @Validated
 @JacksonXmlRootElement(localName = "Handler")

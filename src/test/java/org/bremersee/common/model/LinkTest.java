@@ -16,10 +16,10 @@
 
 package org.bremersee.common.model;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -30,114 +30,21 @@ import org.junit.jupiter.api.Test;
 class LinkTest {
 
   /**
-   * Gets href.
+   * Json.
+   *
+   * @throws Exception the exception
    */
   @Test
-  void getHref() {
-    Link model = new Link();
-    model.setHref("value");
-    assertEquals("value", model.getHref());
-
-    model = Link.builder().href("value").build();
-    assertEquals("value", model.getHref());
-
-    assertNotEquals(model, null);
-    assertNotEquals(model, new Object());
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().href("value").build());
-
-    assertTrue(model.toString().contains("value"));
+  void json() throws Exception {
+    ObjectMapper om = new ObjectMapper();
+    Link actual = om.readValue("{\"href\": \"https://example.net\"}", Link.class);
+    assertThat(actual)
+        .isEqualTo(
+            Link.builder()
+                .href("https://example.net")
+                .build())
+        .extracting(Link::isBlank, InstanceOfAssertFactories.BOOLEAN)
+        .isFalse();
   }
 
-  /**
-   * Gets id.
-   */
-  @Test
-  void getId() {
-    Link model = new Link();
-    model.setId("value");
-    assertEquals("value", model.getId());
-
-    model = Link.builder().id("value").build();
-    assertEquals("value", model.getId());
-
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().id("value").build());
-
-    assertTrue(model.toString().contains("value"));
-  }
-
-  /**
-   * Gets type.
-   */
-  @Test
-  void getType() {
-    Link model = new Link();
-    model.setType("value");
-    assertEquals("value", model.getType());
-
-    model = Link.builder().type("value").build();
-    assertEquals("value", model.getType());
-
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().type("value").build());
-
-    assertTrue(model.toString().contains("value"));
-  }
-
-  /**
-   * Gets blank.
-   */
-  @Test
-  void getBlank() {
-    Link model = new Link();
-    assertEquals(Boolean.FALSE, model.getBlank());
-
-    model.setBlank(true);
-    assertEquals(Boolean.TRUE, model.getBlank());
-
-    model = Link.builder().blank(true).build();
-    assertEquals(Boolean.TRUE, model.getBlank());
-
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().blank(true).build());
-
-    assertTrue(model.toString().contains("true"));
-  }
-
-  /**
-   * Gets text.
-   */
-  @Test
-  void getText() {
-    Link model = new Link();
-    model.setText("value");
-    assertEquals("value", model.getText());
-
-    model = Link.builder().text("value").build();
-    assertEquals("value", model.getText());
-
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().text("value").build());
-
-    assertTrue(model.toString().contains("value"));
-  }
-
-  /**
-   * Gets description.
-   */
-  @Test
-  void getDescription() {
-    Link model = new Link();
-    model.setDescription("value");
-    assertEquals("value", model.getDescription());
-
-    model = Link.builder().description("value").build();
-    assertEquals("value", model.getDescription());
-
-    assertEquals(model, model);
-    assertEquals(model, model.toBuilder().description("value").build());
-
-    assertTrue(model.toString().contains("value"));
-  }
 }
